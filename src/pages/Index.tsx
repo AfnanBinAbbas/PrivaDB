@@ -6,6 +6,7 @@ import { AlertPanel } from '@/components/dashboard/AlertPanel';
 import { DataFlowGraph } from '@/components/dashboard/DataFlowGraph';
 import { Timeline } from '@/components/dashboard/Timeline';
 import { EndpointList } from '@/components/dashboard/EndpointList';
+import { DomainInput } from '@/components/dashboard/DomainInput';
 import { 
   mockStats, 
   mockDomainScans, 
@@ -66,9 +67,12 @@ const Index = () => {
 
         {/* Main Grid */}
         <div className="grid grid-cols-12 gap-6">
-          {/* Left Column - Database Explorer */}
-          <section className="col-span-12 lg:col-span-3 h-[600px]">
-            <DatabaseExplorer scans={mockDomainScans} />
+          {/* Left Column - Domain Input & Database Explorer */}
+          <section className="col-span-12 lg:col-span-3 space-y-4">
+            <DomainInput onDomainsChange={(domains) => console.log('Domains:', domains)} />
+            <div className="h-[420px]">
+              <DatabaseExplorer scans={mockDomainScans} />
+            </div>
           </section>
 
           {/* Center Column - Flow Graph & Alerts */}
