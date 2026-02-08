@@ -1,0 +1,21 @@
+{
+  "report_title": "Data Privacy Report - youtube.com",
+  "generated_date": "2026-02-07T20:55:23.355796",
+  "scan_date": 1770464767.8722088,
+  "domain": "youtube.com",
+  "executive_summary": "Found 9 databases with 22 records and 139 network requests.",
+  "key_findings": {
+    "databases": 9,
+    "total_records": 22,
+    "network_requests": 139,
+    "risk_level": "LOW",
+    "risk_score": "22.0%"
+  },
+  "recommendations": [
+    "Implement Content Security Policy (CSP)",
+    "Review third-party script inclusions",
+    "Minimize client-side data storage",
+    "Regular privacy audits recommended"
+  ],
+  "scan_file": "data/fresh_browser_www_youtube_com_complete.json"
+}

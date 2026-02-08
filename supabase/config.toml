@@ -1,1 +1,7 @@
-project_id = "pymgcinjtunoqfydukxw"
+project_id = "thypayltguacuiazonvk"
+
+[functions.scan-domain]
+verify_jwt = false
+
+[analytics]
+enabled = false

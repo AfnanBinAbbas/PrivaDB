@@ -1,4 +1,4 @@
-import { supabase } from '@/integrations/supabase/client';
+import { v4 as uuidv4 } from "uuid";
 import type { DomainScan, Endpoint, DataFlowNode, DataFlowEdge, TimelineEvent, SeverityLevel } from '@/types/detector';
 
 export interface ScanResult {
@@ -30,18 +30,90 @@ export interface ScanResponse {
   error?: string;
 }
 
+// Backend API URL - change this to match your backend server
+const BACKEND_API_URL = 'http://10.1.152.95:8000';
+
 export const scannerApi = {
   async scanDomain(domain: string): Promise<ScanResponse> {
-    const { data, error } = await supabase.functions.invoke('scan-domain', {
-      body: { domain },
-    });
+    try {
+      const response = await fetch(`${BACKEND_API_URL}/api/scan`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ domain }),
+      });
 
-    if (error) {
-      console.error('Scan error:', error);
-      return { success: false, error: error.message };
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Backend scan error:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Backend connection failed' 
+      };
     }
+  },
 
-    return data;
+  async scanAndAnalyze(domain: string): Promise<ScanResponse> {
+    try {
+      const response = await fetch(`${BACKEND_API_URL}/api/scan-and-analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ domain }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Backend scan-and-analyze error:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Unknown error' 
+      };
+    }
+  },
+
+  async analyzeData(scenario1File: string, scenario2File: string, scenario3File: string): Promise<ScanResponse> {
+    try {
+      const response = await fetch(`${BACKEND_API_URL}/api/analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          scenario1_file: scenario1File,
+          scenario2_file: scenario2File,
+          scenario3_file: scenario3File,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Backend analyze error:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Unknown error' 
+      };
+    }
   },
 
   // Convert scan result to dashboard-compatible format
@@ -161,7 +233,7 @@ export const scannerApi = {
     const severity: SeverityLevel = totalRecords > 10 ? 'warning' : 'info';
 
     return {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       timestamp: result.timestamp,
       type: 'scan',
       title: `Scanned ${result.domain}`,

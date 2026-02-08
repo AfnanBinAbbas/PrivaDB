@@ -11,6 +11,7 @@ import { DomainInput } from '@/components/dashboard/DomainInput';
 import { ScanControls } from '@/components/dashboard/ScanControls';
 import { scannerApi, ScanResult } from '@/lib/api/scanner';
 import { toast } from 'sonner';
+import { v4 as uuidv4 } from "uuid";
 import type { 
   DomainScan, 
   Endpoint, 
@@ -127,7 +128,7 @@ const Index = () => {
         allScans.push(errorScan);
         
         allEvents.push({
-          id: crypto.randomUUID(),
+          id: uuidv4(),
           timestamp: new Date().toISOString(),
           type: 'scan',
           title: `Failed to scan ${domain}`,
