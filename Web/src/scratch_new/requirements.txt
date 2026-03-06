@@ -1,0 +1,4 @@
+playwright>=1.40.0
+numpy>=1.24.0
+pandas
+matplotlib

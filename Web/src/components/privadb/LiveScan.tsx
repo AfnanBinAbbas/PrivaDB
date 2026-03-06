@@ -1,0 +1,835 @@
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import {
+  Play, Upload, Plus, X, Settings2, ChevronDown, ChevronUp,
+  Globe, Search, BarChart3, Check, AlertCircle, FileText,
+  Loader2, Copy, Download, Trash2
+} from 'lucide-react';
+
+type ScanConfig = {
+  headless: boolean;
+  iterations: number;
+  overwrite: boolean;
+  crawlOnly: boolean;
+  detectOnly: boolean;
+  sitesLimit: number | null;
+  outputFile: string | null;
+};
+
+type ScanPhase = {
+  name: string;
+  icon: React.ElementType;
+  status: 'pending' | 'running' | 'done' | 'error';
+  progress: number;
+  message: string;
+};
+
+type ScanResult = {
+  url: string;
+  databases: number;
+  trackingEvents: number;
+  confidence: { high: number; medium: number; low: number };
+  flowTypes: { confidentiality: number; integrity: number };
+  trackerDomains: string[];
+  entropy: { avg: number; max: number };
+};
+
+type BackendScanResults = {
+  domain: string;
+  url: string;
+  indexeddb_summary: {
+    database_count: number;
+    total_records: number;
+  };
+  exfiltration_summary: {
+    total: number;
+    high_confidence: number;
+    medium_confidence: number;
+    low_confidence: number;
+  };
+  flow_classification: {
+    outflow_flows: number;
+    inflow_flows: number;
+    internal_flows: number;
+    external_flows: number;
+  };
+  exfiltration_events: {
+    request_domain: string;
+    identifier_entropy: number;
+    confidence: string;
+  }[];
+  stage?: 'crawl_only' | 'full';
+};
+
+type BackendScanRecord = {
+  scan_id: string;
+  status: string;
+  url: string;
+  results?: BackendScanResults;
+};
+
+const defaultConfig: ScanConfig = {
+  headless: true,
+  iterations: 3,
+  overwrite: false,
+  crawlOnly: false,
+  detectOnly: false,
+  sitesLimit: null,
+  outputFile: null,
+};
+
+const generateMockResult = (url: string): ScanResult => {
+  const rand = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
+  const high = rand(0, 8);
+  const medium = rand(2, 15);
+  const low = rand(5, 30);
+  const conf = high + medium + low;
+  const trackerPool = [
+    'google-analytics.com', 'doubleclick.net', 'facebook.com', 'criteo.com',
+    'hotjar.com', 'mixpanel.com', 'segment.io', 'amplitude.com',
+    'onesignal.com', 'pubmatic.com', 'adsrvr.org', 'taboola.com',
+    'outbrain.com', 'linkedin.com', 'tiktok.com', 'snapchat.com',
+  ];
+  const numTrackers = rand(1, 7);
+  const shuffled = [...trackerPool].sort(() => Math.random() - 0.5);
+
+  return {
+    url,
+    databases: rand(1, 8),
+    trackingEvents: conf,
+    confidence: { high, medium, low },
+    flowTypes: {
+      confidentiality: rand(Math.floor(conf * 0.4), Math.floor(conf * 0.8)),
+      integrity: rand(Math.floor(conf * 0.2), Math.floor(conf * 0.6)),
+    },
+    trackerDomains: shuffled.slice(0, numTrackers),
+    entropy: {
+      avg: parseFloat((Math.random() * 2 + 2.5).toFixed(2)),
+      max: parseFloat((Math.random() * 2 + 4).toFixed(2)),
+    },
+  };
+};
+
+const ConfidenceBadge: React.FC<{ level: string; count: number }> = ({ level, count }) => {
+  const colors: Record<string, string> = {
+    HIGH: 'bg-red-500/15 text-red-600 dark:text-red-400',
+    MEDIUM: 'bg-amber-500/15 text-amber-600 dark:text-amber-400',
+    LOW: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400',
+  };
+  return (
+    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-mono font-medium ${colors[level]}`}>
+      {level} {count}
+    </span>
+  );
+};
+
+const ResultCard: React.FC<{ result: ScanResult; index: number }> = ({ result, index }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div
+      className="glass rounded-xl overflow-hidden opacity-0 animate-fade-in"
+      style={{ animationDelay: `${index * 0.15}s` }}
+    >
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-muted/30 transition-colors"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <Globe size={16} className="text-primary shrink-0" />
+          <span className="text-sm font-medium truncate">{result.url}</span>
+        </div>
+        <div className="flex items-center gap-3 shrink-0 ml-4">
+          <ConfidenceBadge level="HIGH" count={result.confidence.high} />
+          <span className="text-xs text-muted-foreground hidden sm:inline">
+            {result.trackingEvents} events
+          </span>
+          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </div>
+      </button>
+
+      {expanded && (
+        <div className="px-5 pb-5 border-t border-border/30 pt-4 space-y-4">
+          {/* Stats grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: 'Databases', value: result.databases },
+              { label: 'Tracking Events', value: result.trackingEvents },
+              { label: 'Avg Entropy', value: result.entropy.avg },
+              { label: 'Max Entropy', value: result.entropy.max },
+            ].map((stat, i) => (
+              <div key={i} className="bg-muted/30 rounded-lg px-3 py-2">
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
+                <div className="text-lg font-mono font-semibold">{stat.value}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Confidence */}
+          <div>
+            <div className="text-xs text-muted-foreground mb-2">Confidence Distribution</div>
+            <div className="flex gap-2">
+              <ConfidenceBadge level="HIGH" count={result.confidence.high} />
+              <ConfidenceBadge level="MEDIUM" count={result.confidence.medium} />
+              <ConfidenceBadge level="LOW" count={result.confidence.low} />
+            </div>
+          </div>
+
+          {/* Flow */}
+          <div>
+            <div className="text-xs text-muted-foreground mb-2">Flow Classification</div>
+            <div className="flex gap-4 text-sm">
+              <span className="font-mono">
+                <span className="text-muted-foreground">Outflows:</span>{' '}
+                <span className="text-primary font-medium">{result.flowTypes.confidentiality}</span>
+              </span>
+              <span className="font-mono">
+                <span className="text-muted-foreground">Inflows:</span>{' '}
+                <span className="font-medium">{result.flowTypes.integrity}</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Trackers */}
+          <div>
+            <div className="text-xs text-muted-foreground mb-2">
+              Detected Tracker Domains ({result.trackerDomains.length})
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {result.trackerDomains.map((domain, i) => (
+                <span key={i} className="inline-flex items-center px-2 py-1 rounded-md bg-primary/10 text-xs font-mono text-amber-600">
+                  {domain}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const LiveScan: React.FC = () => {
+  const [urls, setUrls] = useState<string[]>(['']);
+  const [showConfig, setShowConfig] = useState(false);
+  const [config, setConfig] = useState<ScanConfig>(defaultConfig);
+  const [scanning, setScanning] = useState(false);
+  const [stopping, setStopping] = useState(false);
+  const [currentScanId, setCurrentScanId] = useState<string | null>(null);
+  const [phases, setPhases] = useState<ScanPhase[]>([]);
+  const [results, setResults] = useState<ScanResult[]>([]);
+  const [history, setHistory] = useState<ScanResult[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [scanComplete, setScanComplete] = useState(false);
+  const [lastScanId, setLastScanId] = useState<string | null>(null);
+
+  const fetchHistory = useCallback(async () => {
+    try {
+      const response = await fetch('http://localhost:8000/history');
+      if (!response.ok) return;
+      const data = await response.json();
+
+      const mappedHistory = data
+        .filter((s: BackendScanRecord) => s.status === 'completed' && s.results)
+        .map((s: BackendScanRecord) => {
+          const res = s.results!;
+          return {
+            url: s.url,
+            databases: res.indexeddb_summary?.database_count || 0,
+            trackingEvents: res.exfiltration_summary?.total || 0,
+            confidence: {
+              high: res.exfiltration_summary?.high_confidence || 0,
+              medium: res.exfiltration_summary?.medium_confidence || 0,
+              low: res.exfiltration_summary?.low_confidence || 0,
+            },
+            flowTypes: {
+              confidentiality: res.flow_classification?.outflow_flows || 0,
+              integrity: res.flow_classification?.inflow_flows || 0,
+            },
+            trackerDomains: res.exfiltration_events?.map((e: { request_domain: string }) => e.request_domain) || [],
+            entropy: {
+              avg: res.exfiltration_events?.length ? (res.exfiltration_events.reduce((v: number, e: { identifier_entropy: number }) => v + e.identifier_entropy, 0) / res.exfiltration_events.length) : 0,
+              max: res.exfiltration_events?.length ? Math.max(...res.exfiltration_events.map((e: { identifier_entropy: number }) => e.identifier_entropy)) : 0,
+            },
+          };
+        });
+      setHistory(mappedHistory);
+    } catch (e) {
+      console.error('Failed to fetch history:', e);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchHistory();
+  }, [fetchHistory]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const validUrls = urls.filter(u => u.trim().length > 0);
+
+  const addUrl = () => setUrls(prev => [...prev, '']);
+  const removeUrl = (index: number) => setUrls(prev => prev.filter((_, i) => i !== index));
+  const updateUrl = (index: number, value: string) => {
+    // Strip http:// or https:// if present
+    const cleanValue = value.replace(/^https?:\/\//i, '').replace(/\/$/, '');
+    setUrls(prev => prev.map((u, i) => (i === index ? cleanValue : u)));
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      const lines = text
+        .split('\n')
+        .map(l => l.trim().replace(/^https?:\/\//i, '').replace(/\/$/, ''))
+        .filter(l => l.length > 0 && !l.startsWith('#'));
+      if (lines.length > 0) {
+        setUrls(lines);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
+
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+  const startScan = useCallback(async () => {
+    if (validUrls.length === 0) return;
+    setScanning(true);
+    setScanComplete(false);
+    setResults([]);
+
+    const update = (idx: number, patch: Partial<ScanPhase>) => {
+      setPhases(prev => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
+    };
+
+    try {
+      for (let i = 0; i < validUrls.length; i++) {
+        const currentUrl = validUrls[i];
+        const progressPrefix = validUrls.length > 1 ? `[${i + 1}/${validUrls.length}] ` : '';
+
+        // Reset phases for the current site
+        setPhases([
+          { name: 'Starting', icon: Settings2, status: 'pending', progress: 0, message: 'Preparing environment...' },
+          { name: 'Crawling', icon: Globe, status: 'pending', progress: 0, message: 'Browser initialization...' },
+          { name: 'Analysis', icon: Search, status: 'pending', progress: 0, message: 'Static & Dynamic analysis...' },
+          { name: 'Reporting', icon: BarChart3, status: 'pending', progress: 0, message: 'Finalizing data...' },
+        ]);
+
+        update(0, { status: 'running', message: `${progressPrefix}Connecting to backend...` });
+
+        const response = await fetch('http://localhost:8000/scan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            url: currentUrl,
+            headless: config.headless,
+            crawl_only: false, // Always full scan when started from UI
+            detect_only: false
+          }),
+        });
+
+        if (!response.ok) throw new Error('Failed to start scan');
+
+        const { scan_id } = await response.json();
+        setCurrentScanId(scan_id);
+        setLastScanId(scan_id); // Store the last scan ID
+        update(0, { progress: 100, status: 'done', message: 'Scan started' });
+
+        // Polling loop
+        let completed = false;
+        while (!completed) {
+          if (stopping) {
+            break;
+          }
+          await sleep(2000);
+          const statusRes = await fetch(`http://localhost:8000/scan/${scan_id}`);
+          if (!statusRes.ok) throw new Error('Failed to fetch scan status');
+
+          const data = await statusRes.json() as BackendScanRecord & { progress: number; error?: string };
+          const { status, progress, results: scanResults } = data;
+
+          // Explicitly set each phase status based on the backend state
+          setPhases(prev => prev.map((p, phaseIdx) => {
+            const isDone = (s: string, idx: number) => {
+              if (s === 'completed') return true;
+              if (s === 'reporting' && idx < 3) return true;
+              if (s === 'detecting' && idx < 2) return true;
+              if (s === 'crawling' && idx < 1) return true;
+              if (s === 'starting' && idx < 0) return true;
+              return false;
+            };
+
+            const isCurrent = (s: string, idx: number) => {
+              if (s === 'starting' && idx === 0) return true;
+              if (s === 'crawling' && idx === 1) return true;
+              if (s === 'detecting' && idx === 2) return true;
+              if (s === 'reporting' && idx === 3) return true;
+              return false;
+            };
+
+            if (isDone(status, phaseIdx)) return { ...p, status: 'done' as const, progress: 100 };
+            if (isCurrent(status, phaseIdx)) {
+              let msg = p.message;
+              if (status === 'starting') msg = `${progressPrefix}Initializing Playwright...`;
+              if (status === 'crawling') msg = `${progressPrefix}Crawling ${currentUrl}...`;
+              if (status === 'detecting') msg = `${progressPrefix}Analyzing IndexedDB entries...`;
+              if (status === 'reporting') msg = `${progressPrefix}Generating report...`;
+              return { ...p, status: 'running' as const, progress: (status === 'starting' && phaseIdx === 0) ? 50 : progress, message: msg };
+            }
+            return { ...p, status: 'pending' as const, progress: 0 };
+          }));
+
+          if (status === 'completed') {
+            // Map backend results to frontend format
+            const mappedResult: ScanResult = {
+              url: data.url || validUrls[0],
+              databases: scanResults?.indexeddb_summary?.database_count || 0,
+              trackingEvents: scanResults?.exfiltration_summary?.total || 0,
+              confidence: {
+                high: scanResults?.exfiltration_summary?.high_confidence || 0,
+                medium: scanResults?.exfiltration_summary?.medium_confidence || 0,
+                low: scanResults?.exfiltration_summary?.low_confidence || 0,
+              },
+              flowTypes: {
+                confidentiality: scanResults?.flow_classification?.outflow_flows || 0,
+                integrity: scanResults?.flow_classification?.inflow_flows || 0,
+              },
+              trackerDomains: scanResults?.exfiltration_events?.map((e: { request_domain: string }) => e.request_domain) || [],
+              entropy: {
+                avg: scanResults?.exfiltration_events?.length ? (scanResults.exfiltration_events.reduce((s: number, e: { identifier_entropy: number }) => s + e.identifier_entropy, 0) / scanResults.exfiltration_events.length) : 0,
+                max: scanResults?.exfiltration_events?.length ? Math.max(...scanResults.exfiltration_events.map((e: { identifier_entropy: number }) => e.identifier_entropy)) : 0,
+              },
+            };
+
+            setResults(prev => [...prev, mappedResult]);
+            completed = true;
+            fetchHistory(); // Refresh history after scan
+          } else if (status === 'stopped') {
+            setPhases(prev => prev.map(p => p.status === 'running' ? { ...p, status: 'error', message: 'Scan stopped by user' } : p));
+            completed = true;
+          } else if (status === 'failed') {
+            throw new Error(data.error || 'Scan failed');
+          }
+        }
+      }
+
+      setScanComplete(true);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('Scan error:', error);
+      setPhases(prev => prev.map(p => p.status === 'running' ? { ...p, status: 'error', message: errorMessage } : p));
+    } finally {
+      setScanning(false);
+      setStopping(false);
+      setCurrentScanId(null);
+    }
+  }, [validUrls, stopping, fetchHistory, config.headless]);
+
+  const stopScan = async () => {
+    if (!currentScanId) return;
+    setStopping(true);
+    try {
+      await fetch(`http://localhost:8000/scan/${currentScanId}/stop`, { method: 'POST' });
+    } catch (error) {
+      console.error('Error stopping scan:', error);
+    }
+  };
+
+  const totalEvents = results.reduce((s, r) => s + r.trackingEvents, 0);
+  const totalHigh = results.reduce((s, r) => s + r.confidence.high, 0);
+  const allTrackers = [...new Set(results.flatMap(r => r.trackerDomains))];
+
+  const exportResults = () => {
+    const blob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'privadb_scan_results.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const generateCliCommand = () => {
+    const isSingle = urls.filter(u => u.trim()).length <= 1;
+    const urlValue = urls.find(u => u.trim()) || 'https://example.com';
+
+    // Orchestrator main.py for all runs
+    const parts = ['python3 main.py'];
+
+    // If no specific mode selected, use --all as the user requested
+    if (!config.crawlOnly && !config.detectOnly) {
+      parts.push('--all');
+    } else {
+      if (config.crawlOnly) parts.push('--crawl-only');
+      if (config.detectOnly) parts.push('--detect-only');
+    }
+
+    if (isSingle) {
+      parts.push(`--url ${urlValue}`);
+    } else if (config.sitesLimit) {
+      parts.push(`--sites ${config.sitesLimit}`);
+    } else {
+      parts.push('--input-file sites_list.json');
+    }
+
+    if (!config.headless) parts.push('--no-headless');
+    if (config.iterations !== 3) parts.push(`--iterations ${config.iterations}`);
+    if (config.overwrite) parts.push('--overwrite');
+    if (config.outputFile) parts.push(`--output ${config.outputFile}`);
+
+    return parts.join(' ');
+  };
+
+  return (
+    <section id="live-scan" className="py-24 px-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs text-primary font-medium mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            Interactive Demo
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Live Scan</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Enter websites to analyze for persistent IndexedDB tracking. Upload a .txt file or add URLs manually.
+          </p>
+        </div>
+
+        {/* Input area */}
+        <div className="glass rounded-2xl p-6 mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-medium">Target URLs</h3>
+            <div className="flex items-center gap-2">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".txt"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                disabled={scanning}
+              >
+                <Upload size={14} />
+                Upload .txt
+              </button>
+              <button
+                onClick={addUrl}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                disabled={scanning}
+              >
+                <Plus size={14} />
+                Add URL
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            {urls.map((url, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <Globe size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <input
+                    type="text"
+                    value={url}
+                    onChange={e => updateUrl(i, e.target.value)}
+                    placeholder="https://example.com"
+                    disabled={scanning}
+                    className="w-full pl-9 pr-4 py-2.5 bg-background/80 border border-border/50 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 placeholder:text-muted-foreground/50"
+                  />
+                </div>
+                {urls.length > 1 && (
+                  <button
+                    onClick={() => removeUrl(i)}
+                    disabled={scanning}
+                    className="p-2 text-muted-foreground hover:text-destructive transition-colors rounded-lg hover:bg-destructive/10"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* File info hint */}
+          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1.5">
+            <FileText size={12} />
+            Upload a .txt file with one URL per line, or add URLs manually above.
+          </p>
+        </div>
+
+        {/* Configuration panel */}
+        <div className="glass rounded-2xl overflow-hidden mb-6">
+          <button
+            onClick={() => setShowConfig(!showConfig)}
+            className="w-full flex items-center justify-between px-6 py-4 hover:bg-muted/30 transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <Settings2 size={16} className="text-primary" />
+              <span className="text-sm font-medium">Configuration Options</span>
+              <span className="text-xs text-muted-foreground">(--help)</span>
+            </div>
+            {showConfig ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+
+          {showConfig && (
+            <div className="px-6 pb-6 border-t border-border/30 pt-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {/* Pipeline Flow */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Pipeline Flow</h4>
+
+                  <label className="flex items-center justify-between">
+                    <div>
+                      <span className="text-sm">--overwrite</span>
+                      <p className="text-xs text-muted-foreground">No confirmation prompts</p>
+                    </div>
+                    <button
+                      onClick={() => setConfig(c => ({ ...c, overwrite: !c.overwrite }))}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${config.overwrite ? 'bg-primary' : 'bg-muted'}`}
+                    >
+                      <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${config.overwrite ? 'left-5' : 'left-0.5'}`} />
+                    </button>
+                  </label>
+                </div>
+
+                {/* Automation & Scaling */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Scaling</h4>
+
+                  <label className="block">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm">--sites</span>
+                      <span className="text-xs font-mono text-primary">{config.sitesLimit || 'All'}</span>
+                    </div>
+                    <input
+                      type="number"
+                      placeholder="Limit sites (e.g. 10)"
+                      value={config.sitesLimit || ''}
+                      onChange={e => setConfig(c => ({ ...c, sitesLimit: e.target.value ? Number(e.target.value) : null }))}
+                      className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm">--output</span>
+                      <span className="text-xs font-mono text-primary">{config.outputFile || 'None'}</span>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Save log to file..."
+                      value={config.outputFile || ''}
+                      onChange={e => setConfig(c => ({ ...c, outputFile: e.target.value || null }))}
+                      className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-border/30 grid sm:grid-cols-2 gap-4">
+                {/* Iterations (Common to both scripts) */}
+                <label className="block">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm">--iterations</span>
+                    <span className="text-xs font-mono text-primary">{config.iterations}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={10}
+                    value={config.iterations}
+                    onChange={e => setConfig(c => ({ ...c, iterations: Number(e.target.value) }))}
+                    className="w-full accent-primary"
+                  />
+                  <p className="text-xs text-muted-foreground">Crawl iterations per site</p>
+                </label>
+
+                {/* Headless Toggle */}
+                <label className="flex items-center justify-between pt-4">
+                  <div>
+                    <span className="text-sm">--no-headless</span>
+                    <p className="text-xs text-muted-foreground">Visible browser window</p>
+                  </div>
+                  <button
+                    onClick={() => setConfig(c => ({ ...c, headless: !c.headless }))}
+                    className={`w-10 h-5 rounded-full transition-colors relative ${!config.headless ? 'bg-primary' : 'bg-muted'}`}
+                  >
+                    <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${!config.headless ? 'left-5' : 'left-0.5'}`} />
+                  </button>
+                </label>
+              </div>
+
+              {/* CLI preview */}
+              <div className="mt-6 bg-background/80 rounded-xl p-3 border border-border/30">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-muted-foreground">Generated CLI Command</span>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(generateCliCommand())}
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Copy size={12} /> Copy
+                  </button>
+                </div>
+                <pre className="text-xs font-mono text-primary/80 whitespace-pre-wrap">{generateCliCommand()}</pre>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Run button */}
+        {scanning ? (
+          <div className="flex gap-4">
+            <div className="flex-1 py-4 bg-primary/20 text-primary rounded-2xl font-medium text-sm flex items-center justify-center gap-2 border border-primary/20">
+              <Loader2 size={18} className="animate-spin" />
+              Scanning {validUrls.length} site(s)...
+            </div>
+            <button
+              onClick={stopScan}
+              disabled={stopping}
+              className="px-8 py-4 bg-destructive text-destructive-foreground rounded-2xl font-medium text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-sm"
+            >
+              {stopping ? <Loader2 size={18} className="animate-spin" /> : <X size={18} />}
+              Stop
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => startScan()}
+            disabled={scanning || validUrls.length === 0}
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium shadow-lg shadow-primary/20"
+          >
+            <Play size={18} fill="currentColor" />
+            <span>{scanning ? 'Scanning...' : `Start Scan (${validUrls.length} site${validUrls.length !== 1 ? 's' : ''})`}</span>
+          </button>
+        )}
+
+        {/* Progress phases */}
+        {phases.length > 0 && (
+          <div className="mt-8 glass rounded-2xl p-6 space-y-4">
+            <h3 className="text-sm font-medium mb-4">Pipeline Progress</h3>
+            {phases.map((phase, i) => {
+              const Icon = phase.icon;
+              return (
+                <div key={i} className="flex items-start gap-3">
+                  <div className={`mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${phase.status === 'done' ? 'bg-emerald-500/15 text-emerald-500' :
+                    phase.status === 'running' ? 'bg-primary/15 text-primary' :
+                      phase.status === 'error' ? 'bg-destructive/15 text-destructive' :
+                        'bg-muted text-muted-foreground'
+                    }`}>
+                    {phase.status === 'done' ? <Check size={16} /> :
+                      phase.status === 'running' ? <Loader2 size={16} className="animate-spin" /> :
+                        phase.status === 'error' ? <AlertCircle size={16} /> :
+                          <Icon size={16} />}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium">{phase.name}</span>
+                      {phase.status !== 'pending' && (
+                        <span className="text-xs font-mono text-muted-foreground">{phase.progress}%</span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground truncate">{phase.message}</p>
+                    {phase.status === 'running' && (
+                      <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-primary rounded-full transition-all duration-300"
+                          style={{ width: `${phase.progress}%` }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Results */}
+        {(scanComplete && results.length > 0) || (history.length > 0) ? (
+          <div className="mt-8 space-y-6">
+            {/* Header with History Toggle */}
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold">{results.length > 0 ? 'Current Scan Results' : 'Scan History'}</h3>
+              <button
+                onClick={() => setShowHistory(!showHistory)}
+                className="flex items-center gap-1.5 px-4 py-2 text-sm rounded-xl glass hover:bg-primary/10 transition-colors text-primary font-medium"
+              >
+                {showHistory ? 'View Current' : 'View History'}
+                <FileText size={16} />
+              </button>
+            </div>
+
+            {!showHistory && results.length > 0 && (
+              <>
+                {/* Summary strip */}
+                <div className="glass rounded-2xl p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-sm font-medium">Scan Summary</h3>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={exportResults}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                      >
+                        <Download size={14} />
+                        Export JSON
+                      </button>
+                      <button
+                        onClick={() => { setResults([]); setPhases([]); setScanComplete(false); }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-destructive/10 hover:text-destructive transition-colors"
+                      >
+                        <Trash2 size={14} />
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div>
+                      <div className="text-2xl font-bold tabular-nums">{results.length}</div>
+                      <div className="text-xs text-muted-foreground">Sites Scanned</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold tabular-nums">{totalEvents}</div>
+                      <div className="text-xs text-muted-foreground">Tracking Events</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold tabular-nums text-red-500">{totalHigh}</div>
+                      <div className="text-xs text-muted-foreground">High Confidence</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold tabular-nums">{allTrackers.length}</div>
+                      <div className="text-xs text-muted-foreground">Unique Trackers</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Per-site results */}
+                <div className="space-y-3">
+                  {results.map((result, i) => (
+                    <ResultCard key={i} result={result} index={i} />
+                  ))}
+                </div>
+              </>
+            )}
+
+            {showHistory && (
+              <div className="space-y-3">
+                {history.length > 0 ? (
+                  history.map((result, i) => (
+                    <ResultCard key={`hist-${i}`} result={result} index={i} />
+                  ))
+                ) : (
+                  <div className="text-center py-12 glass rounded-2xl">
+                    <p className="text-muted-foreground">No scan history found.</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+};

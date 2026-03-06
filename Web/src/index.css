@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PRIVADB Light Theme - #F9FAFB bg, #FFFFFF cards, #111827 text, #6366F1 accent */
+    --background: 210 20% 98%;
+    --foreground: 220 43% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 43% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 43% 11%;
+
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 43% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 239 84% 67%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 239 84% 67%;
+
+    /* Custom PRIVADB tokens */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
+    --glow: 239 84% 67%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+
+    --gradient-to: hsl(280 80% 65%);
+  }
+
+  .dark {
+    /* PRIVADB Dark Theme - #111827 bg, #1F2937 cards, #F9FAFB text, #818CF8 accent */
+    --background: 220 43% 11%;
+    --foreground: 210 20% 98%;
+
+    --card: 218 33% 18%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 218 33% 18%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 235 82% 75%;
+    --primary-foreground: 220 43% 11%;
+
+    --secondary: 218 33% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 218 33% 18%;
+    --muted-foreground: 218 11% 65%;
+
+    --accent: 235 82% 75%;
+    --accent-foreground: 220 43% 11%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 218 33% 22%;
+    --input: 218 33% 22%;
+    --ring: 235 82% 75%;
+
+    --sidebar-background: 220 43% 11%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 235 82% 75%;
+    --sidebar-primary-foreground: 220 43% 11%;
+    --sidebar-accent: 218 33% 18%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 218 33% 22%;
+    --sidebar-ring: 235 82% 75%;
+
+    --glass-bg: 218 33% 18% / 0.6;
+    --glass-border: 0 0% 100% / 0.1;
+    --glow: 235 82% 75%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+
+    --gradient-to: hsl(280 80% 65%);
+  }
+}
+
+html {
+  font-size: 160%;
+  /* 18px base */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/70 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-card/90 backdrop-blur-2xl border border-border/30;
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 20px -5px hsl(var(--glow) / 0.3);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 40px -10px hsl(var(--glow) / 0.4);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 60px -15px hsl(var(--glow) / 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[var(--gradient-to)];
+  }
+
+  .animated-gradient-bg {
+    background: linear-gradient(-45deg,
+        hsl(var(--background)),
+        hsl(var(--card)),
+        hsl(var(--background)),
+        hsl(var(--card)));
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
