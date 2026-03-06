@@ -43,31 +43,7 @@ This tool:
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        main.py (Orchestrator)                       │
-│  CLI argument parsing │ Phase coordination │ Overwrite protection   │
-└────────────────────┬──────────────┬──────────────┬──────────────────┘
-                     │              │              │
-           ┌─────────▼──────┐ ┌────▼─────────┐ ┌──▼──────────────┐
-           │   PHASE 1      │ │   PHASE 2    │ │   PHASE 3       │
-           │   crawler.py   │ │  detector.py │ │   reporter.py   │
-           │                │ │              │ │                  │
-           │ • Playwright   │ │ • ID extract │ │ • JSON reports   │
-           │ • IDB extract  │ │ • Exfil find │ │ • CSV exports    │
-           │ • Network cap  │ │ • Flow class │ │ • Console tables │
-           │ • Raw JSON out │ │ • Inflow     │ │ • Matplotlib     │
-           │                │ │ • Paper calc │ │ • Pandas DFs     │
-           └────────┬───────┘ └──────┬───────┘ └────────┬─────────┘
-                    │                │                   │
-                    ▼                ▼                   ▼
-              results/raw/     Analysis in        results/*.json
-              site_data.json   memory             results/*.csv
-                                                  results/charts/
-                     ┌──────────────────────────────────┐
-                     │         config.py                 │
-                     │  Paths │ Patterns │ Thresholds    │
-                     │  Tracker lists │ IDB definitions  │
-                     └──────────────────────────────────┘
+┌It needs to be updated, I removed the old one :)
 ```
 
 ---
