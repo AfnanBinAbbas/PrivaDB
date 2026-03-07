@@ -1,3 +1,4 @@
+import { TrackingPanel } from '@/components/dashboard/TrackingPanel';
 import { useState, useCallback } from 'react';
 import { Database, Activity, AlertTriangle, Radar, Shield, TrendingUp } from 'lucide-react';
 import { Header } from '@/components/dashboard/Header';
@@ -12,21 +13,21 @@ import { ScanControls } from '@/components/dashboard/ScanControls';
 import { scannerApi, ScanResult } from '@/lib/api/scanner';
 import { toast } from 'sonner';
 import { v4 as uuidv4 } from "uuid";
-import type { 
-  DomainScan, 
-  Endpoint, 
-  DataFlowNode, 
-  DataFlowEdge, 
-  TimelineEvent, 
+import type {
+  DomainScan,
+  Endpoint,
+  DataFlowNode,
+  DataFlowEdge,
+  TimelineEvent,
   Stats,
-  ExfiltrationEvent 
+  ExfiltrationEvent
 } from '@/types/detector';
 
 const Index = () => {
   const [domains, setDomains] = useState<string[]>([]);
   const [isScanning, setIsScanning] = useState(false);
   const [currentScanIndex, setCurrentScanIndex] = useState(0);
-  
+
   // Dashboard data state
   const [scans, setScans] = useState<DomainScan[]>([]);
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
@@ -34,7 +35,8 @@ const Index = () => {
   const [edges, setEdges] = useState<DataFlowEdge[]>([]);
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>([]);
   const [exfiltrationEvents] = useState<ExfiltrationEvent[]>([]);
-  
+  const [trackingAnalysis, setTrackingAnalysis] = useState<any>(null);
+
   const [stats, setStats] = useState<Stats>({
     totalDatabases: 0,
     totalRecords: 0,
@@ -89,7 +91,7 @@ const Index = () => {
     for (let i = 0; i < domains.length; i++) {
       const domain = domains[i];
       setCurrentScanIndex(i + 1);
-      
+
       // Add scanning placeholder
       const scanningEntry: DomainScan = {
         domain,
@@ -98,45 +100,58 @@ const Index = () => {
         databases: [],
       };
       setScans([...allScans, scanningEntry]);
-      
+
       toast.info(`Scanning ${domain}...`);
 
-      const response = await scannerApi.scanDomain(domain);
-      
-      if (response.success && response.data) {
-        const result = response.data;
-        const domainScan = scannerApi.convertToDomainScan(result);
-        const domainEndpoints = scannerApi.convertToEndpoints(result);
-        const domainNodes = scannerApi.convertToDataFlowNodes(result);
-        const domainEdges = scannerApi.convertToDataFlowEdges(domainNodes);
-        const timelineEvent = scannerApi.createTimelineEvent(result);
+      try {
+        // ✅ Use scanWithTracking
+        const response = await scannerApi.scanWithTracking(domain);
 
-        allScans.push(domainScan);
-        allEndpoints.push(...domainEndpoints);
-        allNodes.push(...domainNodes);
-        allEdges.push(...domainEdges);
-        allEvents.push(timelineEvent);
+        if (response.success && response.scan_data?.fresh_browser) {
+          const result = response.scan_data.fresh_browser;
+          const domainScan = scannerApi.convertToDomainScan(result);
+          const domainEndpoints = scannerApi.convertToEndpoints(result);
+          const domainNodes = scannerApi.convertToDataFlowNodes(result);
+          const domainEdges = scannerApi.convertToDataFlowEdges(domainNodes);
+          const timelineEvent = scannerApi.createTimelineEvent(result);
 
-        toast.success(`Completed scan of ${domain}`);
-      } else {
-        const errorScan: DomainScan = {
-          domain,
-          timestamp: new Date().toISOString(),
-          status: 'error',
-          databases: [],
-        };
-        allScans.push(errorScan);
-        
-        allEvents.push({
-          id: uuidv4(),
-          timestamp: new Date().toISOString(),
-          type: 'scan',
-          title: `Failed to scan ${domain}`,
-          description: response.error || 'Unknown error',
-          severity: 'critical',
-        });
-        
-        toast.error(`Failed to scan ${domain}: ${response.error}`);
+          allScans.push(domainScan);
+          allEndpoints.push(...domainEndpoints);
+          allNodes.push(...domainNodes);
+          allEdges.push(...domainEdges);
+          allEvents.push(timelineEvent);
+
+          // ✅ Store tracking analysis
+          if (response.tracking_analysis) {
+            setTrackingAnalysis(response.tracking_analysis);
+            console.log('📊 Tracking analysis:', response.tracking_analysis.summary);
+          }
+
+          toast.success(`Completed scan of ${domain}`);
+        } else {
+          // Handle error
+          const errorScan: DomainScan = {
+            domain,
+            timestamp: new Date().toISOString(),
+            status: 'error',
+            databases: [],
+          };
+          allScans.push(errorScan);
+
+          allEvents.push({
+            id: uuidv4(),
+            timestamp: new Date().toISOString(),
+            type: 'scan',
+            title: `Failed to scan ${domain}`,
+            description: response.error || 'Unknown error',
+            severity: 'critical',
+          });
+
+          toast.error(`Failed to scan ${domain}: ${response.error}`);
+        }
+      } catch (error) {
+        console.error('Scan error:', error);
+        toast.error(`Failed to scan ${domain}: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
 
       // Update state after each scan
@@ -165,7 +180,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background grid-pattern">
       <Header />
-      
+
       <main className="p-6 space-y-6">
         {/* Stats Row */}
         <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -213,7 +228,7 @@ const Index = () => {
           {/* Left Column - Domain Input & Database Explorer */}
           <section className="col-span-12 lg:col-span-3 space-y-4">
             <DomainInput onDomainsChange={setDomains} />
-            <ScanControls 
+            <ScanControls
               onStartScan={handleStartScan}
               onStopScan={handleStopScan}
               isScanning={isScanning}
@@ -231,7 +246,7 @@ const Index = () => {
               <DataFlowGraph nodes={nodes} edges={edges} />
             </div>
             <div className="h-[230px]">
-              <AlertPanel events={exfiltrationEvents} />
+              <TrackingPanel trackingAnalysis={trackingAnalysis} />
             </div>
           </section>
 

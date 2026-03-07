@@ -10,14 +10,16 @@ class DataExtractor:
         self.network_requests = []
         
     async def extract_indexeddb_data(self, page):
-        """Extract complete IndexedDB data including content"""
+        """Extract complete IndexedDB data including ALL keys and values"""
         script = """
         async () => {
             const result = {
                 timestamp: new Date().toISOString(),
                 databases: {},
                 database_count: 0,
-                total_records: 0
+                total_records: 0,
+                all_keys: [],      // Store ALL keys for tracking
+                all_values: []     // Store ALL values for tracking
             };
             
             try {
@@ -55,11 +57,47 @@ class DataExtractor:
                                         try {
                                             const transaction = db.transaction(storeName, "readonly");
                                             const store = transaction.objectStore(storeName);
-                                            const getAllRequest = store.getAll();
                                             
-                                            const records = await new Promise((res, rej) => {
-                                                getAllRequest.onsuccess = () => res(getAllRequest.result);
-                                                getAllRequest.onerror = () => res([]);
+                                            // Get ALL records with their keys
+                                            const records = [];
+                                            const cursorRequest = store.openCursor();
+                                            
+                                            await new Promise((res) => {
+                                                cursorRequest.onsuccess = (e) => {
+                                                    const cursor = e.target.result;
+                                                    if (cursor) {
+                                                        // Store key and value together
+                                                        records.push({
+                                                            key: cursor.key,
+                                                            value: cursor.value
+                                                        });
+                                                        
+                                                        // Add key to all_keys if it's a string
+                                                        if (typeof cursor.key === 'string') {
+                                                            result.all_keys.push(cursor.key);
+                                                        } else if (cursor.key !== null) {
+                                                            result.all_keys.push(JSON.stringify(cursor.key));
+                                                        }
+                                                        
+                                                        // Extract ALL values (including nested)
+                                                        const extractValues = (obj) => {
+                                                            if (typeof obj === 'string') {
+                                                                result.all_values.push(obj);
+                                                            } else if (typeof obj === 'number' || typeof obj === 'boolean') {
+                                                                result.all_values.push(String(obj));
+                                                            } else if (Array.isArray(obj)) {
+                                                                obj.forEach(extractValues);
+                                                            } else if (obj && typeof obj === 'object') {
+                                                                Object.values(obj).forEach(extractValues);
+                                                            }
+                                                        };
+                                                        
+                                                        extractValues(cursor.value);
+                                                        cursor.continue();
+                                                    } else {
+                                                        res();
+                                                    }
+                                                };
                                             });
                                             
                                             dbData.stores[storeName] = {
@@ -98,6 +136,10 @@ class DataExtractor:
                 result.error = err.toString();
             }
             
+            // Remove duplicates
+            result.all_keys = [...new Set(result.all_keys)];
+            result.all_values = [...new Set(result.all_values)];
+            
             return result;
         }
         """
@@ -105,7 +147,7 @@ class DataExtractor:
         return await page.evaluate(script)
     
     async def setup_network_listener(self, page):
-        """Setup listener to capture network requests with post data"""
+        """Setup listener to capture ALL network requests"""
         self.network_requests = []
         
         async def on_request(request):
@@ -139,12 +181,12 @@ class DataExtractor:
         page.on("request", on_request)
         return page
 
-async def extract_complete_data(url, scenario_name, use_incognito=True):
-    """Extract IndexedDB data and network requests only"""
+async def extract_complete_data(url, scenario_name, use_incognito=True, headless=True):
+    """Extract IndexedDB data and network requests"""
     extractor = DataExtractor()
     
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(headless=headless)
         
         if use_incognito:
             context = await browser.new_context()
@@ -161,13 +203,24 @@ async def extract_complete_data(url, scenario_name, use_incognito=True):
         
         # Visit the website
         print(f"   Loading page and capturing network requests...")
+
+        # Set longer timeout for the entire operation
+        page.set_default_timeout(120000)  # 120 seconds
+
         try:
-            await page.goto(url, wait_until='networkidle', timeout=60000)
-        except:
-            await page.goto(url, wait_until='domcontentloaded', timeout=60000)
+            # Try with networkidle first (wait for all network requests)
+            await page.goto(url, wait_until='networkidle', timeout=90000)
+        except Exception as e:
+            print(f"   ⚠️ Network timeout ({str(e)[:50]}), trying basic page load...")
+            try:
+                # Fallback to domcontentloaded (faster, less strict)
+                await page.goto(url, wait_until='domcontentloaded', timeout=90000)
+            except Exception as e2:
+                print(f"   ⚠️ Still timing out, trying one more time...")
+                # Last resort - just navigate and hope for the best
+                await page.goto(url, timeout=120000)
         
-        # Wait for additional requests
-        await asyncio.sleep(10)
+        print(f"   ✅ Page loaded")
         
         # Extract IndexedDB data
         print(f"   Extracting IndexedDB data...")
@@ -182,7 +235,9 @@ async def extract_complete_data(url, scenario_name, use_incognito=True):
                 'total_requests': len(extractor.network_requests),
                 'requests': extractor.network_requests
             },
-            'indexeddb_data': indexeddb_data
+            'indexeddb_data': indexeddb_data,
+            'all_indexeddb_keys': indexeddb_data.get('all_keys', []),
+            'all_indexeddb_values': indexeddb_data.get('all_values', [])
         }
         
         # Create filename
@@ -200,6 +255,8 @@ async def extract_complete_data(url, scenario_name, use_incognito=True):
         print(f"   Network requests: {len(extractor.network_requests)}")
         print(f"   IndexedDB databases: {indexeddb_data.get('database_count', 0)}")
         print(f"   Total records: {indexeddb_data.get('total_records', 0)}")
+        print(f"   Total keys extracted: {len(indexeddb_data.get('all_keys', []))}")
+        print(f"   Total values extracted: {len(indexeddb_data.get('all_values', []))}")
         print(f"💾 Saved to: {filename}")
         
         await context.close()
@@ -207,14 +264,12 @@ async def extract_complete_data(url, scenario_name, use_incognito=True):
         
         return filename, result
 
-async def run_three_scenarios():
+async def run_three_scenarios(url="https://www.youtube.com"):
     """Run all 3 scenarios"""
-    url = "https://www.youtube.com"
     
     print("="*60)
     print("📊 INDEXEDDB + NETWORK REQUEST EXTRACTOR")
     print("="*60)
-    print("Extracting: IndexedDB data + Network requests")
     print("Running 3 scenarios:")
     print("1. Fresh browser (first visit)")
     print("2. Return visit (after 1 min)")
@@ -252,47 +307,10 @@ async def run_three_scenarios():
     file3, data3 = await extract_complete_data(url, "cleared_browser", use_incognito=True)
     results['cleared_browser'] = data3
     
-    # Generate summary
-    print(f"\n{'='*60}")
-    print("📈 EXTRACTION SUMMARY")
-    print('='*60)
+    print(f"\n✅ All scenarios complete!")
+    print(f"📁 Files: {file1}, {file2}, {file3}")
     
-    summary = {
-        'website': url,
-        'scenarios_completed': 3,
-        'files': [file1, file2, file3],
-        'summary_by_scenario': {}
-    }
-    
-    for scenario, data in results.items():
-        db_count = data.get('indexeddb_data', {}).get('database_count', 0)
-        db_names = list(data.get('indexeddb_data', {}).get('databases', {}).keys())
-        network_reqs = data.get('network_requests', {}).get('total_requests', 0)
-        records = data.get('indexeddb_data', {}).get('total_records', 0)
-        
-        summary['summary_by_scenario'][scenario] = {
-            'databases': db_count,
-            'network_requests': network_reqs,
-            'indexeddb_records': records,
-            'has_error': 'error' in data.get('indexeddb_data', {})
-        }
-        
-        status = "✅" if 'error' not in data.get('indexeddb_data', {}) else "❌"
-        print(f"{status} {scenario}:")
-        print(f"   Databases: {db_count} | Records: {records}")
-        print(f"   Network requests: {network_reqs}")
-    
-    summary_file = "data/extraction_summary.json"
-    with open(summary_file, "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2, ensure_ascii=False)
-    
-    print(f"\n📄 Summary saved to: {summary_file}")
-    print(f"\n{'='*60}")
-    print("🎯 READY FOR ANALYSIS")
-    print(f"Files to analyze: {file1}, {file2}, {file3}")
-    print('='*60)
-    
-    return results
+    return file1, file2, file3
 
 def main():
     try:

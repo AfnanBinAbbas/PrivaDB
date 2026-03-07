@@ -30,10 +30,25 @@ export interface ScanResponse {
   error?: string;
 }
 
-// Backend API URL - change this to match your backend server
-const BACKEND_API_URL = 'http://10.1.152.95:8000';
+export interface TrackingAnalysisResponse {
+  success: boolean;
+  domain?: string;
+  url?: string;
+  scan_data?: {
+    fresh_browser: ScanResult;
+    return_visit: ScanResult;
+    cleared_browser: ScanResult;
+  };
+  analysis?: any;
+  files?: any;
+  error?: string;
+}
+
+// Backend API URL
+const BACKEND_API_URL = 'http://localhost:8000';
 
 export const scannerApi = {
+  // Single domain scan (quick)
   async scanDomain(domain: string): Promise<ScanResponse> {
     try {
       const response = await fetch(`${BACKEND_API_URL}/api/scan`, {
@@ -53,9 +68,35 @@ export const scannerApi = {
       return result;
     } catch (error) {
       console.error('Backend scan error:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Backend connection failed' 
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Backend connection failed'
+      };
+    }
+  },
+
+  // Full tracking analysis (3 scenarios + analyzer)
+  async scanWithTracking(domain: string): Promise<TrackingAnalysisResponse> {
+    try {
+      const response = await fetch(`${BACKEND_API_URL}/api/scan-with-tracking?domain=${domain}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }));
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error('Backend scan-with-tracking error:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Backend connection failed'
       };
     }
   },
@@ -79,9 +120,9 @@ export const scannerApi = {
       return result;
     } catch (error) {
       console.error('Backend scan-and-analyze error:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
       };
     }
   },
@@ -109,11 +150,45 @@ export const scannerApi = {
       return result;
     } catch (error) {
       console.error('Backend analyze error:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
       };
     }
+  },
+
+  // Helper function to map backend response to ScanResult
+  mapToScanResult(response: TrackingAnalysisResponse, scenario: 'fresh_browser' | 'return_visit' | 'cleared_browser'): ScanResult {
+    const scenarioData = response.scan_data?.[scenario];
+
+    return {
+      domain: response.url?.replace('https://', '').replace('http://', '').replace('www.', '') || 'unknown',
+      timestamp: new Date().toISOString(),
+      databases: scenarioData?.databases || [],
+      endpoints: scenarioData?.endpoints || []
+    };
+  },
+
+  // Helper function to extract tracking analysis summary
+  getTrackingSummary(response: TrackingAnalysisResponse) {
+    return response.analysis?.summary || null;
+  },
+
+  // Helper function to get sample transmissions
+  getSampleTransmissions(response: TrackingAnalysisResponse) {
+    return response.analysis?.sample_transmissions || [];
+  },
+
+  // Helper function to get risk assessment
+  getRiskAssessment(response: TrackingAnalysisResponse) {
+    const summary = response.analysis?.summary;
+    if (!summary) return null;
+
+    return {
+      score: summary.risk_score,
+      rating: summary.risk_rating,
+      factors: summary.risk_factors || []
+    };
   },
 
   // Convert scan result to dashboard-compatible format
@@ -146,8 +221,7 @@ export const scannerApi = {
 
   convertToDataFlowNodes(result: ScanResult): DataFlowNode[] {
     const nodes: DataFlowNode[] = [];
-    
-    // Add database nodes
+
     result.databases.forEach((db, i) => {
       nodes.push({
         id: `db-${i}`,
@@ -156,8 +230,7 @@ export const scannerApi = {
         x: 100,
         y: 100 + i * 80,
       });
-      
-      // Add store nodes
+
       db.stores.forEach((store, j) => {
         nodes.push({
           id: `store-${i}-${j}`,
@@ -169,7 +242,6 @@ export const scannerApi = {
       });
     });
 
-    // Add endpoint nodes
     result.endpoints.slice(0, 5).forEach((ep, i) => {
       let urlPath = ep.url;
       try {
@@ -195,7 +267,6 @@ export const scannerApi = {
     const storeNodes = nodes.filter(n => n.type === 'store');
     const endpointNodes = nodes.filter(n => n.type === 'endpoint');
 
-    // Connect databases to stores
     dbNodes.forEach((db, i) => {
       storeNodes.filter(s => s.id.startsWith(`store-${i}`)).forEach(store => {
         edges.push({
@@ -208,7 +279,6 @@ export const scannerApi = {
       });
     });
 
-    // Connect stores to endpoints
     storeNodes.forEach(store => {
       endpointNodes.slice(0, 2).forEach(ep => {
         edges.push({

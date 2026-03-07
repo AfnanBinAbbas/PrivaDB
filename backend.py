@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
@@ -7,292 +7,414 @@ import json
 import os
 import time
 from datetime import datetime
-from extractor import extract_complete_data
-from analyzer import PersistenceAnalyzer
 
-app = FastAPI(title="Data Whisperer API", version="1.0.0")
+from extractor import extract_complete_data, run_three_scenarios
+from analyzer import TrackingDetector
 
-# Configure CORS
+app = FastAPI(title="IndexedDB Tracking Detector API", version="1.0.0")
+
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "http://localhost:8080", "http://10.1.152.95:8080"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Models
 class ScanRequest(BaseModel):
-    domain: str
-    scenario: Optional[str] = "fresh_browser"
-    use_incognito: Optional[bool] = True
-    
-    class Config:
-        from_attributes = True
+    url: str
+    scenario: Optional[str] = "scan"
 
 class AnalyzeRequest(BaseModel):
-    scenario1_file: str
-    scenario2_file: str
-    scenario3_file: str
+    files: List[str]
 
-class ScanResponse(BaseModel):
-    success: bool
-    data: Optional[Dict[str, Any]] = None
-    error: Optional[str] = None
+# Storage
+scan_tasks = {}
+
+# ==================== ENDPOINTS ====================
 
 @app.get("/")
 async def root():
-    return {"message": "Data Whisperer API", "status": "running"}
-
-@app.get("/health")
-async def health():
-    return {"status": "healthy"}
-
-@app.post("/api/scan", response_model=ScanResponse)
-@app.options("/api/scan")  # Add this decorator for OPTIONS
-async def scan_domain(request: ScanRequest = None):
-    """
-    Scan a domain and extract IndexedDB data and network requests.
-    """
-    try:
-        # Handle OPTIONS request
-        from fastapi import Request
-        import inspect
-        
-        # Get the actual request object
-        if request is None:
-            return ScanResponse(success=False, error="No data provided")
-        
-        # Use default if domain not provided
-        domain = request.domain or "https://www.youtube.com"
-        
-        # Rest of your existing code...
-        if not domain.startswith(("http://", "https://")):
-            domain = f"https://{domain}"
-        
-        print(f"Starting scan for domain: {domain}")
-        filename, result = await extract_complete_data(
-            url=domain,
-            scenario_name=request.scenario or "scan",
-            use_incognito=request.use_incognito
-        )
-        
-        frontend_result = transform_to_frontend_format(result, domain)
-        
-        return ScanResponse(
-            success=True,
-            data=frontend_result
-        )
-    except Exception as e:
-        print(f"Error during scan: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        return ScanResponse(success=False, error=str(e))
-
-@app.post("/api/analyze", response_model=ScanResponse)
-async def analyze_data(request: AnalyzeRequest):
-    """
-    Analyze extracted data from multiple scenarios to detect tracking patterns.
-    """
-    try:
-        # Check if files exist
-        files = [request.scenario1_file, request.scenario2_file, request.scenario3_file]
-        for file in files:
-            if not os.path.exists(file):
-                raise HTTPException(status_code=404, detail=f"File not found: {file}")
-        
-        # Run analysis
-        analyzer = PersistenceAnalyzer(
-            request.scenario1_file,
-            request.scenario2_file,
-            request.scenario3_file
-        )
-        
-        report = analyzer.generate_complete_report()
-        
-        return ScanResponse(
-            success=True,
-            data=report
-        )
-    except Exception as e:
-        print(f"Error during analysis: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/api/scan-and-analyze", response_model=ScanResponse)
-async def scan_and_analyze(request: ScanRequest):
-    """
-    Complete workflow: Scan domain in 3 scenarios and analyze results.
-    This mimics the run_three_scenarios() function.
-    """
-    try:
-        domain = request.domain
-        if not domain.startswith(("http://", "https://")):
-            domain = f"https://{domain}"
-        
-        results = {}
-        
-        # Scenario 1: Fresh browser
-        print("Starting scenario 1: Fresh browser")
-        file1, data1 = await extract_complete_data(domain, "fresh_browser", use_incognito=True)
-        results['fresh_browser'] = data1
-        
-        # Wait 60 seconds
-        print("Waiting 60 seconds for scenario 2...")
-        await asyncio.sleep(60)
-        
-        # Scenario 2: Return visit
-        print("Starting scenario 2: Return visit")
-        file2, data2 = await extract_complete_data(domain, "return_visit", use_incognito=False)
-        results['return_visit'] = data2
-        
-        # Wait 30 seconds
-        print("Waiting 30 seconds for scenario 3...")
-        await asyncio.sleep(30)
-        
-        # Scenario 3: Fresh browser again
-        print("Starting scenario 3: Fresh browser again")
-        file3, data3 = await extract_complete_data(domain, "cleared_browser", use_incognito=True)
-        results['cleared_browser'] = data3
-        
-        # Analyze all three scenarios
-        analyzer = PersistenceAnalyzer(file1, file2, file3)
-        report = analyzer.generate_complete_report()
-        
-        # Combine scan results with analysis
-        combined_result = {
-            'scan_results': results,
-            'analysis': report,
-            'domain': domain
-        }
-        
-        return ScanResponse(
-            success=True,
-            data=combined_result
-        )
-    except Exception as e:
-        print(f"Error during scan and analyze: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
-
-def transform_to_frontend_format(result: Dict[str, Any], domain: str) -> Dict[str, Any]:
-    """
-    Transform the Python extractor result to match the frontend's expected format.
-    """
-    indexeddb_data = result.get('indexeddb_data', {})
-    network_requests = result.get('network_requests', {})
-    
-    # Format timestamp properly
-    timestamp = result.get('extraction_timestamp', time.time())
-    if isinstance(timestamp, (int, float)):
-        timestamp = datetime.fromtimestamp(timestamp).isoformat()
-    
-    # Transform databases
-    databases = []
-    for db_name, db_data in indexeddb_data.get('databases', {}).items():
-        stores = []
-        for store_name, store_data in db_data.get('stores', {}).items():
-            records = store_data.get('records', [])
-            # Extract suspected user data from records
-            suspected_user_data = []
-            for record in records[:100]:  # Limit to first 100 records
-                if isinstance(record, dict):
-                    for key, value in record.items():
-                        if isinstance(value, str) and len(value) > 10:
-                            suspected_user_data.append({
-                                'key': key,
-                                'value': value[:100],  # Truncate long values
-                                'valueLength': len(value),
-                                'detectedPatterns': detect_patterns(value)
-                            })
-            
-            stores.append({
-                'name': store_name,
-                'recordCount': store_data.get('record_count', 0),
-                'suspectedUserData': suspected_user_data[:50]  # Limit to 50
-            })
-        
-        databases.append({
-            'name': db_name,
-            'stores': stores
-        })
-    
-    # Transform network requests to endpoints
-    endpoints = []
-    requests_list = network_requests.get('requests', [])
-    for req in requests_list[:100]:  # Limit to first 100
-        url = req.get('url', '')
-        method = req.get('method', 'GET')
-        
-        # Extract parameters from URL
-        parameters = []
-        try:
-            from urllib.parse import urlparse, parse_qs
-            parsed = urlparse(url)
-            params = parse_qs(parsed.query)
-            parameters = [f"{k}={v[0]}" for k, v in params.items()][:10]
-        except:
-            pass
-        
-        endpoints.append({
-            'url': url,
-            'method': method,
-            'parameters': parameters
-        })
-    
     return {
-        'domain': domain,
-        'timestamp': timestamp,
-        'databases': databases,
-        'endpoints': endpoints
+        "name": "IndexedDB Tracking Detector",
+        "version": "1.0.0",
+        "description": "Extracts IndexedDB data and detects tracking in network requests",
+        "features": [
+            "Extracts ALL IndexedDB keys and values",
+            "Detects encoded values in network requests (Base64, URL, Hashes)",
+            "Identifies persistent identifiers across sessions",
+            "Calculates privacy risk score"
+        ]
     }
-
-def detect_patterns(value: str) -> List[str]:
-    """Detect potential tracking patterns in a value."""
-    patterns = []
-    value_lower = value.lower()
-    
-    if any(keyword in value_lower for keyword in ['user', 'uid', 'client_id']):
-        patterns.append('user_identifier')
-    if any(keyword in value_lower for keyword in ['session', 'token', 'auth']):
-        patterns.append('session_token')
-    if any(keyword in value_lower for keyword in ['device', 'browser', 'fingerprint']):
-        patterns.append('device_fingerprint')
-    if any(keyword in value_lower for keyword in ['track', 'analytics', 'gtm']):
-        patterns.append('tracking')
-    if len(value) > 32 and value.isalnum():
-        patterns.append('long_identifier')
-    
-    return patterns
-
-
-# ============================================
-# TEST ENDPOINTS (Add these lines)
-# ============================================
-
-@app.get("/api/test-cors")
-async def test_cors():
-    import time
-    return {"cors": "working", "timestamp": time.time()}
 
 @app.get("/api/health")
 async def health():
-    return {"status": "healthy", "timestamp": time.time()}
+    return {
+        "status": "healthy",
+        "timestamp": time.time()
+    }
 
-@app.post("/api/test-scan")
-async def test_scan():
-    """Simple test endpoint without complex validation"""
+@app.post("/api/scan")
+async def scan_website(request: ScanRequest, background_tasks: BackgroundTasks):
+    """Start a scan to extract IndexedDB and network data"""
+    try:
+        url = request.url
+        if not url.startswith(('http://', 'https://')):
+            url = f"https://{url}"
+        
+        task_id = f"{request.scenario}_{int(time.time())}"
+        
+        background_tasks.add_task(run_scan_task, task_id, url, request.scenario)
+        
+        return {
+            "success": True,
+            "message": f"Scan started for {url}",
+            "task_id": task_id
+        }
+        
+    except Exception as e:
+        return {
+            "success": False,
+            "message": str(e)
+        }
+
+@app.post("/api/scan-full")
+async def scan_full(url: str = "https://www.youtube.com"):
+    """Run all 3 scenarios and save tracking report to file"""
+    try:
+        # Run the 3 scenarios
+        file1, file2, file3 = await run_three_scenarios(url)
+        
+        # Analyze for tracking
+        detector = TrackingDetector(file1, file2, file3)
+        results = detector.analyze()
+        
+        # Create a clean domain name for filename
+        domain_clean = url.replace('https://', '').replace('http://', '').replace('www.', '').replace('.', '_')
+        
+        # Save tracking report to a separate file
+        report_file = f"reports/tracking_{domain_clean}_{int(time.time())}.json"
+        os.makedirs('reports', exist_ok=True)
+        
+        # Create a comprehensive tracking report
+        tracking_report = {
+            "scan_timestamp": time.time(),
+            "scan_date": datetime.now().isoformat(),
+            "domain": url,
+            "risk_assessment": results['summary'],
+            "encoding_methods_detected": results['encoding_stats'],
+            "transmissions_by_scenario": results['transmissions_by_scenario'],
+            "sample_transmissions": results['sample_transmissions'][:20],
+            "persistent_identifiers": results['persistent_samples'],
+            "transmitted_identifiers": results['transmitted_samples'],
+            "files_generated": [file1, file2, file3]
+        }
+        
+        # Save the report
+        with open(report_file, 'w') as f:
+            json.dump(tracking_report, f, indent=2)
+        
+        print(f"\n{'='*70}")
+        print(f"✅ TRACKING REPORT SAVED TO: {report_file}")
+        print(f"{'='*70}")
+        print(f"📊 Risk Score: {results['summary']['risk_score']}/100")
+        print(f"⚠️ Risk Rating: {results['summary']['risk_rating']}")
+        print(f"📌 Persistent IDs: {results['summary']['persistent_identifiers']}")
+        print(f"📤 Transmissions: {results['summary']['total_transmissions']}")
+        print(f"{'='*70}\n")
+        
+        # Return minimal response to frontend
+        return {
+            "success": True,
+            "message": f"Scan complete. Check reports folder for tracking analysis.",
+            "report_file": report_file,
+            "summary": {
+                "risk_score": results['summary']['risk_score'],
+                "risk_rating": results['summary']['risk_rating'],
+                "persistent_ids": results['summary']['persistent_identifiers'],
+                "transmissions": results['summary']['total_transmissions']
+            }
+        }
+        
+    except Exception as e:
+        print(f"❌ Error in scan-full: {e}")
+        import traceback
+        traceback.print_exc()
+        return {
+            "success": False,
+            "message": str(e)
+        }
+
+# ============ COMPATIBILITY ENDPOINT ============
+@app.post("/api/scan-with-tracking")
+async def scan_with_tracking(domain: str = "www.youtube.com"):
+    """Compatibility endpoint for frontend - returns format that matches your frontend interface"""
+    try:
+        # Format the URL properly
+        if not domain.startswith(('http://', 'https://')):
+            url = f"https://{domain}"
+        else:
+            url = domain
+            
+        print(f"🔍 Scan with tracking called for: {url}")
+        
+        # Run the 3 scenarios
+        file1, file2, file3 = await run_three_scenarios(url)
+        
+        # Analyze for tracking
+        detector = TrackingDetector(file1, file2, file3)
+        results = detector.analyze()
+        
+        # Create a ScanResult object for the frontend
+        clean_domain = domain.replace('www.', '').replace('.com', '')
+        
+        # Build databases array from results
+        databases = []
+        if results.get('persistent_samples'):
+            # Create a database entry for persistent identifiers
+            persistent_store = {
+                "name": "persistent_store",
+                "recordCount": len(results['persistent_samples']),
+                "suspectedUserData": []
+            }
+            
+            # Add persistent identifiers as suspected user data
+            for pid in results['persistent_samples'][:20]:
+                persistent_store["suspectedUserData"].append({
+                    "key": "persistent_identifier",
+                    "value": pid[:100] + ("..." if len(pid) > 100 else ""),
+                    "valueLength": len(pid),
+                    "detectedPatterns": ["persistent", "tracking"] if len(pid) > 20 else ["persistent"]
+                })
+            
+            databases.append({
+                "name": "Persistent Identifiers Database",
+                "stores": [persistent_store]
+            })
+        
+        # Create a database for transmissions if any
+        if results.get('sample_transmissions'):
+            transmission_store = {
+                "name": "transmissions_store",
+                "recordCount": len(results['sample_transmissions']),
+                "suspectedUserData": []
+            }
+            
+            for trans in results['sample_transmissions'][:10]:
+                transmission_store["suspectedUserData"].append({
+                    "key": "transmitted_value",
+                    "value": trans['original_value'][:100] + ("..." if len(trans['original_value']) > 100 else ""),
+                    "valueLength": len(trans['original_value']),
+                    "detectedPatterns": [trans['encoding_type'], "transmitted"]
+                })
+            
+            databases.append({
+                "name": "Transmitted Data Database",
+                "stores": [transmission_store]
+            })
+        
+        # Build endpoints array from transmissions
+        endpoints = []
+        for trans in results.get('sample_transmissions', [])[:20]:
+            # Extract parameters from URL if possible
+            parameters = []
+            if '?' in trans['url']:
+                try:
+                    query_part = trans['url'].split('?')[1]
+                    params = query_part.split('&')
+                    parameters = [p.split('=')[0] for p in params if '=' in p][:5]
+                except:
+                    parameters = ["tracking_param"]
+            
+            endpoints.append({
+                "url": trans['url'][:200] + ("..." if len(trans['url']) > 200 else ""),
+                "method": trans['method'],
+                "parameters": parameters[:5]
+            })
+        
+        # Create the ScanResult object
+        scan_result = {
+            "domain": clean_domain,
+            "timestamp": datetime.now().isoformat(),
+            "databases": databases,
+            "endpoints": endpoints[:20]
+        }
+        
+        # Create scan_data with all three scenarios (using same data for simplicity)
+        scan_data = {
+            "fresh_browser": scan_result,
+            "return_visit": scan_result,
+            "cleared_browser": scan_result
+        }
+        
+        # Return in the format your frontend expects!
+        return {
+            "success": True,
+            "domain": clean_domain,
+            "url": url,
+            "scan_data": scan_data,
+            "analysis": results,  # Full tracking analysis
+            "files": [file1, file2, file3]
+        }
+        
+    except Exception as e:
+        print(f"❌ Error in scan-with-tracking: {e}")
+        import traceback
+        traceback.print_exc()
+        return {
+            "success": False,
+            "error": str(e)
+        }
+# ====================================================
+
+@app.get("/api/scan/{task_id}")
+async def get_scan_result(task_id: str):
+    """Get scan result by task ID"""
+    if task_id in scan_tasks:
+        return scan_tasks[task_id]
+    return {"status": "pending", "task_id": task_id}
+
+@app.post("/api/analyze")
+async def analyze_tracking(request: AnalyzeRequest):
+    """Analyze scan files for tracking"""
+    try:
+        if len(request.files) < 3:
+            return {
+                "success": False,
+                "message": "Need at least 3 files for analysis"
+            }
+        
+        detector = TrackingDetector(
+            request.files[0],
+            request.files[1],
+            request.files[2]
+        )
+        
+        results = detector.analyze()
+        
+        # Save report
+        os.makedirs('reports', exist_ok=True)
+        report_file = f"reports/analysis_{int(time.time())}.json"
+        with open(report_file, 'w') as f:
+            json.dump(results, f, indent=2)
+        
+        return {
+            "success": True,
+            "message": "Analysis complete",
+            "report_file": report_file
+        }
+        
+    except Exception as e:
+        return {
+            "success": False,
+            "message": str(e)
+        }
+
+@app.get("/api/data/{filename}")
+async def get_data(filename: str):
+    """Get raw scan data"""
+    filepath = f"data/{filename}"
+    if os.path.exists(filepath):
+        with open(filepath, 'r') as f:
+            return json.load(f)
+    return {"error": "File not found"}
+
+@app.get("/api/files")
+async def list_files():
+    """List all scan files"""
+    files = []
+    if os.path.exists('data'):
+        for f in os.listdir('data'):
+            if f.endswith('.json'):
+                files.append({
+                    "name": f,
+                    "path": f"data/{f}",
+                    "size": os.path.getsize(f"data/{f}"),
+                    "modified": datetime.fromtimestamp(os.path.getmtime(f"data/{f}")).isoformat()
+                })
+    
+    files.sort(key=lambda x: x['modified'], reverse=True)
+    return {"files": files, "total": len(files)}
+
+@app.get("/api/reports")
+async def list_reports():
+    """List all tracking reports"""
+    reports = []
+    if os.path.exists('reports'):
+        for f in os.listdir('reports'):
+            if f.endswith('.json'):
+                filepath = f"reports/{f}"
+                reports.append({
+                    "name": f,
+                    "path": filepath,
+                    "size": os.path.getsize(filepath),
+                    "modified": datetime.fromtimestamp(os.path.getmtime(filepath)).isoformat()
+                })
+    
+    reports.sort(key=lambda x: x['modified'], reverse=True)
+    return {"reports": reports, "total": len(reports)}
+
+@app.get("/api/stats")
+async def get_stats():
+    """Get system statistics"""
+    stats = {
+        "total_scans": 0,
+        "total_requests": 0,
+        "total_indexeddb_items": 0,
+        "total_reports": 0
+    }
+    
+    if os.path.exists('data'):
+        files = [f for f in os.listdir('data') if f.endswith('.json')]
+        stats['total_scans'] = len(files)
+    
+    if os.path.exists('reports'):
+        stats['total_reports'] = len([f for f in os.listdir('reports') if f.endswith('.json')])
+    
+    return stats
+
+@app.get("/api/test")
+async def test():
     return {
         "success": True,
         "message": "Backend is working",
-        "data": {"test": "data"}
+        "timestamp": time.time()
     }
-# ============================================
-# MAIN EXECUTION (This already exists)
-# ============================================
+
+# ==================== BACKGROUND TASKS ====================
+
+async def run_scan_task(task_id: str, url: str, scenario: str):
+    """Run scan in background"""
+    try:
+        filename, data = await extract_complete_data(url, scenario)
+        scan_tasks[task_id] = {
+            "status": "completed",
+            "url": url,
+            "filename": filename,
+            "summary": {
+                "requests": data.get('network_requests', {}).get('total_requests', 0),
+                "databases": data.get('indexeddb_data', {}).get('database_count', 0),
+                "keys": len(data.get('all_indexeddb_keys', [])),
+                "values": len(data.get('all_indexeddb_values', []))
+            },
+            "timestamp": time.time()
+        }
+    except Exception as e:
+        scan_tasks[task_id] = {
+            "status": "failed",
+            "error": str(e)
+        }
 
 if __name__ == "__main__":
     import uvicorn
+    print("="*70)
+    print("🚀 INDEXEDDB TRACKING DETECTOR API")
+    print("="*70)
+    print("• Extracts ALL IndexedDB keys and values")
+    print("• Detects encoded values in network requests")
+    print("• Finds persistent identifiers across sessions")
+    print("• Saves tracking reports to /reports folder")
+    print("="*70)
     uvicorn.run(app, host="0.0.0.0", port=8000)
-    
