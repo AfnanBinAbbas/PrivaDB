@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const tabs = [
   {
@@ -152,8 +153,14 @@ export const CodeExplorer: React.FC = () => {
   };
 
   return (
-    <section id="code" className="py-24 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section id="code" className="py-24 px-4 relative z-10">
+      <motion.div
+        className="max-w-5xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Code Explorer</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -161,18 +168,23 @@ export const CodeExplorer: React.FC = () => {
           </p>
         </div>
 
-        <div className="glass rounded-2xl overflow-hidden">
+        <motion.div
+          className="glass rounded-2xl overflow-hidden"
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {/* Tab bar */}
           <div className="flex overflow-x-auto border-b border-border/50">
             {tabs.map((tab, i) => (
               <button
                 key={i}
                 onClick={() => setActiveTab(i)}
-                className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
-                  activeTab === i
+                className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${activeTab === i
                     ? 'text-primary border-primary'
                     : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
@@ -195,8 +207,8 @@ export const CodeExplorer: React.FC = () => {
               <code className="text-foreground/80">{tabs[activeTab].code}</code>
             </pre>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

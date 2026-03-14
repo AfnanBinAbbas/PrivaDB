@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const confinementData = [
   { type: 'Internal', flows: '1,342', percentage: '62.7%' },
@@ -11,7 +12,13 @@ const externalData = [
 ];
 
 const TableCard: React.FC<{ title: string; subtitle: string; data: { type: string; flows: string; percentage: string }[] }> = ({ title, subtitle, data }) => (
-  <div className="glass rounded-2xl p-6 hover:glow-sm transition-all">
+  <motion.div
+    className="glass rounded-2xl p-6 hover:glow-sm transition-all"
+    variants={{
+      hidden: { opacity: 0, scale: 0.95 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+    }}
+  >
     <h3 className="text-lg font-semibold mb-1">{title}</h3>
     <p className="text-xs text-muted-foreground mb-4">{subtitle}</p>
     <table className="w-full">
@@ -32,12 +39,18 @@ const TableCard: React.FC<{ title: string; subtitle: string; data: { type: strin
         ))}
       </tbody>
     </table>
-  </div>
+  </motion.div>
 );
 
 export const ResearchTables: React.FC = () => (
-  <section className="py-24 px-4">
-    <div className="max-w-4xl mx-auto">
+  <section className="py-24 px-4 relative z-10">
+    <motion.div
+      className="max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Research Findings</h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
@@ -45,7 +58,19 @@ export const ResearchTables: React.FC = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <motion.div
+        className="grid md:grid-cols-2 gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2 }
+          }
+        }}
+      >
         <TableCard
           title="Table III: Confinement Analysis"
           subtitle="Information flow confinement classification"
@@ -56,7 +81,7 @@ export const ResearchTables: React.FC = () => (
           subtitle="External flow destination analysis"
           data={externalData}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   </section>
 );

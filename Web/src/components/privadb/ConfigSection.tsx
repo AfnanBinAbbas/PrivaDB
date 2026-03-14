@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const configData = [
   { setting: 'HEADLESS', value: 'true', desc: 'Run browser without GUI' },
@@ -13,8 +14,14 @@ const configData = [
 ];
 
 export const ConfigSection: React.FC = () => (
-  <section className="py-24 px-4">
-    <div className="max-w-4xl mx-auto">
+  <section id="config" className="py-24 px-4 relative z-10">
+    <motion.div
+      className="max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Configuration</h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
@@ -22,7 +29,13 @@ export const ConfigSection: React.FC = () => (
         </p>
       </div>
 
-      <div className="glass rounded-2xl overflow-hidden">
+      <motion.div
+        className="glass rounded-2xl overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <table className="w-full">
           <thead>
             <tr className="border-b border-border/50">
@@ -41,7 +54,7 @@ export const ConfigSection: React.FC = () => (
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   </section>
 );

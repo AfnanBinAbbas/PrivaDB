@@ -1,7 +1,7 @@
 [
   {
-    "databaseName": "yt-it-response-store:V64224755||",
-    "key": "yt-it-response-store:V64224755||/ResponseStore/['service:guide:fallback', 1]",
+    "databaseName": "yt-it-response-store:Vc44c9b76||",
+    "key": "yt-it-response-store:Vc44c9b76||/ResponseStore/['service:guide:fallback', 1]",
     "value": "/shorts/",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -11,7 +11,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -21,7 +21,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -31,7 +31,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -41,7 +41,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -51,7 +51,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/scheduler.vflset/scheduler.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -61,7 +61,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -71,7 +71,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/cssbin/www-main-desktop-home-page-skeleton.css",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -81,7 +81,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/cssbin/www-onepick.css",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -91,17 +91,17 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
-    "value": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.uFP8Ay7aB4U.L.B1.O/am=AAAAEIAAMAE/d=0/br=1/rs=AGKMywF1WCla4W48wyNVbMfLtNUmWf78xg",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
+    "value": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.uFP8Ay7aB4U.L.B1.O/am=AAAAIIAAMAE/d=0/br=1/rs=AGKMywGZUfwmjW_-V7U70oN3awmlBthNzQ",
     "source": "IndexedDB",
     "sink": "fetch.url",
     "statusCode": 200,
     "domain": "youtube.com",
-    "requestUrl": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.uFP8Ay7aB4U.L.B1.O/am=AAAAEIAAMAE/d=0/br=1/rs=AGKMywF1WCla4W48wyNVbMfLtNUmWf78xg"
+    "requestUrl": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.uFP8Ay7aB4U.L.B1.O/am=AAAAIIAAMAE/d=0/br=1/rs=AGKMywGZUfwmjW_-V7U70oN3awmlBthNzQ"
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/player/74edf1a3/player_es6.vflset/en_US/base.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -111,17 +111,17 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
-    "value": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.CV0LBnkYmB0.es5.O/am=AAAAEAAAIAE/d=1/br=1/rs=AGKMywHzDfLrt7_B2dWjQZkNFRw66bEKSw/m=kevlar_base_module,kevlar_main_module",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
+    "value": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.CV0LBnkYmB0.es5.O/am=AAAAIAAAIAE/d=1/br=1/rs=AGKMywFuuyR0KL8LTefFkjoQzFDZcLhX0Q/m=kevlar_base_module,kevlar_main_module",
     "source": "IndexedDB",
     "sink": "fetch.url",
     "statusCode": 200,
     "domain": "youtube.com",
-    "requestUrl": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.CV0LBnkYmB0.es5.O/am=AAAAEAAAIAE/d=1/br=1/rs=AGKMywHzDfLrt7_B2dWjQZkNFRw66bEKSw/m=kevlar_base_module,kevlar_main_module"
+    "requestUrl": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.CV0LBnkYmB0.es5.O/am=AAAAIAAAIAE/d=1/br=1/rs=AGKMywFuuyR0KL8LTefFkjoQzFDZcLhX0Q/m=kevlar_base_module,kevlar_main_module"
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/cssbin/www-main-desktop-watch-page-skeleton.css",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -131,7 +131,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/player/74edf1a3/player_es6.vflset/en_US/offline.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -141,7 +141,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/player/74edf1a3/player_es6.vflset/en_US/miniplayer.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -151,7 +151,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/player/74edf1a3/player_es6.vflset/en_US/remote.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -161,7 +161,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/player/74edf1a3/www-player.css",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -171,7 +171,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/spf.vflset/spf.js",
     "source": "IndexedDB",
     "sink": "fetch.url",
@@ -181,7 +181,7 @@
   },
   {
     "databaseName": "yt-serviceworker-metadata",
-    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773509650489",
+    "key": "yt-serviceworker-metadata/resource-manifest-assets/1773518930955",
     "value": "https://www.youtube.com/s/desktop/c9b3ffed/jsbin/network.vflset/network.js",
     "source": "IndexedDB",
     "sink": "fetch.url",

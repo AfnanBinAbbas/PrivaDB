@@ -4,6 +4,7 @@ import {
   Globe, Search, BarChart3, Check, AlertCircle, FileText,
   Loader2, Copy, Download, Trash2
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type ScanConfig = {
   headless: boolean;
@@ -128,7 +129,7 @@ const ResultCard: React.FC<{ result: ScanResult; index: number }> = ({ result, i
   return (
     <div
       className="glass rounded-xl overflow-hidden opacity-0 animate-fade-in"
-      style={{ animationDelay: `${index * 0.15}s` }}
+      style={{ animationDelay: `${index * 0.15} s` }}
     >
       <button
         onClick={() => setExpanded(!expanded)}
@@ -306,7 +307,7 @@ export const LiveScan: React.FC = () => {
     try {
       for (let i = 0; i < validUrls.length; i++) {
         const currentUrl = validUrls[i];
-        const progressPrefix = validUrls.length > 1 ? `[${i + 1}/${validUrls.length}] ` : '';
+        const progressPrefix = validUrls.length > 1 ? `[${i + 1}/${validUrls.length}]` : '';
 
         // Reset phases for the current site
         setPhases([
@@ -482,10 +483,26 @@ export const LiveScan: React.FC = () => {
     return parts.join(' ');
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.1 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  };
+
   return (
-    <section id="live-scan" className="py-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+    <section id="live-scan" className="py-24 px-4 relative z-10">
+      <motion.div
+        className="max-w-4xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <motion.div variants={itemVariants} className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs text-primary font-medium mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             Interactive Demo
@@ -494,10 +511,10 @@ export const LiveScan: React.FC = () => {
           <p className="text-muted-foreground max-w-xl mx-auto">
             Enter websites to analyze for persistent IndexedDB tracking. Upload a .txt file or add URLs manually.
           </p>
-        </div>
+        </motion.div>
 
         {/* Input area */}
-        <div className="glass rounded-2xl p-6 mb-6">
+        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-sm font-medium">Target URLs</h3>
             <div className="flex items-center gap-2">
@@ -528,30 +545,38 @@ export const LiveScan: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            {urls.map((url, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <div className="relative flex-1">
-                  <Globe size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="text"
-                    value={url}
-                    onChange={e => updateUrl(i, e.target.value)}
-                    placeholder="https://example.com"
-                    disabled={scanning}
-                    className="w-full pl-9 pr-4 py-2.5 bg-background/80 border border-border/50 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 placeholder:text-muted-foreground/50"
-                  />
-                </div>
-                {urls.length > 1 && (
-                  <button
-                    onClick={() => removeUrl(i)}
-                    disabled={scanning}
-                    className="p-2 text-muted-foreground hover:text-destructive transition-colors rounded-lg hover:bg-destructive/10"
-                  >
-                    <X size={16} />
-                  </button>
-                )}
-              </div>
-            ))}
+            <AnimatePresence>
+              {urls.map((url, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, height: 'auto', scale: 1 }}
+                  exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                  className="flex items-center gap-2 overflow-hidden"
+                >
+                  <div className="relative flex-1 my-1">
+                    <Globe size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                    <input
+                      type="text"
+                      value={url}
+                      onChange={e => updateUrl(i, e.target.value)}
+                      placeholder="https://example.com"
+                      disabled={scanning}
+                      className="w-full pl-9 pr-4 py-2.5 bg-background/80 border border-border/50 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 placeholder:text-muted-foreground/50"
+                    />
+                  </div>
+                  {urls.length > 1 && (
+                    <button
+                      onClick={() => removeUrl(i)}
+                      disabled={scanning}
+                      className="p-2 text-muted-foreground hover:text-destructive transition-colors rounded-lg hover:bg-destructive/10"
+                    >
+                      <X size={16} />
+                    </button>
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
           {/* File info hint */}
@@ -559,10 +584,10 @@ export const LiveScan: React.FC = () => {
             <FileText size={12} />
             Upload a .txt file with one URL per line, or add URLs manually above.
           </p>
-        </div>
+        </motion.div>
 
         {/* Configuration panel */}
-        <div className="glass rounded-2xl overflow-hidden mb-6">
+        <motion.div variants={itemVariants} className="glass rounded-2xl overflow-hidden mb-6">
           <button
             onClick={() => setShowConfig(!showConfig)}
             className="w-full flex items-center justify-between px-6 py-4 hover:bg-muted/30 transition-colors"
@@ -575,262 +600,288 @@ export const LiveScan: React.FC = () => {
             {showConfig ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
 
-          {showConfig && (
-            <div className="px-6 pb-6 border-t border-border/30 pt-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                {/* Pipeline Flow */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Pipeline Flow</h4>
+          <AnimatePresence>
+            {showConfig && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="px-6 pb-6 border-t border-border/30 pt-4 overflow-hidden"
+              >
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {/* Pipeline Flow */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Pipeline Flow</h4>
 
-                  <label className="flex items-center justify-between">
+                    <label className="flex items-center justify-between">
+                      <div>
+                        <span className="text-sm">--overwrite</span>
+                        <p className="text-xs text-muted-foreground">No confirmation prompts</p>
+                      </div>
+                      <button
+                        onClick={() => setConfig(c => ({ ...c, overwrite: !c.overwrite }))}
+                        className={`w-10 h-5 rounded-full transition-colors relative ${config.overwrite ? 'bg-primary' : 'bg-muted'}`}
+                      >
+                        <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${config.overwrite ? 'left-5' : 'left-0.5'}`} />
+                      </button>
+                    </label>
+                  </div>
+
+                  {/* Automation & Scaling */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Scaling</h4>
+
+                    <label className="block">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm">--sites</span>
+                        <span className="text-xs font-mono text-primary">{config.sitesLimit || 'All'}</span>
+                      </div>
+                      <input
+                        type="number"
+                        placeholder="Limit sites (e.g. 10)"
+                        value={config.sitesLimit || ''}
+                        onChange={e => setConfig(c => ({ ...c, sitesLimit: e.target.value ? Number(e.target.value) : null }))}
+                        className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                      />
+                    </label>
+
+                    <label className="block">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm">--output</span>
+                        <span className="text-xs font-mono text-primary">{config.outputFile || 'None'}</span>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Save log to file..."
+                        value={config.outputFile || ''}
+                        onChange={e => setConfig(c => ({ ...c, outputFile: e.target.value || null }))}
+                        className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-border/30 grid sm:grid-cols-2 gap-4">
+                  {/* Iterations (Common to both scripts) */}
+                  <label className="block">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm">--iterations</span>
+                      <span className="text-xs font-mono text-primary">{config.iterations}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={1}
+                      max={10}
+                      value={config.iterations}
+                      onChange={e => setConfig(c => ({ ...c, iterations: Number(e.target.value) }))}
+                      className="w-full accent-primary"
+                    />
+                    <p className="text-xs text-muted-foreground">Crawl iterations per site</p>
+                  </label>
+
+                  {/* Headless Toggle */}
+                  <label className="flex items-center justify-between pt-4">
                     <div>
-                      <span className="text-sm">--overwrite</span>
-                      <p className="text-xs text-muted-foreground">No confirmation prompts</p>
+                      <span className="text-sm">--no-headless</span>
+                      <p className="text-xs text-muted-foreground">Visible browser window</p>
                     </div>
                     <button
-                      onClick={() => setConfig(c => ({ ...c, overwrite: !c.overwrite }))}
-                      className={`w-10 h-5 rounded-full transition-colors relative ${config.overwrite ? 'bg-primary' : 'bg-muted'}`}
+                      onClick={() => setConfig(c => ({ ...c, headless: !c.headless }))}
+                      className={`w-10 h-5 rounded-full transition-colors relative ${!config.headless ? 'bg-primary' : 'bg-muted'}`}
                     >
-                      <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${config.overwrite ? 'left-5' : 'left-0.5'}`} />
+                      <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${!config.headless ? 'left-5' : 'left-0.5'}`} />
                     </button>
                   </label>
                 </div>
 
-                {/* Automation & Scaling */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-medium text-primary uppercase tracking-wider">Scaling</h4>
-
-                  <label className="block">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm">--sites</span>
-                      <span className="text-xs font-mono text-primary">{config.sitesLimit || 'All'}</span>
-                    </div>
-                    <input
-                      type="number"
-                      placeholder="Limit sites (e.g. 10)"
-                      value={config.sitesLimit || ''}
-                      onChange={e => setConfig(c => ({ ...c, sitesLimit: e.target.value ? Number(e.target.value) : null }))}
-                      className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
-                    />
-                  </label>
-
-                  <label className="block">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm">--output</span>
-                      <span className="text-xs font-mono text-primary">{config.outputFile || 'None'}</span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Save log to file..."
-                      value={config.outputFile || ''}
-                      onChange={e => setConfig(c => ({ ...c, outputFile: e.target.value || null }))}
-                      className="w-full bg-background border border-border/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary font-mono"
-                    />
-                  </label>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-border/30 grid sm:grid-cols-2 gap-4">
-                {/* Iterations (Common to both scripts) */}
-                <label className="block">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm">--iterations</span>
-                    <span className="text-xs font-mono text-primary">{config.iterations}</span>
+                {/* CLI preview */}
+                <div className="mt-6 bg-background/80 rounded-xl p-3 border border-border/30">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-muted-foreground">Generated CLI Command</span>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(generateCliCommand())}
+                      className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Copy size={12} /> Copy
+                    </button>
                   </div>
-                  <input
-                    type="range"
-                    min={1}
-                    max={10}
-                    value={config.iterations}
-                    onChange={e => setConfig(c => ({ ...c, iterations: Number(e.target.value) }))}
-                    className="w-full accent-primary"
-                  />
-                  <p className="text-xs text-muted-foreground">Crawl iterations per site</p>
-                </label>
-
-                {/* Headless Toggle */}
-                <label className="flex items-center justify-between pt-4">
-                  <div>
-                    <span className="text-sm">--no-headless</span>
-                    <p className="text-xs text-muted-foreground">Visible browser window</p>
-                  </div>
-                  <button
-                    onClick={() => setConfig(c => ({ ...c, headless: !c.headless }))}
-                    className={`w-10 h-5 rounded-full transition-colors relative ${!config.headless ? 'bg-primary' : 'bg-muted'}`}
-                  >
-                    <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${!config.headless ? 'left-5' : 'left-0.5'}`} />
-                  </button>
-                </label>
-              </div>
-
-              {/* CLI preview */}
-              <div className="mt-6 bg-background/80 rounded-xl p-3 border border-border/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-muted-foreground">Generated CLI Command</span>
-                  <button
-                    onClick={() => navigator.clipboard.writeText(generateCliCommand())}
-                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Copy size={12} /> Copy
-                  </button>
+                  <pre className="text-xs font-mono text-primary/80 whitespace-pre-wrap">{generateCliCommand()}</pre>
                 </div>
-                <pre className="text-xs font-mono text-primary/80 whitespace-pre-wrap">{generateCliCommand()}</pre>
-              </div>
-            </div>
-          )}
-        </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Run button */}
-        {scanning ? (
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 py-4 bg-primary/20 text-primary rounded-2xl font-medium text-sm flex items-center justify-center gap-2 border border-primary/20">
-              <Loader2 size={18} className="animate-spin" />
-              Scanning {validUrls.length} site(s)...
+        <motion.div variants={itemVariants}>
+          {scanning ? (
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1 py-4 bg-primary/20 text-primary rounded-2xl font-medium text-sm flex items-center justify-center gap-2 border border-primary/20">
+                <Loader2 size={18} className="animate-spin" />
+                Scanning {validUrls.length} site(s)...
+              </div>
+              <motion.button
+                onClick={stopScan}
+                disabled={stopping}
+                className="px-8 py-4 bg-destructive text-destructive-foreground rounded-2xl font-medium text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {stopping ? <Loader2 size={18} className="animate-spin" /> : <X size={18} />}
+                Stop
+              </motion.button>
             </div>
-            <button
-              onClick={stopScan}
-              disabled={stopping}
-              className="px-8 py-4 bg-destructive text-destructive-foreground rounded-2xl font-medium text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-sm"
+          ) : (
+            <motion.button
+              onClick={() => startScan()}
+              disabled={scanning || validUrls.length === 0}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium shadow-lg shadow-primary/20"
+              whileHover={{ scale: (scanning || validUrls.length === 0) ? 1 : 1.05 }}
+              whileTap={{ scale: (scanning || validUrls.length === 0) ? 1 : 0.95 }}
             >
-              {stopping ? <Loader2 size={18} className="animate-spin" /> : <X size={18} />}
-              Stop
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => startScan()}
-            disabled={scanning || validUrls.length === 0}
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium shadow-lg shadow-primary/20"
-          >
-            <Play size={18} fill="currentColor" />
-            <span>{scanning ? 'Scanning...' : `Start Scan (${validUrls.length} site${validUrls.length !== 1 ? 's' : ''})`}</span>
-          </button>
-        )}
+              <Play size={18} fill="currentColor" />
+              <span>{scanning ? 'Scanning...' : `Start Scan (${validUrls.length} site${validUrls.length !== 1 ? 's' : ''})`}</span>
+            </motion.button>
+          )}
+        </motion.div>
 
         {/* Progress phases */}
-        {phases.length > 0 && (
-          <div className="mt-8 glass rounded-2xl p-6 space-y-4">
-            <h3 className="text-sm font-medium mb-4">Pipeline Progress</h3>
-            {phases.map((phase, i) => {
-              const Icon = phase.icon;
-              return (
-                <div key={i} className="flex items-start gap-3">
-                  <div className={`mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${phase.status === 'done' ? 'bg-emerald-500/15 text-emerald-500' :
-                    phase.status === 'running' ? 'bg-primary/15 text-primary' :
-                      phase.status === 'error' ? 'bg-destructive/15 text-destructive' :
-                        'bg-muted text-muted-foreground'
-                    }`}>
-                    {phase.status === 'done' ? <Check size={16} /> :
-                      phase.status === 'running' ? <Loader2 size={16} className="animate-spin" /> :
-                        phase.status === 'error' ? <AlertCircle size={16} /> :
-                          <Icon size={16} />}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium">{phase.name}</span>
-                      {phase.status !== 'pending' && (
-                        <span className="text-xs font-mono text-muted-foreground">{phase.progress}%</span>
+        <AnimatePresence>
+          {phases.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="mt-8 glass rounded-2xl p-6 space-y-4"
+            >
+              <h3 className="text-sm font-medium mb-4">Pipeline Progress</h3>
+              {phases.map((phase, i) => {
+                const Icon = phase.icon;
+                return (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className={`mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${phase.status === 'done' ? 'bg-emerald-500/15 text-emerald-500' :
+                      phase.status === 'running' ? 'bg-primary/15 text-primary' :
+                        phase.status === 'error' ? 'bg-destructive/15 text-destructive' :
+                          'bg-muted text-muted-foreground'
+                      }`}>
+                      {phase.status === 'done' ? <Check size={16} /> :
+                        phase.status === 'running' ? <Loader2 size={16} className="animate-spin" /> :
+                          phase.status === 'error' ? <AlertCircle size={16} /> :
+                            <Icon size={16} />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium">{phase.name}</span>
+                        {phase.status !== 'pending' && (
+                          <span className="text-xs font-mono text-muted-foreground">{phase.progress}%</span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground truncate">{phase.message}</p>
+                      {phase.status === 'running' && (
+                        <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-primary rounded-full transition-all duration-300"
+                            style={{ width: `${phase.progress}%` }}
+                          />
+                        </div>
                       )}
                     </div>
-                    <p className="text-xs text-muted-foreground truncate">{phase.message}</p>
-                    {phase.status === 'running' && (
-                      <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-primary rounded-full transition-all duration-300"
-                          style={{ width: `${phase.progress}%` }}
-                        />
-                      </div>
-                    )}
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Results */}
-        {(scanComplete && results.length > 0) || (history.length > 0) ? (
-          <div className="mt-8 space-y-6">
-            {/* Header with History Toggle */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <h3 className="text-lg font-semibold">{results.length > 0 ? 'Current Scan Results' : 'Scan History'}</h3>
-              <button
-                onClick={() => setShowHistory(!showHistory)}
-                className="flex items-center gap-1.5 px-4 py-2 text-sm rounded-xl glass hover:bg-primary/10 transition-colors text-primary font-medium"
-              >
-                {showHistory ? 'View Current' : 'View History'}
-                <FileText size={16} />
-              </button>
-            </div>
-
-            {!showHistory && results.length > 0 && (
-              <>
-                {/* Summary strip */}
-                <div className="glass rounded-2xl p-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                    <h3 className="text-sm font-medium">Scan Summary</h3>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={exportResults}
-                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
-                      >
-                        <Download size={14} />
-                        Export JSON
-                      </button>
-                      <button
-                        onClick={() => { setResults([]); setPhases([]); setScanComplete(false); }}
-                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-destructive/10 hover:text-destructive transition-colors"
-                      >
-                        <Trash2 size={14} />
-                        Clear
-                      </button>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div>
-                      <div className="text-2xl font-bold tabular-nums">{results.length}</div>
-                      <div className="text-xs text-muted-foreground">Sites Scanned</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold tabular-nums">{totalEvents}</div>
-                      <div className="text-xs text-muted-foreground">Tracking Events</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold tabular-nums text-red-500">{totalHigh}</div>
-                      <div className="text-xs text-muted-foreground">High Confidence</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold tabular-nums">{allTrackers.length}</div>
-                      <div className="text-xs text-muted-foreground">Unique Trackers</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Per-site results */}
-                <div className="space-y-3">
-                  {results.map((result, i) => (
-                    <ResultCard key={i} result={result} index={i} />
-                  ))}
-                </div>
-              </>
-            )}
-
-            {showHistory && (
-              <div className="space-y-3">
-                {history.length > 0 ? (
-                  history.map((result, i) => (
-                    <ResultCard key={`hist-${i}`} result={result} index={i} />
-                  ))
-                ) : (
-                  <div className="text-center py-12 glass rounded-2xl">
-                    <p className="text-muted-foreground">No scan history found.</p>
-                  </div>
-                )}
+        <AnimatePresence>
+          {((scanComplete && results.length > 0) || (history.length > 0)) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-8 space-y-6"
+            >
+              {/* Header with History Toggle */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <h3 className="text-lg font-semibold">{results.length > 0 ? 'Current Scan Results' : 'Scan History'}</h3>
+                <button
+                  onClick={() => setShowHistory(!showHistory)}
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm rounded-xl glass hover:bg-primary/10 transition-colors text-primary font-medium"
+                >
+                  {showHistory ? 'View Current' : 'View History'}
+                  <FileText size={16} />
+                </button>
               </div>
-            )}
-          </div>
-        ) : null}
-      </div>
+
+              {!showHistory && results.length > 0 && (
+                <>
+                  {/* Summary strip */}
+                  <div className="glass rounded-2xl p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <h3 className="text-sm font-medium">Scan Summary</h3>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={exportResults}
+                          className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                        >
+                          <Download size={14} />
+                          Export JSON
+                        </button>
+                        <button
+                          onClick={() => { setResults([]); setPhases([]); setScanComplete(false); }}
+                          className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-destructive/10 hover:text-destructive transition-colors"
+                        >
+                          <Trash2 size={14} />
+                          Clear
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                      <div>
+                        <div className="text-2xl font-bold tabular-nums">{results.length}</div>
+                        <div className="text-xs text-muted-foreground">Sites Scanned</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold tabular-nums">{totalEvents}</div>
+                        <div className="text-xs text-muted-foreground">Tracking Events</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold tabular-nums text-red-500">{totalHigh}</div>
+                        <div className="text-xs text-muted-foreground">High Confidence</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold tabular-nums">{allTrackers.length}</div>
+                        <div className="text-xs text-muted-foreground">Unique Trackers</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Per-site results */}
+                  <div className="space-y-3">
+                    {results.map((result, i) => (
+                      <ResultCard key={i} result={result} index={i} />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {showHistory && (
+                <div className="space-y-3">
+                  {history.length > 0 ? (
+                    history.map((result, i) => (
+                      <ResultCard key={`hist-${i}`} result={result} index={i} />
+                    ))
+                  ) : (
+                    <div className="text-center py-12 glass rounded-2xl">
+                      <p className="text-muted-foreground">No scan history found.</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 };
