@@ -311,11 +311,13 @@ async def crawl_all_sites(site_limit: int = None,
             # Fresh browser for each iteration
             async with async_playwright() as pw:
                 browser = await pw.chromium.launch(headless=config.HEADLESS)
-                crawler = SiteCrawler()
-                iter_result = await crawler.crawl_site(browser, url)
-                iter_result["iteration"] = iteration
-                site_iterations.append(iter_result)
-                await browser.close()
+                try:
+                    crawler = SiteCrawler()
+                    iter_result = await crawler.crawl_site(browser, url)
+                    iter_result["iteration"] = iteration
+                    site_iterations.append(iter_result)
+                finally:
+                    await browser.close()
 
             # Small delay between iterations
             if iteration < iterations:

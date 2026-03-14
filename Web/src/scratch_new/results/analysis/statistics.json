@@ -1,0 +1,98 @@
+{
+  "crawl_summary": {
+    "total_sites_analyzed": 1,
+    "sites_with_indexeddb": 1,
+    "total_databases_found": 12,
+    "total_records_extracted": 15
+  },
+  "detection_summary": {
+    "total_potential_identifiers": 132,
+    "total_exfiltration_events": 70,
+    "third_party_exfiltrations": 45,
+    "known_tracker_exfiltrations": 0,
+    "total_inflow_flows": 6,
+    "sites_with_inflow_flows": 1
+  },
+  "confidence_breakdown": {
+    "high": 0,
+    "medium": 45,
+    "low": 25
+  },
+  "site_classification": {
+    "sites_with_any_exfiltration": 1,
+    "sites_with_high_confidence_tracking": 0
+  },
+  "top_tracker_domains": {
+    "www.google.com": 12,
+    "www.facebook.com": 8,
+    "ad.doubleclick.net": 8,
+    "www.googleadservices.com": 6,
+    "www.google.com.pk": 6,
+    "px.ads.linkedin.com": 2,
+    "googleads.g.doubleclick.net": 1,
+    "bat.bing.com": 1,
+    "o13855.ingest.sentry.io": 1
+  },
+  "identifier_type_distribution": {
+    "idb_key:F": 57,
+    "idb_key:A": 3,
+    "idb_key:G": 3,
+    "idb_key:E": 2,
+    "idb_key:C": 2,
+    "idb_key:D": 2,
+    "idb_key:Q": 1
+  },
+  "paper_metrics": {
+    "overview": {
+      "total_sites": 1,
+      "sites_with_idb": 1,
+      "pct_sites_with_idb": 100.0,
+      "total_flows": 70,
+      "outflow_flows": 70,
+      "inflow_flows": 0
+    },
+    "table_iii_confinement": {
+      "internal": {
+        "outflow": 20,
+        "inflow": 0,
+        "total": 20,
+        "pct_of_total": 28.6
+      },
+      "external": {
+        "outflow": 50,
+        "inflow": 0,
+        "total": 50,
+        "pct_of_total": 71.4
+      }
+    },
+    "table_iv_external_breakdown": {
+      "same_site": {
+        "outflow": 5,
+        "tracking": 0,
+        "non_tracking": 5,
+        "pct_of_external": 10.0
+      },
+      "cross_site": {
+        "outflow": 45,
+        "tracking": 0,
+        "non_tracking": 45,
+        "pct_of_external": 90.0
+      }
+    },
+    "tracking_classification": {
+      "outflow_tracking": 0,
+      "outflow_non_tracking": 70,
+      "inflow_tracking": 0,
+      "inflow_non_tracking": 0,
+      "pct_outflow_tracking": 0.0,
+      "pct_external_tracking": 0.0
+    },
+    "sink_distribution": {
+      "network": 70
+    },
+    "source_distribution": {},
+    "top_databases": {
+      "analytics_event_v2": 70
+    }
+  }
+}

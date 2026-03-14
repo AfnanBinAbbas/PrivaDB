@@ -340,6 +340,7 @@ export const LiveScan: React.FC = () => {
         let completed = false;
         while (!completed) {
           if (stopping) {
+            setPhases(prev => prev.map(p => p.status === 'running' || p.status === 'pending' ? { ...p, status: 'error', message: 'Scan stopped by user' } : p));
             break;
           }
           await sleep(2000);
@@ -497,7 +498,7 @@ export const LiveScan: React.FC = () => {
 
         {/* Input area */}
         <div className="glass rounded-2xl p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-sm font-medium">Target URLs</h3>
             <div className="flex items-center gap-2">
               <input
@@ -681,7 +682,7 @@ export const LiveScan: React.FC = () => {
 
         {/* Run button */}
         {scanning ? (
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 py-4 bg-primary/20 text-primary rounded-2xl font-medium text-sm flex items-center justify-center gap-2 border border-primary/20">
               <Loader2 size={18} className="animate-spin" />
               Scanning {validUrls.length} site(s)...
@@ -751,7 +752,7 @@ export const LiveScan: React.FC = () => {
         {(scanComplete && results.length > 0) || (history.length > 0) ? (
           <div className="mt-8 space-y-6">
             {/* Header with History Toggle */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <h3 className="text-lg font-semibold">{results.length > 0 ? 'Current Scan Results' : 'Scan History'}</h3>
               <button
                 onClick={() => setShowHistory(!showHistory)}
@@ -766,7 +767,7 @@ export const LiveScan: React.FC = () => {
               <>
                 {/* Summary strip */}
                 <div className="glass rounded-2xl p-6">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <h3 className="text-sm font-medium">Scan Summary</h3>
                     <div className="flex items-center gap-2">
                       <button

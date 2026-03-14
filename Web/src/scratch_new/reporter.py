@@ -101,6 +101,7 @@ def generate_reports(analysis_results: list[dict]):
 
     _write_summary_json(analysis_results)
     _write_tracking_csv(analysis_results)
+    _write_per_site_json(analysis_results)
     paper_metrics = compute_paper_metrics(analysis_results)
     stats = _write_statistics_json(analysis_results, paper_metrics)
     _generate_charts(analysis_results, stats, paper_metrics)
@@ -235,6 +236,118 @@ def _write_tracking_csv(results: list[dict]):
                 })
 
     logger.info(f"📊 Tracking events CSV → {path}")
+
+
+# ─── Per-Site JSON Output (TS pipeline format) ──────────────────────
+def _find_status_code(target_url: str, network_requests: list) -> int | None:
+    """Find the HTTP status code for a given URL from captured requests."""
+    for req in network_requests:
+        if req.get("url") == target_url:
+            resp = req.get("response")
+            if isinstance(resp, dict):
+                return resp.get("status")
+    return None
+
+
+def _map_sink_name(evt: dict) -> str:
+    """
+    Map internal match_location / sink_class to Foxhound-style sink names.
+
+    Examples: "fetch.url", "script.src", "document.cookie", "XMLHttpRequest.send"
+    """
+    loc = evt.get("match_location", "")
+    sink_class = evt.get("sink_class", "")
+
+    # Taint-confirmed events carry the real sink name already
+    if loc.startswith("taint:"):
+        return loc.replace("taint:", "")
+
+    # Map from match_location
+    if loc in ("url", "url_decoded"):
+        method = evt.get("request_method", "GET").upper()
+        if method in ("POST", "PUT", "PATCH"):
+            return "XMLHttpRequest.open(url)"
+        return "fetch.url"
+    if loc in ("post_body", "post_body_decoded"):
+        return "fetch.body"
+    if "header:cookie" in loc:
+        return "document.cookie"
+
+    # Fallback to sink_class
+    sink_map = {
+        "fetch_url": "fetch.url",
+        "fetch_body": "fetch.body",
+        "xhr_url": "XMLHttpRequest.open(url)",
+        "xhr_body": "XMLHttpRequest.send",
+        "header_cookie": "document.cookie",
+        "sendbeacon": "navigator.sendBeacon(url)",
+        "img_src": "img.src",
+        "script_src": "script.src",
+    }
+    return sink_map.get(sink_class, evt.get("request_method", "GET"))
+
+
+def _write_per_site_json(results: list[dict]):
+    """
+    Write per-site JSON files and combined_results.json matching the TS pipeline format.
+
+    Each exfiltration event is transformed to:
+        {databaseName, key, value, source, sink, statusCode, domain, requestUrl}
+    """
+    combined: dict[str, list[dict]] = {}
+
+    for r in results:
+        domain = r.get("domain", "unknown")
+        network = r.get("network_requests", [])
+        entries = []
+
+        for evt in r.get("exfiltration_events", []):
+            db_name = evt.get("database", "")
+            if not db_name:
+                # Fallback: extract from identifier_path  "db/store/key"
+                path_parts = evt.get("identifier_path", "").split("/")
+                db_name = path_parts[0] if path_parts else ""
+
+            # Build the IDB key in "db/store/record_key" format
+            store = evt.get("store", "")
+            record_key = evt.get("record_key", "")
+            if store or record_key:
+                idb_key = f"{db_name}/{store}/{record_key}"
+            else:
+                idb_key = evt.get("identifier_path", "")
+
+            status_code = _find_status_code(evt.get("request_url", ""), network)
+
+            entries.append({
+                "databaseName": db_name,
+                "key": idb_key,
+                "value": evt.get("identifier_value", ""),
+                "source": "IndexedDB",
+                "sink": _map_sink_name(evt),
+                "statusCode": status_code if status_code is not None else 200,
+                "domain": domain,
+                "requestUrl": evt.get("request_url", ""),
+            })
+
+        if entries:
+            combined[domain] = entries
+
+            # Write individual site JSON
+            safe_domain = domain.replace(".", "_").replace("/", "_")
+            site_path = os.path.join(config.ANALYSIS_DIR, f"{safe_domain}.json")
+            with open(site_path, "w", encoding="utf-8") as f:
+                json.dump(entries, f, indent=2, ensure_ascii=False, default=str)
+
+    # Write combined results
+    combined_path = os.path.join(config.ANALYSIS_DIR, "combined_results.json")
+    with open(combined_path, "w", encoding="utf-8") as f:
+        json.dump(combined, f, indent=2, ensure_ascii=False, default=str)
+
+    logger.info(
+        f"📁 Per-site JSON → {config.ANALYSIS_DIR}/ "
+        f"({len(combined)} sites with data)"
+    )
+    logger.info(f"📁 Combined results → {combined_path}")
 
 
 def _write_statistics_json(results: list[dict],

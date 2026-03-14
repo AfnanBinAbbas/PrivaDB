@@ -1,0 +1,107 @@
+[
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_metadata",
+    "Key": "used_storage_bytes",
+    "Value": "{'value': 5966}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': '064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a', 'E': '2026-03-14T19:10:03.785Z', 'F': '2026-03-14T19:10:03.787Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'homepage_out_page_loaded', 'E': '{\"performance_context\":{\"metrics\":{\"start\":0,\"floating_elements_loaded\":8069,\"finish\":14890},\"long_tasks_count\":7,\"long_tasks_duration\":1076,\"was_always_visible\":true}}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "a419ca52-a900-4d8e-aca6-664533570b57",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': 'a419ca52-a900-4d8e-aca6-664533570b57', 'E': '2026-03-14T19:10:03.786Z', 'F': '2026-03-14T19:10:03.793Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'performance_navigation_timing', 'E': '{\"fetch_start\":3391.600000143051,\"domain_lookup_start\":3393.600000143051,\"domain_lookup_end\":3397,\"connect_start\":3397,\"secure_connection_start\":3422.9000000953674,\"connect_end\":3459.7999999523163,\"redirect_start\":0,\"redirect_end\":0,\"request_start\":3460,\"response_start\":3754.2000000476837,\"response_end\":7534.400000095367,\"dom_interactive\":7635.299999952316,\"dom_content_loaded_event_start\":9435.700000047684,\"dom_content_loaded_event_end\":9437.299999952316,\"dom_complete\":14887.799999952316,\"load_event_start\":14889.400000095367,\"load_event_end\":14890,\"first_paint\":4260,\"first_contentful_paint\":4260,\"activation_start\":0,\"page\":\"anon_home\",\"connection_type\":\"4g\",\"connection_downlink\":5.95,\"connection_rtt\":150,\"hardware_concurrency\":28,\"device_memory\":8,\"performance_context\":{\"metrics\":{\"start\":0,\"initEnd\":4222,\"rendered\":4400,\"finish\":4400},\"long_tasks_count\":3,\"long_tasks_duration\":722,\"was_always_visible\":true},\"navigation_correlation_id\":\"7489962f-9520-401d-b825-c5d131284ff8\",\"type\":\"navigate\",\"was_page_always_visible\":true,\"total_js_transfer_size\":1196052,\"total_resources_shipped\":40,\"total_resources_cached\":4,\"total_long_task_count\":7,\"total_long_task_duration\":1076,\"element_timing_map\":{},\"was_controlled_by_service_worker\":false}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "leadership_lock",
+    "Store": "leadership_lock",
+    "Key": "analytics-null",
+    "Value": "{'record': {'A': 694919, 'B': 1773515417821}}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "persisted_data_registry",
+    "Store": "persisted_data_registry",
+    "Key": "idb:leadership_lock",
+    "Value": "{'record': {'A': 'leadership_lock', 'B': 'C'}}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_metadata",
+    "Key": "used_storage_bytes",
+    "Value": "{'value': 5966}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': '064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a', 'E': '2026-03-14T19:10:03.785Z', 'F': '2026-03-14T19:10:03.787Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'homepage_out_page_loaded', 'E': '{\"performance_context\":{\"metrics\":{\"start\":0,\"floating_elements_loaded\":8069,\"finish\":14890},\"long_tasks_count\":7,\"long_tasks_duration\":1076,\"was_always_visible\":true}}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "a419ca52-a900-4d8e-aca6-664533570b57",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': 'a419ca52-a900-4d8e-aca6-664533570b57', 'E': '2026-03-14T19:10:03.786Z', 'F': '2026-03-14T19:10:03.793Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'performance_navigation_timing', 'E': '{\"fetch_start\":3391.600000143051,\"domain_lookup_start\":3393.600000143051,\"domain_lookup_end\":3397,\"connect_start\":3397,\"secure_connection_start\":3422.9000000953674,\"connect_end\":3459.7999999523163,\"redirect_start\":0,\"redirect_end\":0,\"request_start\":3460,\"response_start\":3754.2000000476837,\"response_end\":7534.400000095367,\"dom_interactive\":7635.299999952316,\"dom_content_loaded_event_start\":9435.700000047684,\"dom_content_loaded_event_end\":9437.299999952316,\"dom_complete\":14887.799999952316,\"load_event_start\":14889.400000095367,\"load_event_end\":14890,\"first_paint\":4260,\"first_contentful_paint\":4260,\"activation_start\":0,\"page\":\"anon_home\",\"connection_type\":\"4g\",\"connection_downlink\":5.95,\"connection_rtt\":150,\"hardware_concurrency\":28,\"device_memory\":8,\"performance_context\":{\"metrics\":{\"start\":0,\"initEnd\":4222,\"rendered\":4400,\"finish\":4400},\"long_tasks_count\":3,\"long_tasks_duration\":722,\"was_always_visible\":true},\"navigation_correlation_id\":\"7489962f-9520-401d-b825-c5d131284ff8\",\"type\":\"navigate\",\"was_page_always_visible\":true,\"total_js_transfer_size\":1196052,\"total_resources_shipped\":40,\"total_resources_cached\":4,\"total_long_task_count\":7,\"total_long_task_duration\":1076,\"element_timing_map\":{},\"was_controlled_by_service_worker\":false}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "leadership_lock",
+    "Store": "leadership_lock",
+    "Key": "analytics-null",
+    "Value": "{'record': {'A': 694919, 'B': 1773515417821}}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "persisted_data_registry",
+    "Store": "persisted_data_registry",
+    "Key": "idb:leadership_lock",
+    "Value": "{'record': {'A': 'leadership_lock', 'B': 'C'}}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_metadata",
+    "Key": "used_storage_bytes",
+    "Value": "{'value': 5966}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': '064c8fa7-08e8-4b6d-ab9a-f71f86d1bc3a', 'E': '2026-03-14T19:10:03.785Z', 'F': '2026-03-14T19:10:03.787Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'homepage_out_page_loaded', 'E': '{\"performance_context\":{\"metrics\":{\"start\":0,\"floating_elements_loaded\":8069,\"finish\":14890},\"long_tasks_count\":7,\"long_tasks_duration\":1076,\"was_always_visible\":true}}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "analytics_event_v2",
+    "Store": "analytics_event_v2",
+    "Key": "a419ca52-a900-4d8e-aca6-664533570b57",
+    "Value": "{'event': {'A?': 'D', 'A': {'A': 'a419ca52-a900-4d8e-aca6-664533570b57', 'E': '2026-03-14T19:10:03.786Z', 'F': '2026-03-14T19:10:03.793Z', 'H': 'en', 'I': {'A': 'PK'}, 'J': 'WEB', 'K': {'BRR': 'A', 'LOARF': 'A', 'SSCOR': 'A', 'SCCOR': 'A', 'RUCPT': 'B', 'RRSLO': 'B', 'ROAPS': 'B', 'RMAAL': 'B', 'PQTLO': 'B', 'PPRPS': 'B', 'PLPAC': 'B', 'PLOT2': 'A', 'PAPFA': 'B', 'PAACP': 'C', 'OBDAE': 'D', 'MVVL': 'A', 'MTSLO': 'B', 'MAWE': 'C', 'LOAMA': 'A', 'LOAE': 'A', 'LOA': 'A', 'LLSPA': 'B', 'LGCPO': 'B', 'LASDP': 'A', 'LASAP': 'B', 'KABLO': 'B', 'GZWLO': 'B', 'GNRO': 'D', 'GCSVL': 'GG', 'ESPRA': 'A', 'EOEBF': 'B', 'ENAN': 'B', 'EHLO': 'B', 'EARLO': 'B', 'E60S': 'C', 'DWCTA': 'B', 'DSNAV': 'B', 'DIOPB': 'B', 'CBHLO': 'B', 'ASUC': 'B', 'ASCB': 'C', 'ANGCR': 'B', 'AIGSL': 'B', 'AICOR': 'A', 'AHEHS': 'C', 'AHBUS': 'B', 'AHBMC': 'B', 'AFLVC': 'A', 'ABDCR': 'A', 'AAEFO': 'A'}, 'M': 'A', 'O': {'B': '/', 'C': '', 'D': '', 'F': 'https://www.canva.com/', 'G': 'fba79df815082c95ccc0ce29b7e4b1542bfbffbd'}, 'S': {'A': 720, 'B': 1280}, 'Q': '01KKPW2NF3QCR9K8D5GFJ582G4'}, 'B': {'A': {'B': 'web', 'E': 'web-2'}, 'B': {'C': '10811eeb-945c-42b8-b6fa-0a67a5f7ccd7', 'E': ''}, 'C': {'A': 'analytics-web', 'B': '3.0.0'}, 'D': {'C': 'B'}, 'E': {'C': '10.0'}, 'F': {'A': 1, 'B': 720, 'C': 1280, 'D': 1280, 'E': 720, 'F': 1280, 'G': 720}, 'G': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, 'F': [-58369, 8125607], 'D': 'performance_navigation_timing', 'E': '{\"fetch_start\":3391.600000143051,\"domain_lookup_start\":3393.600000143051,\"domain_lookup_end\":3397,\"connect_start\":3397,\"secure_connection_start\":3422.9000000953674,\"connect_end\":3459.7999999523163,\"redirect_start\":0,\"redirect_end\":0,\"request_start\":3460,\"response_start\":3754.2000000476837,\"response_end\":7534.400000095367,\"dom_interactive\":7635.299999952316,\"dom_content_loaded_event_start\":9435.700000047684,\"dom_content_loaded_event_end\":9437.299999952316,\"dom_complete\":14887.799999952316,\"load_event_start\":14889.400000095367,\"load_event_end\":14890,\"first_paint\":4260,\"first_contentful_paint\":4260,\"activation_start\":0,\"page\":\"anon_home\",\"connection_type\":\"4g\",\"connection_downlink\":5.95,\"connection_rtt\":150,\"hardware_concurrency\":28,\"device_memory\":8,\"performance_context\":{\"metrics\":{\"start\":0,\"initEnd\":4222,\"rendered\":4400,\"finish\":4400},\"long_tasks_count\":3,\"long_tasks_duration\":722,\"was_always_visible\":true},\"navigation_correlation_id\":\"7489962f-9520-401d-b825-c5d131284ff8\",\"type\":\"navigate\",\"was_page_always_visible\":true,\"total_js_transfer_size\":1196052,\"total_resources_shipped\":40,\"total_resources_cached\":4,\"total_long_task_count\":7,\"total_long_task_duration\":1076,\"element_timing_map\":{},\"was_controlled_by_service_worker\":false}'}, 'user_id': 'null'}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "leadership_lock",
+    "Store": "leadership_lock",
+    "Key": "analytics-null",
+    "Value": "{'record': {'A': 694919, 'B': 1773515417821}}"
+  },
+  {
+    "Domain": "canva.com",
+    "Database": "persisted_data_registry",
+    "Store": "persisted_data_registry",
+    "Key": "idb:leadership_lock",
+    "Value": "{'record': {'A': 'leadership_lock', 'B': 'C'}}"
+  }
+]
