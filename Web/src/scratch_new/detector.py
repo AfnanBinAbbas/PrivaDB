@@ -170,6 +170,9 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
                     "identifier_path": identifier["path"],
                     "identifier_reason": identifier["reason"],
                     "identifier_entropy": identifier["entropy"],
+                    "database": identifier.get("database", ""),
+                    "store": identifier.get("store", ""),
+                    "record_key": identifier.get("record_key", ""),
                     "request_url": req_url,
                     "request_method": req.get("method", ""),
                     "request_domain": req_domain,
@@ -812,6 +815,7 @@ def analyze_site(site_data: dict) -> dict:
                     domain, urlparse(r.get("url", "")).netloc
                 ),
                 "has_post_data": bool(r.get("post_data")),
+                "response": r.get("response"),
             }
             for r in network
         ],
