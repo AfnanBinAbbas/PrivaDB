@@ -1,5 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { motion } from 'framer-motion';
 
 const confidenceData = [
   { name: 'HIGH', value: 156, color: 'hsl(0, 84%, 60%)' },
@@ -49,8 +50,14 @@ const MiniPie: React.FC<{ data: { name: string; value: number; color: string }[]
 );
 
 export const MetricsSection: React.FC = () => (
-  <section id="metrics" className="py-24 px-4">
-    <div className="max-w-6xl mx-auto">
+  <section id="metrics" className="py-24 px-4 relative z-10">
+    <motion.div
+      className="max-w-6xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Live Metrics Dashboard</h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
@@ -58,18 +65,32 @@ export const MetricsSection: React.FC = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <MiniPie data={confidenceData} title="Confidence Distribution" />
+      <motion.div
+        className="grid md:grid-cols-2 gap-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15 }
+          }
+        }}
+      >
+        <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}>
+          <MiniPie data={confidenceData} title="Confidence Distribution" />
+        </motion.div>
 
         {/* Bar chart for flow classification */}
-        <div className="glass rounded-2xl p-6 hover:glow-sm transition-all">
+        <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }} className="glass rounded-2xl p-6 hover:glow-sm transition-all">
           <h3 className="text-sm font-medium text-muted-foreground mb-4">Flow Classification</h3>
           <ResponsiveContainer width="100%" height={160}>
             <BarChart data={flowData} layout="vertical" barCategoryGap={12}>
               <XAxis type="number" hide />
               <YAxis type="category" dataKey="name" width={100} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} axisLine={false} tickLine={false} />
-              <Tooltip 
-                contentStyle={{ 
+              <Tooltip
+                contentStyle={{
                   backgroundColor: 'hsl(var(--card))',
                   border: '1px solid hsl(var(--border))',
                   borderRadius: '12px',
@@ -83,11 +104,16 @@ export const MetricsSection: React.FC = () => (
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-        </div>
+        </motion.div>
 
-        <MiniPie data={confinementData} title="Confinement Analysis" />
-        <MiniPie data={crossSiteData} title="Cross-site Analysis" />
-      </div>
-    </div>
+        <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}>
+          <MiniPie data={confinementData} title="Confinement Analysis" />
+        </motion.div>
+
+        <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}>
+          <MiniPie data={crossSiteData} title="Cross-site Analysis" />
+        </motion.div>
+      </motion.div>
+    </motion.div>
   </section>
 );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FileCode2, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const files = [
   { name: 'main.py', role: 'CLI Orchestrator', desc: 'Entry point and pipeline coordination' },
@@ -78,8 +79,14 @@ export const ArchitectureSection: React.FC = () => {
   const [selected, setSelected] = useState('main.py');
 
   return (
-    <section id="architecture" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="architecture" className="py-24 px-4 relative z-10">
+      <motion.div
+        className="max-w-6xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Architecture</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -93,11 +100,10 @@ export const ArchitectureSection: React.FC = () => {
             <React.Fragment key={file.name}>
               <button
                 onClick={() => setSelected(file.name)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-all text-sm font-medium ${
-                  selected === file.name
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-all text-sm font-medium ${selected === file.name
                     ? 'bg-primary text-primary-foreground glow-sm scale-105'
                     : 'glass hover:bg-muted/50'
-                }`}
+                  }`}
               >
                 <FileCode2 size={16} />
                 {file.name}
@@ -110,7 +116,13 @@ export const ArchitectureSection: React.FC = () => {
         </div>
 
         {/* Detail card */}
-        <div className="glass rounded-2xl p-6 md:p-8">
+        <motion.div
+          className="glass rounded-2xl p-6 md:p-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/3">
               <div className="text-xs font-medium text-primary uppercase tracking-wider mb-1">
@@ -127,8 +139,8 @@ export const ArchitectureSection: React.FC = () => {
               </pre>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
