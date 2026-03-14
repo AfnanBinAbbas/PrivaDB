@@ -1,24 +1,17 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
-
-const AppRoutes = () => {
-  const location = useLocation();
-
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
+import { ThemeProvider } from "./components/privadb/ThemeProvider";
+import { FloatingNav } from "./components/privadb/FloatingNav";
+import { HeroSection } from "./components/privadb/HeroSection";
+import { MetricsSection } from "./components/privadb/MetricsSection";
+import { ArchitectureSection } from "./components/privadb/ArchitectureSection";
+import { LiveScan } from "./components/privadb/LiveScan";
+import { PipelineSection } from "./components/privadb/PipelineSection";
+import { CodeExplorer } from "./components/privadb/CodeExplorer";
+import { TrackerDomains } from "./components/privadb/TrackerDomains";
+import { ResearchTables } from "./components/privadb/ResearchTables";
+import { DownloadSection } from "./components/privadb/DownloadSection";
+import { ConfigSection } from "./components/privadb/ConfigSection";
+import { BackToTop } from "./components/privadb/BackToTop";
 
 const App = () => {
   // Force dark mode for the premium aesthetic
@@ -27,13 +20,24 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <AppRoutes />
-      </TooltipProvider>
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 font-sans">
+        <FloatingNav />
+        <main>
+          <HeroSection />
+          <MetricsSection />
+          <ArchitectureSection />
+          <LiveScan />
+          <PipelineSection />
+          <CodeExplorer />
+          <TrackerDomains />
+          <ResearchTables />
+          <DownloadSection />
+          <ConfigSection />
+        </main>
+        <BackToTop />
+      </div>
+    </ThemeProvider>
   );
 };
 

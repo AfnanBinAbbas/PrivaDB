@@ -2,54 +2,57 @@
   "crawl_summary": {
     "total_sites_analyzed": 1,
     "sites_with_indexeddb": 1,
-    "total_databases_found": 10,
-    "total_records_extracted": 25
+    "total_databases_found": 3,
+    "total_records_extracted": 21
   },
   "detection_summary": {
-    "total_potential_identifiers": 664,
-    "total_exfiltration_events": 19,
+    "total_potential_identifiers": 138,
+    "total_exfiltration_events": 17,
     "third_party_exfiltrations": 1,
-    "known_tracker_exfiltrations": 19,
+    "known_tracker_exfiltrations": 0,
     "total_inflow_flows": 0,
     "sites_with_inflow_flows": 0
   },
   "confidence_breakdown": {
-    "high": 1,
-    "medium": 18,
-    "low": 0
+    "high": 0,
+    "medium": 1,
+    "low": 16
   },
   "site_classification": {
     "sites_with_any_exfiltration": 1,
-    "sites_with_high_confidence_tracking": 1
+    "sites_with_high_confidence_tracking": 0
   },
   "top_tracker_domains": {
-    "fonts.gstatic.com": 1
+    "www.google-analytics.com": 1
   },
   "identifier_type_distribution": {
-    "idb_value": 18,
-    "idb_key:url": 1
+    "idb_key:location": 8,
+    "idb_key:key": 4,
+    "idb_key:entryPoint": 3,
+    "idb_key:locationId": 1,
+    "idb_key:operation": 1
   },
   "paper_metrics": {
     "overview": {
       "total_sites": 1,
       "sites_with_idb": 1,
       "pct_sites_with_idb": 100.0,
-      "total_flows": 19,
-      "outflow_flows": 19,
+      "total_flows": 17,
+      "outflow_flows": 17,
       "inflow_flows": 0
     },
     "table_iii_confinement": {
       "internal": {
-        "outflow": 18,
+        "outflow": 16,
         "inflow": 0,
-        "total": 18,
-        "pct_of_total": 94.7
+        "total": 16,
+        "pct_of_total": 94.1
       },
       "external": {
         "outflow": 1,
         "inflow": 0,
         "total": 1,
-        "pct_of_total": 5.3
+        "pct_of_total": 5.9
       }
     },
     "table_iv_external_breakdown": {
@@ -61,26 +64,25 @@
       },
       "cross_site": {
         "outflow": 1,
-        "tracking": 1,
-        "non_tracking": 0,
+        "tracking": 0,
+        "non_tracking": 1,
         "pct_of_external": 100.0
       }
     },
     "tracking_classification": {
-      "outflow_tracking": 19,
-      "outflow_non_tracking": 0,
+      "outflow_tracking": 0,
+      "outflow_non_tracking": 17,
       "inflow_tracking": 0,
       "inflow_non_tracking": 0,
-      "pct_outflow_tracking": 100.0,
-      "pct_external_tracking": 100.0
+      "pct_outflow_tracking": 0.0,
+      "pct_external_tracking": 0.0
     },
     "sink_distribution": {
-      "network": 19
+      "network": 17
     },
     "source_distribution": {},
     "top_databases": {
-      "yt-serviceworker-metadata": 18,
-      "yt-it-response-store:Vc44c9b76||": 1
+      "default": 17
     }
   }
 }
