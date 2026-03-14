@@ -1,0 +1,4543 @@
+{
+  "url": "https://overleaf.com",
+  "domain": "overleaf.com",
+  "timestamp": "2026-03-14T21:09:25.575548Z",
+  "iterations": [
+    {
+      "url": "https://overleaf.com",
+      "domain": "overleaf.com",
+      "timestamp": "2026-03-14T21:09:25.575548Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 308
+          }
+        },
+        {
+          "url": "https://www.overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/en-json-4a1cd6656b997faacbcb.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.recaptcha.net/recaptcha/api.js?render=explicit",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_google.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_orcid.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/adobe-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/chinese-uni-hong-kong.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/cern-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/samsung-logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/caltech.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/toshiba-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/arrow-green.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/lightning-yellow.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-right.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/commenting.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/collaborate-purple.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/material-icons/star-gradient.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/advanced-reference-search-asset.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/books-pink.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/advocates/collins.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/rocket-yellow-medium.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-journal.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-outward.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-report.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-presentation.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-2a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-3a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-1.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/runtime-500dfa0bdf8c70ff4d45.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7582-aff640acb68d6297d6a1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5214-925d7d0723e09cc4bed7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/8732-61de629a6fc4a719a5e1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1229-159bc67c15781745a601.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/bootstrap-ca3d472c362809498e35.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2382-84ee386517c8f6bc04ac.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/3958-4e0574e09fdc6c328fb2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5250-1a549b07c43bd5b458fa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/9612-ea5723eb0a6a9aabd0c5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/4686-861a42ffc686a61b426a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/6348-67874eb8f2110fcea658.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7519-223f72d74c189ee1ef05.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1164-57c4b7e55ea8c193937f.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7474-746e19e241369e799aa1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2439-bfbabedb411e57731153.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/pages/marketing/homepage-4eba374cdfa4525f73db.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/tracking-a8521fc28a7f7dd6b42a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/linkedin-insight-645fd0e483dd5321d22d.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKCyjBw2xIzFLIf/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-green-c9aabd0b98bdbcc32972.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-green-circle-6162ffae581e52f3c441.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-blue-circle-65e0824e593d7523bacc.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-pattern-purple-caf28131e23c91db3926.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Regular-47b1593ad8faa986dd1c.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Regular-273ac7021a4cd8b7c9fd.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Italic-dec2eaedf02cc2ff3d58.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBold-a38658cc126f57ba4818.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/MaterialSymbolsRoundedSlice-45c06e76d556ef6c554f.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Medium-e9b45bc8c4c731b18840.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBoldItalic-991a5a8997d29d4d3e94.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/favicon.svg",
+          "method": "GET",
+          "resource_type": "other",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://overleaf.com",
+      "domain": "overleaf.com",
+      "timestamp": "2026-03-14T21:09:41.739294Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 308
+          }
+        },
+        {
+          "url": "https://www.overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/en-json-4a1cd6656b997faacbcb.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.recaptcha.net/recaptcha/api.js?render=explicit",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_google.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_orcid.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/adobe-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/chinese-uni-hong-kong.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/cern-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/samsung-logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/caltech.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/toshiba-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/arrow-green.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/lightning-yellow.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-right.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/commenting.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/collaborate-purple.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/material-icons/star-gradient.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/advanced-reference-search-asset.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/books-pink.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/advocates/collins.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/rocket-yellow-medium.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-journal.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-outward.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-report.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-presentation.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-2a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-3a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-1.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/runtime-500dfa0bdf8c70ff4d45.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7582-aff640acb68d6297d6a1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5214-925d7d0723e09cc4bed7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/8732-61de629a6fc4a719a5e1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1229-159bc67c15781745a601.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/bootstrap-ca3d472c362809498e35.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2382-84ee386517c8f6bc04ac.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/3958-4e0574e09fdc6c328fb2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5250-1a549b07c43bd5b458fa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/9612-ea5723eb0a6a9aabd0c5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/4686-861a42ffc686a61b426a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/6348-67874eb8f2110fcea658.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7519-223f72d74c189ee1ef05.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1164-57c4b7e55ea8c193937f.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7474-746e19e241369e799aa1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2439-bfbabedb411e57731153.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/pages/marketing/homepage-4eba374cdfa4525f73db.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/tracking-a8521fc28a7f7dd6b42a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/linkedin-insight-645fd0e483dd5321d22d.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-green-c9aabd0b98bdbcc32972.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Regular-47b1593ad8faa986dd1c.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Regular-273ac7021a4cd8b7c9fd.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Italic-dec2eaedf02cc2ff3d58.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKCyjBw2xIzFLIf/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-green-circle-6162ffae581e52f3c441.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-blue-circle-65e0824e593d7523bacc.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-pattern-purple-caf28131e23c91db3926.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBold-a38658cc126f57ba4818.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/MaterialSymbolsRoundedSlice-45c06e76d556ef6c554f.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Medium-e9b45bc8c4c731b18840.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBoldItalic-991a5a8997d29d4d3e94.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=294912-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=229376-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=305002-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=233643-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=98304-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/favicon.svg",
+          "method": "GET",
+          "resource_type": "other",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://overleaf.com",
+      "domain": "overleaf.com",
+      "timestamp": "2026-03-14T21:09:56.613584Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 308
+          }
+        },
+        {
+          "url": "https://www.overleaf.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/en-json-4a1cd6656b997faacbcb.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.recaptcha.net/recaptcha/api.js?render=explicit",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_google.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/other-brands/logo_orcid.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/adobe-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/chinese-uni-hong-kong.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/cern-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/samsung-logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/caltech.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/crests/toshiba-logo.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/arrow-green.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/lightning-yellow.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-right.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/commenting.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/collaborate-purple.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/material-icons/star-gradient.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/advanced-reference-search-asset.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/books-pink.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/advocates/collins.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/stickers/rocket-yellow-medium.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator-poster.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-journal.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-outward.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-report.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/template-presentation.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-2a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-3a.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-1.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/runtime-500dfa0bdf8c70ff4d45.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7582-aff640acb68d6297d6a1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5214-925d7d0723e09cc4bed7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/8732-61de629a6fc4a719a5e1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1229-159bc67c15781745a601.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/bootstrap-ca3d472c362809498e35.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2382-84ee386517c8f6bc04ac.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/3958-4e0574e09fdc6c328fb2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/5250-1a549b07c43bd5b458fa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/9612-ea5723eb0a6a9aabd0c5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/4686-861a42ffc686a61b426a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/6348-67874eb8f2110fcea658.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7519-223f72d74c189ee1ef05.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/1164-57c4b7e55ea8c193937f.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/7474-746e19e241369e799aa1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/2439-bfbabedb411e57731153.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/pages/marketing/homepage-4eba374cdfa4525f73db.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/tracking-a8521fc28a7f7dd6b42a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/js/linkedin-insight-645fd0e483dd5321d22d.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKCyjBw2xIzFLIf/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-green-c9aabd0b98bdbcc32972.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-green-circle-6162ffae581e52f3c441.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/check-in-blue-circle-65e0824e593d7523bacc.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/images/overleaf-pattern-purple-caf28131e23c91db3926.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Regular-47b1593ad8faa986dd1c.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Regular-273ac7021a4cd8b7c9fd.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-Italic-dec2eaedf02cc2ff3d58.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBold-a38658cc126f57ba4818.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/MaterialSymbolsRoundedSlice-45c06e76d556ef6c554f.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/DMMono-Medium-e9b45bc8c4c731b18840.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBoldItalic-991a5a8997d29d4d3e94.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.overleaf.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/img/website-redesign/table-generator.mp4",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://cdn.overleaf.com/favicon.svg",
+          "method": "GET",
+          "resource_type": "other",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.overleaf.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://overleaf.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 308
+      }
+    },
+    {
+      "url": "https://www.overleaf.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/en-json-4a1cd6656b997faacbcb.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.recaptcha.net/recaptcha/api.js?render=explicit",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/other-brands/logo_google.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/other-brands/logo_orcid.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video-poster.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/adobe-logo.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/chinese-uni-hong-kong.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/cern-logo.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/samsung-logo.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/caltech.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/crests/toshiba-logo.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/arrow-green.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor-poster.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/stickers/lightning-yellow.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-right.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/commenting.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/stickers/collaborate-purple.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/material-icons/star-gradient.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/advanced-reference-search-asset.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/stickers/books-pink.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/advocates/collins.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/stickers/rocket-yellow-medium.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/table-generator-poster.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/template-journal.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/material-symbols-arrow-outward.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/template-report.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/template-presentation.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-2a.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-3a.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/customer-stories-1.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/runtime-500dfa0bdf8c70ff4d45.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/7582-aff640acb68d6297d6a1.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/5214-925d7d0723e09cc4bed7.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/8732-61de629a6fc4a719a5e1.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/1229-159bc67c15781745a601.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/bootstrap-ca3d472c362809498e35.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/2382-84ee386517c8f6bc04ac.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/3958-4e0574e09fdc6c328fb2.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/5250-1a549b07c43bd5b458fa.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/9612-ea5723eb0a6a9aabd0c5.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/4686-861a42ffc686a61b426a.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/6348-67874eb8f2110fcea658.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/7519-223f72d74c189ee1ef05.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/1164-57c4b7e55ea8c193937f.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/7474-746e19e241369e799aa1.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/2439-bfbabedb411e57731153.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/pages/marketing/homepage-4eba374cdfa4525f73db.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/tracking-a8521fc28a7f7dd6b42a.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/js/linkedin-insight-645fd0e483dd5321d22d.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKCyjBw2xIzFLIf/recaptcha__en.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/images/overleaf-green-c9aabd0b98bdbcc32972.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/images/check-in-green-circle-6162ffae581e52f3c441.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/images/check-in-blue-circle-65e0824e593d7523bacc.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/images/overleaf-pattern-purple-caf28131e23c91db3926.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/NotoSans-Regular-47b1593ad8faa986dd1c.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/DMMono-Regular-273ac7021a4cd8b7c9fd.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/NotoSans-Italic-dec2eaedf02cc2ff3d58.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBold-a38658cc126f57ba4818.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/MaterialSymbolsRoundedSlice-45c06e76d556ef6c554f.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/DMMono-Medium-e9b45bc8c4c731b18840.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/fonts/NotoSans-SemiBoldItalic-991a5a8997d29d4d3e94.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.overleaf.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://cdn.overleaf.com/stylesheets/main-style-b35b58d778aecfd764bd.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/editor-pdf-video.mp4",
+      "method": "GET",
+      "resource_type": "media",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "accept-encoding": "identity;q=1, *;q=0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "range": "bytes=0-",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 206
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/visual-editor.mp4",
+      "method": "GET",
+      "resource_type": "media",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "accept-encoding": "identity;q=1, *;q=0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "range": "bytes=0-",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 206
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/img/website-redesign/table-generator.mp4",
+      "method": "GET",
+      "resource_type": "media",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "accept-encoding": "identity;q=1, *;q=0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "range": "bytes=0-",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 206
+      }
+    },
+    {
+      "url": "https://cdn.overleaf.com/favicon.svg",
+      "method": "GET",
+      "resource_type": "other",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.overleaf.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": []
+}
