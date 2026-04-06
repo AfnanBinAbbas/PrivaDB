@@ -240,6 +240,13 @@ Input file formats:
         action="store_true",
         help="Run full automated pipeline (implies --overwrite and --output=output_detectonly_500.txt)",
     )
+    parser.add_argument(
+        "--engine",
+        type=str,
+        choices=["chrome", "foxhound"],
+        default="chrome",
+        help="Browser engine to use for scanning (chrome or foxhound/firefox)",
+    )
     return parser.parse_args()
 
 
@@ -252,6 +259,8 @@ def main():
         config.HEADLESS = False
     if args.iterations is not None:
         config.CRAWL_ITERATIONS = args.iterations
+    
+    config.ENGINE = args.engine
 
     if args.all:
         args.overwrite = True
@@ -265,87 +274,86 @@ def main():
         sys.stdout = tee
 
     try:
-        # ── Check for existing results ───────────────────────────────────
-    # ── Check for existing results (Automated mode bypasses prompt) ──
-    results_exist = (
-        os.path.exists(os.path.join(config.ANALYSIS_DIR, "summary.json"))
-        or os.path.exists(os.path.join(config.ANALYSIS_DIR, "statistics.json"))
-        or os.path.exists(os.path.join(config.ANALYSIS_DIR, "tracking_events.csv"))
-    )
-
-    if results_exist and not args.all:
-        if args.no_overwrite:
-            print("\n⚠️  Existing results found. --no-overwrite set, skipping.\n")
-            return
-        elif not args.overwrite:
-            print("\n⚠️  Existing results found in:", config.ANALYSIS_DIR)
-            answer = input("   Overwrite? [y/N]: ").strip().lower()
-            if answer not in ("y", "yes"):
-                print("\n❌ Aborted.\n")
-                return
-        print("   ✅ Overwriting results...\n")
-
-    # Ensure results directory exists (for log file)
-    os.makedirs(config.RESULTS_DIR, exist_ok=True)
-    setup_logging()
-
-    logger = logging.getLogger(__name__)
-
-    print("\n" + "=" * 70)
-    print("  IndexedDB DYNAMIC TAINT ANALYSIS PIPELINE")
-    print("  FYP: Detecting Persistent Web Tracking via IndexedDB")
-    print("=" * 70 + "\n")
-
-    # ── Load custom sites (Direct URL takes precedence) ──────────────
-    custom_sites = None
-    if args.url:
-        custom_sites = [{"url": args.url, "reason": "User requested scan"}]
-    elif args.input_file:
-        custom_sites = load_sites_from_file(args.input_file)
-
-    # ── Phase 1: Crawl ──────────────────────────────────────────────
-    if not args.detect_only:
-        print("━" * 70)
-        print("  PHASE 1: CRAWLING TARGET SITES")
-        print("━" * 70)
-
-        from crawler import crawl_all_sites
-        crawled_data = asyncio.run(
-            crawl_all_sites(site_limit=args.sites, custom_sites=custom_sites)
+        # ── Check for existing results (Automated mode bypasses prompt) ──
+        results_exist = (
+            os.path.exists(os.path.join(config.ANALYSIS_DIR, "summary.json"))
+            or os.path.exists(os.path.join(config.ANALYSIS_DIR, "statistics.json"))
+            or os.path.exists(os.path.join(config.ANALYSIS_DIR, "tracking_events.csv"))
         )
-        logger.info(f"Phase 1 complete: {len(crawled_data)} sites crawled")
 
-        if args.crawl_only:
-            print(f"\n✅ Crawl complete. Raw data saved to {config.RAW_DATA_DIR}/")
-            print("   Run `python main.py --detect-only` to analyze.\n")
-            return
+        if results_exist and not args.all:
+            if args.no_overwrite:
+                print("\n⚠️  Existing results found. --no-overwrite set, skipping.\n")
+                return
+            elif not args.overwrite:
+                print("\n⚠️  Existing results found in:", config.ANALYSIS_DIR)
+                answer = input("   Overwrite? [y/N]: ").strip().lower()
+                if answer not in ("y", "yes"):
+                    print("\n❌ Aborted.\n")
+                    return
+            print("   ✅ Overwriting results...\n")
 
-    # ── Phase 2: Detect ─────────────────────────────────────────────
-    print("\n" + "━" * 70)
-    print("  PHASE 2: TRACKING DETECTION & TAINT ANALYSIS")
-    print("━" * 70)
+        # Ensure results directory exists (for log file)
+        os.makedirs(config.RESULTS_DIR, exist_ok=True)
+        setup_logging()
 
-    from detector import analyze_all_sites
+        logger = logging.getLogger(__name__)
 
-    # When running full pipeline, only analyze the sites we just crawled
-    if not args.detect_only:
-        crawled_files = []
-        for cd in crawled_data:
-            safe = cd["domain"].replace(".", "_").replace("/", "_")
-            crawled_files.append(f"{safe}.json")
-        analysis_results = analyze_all_sites(only_files=crawled_files)
-    else:
-        analysis_results = analyze_all_sites(site_limit=args.sites)
-    logger.info(f"Phase 2 complete: {len(analysis_results)} sites analyzed")
+        print("\n" + "=" * 70)
+        print("  IndexedDB DYNAMIC TAINT ANALYSIS PIPELINE")
+        print("  FYP: Detecting Persistent Web Tracking via IndexedDB")
+        print("=" * 70 + "\n")
 
-    # ── Phase 3: Report ─────────────────────────────────────────────
-    print("\n" + "━" * 70)
-    print("  PHASE 3: GENERATING REPORTS")
-    print("━" * 70)
+        # ── Load custom sites (Direct URL takes precedence) ──────────────
+        custom_sites = None
+        if args.url:
+            custom_sites = [{"url": args.url, "reason": "User requested scan"}]
+        elif args.input_file:
+            custom_sites = load_sites_from_file(args.input_file)
 
-    from reporter import generate_reports
-    generate_reports(analysis_results)
-    logger.info("Phase 3 complete: reports generated")
+        # ── Phase 1: Crawl ──────────────────────────────────────────────
+        if not args.detect_only:
+            print("━" * 70)
+            print("  PHASE 1: CRAWLING TARGET SITES")
+            print("━" * 70)
+
+            from crawler import crawl_all_sites
+            crawled_data = asyncio.run(
+                crawl_all_sites(site_limit=args.sites, custom_sites=custom_sites)
+            )
+            logger.info(f"Phase 1 complete: {len(crawled_data)} sites crawled")
+
+            if args.crawl_only:
+                print(f"\n✅ Crawl complete. Raw data saved to {config.RAW_DATA_DIR}/")
+                print("   Run `python main.py --detect-only` to analyze.\n")
+                return
+
+        # ── Phase 2: Detect ─────────────────────────────────────────────
+        print("\n" + "━" * 70)
+        print("  PHASE 2: TRACKING DETECTION & TAINT ANALYSIS")
+        print("━" * 70)
+
+        from detector import analyze_all_sites
+
+        # When running full pipeline, only analyze the sites we just crawled
+        if not args.detect_only:
+            crawled_files = []
+            for cd in crawled_data:
+                safe = cd["domain"].replace(".", "_").replace("/", "_")
+                crawled_files.append(f"{safe}.json")
+            analysis_results = analyze_all_sites(only_files=crawled_files)
+        else:
+            analysis_results = analyze_all_sites(site_limit=args.sites)
+        logger.info(f"Phase 2 complete: {len(analysis_results)} sites analyzed")
+
+        # ── Phase 3: Report ─────────────────────────────────────────────
+        print("\n" + "━" * 70)
+        print("  PHASE 3: GENERATING REPORTS")
+        print("━" * 70)
+
+        from reporter import generate_reports
+        generate_reports(analysis_results)
+        logger.info("Phase 3 complete: reports generated")
 
     except Exception as e:
         logger.exception(f"Pipeline failed: {e}")

@@ -1,0 +1,2854 @@
+{
+  "url": "https://instgram.com",
+  "domain": "instgram.com",
+  "timestamp": "2026-03-16T16:33:08.726491Z",
+  "iterations": [
+    {
+      "url": "https://instgram.com",
+      "domain": "instgram.com",
+      "timestamp": "2026-03-16T16:33:08.726491Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://instgram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/XpnBUoxX61b.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iEah4/yr/l/en_US/rw0H-RxigsP71wDvpLc_BpQKPwfW0wN-q7odNDboPV5nehijy5uSwSBn7MFhqg_zkseO1JshF54hnUfxHcaC_j66O-sybUOyzyP07O4uAuHMZyBSaV-S7OueDLAAXUtRnPF5OV64OA8PraPmMM4mfsnKiaA8ohO-dKm4-DGHqdGQHlOTozoFpj-99G3-Qx8lcabVTDTcjqCtge5-3tV1r_PYQYK34goP7SPeCQmxhceZaR68thOl6Gkjq0OVecPlfAVsTAuutH3iYDnxqqKmM_5UvGYKn4iOEa-p5ZBFNZTFDSp4bWABAdmh5DEndjkKeHWrECl3_n.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i4Uw4/yO/l/en_US/8WEkGIvKMAr1Cid1sndgkjErTzbT4f72ES-M_jXTcKk70mLK0W1KRs0C0PCCUbyZQGubrtmxwGhuYfvxKOHuYpeaXI_N9oAvywR5FDhc9EbOmMML5LCw53UzMzz7eu9sWHtRfEXKxzJbolxQ-FRvAr89j5nKT27nlziOWiPZjtK7UOltBRUvYjpX7BttCVlnGGCyGVD5OujTe3i1q2PYLIRcoPW5gJB8B0_0LGN_DQo6mNz8dfGgrOC4x-kbFaRw6qBIN2G97mttmLnTYuaqXwIb33oy_qxz0eN0cHM4gBB9JZKEX85kX06DbxYlBjhBdCoY_9Rb-Z.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iANw4/yQ/l/en_US/R6t6pQUNgK3p2SXbTlYNNLCAGRfKSAZulfroGKZWXQiysHiV1TN4pyV.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iHoi4/yS/l/en_US/F04cOF53Y5bmese8PpaA6YJc7QuFXPg6n0BkYCuTCuC4tkm7uJE2Fl5ziu8fjvIasuZl7zCKqKqex0XJwbaX5ZELUcr6BPouu8FNHdJW5_aAkh3hnHYCsAoGkSS1OrajkDar.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iipA4/yY/l/en_US/3nGyiUucgch.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iSJY4/yo/l/en_US/2B0hVfoz2LY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yG/r/qL-ucaidLwK.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/rMo34BkJyVa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/qm/?__a=1&__user=0&__comet_req=7&jazoest=22339",
+          "method": "POST",
+          "resource_type": "ping",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iIgB4/yq/l/en_US/itz50VpBfbqofZrrwu4HQno09QztpxWyXc6PGcICelYW3Ru8PsDrxvpYq6Fd6gEz_lYAOZevfHpBfH8fXubXrXDwgHpTE7hBo7wg0JOHOiNhzWb15wyXBMTiCVO_akAwWY47cryhTXj3XtI-3ryxnPkQf-0HOuJU6Ig3X4FwoEVDEI8Pcv7KJOaKtAQV1KRlBoaO5oXAqzp11_JpCaLA1WIWi4TiaPQ8dLpAYFLPq6t1wY9IZRJJDchOYIvREH21Qd9wECYQlpXUvGTU60v.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4inh_4/y0/l/en_US/fknyPRau9DUn8C_lYC54PSUyqn4HN5yKD9-dBS8IpxGApN5w4Bus86wI3XLoYQF64vbT-ICGdBdq7m7jIGEKxx_63Nc30dHCikm-Q6aNodDiMDZEoStQUE_H7ljm3-YU31E-Nvnmk7jwSVrzE4xYn60F-AaMkd1CPMwg_6BzgyT8wIXeTjjJUNSMOrBraTw8LD94AUXRwDHCkV8R1HmTeYzr6srgonn-JtdZ7PJ775NzKCi2ScrsOfCedTPWK7a817LCfIEJxYiBYz5S8KjCFM-z_0Q2ncATCB6ghfjDQwNPdLlL_jGYNh9-DZBIN8j5Wu6jBGHRQa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/yh/l/0,cross/g8T_6-Yirbb.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/yR/r/92ZsVHNkyvf.webp",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=1&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryDnTJsatPCOAjhBg6",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundaryDnTJsatPCOAjhBg6\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678794275\r\n------WebKitFormBoundaryDnTJsatPCOAjhBg6\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:ig_web_page_view\",{\"e\":\"{\\\"module\\\":\\\"CAAIGLoginHomepage\\\",\\\"nav_chain\\\":\\\"CAAIGLoginHomepageRoot:CAAIGLoginHomepage:1:via_cold_start\\\",\\\"referrer\\\":\\\"\\\",\\\"url\\\":\\\"https://www.instagram.com/\\\",\\\"web_analytics_session_id\\\":\\\"xp80t0:dk7n5i:wf1fsp\\\"}\",\"r\":1,\"d\":\"$^|ARtrgilTAw992cN4bwqjnRtvQbzz6jHR7g57dHg9q4uzG8ZgzQo9IGmr6iAzBxfP6D-_PsgJc7WhUZ-jw2YJ1xYxL-uOg4c|53C9D096-EDE5-488A-8B48-7DA05DF16EE6\",\"s\":\"0jnjk4:yqjkny:4bz344\",\"t\":1773678794274.5,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678794275.7,0,468]],\"trigger\":\"falco:ig_web_page_view\",\"user\":\"0\",\"webSessionId\":\"0jnjk4:yqjkny:4bz344\"}]\r\n------WebKitFormBoundaryDnTJsatPCOAjhBg6--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/y9/r/1GOXakOP6QP.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/yQ/r/-pkMfchyeAZ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i1Aq4/yy/l/en_US/oJedFJzQPDEzMur9QKaFBwh3zsi1CQIOP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iNW_4/yf/l/en_US/9AfE1AC6b9I.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yX/r/od3B5IaO83T.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4idBq4/ye/l/en_US/rwXNf31RJQG.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/YEaf-Lij1O9.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iLpP4/yH/l/en_US/Q1GI90xBHSz.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yu/r/Tq8n_f_tNJP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yP/r/rrCxjEFdRGj.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=2&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_info/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_obid/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Faccounts%2Fpassword%2Freset%2F&route_urls[1]=%2Faccounts%2Femailsignup%2F%3Fnext%3D&route_urls[2]=%2Flegal%2Fprivacy%2F&route_urls[3]=%2Flegal%2Fterms%2F&route_urls[4]=%2Fexplore%2Flocations%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=3&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Fweb%2Flite%2F&route_urls[1]=%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=4&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=5&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3&qpl_active_flow_ids=175125627",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryk4MATcHdUEp6bMwB",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundaryk4MATcHdUEp6bMwB\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678794855\r\n------WebKitFormBoundaryk4MATcHdUEp6bMwB\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:bd_pdc_signals\",{\"e\":\"{\\\"asid\\\":\\\"aa9da2ce-d505-4d2d-9b89-90e44349bb11\\\",\\\"ct\\\":1773678791,\\\"sjd\\\":\\\"ERsoAM7LKeyCKSSin5k/pEjesSU5C+Tt786iXKXJomfghMYe58mJp8d/k+4OvgoJlfcw2svKiX35e10UOijeKqmt22RBEJBQrgIzTiAH92/TYZy8PtCdTIaiPtNRhVSb0rH0NK77NgPPWJmS9RgShhdLKRH5KQkK\\\",\\\"sid\\\":-1}\",\"r\":1,\"d\":\"$^|ARtrgilTAw992cN4bwqjnRtvQbzz6jHR7g57dHg9q4uzG8ZgzQo9IGmr6iAzBxfP6D-_PsgJc7WhUZ-jw2YJ1xYxL-uOg4c|53C9D096-EDE5-488A-8B48-7DA05DF16EE6\",\"s\":\"0jnjk4:yqjkny:4bz344\",\"t\":1773678794855.3,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678794855.5,0,498]],\"trigger\":\"falco:bd_pdc_signals\",\"user\":\"0\",\"webSessionId\":\"0jnjk4:yqjkny:4bz344\"}]\r\n------WebKitFormBoundaryk4MATcHdUEp6bMwB--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/K_FxaGS9D14.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/mrkP-U_R5Ue.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yy/r/reYyb-SSn4k.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=6&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3&qpl_active_flow_ids=175125627",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryvEYh2ixJ1SULljBD",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=7&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundarygR8FQsb5vPvlh3YU",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://instgram.com",
+      "domain": "instgram.com",
+      "timestamp": "2026-03-16T16:33:23.886566Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://instgram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/qm/?__a=1&__user=0&__comet_req=7&jazoest=22408",
+          "method": "POST",
+          "resource_type": "ping",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/XpnBUoxX61b.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iEah4/yr/l/en_US/rw0H-RxigsP71wDvpLc_BpQKPwfW0wN-q7odNDboPV5nehijy5uSwSBn7MFhqg_zkseO1JshF54hnUfxHcaC_j66O-sybUOyzyP07O4uAuHMZyBSaV-S7OueDLAAXUtRnPF5OV64OA8PraPmMM4mfsnKiaA8ohO-dKm4-DGHqdGQHlOTozoFpj-99G3-Qx8lcabVTDTcjqCtge5-3tV1r_PYQYK34goP7SPeCQmxhceZaR68thOl6Gkjq0OVecPlfAVsTAuutH3iYDnxqqKmM_5UvGYKn4iOEa-p5ZBFNZTFDSp4bWABAdmh5DEndjkKeHWrECl3_n.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i4Uw4/yO/l/en_US/8WEkGIvKMAr1Cid1sndgkjErTzbT4f72ES-M_jXTcKk70mLK0W1KRs0C0PCCUbyZQGubrtmxwGhuYfvxKOHuYpeaXI_N9oAvywR5FDhc9EbOmMML5LCw53UzMzz7eu9sWHtRfEXKxzJbolxQ-FRvAr89j5nKT27nlziOWiPZjtK7UOltBRUvYjpX7BttCVlnGGCyGVD5OujTe3i1q2PYLIRcoPW5gJB8B0_0LGN_DQo6mNz8dfGgrOC4x-kbFaRw6qBIN2G97mttmLnTYuaqXwIb33oy_qxz0eN0cHM4gBB9JZKEX85kX06DbxYlBjhBdCoY_9Rb-Z.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iANw4/yQ/l/en_US/R6t6pQUNgK3p2SXbTlYNNLCAGRfKSAZulfroGKZWXQiysHiV1TN4pyV.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iHoi4/yS/l/en_US/F04cOF53Y5bmese8PpaA6YJc7QuFXPg6n0BkYCuTCuC4tkm7uJE2Fl5ziu8fjvIasuZl7zCKqKqex0XJwbaX5ZELUcr6BPouu8FNHdJW5_aAkh3hnHYCsAoGkSS1OrajkDar.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iipA4/yY/l/en_US/3nGyiUucgch.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iSJY4/yo/l/en_US/2B0hVfoz2LY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yG/r/qL-ucaidLwK.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/rMo34BkJyVa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iIgB4/yq/l/en_US/itz50VpBfbqofZrrwu4HQno09QztpxWyXc6PGcICelYW3Ru8PsDrxvpYq6Fd6gEz_lYAOZevfHpBfH8fXubXrXDwgHpTE7hBo7wg0JOHOiNhzWb15wyXBMTiCVO_akAwWY47cryhTXj3XtI-3ryxnPkQf-0HOuJU6Ig3X4FwoEVDEI8Pcv7KJOaKtAQV1KRlBoaO5oXAqzp11_JpCaLA1WIWi4TiaPQ8dLpAYFLPq6t1wY9IZRJJDchOYIvREH21Qd9wECYQlpXUvGTU60v.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4inh_4/y0/l/en_US/fknyPRau9DUn8C_lYC54PSUyqn4HN5yKD9-dBS8IpxGApN5w4Bus86wI3XLoYQF64vbT-ICGdBdq7m7jIGEKxx_63Nc30dHCikm-Q6aNodDiMDZEoStQUE_H7ljm3-YU31E-Nvnmk7jwSVrzE4xYn60F-AaMkd1CPMwg_6BzgyT8wIXeTjjJUNSMOrBraTw8LD94AUXRwDHCkV8R1HmTeYzr6srgonn-JtdZ7PJ775NzKCi2ScrsOfCedTPWK7a817LCfIEJxYiBYz5S8KjCFM-z_0Q2ncATCB6ghfjDQwNPdLlL_jGYNh9-DZBIN8j5Wu6jBGHRQa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/yh/l/0,cross/g8T_6-Yirbb.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yt/r/pAv7hjq-51n.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892475803307828&__req=1&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678808&__user=0&dpr=1&jazoest=22408&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryHTQ76xYBiBRNvdfu",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundaryHTQ76xYBiBRNvdfu\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678810383\r\n------WebKitFormBoundaryHTQ76xYBiBRNvdfu\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:ig_web_page_view\",{\"e\":\"{\\\"module\\\":\\\"CAAIGLoginHomepage\\\",\\\"nav_chain\\\":\\\"CAAIGLoginHomepageRoot:CAAIGLoginHomepage:1:via_cold_start\\\",\\\"referrer\\\":\\\"\\\",\\\"url\\\":\\\"https://www.instagram.com/\\\",\\\"web_analytics_session_id\\\":\\\"tpri1f:knhbb1:f4tuq1\\\"}\",\"r\":1,\"d\":\"$^|ARsKhFRzIhOr-nI4sZUqGDo4opGrq12BjUDyZvZjck8XCVvY-ECxa7Jub3l_B5M7RArkoYf4LQYTz1hPn5wQxFlZv9pEisuc2Q|ACD000BF-B774-45B6-877F-3C85D3EB7117\",\"s\":\"yfejn0:y89c9m:hbwl6w\",\"t\":1773678810381.8,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678810383.1,0,471]],\"trigger\":\"falco:ig_web_page_view\",\"user\":\"0\",\"webSessionId\":\"yfejn0:y89c9m:hbwl6w\"}]\r\n------WebKitFormBoundaryHTQ76xYBiBRNvdfu--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/y9/r/1GOXakOP6QP.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/yQ/r/-pkMfchyeAZ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i1Aq4/yy/l/en_US/oJedFJzQPDEzMur9QKaFBwh3zsi1CQIOP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iNW_4/yf/l/en_US/9AfE1AC6b9I.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yX/r/od3B5IaO83T.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4idBq4/ye/l/en_US/rwXNf31RJQG.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/YEaf-Lij1O9.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iLpP4/yH/l/en_US/Q1GI90xBHSz.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yu/r/Tq8n_f_tNJP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yP/r/rrCxjEFdRGj.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=2&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__hsi=7617892475803307828&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&jazoest=22408&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678808&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_info/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_obid/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Faccounts%2Fpassword%2Freset%2F&route_urls[1]=%2Faccounts%2Femailsignup%2F%3Fnext%3D&route_urls[2]=%2Flegal%2Fprivacy%2F&route_urls[3]=%2Flegal%2Fterms%2F&route_urls[4]=%2Fexplore%2Flocations%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=3&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__hsi=7617892475803307828&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&jazoest=22408&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678808&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Fweb%2Flite%2F&route_urls[1]=%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=4&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__hsi=7617892475803307828&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&jazoest=22408&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678808&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892475803307828&__req=5&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678808&__user=0&dpr=1&jazoest=22408&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&ph=C3&qpl_active_flow_ids=175125627",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryG08dDgp0r7a2AIau",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundaryG08dDgp0r7a2AIau\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678810840\r\n------WebKitFormBoundaryG08dDgp0r7a2AIau\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:bd_pdc_signals\",{\"e\":\"{\\\"asid\\\":\\\"04b386cf-a5ee-4427-96d3-b0504ec68a9f\\\",\\\"ct\\\":1773678808,\\\"sjd\\\":\\\"8xNryh/NBIa8p6YAxD87Hto0seBu2OG3AmHvBwv+vypRvqXyrzJPObhMNMb2i8+R2hkiueGnBFtoTEXCAfK9oRZAK1eSUPD1CcHACKROnMrnlH1kzHJzdrVnXA0vjg42Cg1X/OVPWjaLz/h2GhGtmrp+R+6XE/AD\\\",\\\"sid\\\":-1}\",\"r\":1,\"d\":\"$^|ARsKhFRzIhOr-nI4sZUqGDo4opGrq12BjUDyZvZjck8XCVvY-ECxa7Jub3l_B5M7RArkoYf4LQYTz1hPn5wQxFlZv9pEisuc2Q|ACD000BF-B774-45B6-877F-3C85D3EB7117\",\"s\":\"yfejn0:y89c9m:hbwl6w\",\"t\":1773678810840.2,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678810840.3,0,501]],\"trigger\":\"falco:bd_pdc_signals\",\"user\":\"0\",\"webSessionId\":\"yfejn0:y89c9m:hbwl6w\"}]\r\n------WebKitFormBoundaryG08dDgp0r7a2AIau--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/mrkP-U_R5Ue.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yy/r/reYyb-SSn4k.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/K_FxaGS9D14.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892475803307828&__req=6&__rev=1035230703&__s=yfejn0%3Ay89c9m%3Ahbwl6w&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678808&__user=0&dpr=1&jazoest=22408&lsd=AdRCqrqa2fPrR31MQsDdebGUlns&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdRCqrqa2fPrR31MQsDdebGUlns",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundarylRLUzEYvUJAf4iYA",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://instgram.com",
+      "domain": "instgram.com",
+      "timestamp": "2026-03-16T16:33:41.152581Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://instgram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/qm/?__a=1&__user=0&__comet_req=7&jazoest=22363",
+          "method": "POST",
+          "resource_type": "ping",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/XpnBUoxX61b.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iEah4/yr/l/en_US/rw0H-RxigsP71wDvpLc_BpQKPwfW0wN-q7odNDboPV5nehijy5uSwSBn7MFhqg_zkseO1JshF54hnUfxHcaC_j66O-sybUOyzyP07O4uAuHMZyBSaV-S7OueDLAAXUtRnPF5OV64OA8PraPmMM4mfsnKiaA8ohO-dKm4-DGHqdGQHlOTozoFpj-99G3-Qx8lcabVTDTcjqCtge5-3tV1r_PYQYK34goP7SPeCQmxhceZaR68thOl6Gkjq0OVecPlfAVsTAuutH3iYDnxqqKmM_5UvGYKn4iOEa-p5ZBFNZTFDSp4bWABAdmh5DEndjkKeHWrECl3_n.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i4Uw4/yO/l/en_US/8WEkGIvKMAr1Cid1sndgkjErTzbT4f72ES-M_jXTcKk70mLK0W1KRs0C0PCCUbyZQGubrtmxwGhuYfvxKOHuYpeaXI_N9oAvywR5FDhc9EbOmMML5LCw53UzMzz7eu9sWHtRfEXKxzJbolxQ-FRvAr89j5nKT27nlziOWiPZjtK7UOltBRUvYjpX7BttCVlnGGCyGVD5OujTe3i1q2PYLIRcoPW5gJB8B0_0LGN_DQo6mNz8dfGgrOC4x-kbFaRw6qBIN2G97mttmLnTYuaqXwIb33oy_qxz0eN0cHM4gBB9JZKEX85kX06DbxYlBjhBdCoY_9Rb-Z.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iANw4/yQ/l/en_US/R6t6pQUNgK3p2SXbTlYNNLCAGRfKSAZulfroGKZWXQiysHiV1TN4pyV.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iHoi4/yS/l/en_US/F04cOF53Y5bmese8PpaA6YJc7QuFXPg6n0BkYCuTCuC4tkm7uJE2Fl5ziu8fjvIasuZl7zCKqKqex0XJwbaX5ZELUcr6BPouu8FNHdJW5_aAkh3hnHYCsAoGkSS1OrajkDar.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iipA4/yY/l/en_US/3nGyiUucgch.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iSJY4/yo/l/en_US/2B0hVfoz2LY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yG/r/qL-ucaidLwK.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/rMo34BkJyVa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iIgB4/yq/l/en_US/itz50VpBfbqofZrrwu4HQno09QztpxWyXc6PGcICelYW3Ru8PsDrxvpYq6Fd6gEz_lYAOZevfHpBfH8fXubXrXDwgHpTE7hBo7wg0JOHOiNhzWb15wyXBMTiCVO_akAwWY47cryhTXj3XtI-3ryxnPkQf-0HOuJU6Ig3X4FwoEVDEI8Pcv7KJOaKtAQV1KRlBoaO5oXAqzp11_JpCaLA1WIWi4TiaPQ8dLpAYFLPq6t1wY9IZRJJDchOYIvREH21Qd9wECYQlpXUvGTU60v.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4inh_4/y0/l/en_US/fknyPRau9DUn8C_lYC54PSUyqn4HN5yKD9-dBS8IpxGApN5w4Bus86wI3XLoYQF64vbT-ICGdBdq7m7jIGEKxx_63Nc30dHCikm-Q6aNodDiMDZEoStQUE_H7ljm3-YU31E-Nvnmk7jwSVrzE4xYn60F-AaMkd1CPMwg_6BzgyT8wIXeTjjJUNSMOrBraTw8LD94AUXRwDHCkV8R1HmTeYzr6srgonn-JtdZ7PJ775NzKCi2ScrsOfCedTPWK7a817LCfIEJxYiBYz5S8KjCFM-z_0Q2ncATCB6ghfjDQwNPdLlL_jGYNh9-DZBIN8j5Wu6jBGHRQa.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v5/yh/l/0,cross/g8T_6-Yirbb.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yD/r/nWfBjz-5_uf.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892538679729186&__req=1&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678823&__user=0&dpr=1&jazoest=22363&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundarytnQxABr7eTE7GQd1",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundarytnQxABr7eTE7GQd1\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678824676\r\n------WebKitFormBoundarytnQxABr7eTE7GQd1\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:ig_web_page_view\",{\"e\":\"{\\\"module\\\":\\\"CAAIGLoginHomepage\\\",\\\"nav_chain\\\":\\\"CAAIGLoginHomepageRoot:CAAIGLoginHomepage:1:via_cold_start\\\",\\\"referrer\\\":\\\"\\\",\\\"url\\\":\\\"https://www.instagram.com/\\\",\\\"web_analytics_session_id\\\":\\\"lymg0w:qn4waw:e2nrpr\\\"}\",\"r\":1,\"d\":\"$^|ARsKhFRzIhOr-nI4sZUqGDo4opGrq12BjUDyZvZjck8XCVvY-ECxa7Jub3l_B5M7RArkoYf4LQYTz1hPn5wQxFlZv9pEisuc2Q|A335BAA8-9F5C-4052-A2B8-A0C851EB2E55\",\"s\":\"wlixom:zlfx05:utkxy8\",\"t\":1773678824675.2,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678824676.4,0,471]],\"trigger\":\"falco:ig_web_page_view\",\"user\":\"0\",\"webSessionId\":\"wlixom:zlfx05:utkxy8\"}]\r\n------WebKitFormBoundarytnQxABr7eTE7GQd1--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/y9/r/1GOXakOP6QP.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/yQ/r/-pkMfchyeAZ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://static.cdninstagram.com/rsrc.php/v5/y-/l/0,cross/kfWAVkIiPg3wKIgG-mWVCmqxPVMW_gOucu739RTn6SNpfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4i1Aq4/yy/l/en_US/oJedFJzQPDEzMur9QKaFBwh3zsi1CQIOP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iNW_4/yf/l/en_US/9AfE1AC6b9I.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yX/r/od3B5IaO83T.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4idBq4/ye/l/en_US/rwXNf31RJQG.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/YEaf-Lij1O9.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4iLpP4/yH/l/en_US/Q1GI90xBHSz.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yu/r/Tq8n_f_tNJP.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yP/r/rrCxjEFdRGj.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=2&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__hsi=7617892538679729186&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&jazoest=22363&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678823&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_info/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.facebook.com/ig_xsite_user_obid/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Faccounts%2Fpassword%2Freset%2F&route_urls[1]=%2Faccounts%2Femailsignup%2F%3Fnext%3D&route_urls[2]=%2Flegal%2Fprivacy%2F&route_urls[3]=%2Flegal%2Fterms%2F&route_urls[4]=%2Fexplore%2Flocations%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=3&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__hsi=7617892538679729186&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&jazoest=22363&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678823&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-ig-d": "www",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/x-www-form-urlencoded",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "route_urls[0]=%2Fweb%2Flite%2F&route_urls[1]=%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=4&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=MODERATE&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__hsi=7617892538679729186&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DXdFp4jhbKVFOljH-_JTHfQZiBmLaVtGVbVHBAQF8jzqG2Gnx24E88qzFbKbyVGhpQq8x16yoc8hCUhGuUhCUKEiwJZ5G5XKeK74u9yUsg9oSbCxqUGfye4bAwAx16zE4K3C12Cw05QiwfG1LGcw3nozo24yU4HK04ayw2EO00DYyU6y8wMyS4EaQ2Wfalw3T9Dwcip09q5U17Q1gDkU5a1zXzcMpgg80w8B0l63S05RoaXw0gH807qu&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDxGe8Eug1JE6uFkf8QmAcUbxgax1E8Q4Q4o0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDxGe80tC1DGl3Od5F3e2Uk2IVE8Q4Q4o&__comet_req=7&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&jazoest=22363&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678823&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892538679729186&__req=5&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678823&__user=0&dpr=1&jazoest=22363&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&ph=C3&qpl_active_flow_ids=175125627",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryEK6haVtiLYMS4S0O",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": "------WebKitFormBoundaryEK6haVtiLYMS4S0O\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678824996\r\n------WebKitFormBoundaryEK6haVtiLYMS4S0O\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:bd_pdc_signals\",{\"e\":\"{\\\"asid\\\":\\\"e042a247-6f61-4fae-a5c8-4d9065123424\\\",\\\"ct\\\":1773678823,\\\"sjd\\\":\\\"dG8899ovI79hOqFoqWuIx9o6vO2PwjQDjUqwh5sPpKZzvzOGhupun9dOawVQLEQSXQ27U6hCsY8bjl+uqmQUhbpbjBFiaccfYdMv1PrK6MYNXGnQIsdnqS9qs9yEuwDE6wYMiauZ+IG+9JYPPVxZds7DUfqDwZAP\\\",\\\"sid\\\":-1}\",\"r\":1,\"d\":\"$^|ARsKhFRzIhOr-nI4sZUqGDo4opGrq12BjUDyZvZjck8XCVvY-ECxa7Jub3l_B5M7RArkoYf4LQYTz1hPn5wQxFlZv9pEisuc2Q|A335BAA8-9F5C-4052-A2B8-A0C851EB2E55\",\"s\":\"wlixom:zlfx05:utkxy8\",\"t\":1773678824996.8,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678824997,0,501]],\"trigger\":\"falco:bd_pdc_signals\",\"user\":\"0\",\"webSessionId\":\"wlixom:zlfx05:utkxy8\"}]\r\n------WebKitFormBoundaryEK6haVtiLYMS4S0O--\r\n",
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/K_FxaGS9D14.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/mrkP-U_R5Ue.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cdninstagram.com/rsrc.php/v4/yy/r/reYyb-SSn4k.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.instagram.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892538679729186&__req=6&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678823&__user=0&dpr=1&jazoest=22363&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryY2GMeMC2uTQBJu94",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=MODERATE&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892538679729186&__req=7&__rev=1035230703&__s=wlixom%3Azlfx05%3Autkxy8&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678823&__user=0&dpr=1&jazoest=22363&lsd=AdQmpaGQst4hVLPFe2PgKtFGm6w&ph=C3",
+          "method": "POST",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.instagram.com/",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-model": "\"\"",
+            "sec-ch-ua-mobile": "?0",
+            "x-asbd-id": "359341",
+            "x-fb-lsd": "AdQmpaGQst4hVLPFe2PgKtFGm6w",
+            "sec-ch-prefers-color-scheme": "light",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryXPhzOQpbxIVi9MUJ",
+            "sec-ch-ua-platform-version": "\"10.0\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://instgram.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 301
+      }
+    },
+    {
+      "url": "https://www.instagram.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/XpnBUoxX61b.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iEah4/yr/l/en_US/rw0H-RxigsP71wDvpLc_BpQKPwfW0wN-q7odNDboPV5nehijy5uSwSBn7MFhqg_zkseO1JshF54hnUfxHcaC_j66O-sybUOyzyP07O4uAuHMZyBSaV-S7OueDLAAXUtRnPF5OV64OA8PraPmMM4mfsnKiaA8ohO-dKm4-DGHqdGQHlOTozoFpj-99G3-Qx8lcabVTDTcjqCtge5-3tV1r_PYQYK34goP7SPeCQmxhceZaR68thOl6Gkjq0OVecPlfAVsTAuutH3iYDnxqqKmM_5UvGYKn4iOEa-p5ZBFNZTFDSp4bWABAdmh5DEndjkKeHWrECl3_n.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4i4Uw4/yO/l/en_US/8WEkGIvKMAr1Cid1sndgkjErTzbT4f72ES-M_jXTcKk70mLK0W1KRs0C0PCCUbyZQGubrtmxwGhuYfvxKOHuYpeaXI_N9oAvywR5FDhc9EbOmMML5LCw53UzMzz7eu9sWHtRfEXKxzJbolxQ-FRvAr89j5nKT27nlziOWiPZjtK7UOltBRUvYjpX7BttCVlnGGCyGVD5OujTe3i1q2PYLIRcoPW5gJB8B0_0LGN_DQo6mNz8dfGgrOC4x-kbFaRw6qBIN2G97mttmLnTYuaqXwIb33oy_qxz0eN0cHM4gBB9JZKEX85kX06DbxYlBjhBdCoY_9Rb-Z.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iANw4/yQ/l/en_US/R6t6pQUNgK3p2SXbTlYNNLCAGRfKSAZulfroGKZWXQiysHiV1TN4pyV.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iHoi4/yS/l/en_US/F04cOF53Y5bmese8PpaA6YJc7QuFXPg6n0BkYCuTCuC4tkm7uJE2Fl5ziu8fjvIasuZl7zCKqKqex0XJwbaX5ZELUcr6BPouu8FNHdJW5_aAkh3hnHYCsAoGkSS1OrajkDar.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iipA4/yY/l/en_US/3nGyiUucgch.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iSJY4/yo/l/en_US/2B0hVfoz2LY.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yG/r/qL-ucaidLwK.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/rMo34BkJyVa.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/qm/?__a=1&__user=0&__comet_req=7&jazoest=22339",
+      "method": "POST",
+      "resource_type": "ping",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iIgB4/yq/l/en_US/itz50VpBfbqofZrrwu4HQno09QztpxWyXc6PGcICelYW3Ru8PsDrxvpYq6Fd6gEz_lYAOZevfHpBfH8fXubXrXDwgHpTE7hBo7wg0JOHOiNhzWb15wyXBMTiCVO_akAwWY47cryhTXj3XtI-3ryxnPkQf-0HOuJU6Ig3X4FwoEVDEI8Pcv7KJOaKtAQV1KRlBoaO5oXAqzp11_JpCaLA1WIWi4TiaPQ8dLpAYFLPq6t1wY9IZRJJDchOYIvREH21Qd9wECYQlpXUvGTU60v.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4inh_4/y0/l/en_US/fknyPRau9DUn8C_lYC54PSUyqn4HN5yKD9-dBS8IpxGApN5w4Bus86wI3XLoYQF64vbT-ICGdBdq7m7jIGEKxx_63Nc30dHCikm-Q6aNodDiMDZEoStQUE_H7ljm3-YU31E-Nvnmk7jwSVrzE4xYn60F-AaMkd1CPMwg_6BzgyT8wIXeTjjJUNSMOrBraTw8LD94AUXRwDHCkV8R1HmTeYzr6srgonn-JtdZ7PJ775NzKCi2ScrsOfCedTPWK7a817LCfIEJxYiBYz5S8KjCFM-z_0Q2ncATCB6ghfjDQwNPdLlL_jGYNh9-DZBIN8j5Wu6jBGHRQa.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v5/yh/l/0,cross/g8T_6-Yirbb.css",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/yR/r/92ZsVHNkyvf.webp",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=1&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryDnTJsatPCOAjhBg6",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": "------WebKitFormBoundaryDnTJsatPCOAjhBg6\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678794275\r\n------WebKitFormBoundaryDnTJsatPCOAjhBg6\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:ig_web_page_view\",{\"e\":\"{\\\"module\\\":\\\"CAAIGLoginHomepage\\\",\\\"nav_chain\\\":\\\"CAAIGLoginHomepageRoot:CAAIGLoginHomepage:1:via_cold_start\\\",\\\"referrer\\\":\\\"\\\",\\\"url\\\":\\\"https://www.instagram.com/\\\",\\\"web_analytics_session_id\\\":\\\"xp80t0:dk7n5i:wf1fsp\\\"}\",\"r\":1,\"d\":\"$^|ARtrgilTAw992cN4bwqjnRtvQbzz6jHR7g57dHg9q4uzG8ZgzQo9IGmr6iAzBxfP6D-_PsgJc7WhUZ-jw2YJ1xYxL-uOg4c|53C9D096-EDE5-488A-8B48-7DA05DF16EE6\",\"s\":\"0jnjk4:yqjkny:4bz344\",\"t\":1773678794274.5,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678794275.7,0,468]],\"trigger\":\"falco:ig_web_page_view\",\"user\":\"0\",\"webSessionId\":\"0jnjk4:yqjkny:4bz344\"}]\r\n------WebKitFormBoundaryDnTJsatPCOAjhBg6--\r\n",
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/y9/r/1GOXakOP6QP.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/yQ/r/-pkMfchyeAZ.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://static.cdninstagram.com/rsrc.php/v5/yb/l/0,cross/M3wpZOS9tSJbgrNkRAHfEEPvJg89IT9OsT0QyApb4vzQfgQe914iiBfONMKn3YhINqU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4i1Aq4/yy/l/en_US/oJedFJzQPDEzMur9QKaFBwh3zsi1CQIOP.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iNW_4/yf/l/en_US/9AfE1AC6b9I.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yX/r/od3B5IaO83T.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4idBq4/ye/l/en_US/rwXNf31RJQG.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/YEaf-Lij1O9.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4iLpP4/yH/l/en_US/Q1GI90xBHSz.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yu/r/Tq8n_f_tNJP.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yP/r/rrCxjEFdRGj.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-ig-d": "www",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": "route_urls[0]=%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=2&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.facebook.com/ig_xsite_user_info/",
+      "method": "GET",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.facebook.com/ig_xsite_user_obid/",
+      "method": "GET",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-ig-d": "www",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": "route_urls[0]=%2Faccounts%2Fpassword%2Freset%2F&route_urls[1]=%2Faccounts%2Femailsignup%2F%3Fnext%3D&route_urls[2]=%2Flegal%2Fprivacy%2F&route_urls[3]=%2Flegal%2Fterms%2F&route_urls[4]=%2Fexplore%2Flocations%2F&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=3&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bulk-route-definitions/",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-ig-d": "www",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": "route_urls[0]=%2Fweb%2Flite%2F&route_urls[1]=%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer&routing_namespace=igx_www%24a%2487a091182d5bd65bcb043a2888004e09&__d=www&__user=0&__a=1&__req=4&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&dpr=1&__ccg=GOOD&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__hsi=7617892402217907838&__dyn=7xeUmwlEnwn8K2Wmh0no6u5U4e0yoW3q32360CEbo1nEhw2nVE4W0qa0FE2awt81s8hwnU6a3a1YwBgao6C0Mo2swlo5q4U2zxe2GewGw9a361qw8Xwn8e87q0oa2-azo7u3u2C2O0Lo6-3u2WE5B0bK1Iwqo5p0qZ6goK10xKi2K7E5y2-0-8K9x60ma&__csr=gH9ON4aghOhcy_biaTT9A5jnF4mJvVoG9DX9Wmh4GRXKqsBkW_LXtWPZfkFlHOKnqKi-qVpdai4USGwGBUgxa226EWiXyUKqAmt6y8ghEC324pK4qDK4pKbG4EbvhqxuXzHxN7yoK742mdyVEmKazUzx2V898ghEW1bwVwgFE01t4E3WwrWz80RS8S0x8K1aXw12EE0Gcw09_8K1Ey8c8Jxa2J0KzOBo0ZOpU34Cg2mxu0hZ0k9Re1iwo-UPc6k420829g5hwZw1tm2KU04aO01SDw&__hsdp=kxI2Cg9wkh1RG88iuiqOgNuDkDDz8xxiEug1JE6uFkf8QmAcUbxgax1E85g9E0vmw1OG0aSU720kO04IE1Yo&__hblp=06mK0vC0No7yewpo6i3K2O0Fo26wSw5mwci0BU0Bq0k60bUxu2W08vTw8a220CU8e1lwee0g-0kO0bXw5mwhUnyEG0qW2O1nwmE&__sjsp=kxI2Cg9wkh1RG88iuiqOsQvuDkDDz8xxi0tC1DGl3Od5F3e2Uk2IVE85g9E&__comet_req=7&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&jazoest=22339&__spin_r=1035230703&__spin_b=trunk&__spin_t=1773678791&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute",
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=5&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3&qpl_active_flow_ids=175125627",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryk4MATcHdUEp6bMwB",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": "------WebKitFormBoundaryk4MATcHdUEp6bMwB\r\nContent-Disposition: form-data; name=\"ts\"\r\n\r\n1773678794855\r\n------WebKitFormBoundaryk4MATcHdUEp6bMwB\r\nContent-Disposition: form-data; name=\"q\"\r\n\r\n[{\"app_id\":\"936619743392459\",\"posts\":[[\"falco:bd_pdc_signals\",{\"e\":\"{\\\"asid\\\":\\\"aa9da2ce-d505-4d2d-9b89-90e44349bb11\\\",\\\"ct\\\":1773678791,\\\"sjd\\\":\\\"ERsoAM7LKeyCKSSin5k/pEjesSU5C+Tt786iXKXJomfghMYe58mJp8d/k+4OvgoJlfcw2svKiX35e10UOijeKqmt22RBEJBQrgIzTiAH92/TYZy8PtCdTIaiPtNRhVSb0rH0NK77NgPPWJmS9RgShhdLKRH5KQkK\\\",\\\"sid\\\":-1}\",\"r\":1,\"d\":\"$^|ARtrgilTAw992cN4bwqjnRtvQbzz6jHR7g57dHg9q4uzG8ZgzQo9IGmr6iAzBxfP6D-_PsgJc7WhUZ-jw2YJ1xYxL-uOg4c|53C9D096-EDE5-488A-8B48-7DA05DF16EE6\",\"s\":\"0jnjk4:yqjkny:4bz344\",\"t\":1773678794855.3,\"a\":\"1.0.0\",\"b\":[1,128],\"id\":{\"claim\":\"\"}},1773678794855.5,0,498]],\"trigger\":\"falco:bd_pdc_signals\",\"user\":\"0\",\"webSessionId\":\"0jnjk4:yqjkny:4bz344\"}]\r\n------WebKitFormBoundaryk4MATcHdUEp6bMwB--\r\n",
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/y-/r/K_FxaGS9D14.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yJ/r/mrkP-U_R5Ue.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://static.cdninstagram.com/rsrc.php/v4/yy/r/reYyb-SSn4k.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://www.instagram.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=6&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3&qpl_active_flow_ids=175125627",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryvEYh2ixJ1SULljBD",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.instagram.com/ajax/bz?__a=1&__ccg=GOOD&__comet_req=7&__crn=comet.igweb.PolarisCAAIGLoginHomepageRoute&__d=www&__hs=20528.HYP%3Ainstagram_web_pkg.2.1...0&__hsi=7617892402217907838&__req=7&__rev=1035230703&__s=0jnjk4%3Ayqjkny%3A4bz344&__spin_b=trunk&__spin_r=1035230703&__spin_t=1773678791&__user=0&dpr=1&jazoest=22339&lsd=AdT02K9vBsm_PXSw3OkJsQcMqTk&ph=C3",
+      "method": "POST",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"HeadlessChrome\";v=\"143.0.7499.4\", \"Chromium\";v=\"143.0.7499.4\", \"Not A(Brand\";v=\"24.0.0.0\"",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.instagram.com/",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-ua-mobile": "?0",
+        "x-asbd-id": "359341",
+        "x-fb-lsd": "AdT02K9vBsm_PXSw3OkJsQcMqTk",
+        "sec-ch-prefers-color-scheme": "light",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundarygR8FQsb5vPvlh3YU",
+        "sec-ch-ua-platform-version": "\"10.0\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    }
+  ],
+  "errors": []
+}

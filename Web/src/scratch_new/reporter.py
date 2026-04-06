@@ -356,9 +356,6 @@ def _write_statistics_json(results: list[dict],
     path = os.path.join(config.ANALYSIS_DIR, "statistics.json")
 
     total_sites = len(results)
-    sites_with_idb = sum(1 for r in results if r.get("indexeddb_summary", {}).get("database_count", 0) > 0)
-    total_dbs = sum(r.get("indexeddb_summary", {}).get("database_count", 0) for r in results)
-    total_records = sum(r.get("indexeddb_summary", {}).get("total_records", 0) for r in results)
     total_identifiers = sum(r.get("identifiers_found", 0) for r in results)
 
     # Exfiltration stats
@@ -401,9 +398,6 @@ def _write_statistics_json(results: list[dict],
     stats = {
         "crawl_summary": {
             "total_sites_analyzed": total_sites,
-            "sites_with_indexeddb": sites_with_idb,
-            "total_databases_found": total_dbs,
-            "total_records_extracted": total_records,
         },
         "detection_summary": {
             "total_potential_identifiers": total_identifiers,
@@ -585,14 +579,11 @@ def _print_console_summary(results: list[dict], stats: dict,
     # ── Per-Site Results (pandas DataFrame) ───────────────────────────
     site_data = []
     for r in results:
-        idb = r.get("indexeddb_summary", {})
         net = r.get("network_summary", {})
         exf = r.get("exfiltration_summary", {})
         fc = r.get("flow_classification", {})
         site_data.append({
             "Domain": r.get("domain", "?"),
-            "IDB DBs": idb.get("database_count", 0),
-            "Records": idb.get("total_records", 0),
             "Net Reqs": net.get("total_requests", 0),
             "IDs Found": r.get("identifiers_found", 0),
             "Exfil": exf.get("total", 0),
@@ -628,8 +619,6 @@ def _print_console_summary(results: list[dict], stats: dict,
         agg_df = pd.DataFrame({
             "Total": df_sites[numeric_cols].sum(),
             "Mean": df_sites[numeric_cols].mean().round(2),
-            "Max": df_sites[numeric_cols].max(),
-            "Std": df_sites[numeric_cols].std().round(2),
         })
         with pd.option_context("display.max_rows", 20, "display.width", 100):
             print(agg_df.to_string())
@@ -642,48 +631,7 @@ def _print_console_summary(results: list[dict], stats: dict,
     else:
         print("\n  📋 No sites with detected flows.")
 
-    # ── IDB Key:Value Records ────────────────────────────────────────
-    idb_rows = []
-    for r in results:
-        for rec in r.get("indexeddb_records", []):
-            val_str = str(rec.get("value", ""))
-            # Only include records with values >= 8 chars (matches MIN_ID_LENGTH)
-            if len(val_str) < config.MIN_ID_LENGTH:
-                continue
-            idb_rows.append({
-                "Domain": r.get("domain", "?"),
-                "Database": rec.get("database", ""),
-                "Store": rec.get("store", ""),
-                "Key": str(rec.get("key", "")),
-                "Value": val_str,
-            })
-
-    if idb_rows:
-        print("\n  🗄️  IndexedDB KEY:VALUE RECORDS")
-        print("  " + "─" * 110)
-        print(f"  Total records across all sites: {len(idb_rows)}")
-        # Fixed-width compact table — truncate values so terminal stays clean
-        header = f"  {'Domain':<25} {'Database':<15} {'Store':<15} {'Key':<12} {'Value (truncated)':<50}"
-        print(header)
-        print("  " + "─" * 110)
-        display_limit = 10
-        for row in idb_rows[:display_limit]:
-            domain = row["Domain"][:24]
-            db = row["Database"][:14]
-            store = row["Store"][:14]
-            key = row["Key"][:11]
-            val = row["Value"].replace("\n", " ")
-            val = (val[:47] + "...") if len(val) > 50 else val
-            print(f"  {domain:<25} {db:<15} {store:<15} {key:<12} {val}")
-        if len(idb_rows) > display_limit:
-            print(f"\n  ... ({len(idb_rows) - display_limit} more records — see indexeddb_records.json for full data)")
-        print()
-
-        # Save full IDB records as JSON
-        json_path = os.path.join(config.ANALYSIS_DIR, "indexeddb_records.json")
-        with open(json_path, "w", encoding="utf-8") as jf:
-            json.dump(idb_rows, jf, indent=2, ensure_ascii=False, default=str)
-        logger.info(f"🗄️  IDB records JSON → {json_path}")
+    # Summaries are done.
 
     # ── Network Requests ─────────────────────────────────────────────
     net_rows = []
@@ -751,9 +699,6 @@ def _print_console_summary(results: list[dict], stats: dict,
     class_headers = ["Classification", "Value"]
     class_rows = [
         ["Total sites analyzed", stats["crawl_summary"]["total_sites_analyzed"]],
-        ["Sites with IndexedDB", stats["crawl_summary"]["sites_with_indexeddb"]],
-        ["Sites with exfiltration", sites_stat["sites_with_any_exfiltration"]],
-        ["Sites with HIGH tracking", sites_stat["sites_with_high_confidence_tracking"]],
         ["Third-party exfiltrations", detect["third_party_exfiltrations"]],
         ["Known tracker matches", detect["known_tracker_exfiltrations"]],
     ]
@@ -773,8 +718,6 @@ def _print_console_summary(results: list[dict], stats: dict,
     flow_headers = ["Metric", "Count", "%"]
     flow_rows = [
         ["Total sites", ov["total_sites"], "—"],
-        ["Sites with IndexedDB", ov["sites_with_idb"],
-         f"{ov['pct_sites_with_idb']}%"],
         ["Total information flows", ov["total_flows"], "100%"],
         ["  └ Outflow flows", ov["outflow_flows"],
          f"{ov['outflow_flows']/max(ov['total_flows'],1)*100:.1f}%"],

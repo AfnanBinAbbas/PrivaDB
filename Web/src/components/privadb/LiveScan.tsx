@@ -2,9 +2,38 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
   Play, Upload, Plus, X, Settings2, ChevronDown, ChevronUp,
   Globe, Search, BarChart3, Check, AlertCircle, FileText,
-  Loader2, Copy, Download, Trash2
+  Loader2, Copy, Download, Trash2, Shield
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import confetti from 'canvas-confetti';
+
+const triggerSuccessAnimation = () => {
+  const duration = 3 * 1000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100, colors: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'] };
+
+  const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+  const interval: any = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+    // Fire from left
+    confetti({
+      ...defaults, particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+    });
+    // Fire from right
+    confetti({
+      ...defaults, particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+    });
+  }, 250);
+};
 
 type ScanConfig = {
   headless: boolean;
@@ -123,14 +152,31 @@ const ConfidenceBadge: React.FC<{ level: string; count: number }> = ({ level, co
   );
 };
 
-const ResultCard: React.FC<{ result: ScanResult; index: number }> = ({ result, index }) => {
-  const [expanded, setExpanded] = useState(false);
+const ResultCard: React.FC<{ result: ScanResult, index: number }> = ({ result, index }) => {
+  const [expanded, setExpanded] = useState(index === 0);
 
   return (
-    <div
-      className="glass rounded-xl overflow-hidden opacity-0 animate-fade-in"
-      style={{ animationDelay: `${index * 0.15} s` }}
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        delay: index * 0.1, 
+        type: 'spring', 
+        stiffness: 300, 
+        damping: 20, 
+        duration: 0.8 
+      }}
+      className="glass rounded-xl overflow-hidden border border-border/40 relative shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)] hover:shadow-[0_0_25px_rgba(var(--primary-rgb),0.2)] transition-shadow"
     >
+      {/* Exfiltration glow pulse */}
+      {result.trackingEvents > 0 && (
+        <motion.div 
+          className="absolute inset-0 rounded-xl ring-2 ring-destructive/30 border-destructive/20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 0.5] }}
+          transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
+        />
+      )}
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-muted/30 transition-colors"
@@ -205,11 +251,12 @@ const ResultCard: React.FC<{ result: ScanResult; index: number }> = ({ result, i
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
 export const LiveScan: React.FC = () => {
+  const [engine, setEngine] = useState<'chrome' | 'foxhound'>('chrome');
   const [urls, setUrls] = useState<string[]>(['']);
   const [showConfig, setShowConfig] = useState(false);
   const [config, setConfig] = useState<ScanConfig>(defaultConfig);
@@ -222,6 +269,7 @@ export const LiveScan: React.FC = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [scanComplete, setScanComplete] = useState(false);
   const [lastScanId, setLastScanId] = useState<string | null>(null);
+  const stopSignalRef = useRef<boolean>(false);
 
   const fetchHistory = useCallback(async () => {
     try {
@@ -299,6 +347,7 @@ export const LiveScan: React.FC = () => {
     setScanning(true);
     setScanComplete(false);
     setResults([]);
+    stopSignalRef.current = false;
 
     const update = (idx: number, patch: Partial<ScanPhase>) => {
       setPhases(prev => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
@@ -306,6 +355,8 @@ export const LiveScan: React.FC = () => {
 
     try {
       for (let i = 0; i < validUrls.length; i++) {
+        if (stopSignalRef.current) break;
+        
         const currentUrl = validUrls[i];
         const progressPrefix = validUrls.length > 1 ? `[${i + 1}/${validUrls.length}]` : '';
 
@@ -325,22 +376,25 @@ export const LiveScan: React.FC = () => {
           body: JSON.stringify({
             url: currentUrl,
             headless: config.headless,
-            crawl_only: false, // Always full scan when started from UI
-            detect_only: false
+            crawl_only: false,
+            detect_only: false,
+            engine: engine
           }),
+        }).catch(() => {
+          throw new Error('Backend server is offline or unreachable. Please ensure it is running on port 8000.');
         });
 
-        if (!response.ok) throw new Error('Failed to start scan');
+        if (!response.ok) throw new Error('Failed to start scan API. Server returned ' + response.status);
 
         const { scan_id } = await response.json();
         setCurrentScanId(scan_id);
-        setLastScanId(scan_id); // Store the last scan ID
-        update(0, { progress: 100, status: 'done', message: 'Scan started' });
+        setLastScanId(scan_id);
+        update(0, { progress: 100, status: 'done', message: 'Scan Engine connected' });
 
         // Polling loop
         let completed = false;
         while (!completed) {
-          if (stopping) {
+          if (stopSignalRef.current) {
             setPhases(prev => prev.map(p => p.status === 'running' || p.status === 'pending' ? { ...p, status: 'error', message: 'Scan stopped by user' } : p));
             break;
           }
@@ -350,6 +404,9 @@ export const LiveScan: React.FC = () => {
 
           const data = await statusRes.json() as BackendScanRecord & { progress: number; error?: string };
           const { status, progress, results: scanResults } = data;
+
+          // Check again after sleep
+          if (stopSignalRef.current) break;
 
           // Explicitly set each phase status based on the backend state
           setPhases(prev => prev.map((p, phaseIdx) => {
@@ -373,11 +430,14 @@ export const LiveScan: React.FC = () => {
             if (isDone(status, phaseIdx)) return { ...p, status: 'done' as const, progress: 100 };
             if (isCurrent(status, phaseIdx)) {
               let msg = p.message;
-              if (status === 'starting') msg = `${progressPrefix}Initializing Playwright...`;
-              if (status === 'crawling') msg = `${progressPrefix}Crawling ${currentUrl}...`;
+              if (status === 'starting') msg = `${progressPrefix}Initializing playlets...`;
+              if (status === 'crawling') msg = `${progressPrefix}Crawling ${currentUrl}... (This takes ~30s)`;
               if (status === 'detecting') msg = `${progressPrefix}Analyzing IndexedDB entries...`;
               if (status === 'reporting') msg = `${progressPrefix}Generating report...`;
-              return { ...p, status: 'running' as const, progress: (status === 'starting' && phaseIdx === 0) ? 50 : progress, message: msg };
+              
+              // Set the active progress to an indeterminate middle value so it looks active
+              // instead of stuck at 10% global progress for 30s.
+              return { ...p, status: 'running' as const, progress: 65, message: msg };
             }
             return { ...p, status: 'pending' as const, progress: 0 };
           }));
@@ -385,7 +445,7 @@ export const LiveScan: React.FC = () => {
           if (status === 'completed') {
             // Map backend results to frontend format
             const mappedResult: ScanResult = {
-              url: data.url || validUrls[0],
+              url: data.url || currentUrl,
               databases: scanResults?.indexeddb_summary?.database_count || 0,
               trackingEvents: scanResults?.exfiltration_summary?.total || 0,
               confidence: {
@@ -406,6 +466,7 @@ export const LiveScan: React.FC = () => {
 
             setResults(prev => [...prev, mappedResult]);
             completed = true;
+            triggerSuccessAnimation(); // Fire creative UI animation
             fetchHistory(); // Refresh history after scan
           } else if (status === 'stopped') {
             setPhases(prev => prev.map(p => p.status === 'running' ? { ...p, status: 'error', message: 'Scan stopped by user' } : p));
@@ -414,27 +475,54 @@ export const LiveScan: React.FC = () => {
             throw new Error(data.error || 'Scan failed');
           }
         }
+        if (stopSignalRef.current) break;
       }
 
-      setScanComplete(true);
+      if (!stopSignalRef.current) {
+        setScanComplete(true);
+      }
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error('Scan error:', error);
-      setPhases(prev => prev.map(p => p.status === 'running' ? { ...p, status: 'error', message: errorMessage } : p));
+      if (!stopSignalRef.current) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error('Scan error:', error);
+        
+        // Update only the currently running or first pending phase to show the error
+        setPhases(prev => {
+          let errorSet = false;
+          return prev.map(p => {
+            if (!errorSet && (p.status === 'running' || p.status === 'pending')) {
+              errorSet = true;
+              return { ...p, status: 'error', message: errorMessage };
+            }
+            return p;
+          });
+        });
+      }
     } finally {
       setScanning(false);
       setStopping(false);
       setCurrentScanId(null);
     }
-  }, [validUrls, stopping, fetchHistory, config.headless]);
+  }, [validUrls, fetchHistory, config.headless, engine]);
 
   const stopScan = async () => {
     if (!currentScanId) return;
     setStopping(true);
+    stopSignalRef.current = true;
     try {
       await fetch(`http://localhost:8000/scan/${currentScanId}/stop`, { method: 'POST' });
     } catch (error) {
       console.error('Error stopping scan:', error);
+    }
+  };
+
+  const stopAllScans = async () => {
+    setStopping(true);
+    stopSignalRef.current = true;
+    try {
+      await fetch(`http://localhost:8000/scan/all/stop`, { method: 'POST' });
+    } catch (error) {
+      console.error('Error stopping all scans:', error);
     }
   };
 
@@ -511,6 +599,33 @@ export const LiveScan: React.FC = () => {
           <p className="text-muted-foreground max-w-xl mx-auto">
             Enter websites to analyze for persistent IndexedDB tracking. Upload a .txt file or add URLs manually.
           </p>
+
+          {/* Engine Toggle */}
+          <div className="mt-6 inline-flex items-center p-1 glass rounded-xl relative">
+            <motion.div
+              className="absolute inset-y-1 w-[calc(50%-4px)] rounded-lg bg-primary/20 border border-primary/30"
+              animate={{ x: engine === 'chrome' ? 4 : 'calc(100% + 4px)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            />
+            <button
+              onClick={() => { setEngine('chrome'); }}
+              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                engine === 'chrome' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Globe size={15} />
+              Chrome (Live Scan)
+            </button>
+            <button
+              onClick={() => { setEngine('foxhound'); }}
+              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                engine === 'foxhound' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Shield size={15} />
+              Foxhound (Taint Tracking)
+            </button>
+          </div>
         </motion.div>
 
         {/* Input area */}
@@ -712,36 +827,65 @@ export const LiveScan: React.FC = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Run button */}
+        {/* Run button and Active Scan Controls */}
         <motion.div variants={itemVariants}>
           {scanning ? (
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1 py-4 bg-primary/20 text-primary rounded-2xl font-medium text-sm flex items-center justify-center gap-2 border border-primary/20">
-                <Loader2 size={18} className="animate-spin" />
-                Scanning {validUrls.length} site(s)...
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1 py-3 bg-primary/10 text-primary border border-primary/20 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm">
+                  <Loader2 size={16} className="animate-spin" />
+                  <span className="font-mono">Processing: {validUrls.length} targets</span>
+                </div>
+                
+                <div className="flex gap-2">
+                  <motion.button
+                    onClick={stopScan}
+                    disabled={stopping}
+                    className="flex-1 sm:flex-none px-6 py-3 bg-amber-500/10 text-amber-600 border border-amber-500/20 rounded-xl font-medium text-sm hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <X size={16} />
+                    Skip Current
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={stopAllScans}
+                    disabled={stopping}
+                    className="flex-1 sm:flex-none px-6 py-3 bg-red-500 text-white rounded-xl font-medium text-sm hover:bg-red-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {stopping ? <Loader2 size={16} className="animate-spin" /> : <Shield size={16} />}
+                    Stop All Sessions
+                  </motion.button>
+                </div>
               </div>
-              <motion.button
-                onClick={stopScan}
-                disabled={stopping}
-                className="px-8 py-4 bg-destructive text-destructive-foreground rounded-2xl font-medium text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {stopping ? <Loader2 size={18} className="animate-spin" /> : <X size={18} />}
-                Stop
-              </motion.button>
+              
+              {/* Help text for stopping */}
+              <p className="text-[10px] text-muted-foreground text-center italic">
+                Stopping all sessions will terminate the current URL and prevent further URLs in the list from starting.
+              </p>
             </div>
           ) : (
-            <motion.button
-              onClick={() => startScan()}
-              disabled={scanning || validUrls.length === 0}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium shadow-lg shadow-primary/20"
-              whileHover={{ scale: (scanning || validUrls.length === 0) ? 1 : 1.05 }}
-              whileTap={{ scale: (scanning || validUrls.length === 0) ? 1 : 0.95 }}
-            >
-              <Play size={18} fill="currentColor" />
-              <span>{scanning ? 'Scanning...' : `Start Scan (${validUrls.length} site${validUrls.length !== 1 ? 's' : ''})`}</span>
-            </motion.button>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <motion.button
+                onClick={() => startScan()}
+                disabled={scanning || validUrls.length === 0}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-xl shadow-primary/25 text-base"
+                whileHover={{ scale: (scanning || validUrls.length === 0) ? 1 : 1.02 }}
+                whileTap={{ scale: (scanning || validUrls.length === 0) ? 1 : 0.98 }}
+              >
+                <Play size={20} fill="currentColor" />
+                <span>Start Discovery Scan ({validUrls.length})</span>
+              </motion.button>
+              
+              {validUrls.length > 5 && (
+                <span className="text-xs text-muted-foreground font-mono bg-muted/30 px-3 py-1 rounded-full border border-border/40">
+                  Batch Mode Active
+                </span>
+              )}
+            </div>
           )}
         </motion.div>
 
@@ -778,10 +922,27 @@ export const LiveScan: React.FC = () => {
                       </div>
                       <p className="text-xs text-muted-foreground truncate">{phase.message}</p>
                       {phase.status === 'running' && (
-                        <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-primary rounded-full transition-all duration-300"
-                            style={{ width: `${phase.progress}%` }}
+                        <div className="mt-3 relative h-1.5 w-full bg-muted/30 rounded-full overflow-hidden ring-1 ring-border/20">
+                          {/* Subdued underglow to make it pop inside Dark Mode bounds */}
+                          <motion.div
+                            className="absolute top-0 left-0 h-full bg-primary/40 blur-[3px] rounded-full"
+                            initial={{ width: '0%' }}
+                            animate={{ width: `${phase.progress}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                          />
+                          {/* Animated Shimmer Bar Component */}
+                          <motion.div
+                            className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary/30 via-primary to-primary/30 rounded-full shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+                            initial={{ width: "0%", backgroundPosition: "100% 0%" }}
+                            animate={{ 
+                              width: `${phase.progress}%`,
+                              backgroundPosition: ["200% 0%", "-200% 0%"]
+                            }}
+                            transition={{
+                              width: { duration: 0.8, ease: "easeOut" },
+                              backgroundPosition: { duration: 1.5, repeat: Infinity, ease: "linear" }
+                            }}
+                            style={{ backgroundSize: "200% 100%" }}
                           />
                         </div>
                       )}
