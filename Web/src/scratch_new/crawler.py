@@ -260,8 +260,11 @@ class SiteCrawler:
             pass
 
 
+from typing import List, Dict, Optional, Callable
+
 async def crawl_all_sites(site_limit: int = None,
-                          custom_sites: list[dict] = None) -> list[dict]:
+                          custom_sites: List[dict] = None,
+                          on_progress: Optional[Callable[[float, str], None]] = None) -> List[dict]:
     """
     Crawl all sites and save per-site JSON output.
 
@@ -295,7 +298,8 @@ async def crawl_all_sites(site_limit: int = None,
     # Ensure output dirs
     os.makedirs(config.RAW_DATA_DIR, exist_ok=True)
 
-    results = []
+    total_steps = len(sites) * iterations
+    current_step = 0
 
     for i, site in enumerate(sites, 1):
         url = site["url"]
@@ -306,6 +310,14 @@ async def crawl_all_sites(site_limit: int = None,
         site_iterations = []
 
         for iteration in range(1, iterations + 1):
+            current_step += 1
+            if on_progress:
+                progress_pct = (current_step / total_steps) * 100
+                msg = f"Crawling {url} (Iteration {iteration}/{iterations})"
+                if len(sites) > 1:
+                    msg = f"[{i}/{len(sites)}] " + msg
+                on_progress(progress_pct, msg)
+
             logger.info(f"  ── Iteration {iteration}/{iterations} (fresh browser) ──")
 
             # Fresh browser for each iteration

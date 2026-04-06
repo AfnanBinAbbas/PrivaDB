@@ -32,6 +32,7 @@
     --glass-border: 0 0% 0% / 0.05;
     --glow: 210 100% 50%;
     --gradient-to: hsl(200 100% 40%);
+    --primary-rgb: 0, 102, 255;
   }
 
   .dark {
@@ -65,6 +66,7 @@
     /* Cyan glow */
     --gradient-to: hsl(0 0% 50%);
     /* Magenta end point */
+    --primary-rgb: 204, 204, 204;
   }
 }
 
