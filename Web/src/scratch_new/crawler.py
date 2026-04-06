@@ -310,14 +310,105 @@ async def crawl_all_sites(site_limit: int = None,
 
             # Fresh browser for each iteration
             async with async_playwright() as pw:
-                browser = await pw.chromium.launch(headless=config.HEADLESS)
+                launch_args = [
+                    '--disable-gpu',
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage'
+                ]
+                
+                # Note: Playwright Firefox ignores some chromium-specific flags, 
+                # but passing them is generally harmless/ignored.
+                
+                # Enhanced display detection and auto-mode selection
+                requires_display = not config.HEADLESS
+                has_display = False
+                working_display = None
+                
+                if os.name != 'nt' and requires_display:
+                    # 1. Normalize and test current DISPLAY
+                    display_env = os.environ.get('DISPLAY')
+                    candidates = []
+                    if display_env:
+                        candidates.append(display_env)
+                        if display_env.isdigit():
+                            candidates.append(f":{display_env}")
+                    
+                    # 2. Add common fallback candidates
+                    for d in [":0", ":1", ":2"]:
+                        if d not in candidates:
+                            candidates.append(d)
+                            
+                    # 3. Probe for the first working display
+                    import subprocess
+                    for d in candidates:
+                        try:
+                            # Use a separate env for the test to avoid side effects
+                            test_env = os.environ.copy()
+                            test_env['DISPLAY'] = d
+                            subprocess.run(['xdpyinfo'], env=test_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=2, check=True)
+                            working_display = d
+                            has_display = True
+                            # Force update the environment so Playwright uses the found display
+                            os.environ['DISPLAY'] = working_display
+                            logger.info(f"Found and using working X11 display: {working_display}")
+                            break
+                        except:
+                            continue
+                            
+                    if not has_display:
+                        # Fallback for Wayland if no X11
+                        if os.environ.get('WAYLAND_DISPLAY'):
+                            has_display = True
+                            logger.info(f"Using Wayland display: {os.environ.get('WAYLAND_DISPLAY')}")
+                elif os.name == 'nt':
+                    has_display = True # Windows always has a display
+                
+                # If headed requested on headless system (e.g., started by script), 
+                # try Xvfb first if available, otherwise switch to True headless.
+                disp = None
+                launch_headless = config.HEADLESS # Start with config value
+                
+                if requires_display and not has_display:
+                    try:
+                        from pyvirtualdisplay import Display
+                        logger.info("No usable X11 display detected, but headed mode was requested. Starting Xvfb virtual monitor...")
+                        disp = Display(visible=0, size=(1920, 1080))
+                        disp.start()
+                        # Now that Xvfb is running, we can stay in NO-HEADLESS (headed) mode!
+                        launch_headless = False # Explicitly stay headed
+                    except (ImportError, Exception) as e:
+                        logger.warning(f"Failed to start pyvirtualdisplay: {e}. Falling back to true headless mode.")
+                        launch_headless = True # Force headless since no display/Xvfb
+
+                browser = None
                 try:
+                    try:
+                        if config.ENGINE == "foxhound":
+                            foxhound_path = "/home/afnan/Downloads/Static-Analysis/mursaleen/Dynamic_Analysis_scratch/foxhound/foxhound"
+                            browser = await pw.firefox.launch(headless=launch_headless, executable_path=foxhound_path, args=launch_args)
+                        else:
+                            browser = await pw.chromium.launch(headless=launch_headless, args=launch_args)
+                    except Exception as launch_err:
+                        if not launch_headless:
+                            logger.error(f"Headed browser launch failed: {launch_err}. Retrying in true HEADLESS mode...")
+                            if config.ENGINE == "foxhound":
+                                foxhound_path = "/home/afnan/Downloads/Static-Analysis/mursaleen/Dynamic_Analysis_scratch/foxhound/foxhound"
+                                browser = await pw.firefox.launch(headless=True, executable_path=foxhound_path, args=launch_args)
+                            else:
+                                browser = await pw.chromium.launch(headless=True, args=launch_args)
+                        else:
+                            raise launch_err
+                        
                     crawler = SiteCrawler()
                     iter_result = await crawler.crawl_site(browser, url)
                     iter_result["iteration"] = iteration
                     site_iterations.append(iter_result)
                 finally:
-                    await browser.close()
+                    if browser:
+                        await browser.close()
+                    if disp:
+                        disp.stop()
 
             # Small delay between iterations
             if iteration < iterations:

@@ -45,7 +45,7 @@ def extract_potential_ids(value, path: str = "") -> list[dict]:
     results = []
 #(Sir ko dikhana)
     if isinstance(value, str):
-        if len(value) >= config.MIN_ID_LENGTH:
+        if len(value) >= config.MIN_ID_LENGTH and not _is_common_value(value):
             results.append({
                 "value": value,
                 "path": path,
@@ -56,7 +56,7 @@ def extract_potential_ids(value, path: str = "") -> list[dict]:
         for k, v in value.items():
             child_path = f"{path}.{k}" if path else k
             # Check ANY key with a string value >= MIN_ID_LENGTH
-            if isinstance(v, str) and len(v) >= config.MIN_ID_LENGTH:
+            if isinstance(v, str) and len(v) >= config.MIN_ID_LENGTH and not _is_common_value(v):
                 results.append({
                     "value": v,
                     "path": child_path,
@@ -123,15 +123,47 @@ def _check_string_value(value: str, path: str, results: list):
 
 def _is_common_value(value: str) -> bool:
     """Filter out strings that are high-entropy but clearly not tracking IDs."""
-    lower = value.lower()
-    # URLs, file paths, common words
-    if lower.startswith(("http://", "https://", "/", "data:", "blob:")):
+    lower = value.lower().strip()
+    
+    # 1. URLs, file paths, common protocols
+    if lower.startswith(("http://", "https://", "/", "data:", "blob:", "wss://", "ws://")):
         return True
-    if any(ext in lower for ext in [".js", ".css", ".html", ".png", ".jpg", ".svg"]):
+    if any(ext in lower for ext in [".js", ".css", ".html", ".png", ".jpg", ".svg", ".json", ".map"]):
         return True
-    # Dates
-    if re.match(r'^\d{4}-\d{2}-\d{2}', value):
+        
+    # 2. Domain patterns (e.g., example.com, sub.domain.org)
+    # Aggressive: if it contains a dot with 2+ chars after it at the end of a word-like boundary
+    # OR if it matches a domain pattern anywhere in the string.
+    if re.search(r'[a-z0-9-]+\.[a-z]{2,}', lower):
         return True
+        
+    # 3. Dates, Timestamps, and Timezones
+    # Timezones: Asia/Karachi, America/New_York (with lower case support)
+    if re.search(r'^[a-z]+/[a-z_]+$', lower) or lower.upper() in ["UTC", "GMT", "PST", "EST", "CET", "IST", "JST"]:
+        return True
+    
+    # ISO-like dates: 2026-04-06 or 06/04/2026
+    if re.search(r'^\d{4}-\d{2}-\d{2}', lower) or re.search(r'\d{2}/\d{2}/\d{4}', lower):
+        return True
+        
+    # Unix timestamps (seconds or milliseconds)
+    # Starts with 16|17|18 (2020-2030 range) and has 10 or 13 digits
+    if re.match(r'^(16|17|18)\d{8}(\d{3})?$', lower):
+        return True
+        
+    # 4. Locations: Latitude and Longitude
+    # Matches patterns like 40.7128, -74.0060 or just single coordinates
+    # Looking for: [+-]xx.xxxx where x is 4+ digits
+    if re.search(r'^[+-]?\d{1,3}\.\d{4,}$', lower):
+        return True
+    # Pairs: 40.7128,-74.0060
+    if re.search(r'^-?\d+\.\d+,-?\d+\.\d+$', lower.replace(" ", "")):
+        return True
+        
+    # 5. IP-like or version-like
+    if re.match(r'^\d{1,4}(\.\d{1,4}){2,3}$', lower): 
+        return True
+        
     return False
 
 
@@ -148,6 +180,17 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
     for identifier in identifiers:
         id_value = str(identifier["value"])
         if len(id_value) < config.MIN_ID_LENGTH:
+            continue
+            
+        # Filter: skip if it's a common non-ID value (domain, date, timestamp, timezone, location)
+        if _is_common_value(id_value):
+            continue
+            
+        # Filter: skip if the reason or path explicitly mentions location/timezone/coordinates
+        reason = str(identifier.get("reason", "")).lower()
+        path = str(identifier.get("path", "")).lower()
+        location_keywords = ["location", "latitude", "longitude", "timezone", "tz", "lat", "lng", "coord"]
+        if any(key in reason or key in path for key in location_keywords):
             continue
 
         for req in network_requests:
@@ -183,19 +226,28 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
                 })
 
     # Deduplicate and filter false positives
-    seen = set()
-    unique_events = []
+    seen = {}
+    conf_map = {config.CONFIDENCE_HIGH: 3, config.CONFIDENCE_MEDIUM: 2, config.CONFIDENCE_LOW: 1, "": 0}
+    
     for evt in events:
-        key = (evt["identifier_value"], evt["request_url"], evt["match_location"])
-        if key not in seen:
-            seen.add(key)
-            # Filter: skip if the identifier value is just the site domain
-            id_val = evt["identifier_value"].lower().strip()
-            site_lower = site_domain.lower().strip()
-            base_site = site_lower.replace("www.", "")
-            if id_val == site_lower or id_val == base_site or id_val == f"www.{base_site}":
-                continue  # Domain self-match → false positive
-            unique_events.append(evt)
+        # Deduplicate: only show 1 instance per unique tracker domain
+        domain = evt["request_domain"]
+        if domain not in seen:
+            seen[domain] = evt
+        else:
+            # Keep the one with higher confidence
+            if conf_map.get(evt["confidence"], 0) > conf_map.get(seen[domain]["confidence"], 0):
+                seen[domain] = evt
+                
+    unique_events = []
+    for domain, evt in seen.items():
+        # Filter: skip if the identifier value is just the site domain
+        id_val = evt["identifier_value"].lower().strip()
+        site_lower = site_domain.lower().strip()
+        base_site = site_lower.replace("www.", "")
+        if id_val == site_lower or id_val == base_site or id_val == f"www.{base_site}":
+            continue  # Domain self-match → false positive
+        unique_events.append(evt)
 
     return unique_events
 

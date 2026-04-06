@@ -1,0 +1,113 @@
+{
+  "url": "https://example.com",
+  "domain": "example.com",
+  "timestamp": "2026-04-05T20:05:28.523622Z",
+  "iterations": [
+    {
+      "url": "https://example.com",
+      "domain": "example.com",
+      "timestamp": "2026-04-05T20:05:28.523622Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://example.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://example.com",
+      "domain": "example.com",
+      "timestamp": "2026-04-05T20:05:41.270176Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://example.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://example.com",
+      "domain": "example.com",
+      "timestamp": "2026-04-05T20:05:53.504247Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://example.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://example.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"HeadlessChrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    }
+  ],
+  "errors": []
+}

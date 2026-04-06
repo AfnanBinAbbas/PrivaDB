@@ -28,6 +28,8 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
+ENGINE = "chrome"
+
 # Compiled patterns for value matching
 UUID_V4_RE = re.compile(
     r'[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}',

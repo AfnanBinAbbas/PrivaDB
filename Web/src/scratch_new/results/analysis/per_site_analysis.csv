@@ -1,2 +1,2 @@
-Domain,IDB DBs,Records,Net Reqs,IDs Found,Exfil,HIGH,MED,LOW,Inflow,Internal,External
-medium.com,3,21,37,138,17,0,1,16,0,16,1
+Domain,Net Reqs,IDs Found,Exfil,HIGH,MED,LOW,Inflow,Internal,External
+medium.com,36,48,1,0,0,1,0,1,0
