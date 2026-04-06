@@ -129,6 +129,28 @@ python main.py --detect-only --overwrite
 python main.py --no-headless --sites 3
 ```
 
+### 📊 Web Intelligence Dashboard (Real-time GUI)
+
+The dashboard provides a high-fidelity, data-driven visualization of all exfiltration events, tracker maps, and paper metrics.
+
+#### 1. Launch Backend (FastAPI)
+```bash
+# From project root:
+cd Web/backend
+python3 server.py
+```
+*Accessible at `http://localhost:8000`*
+
+#### 2. Launch Frontend (Vite + React)
+```bash
+# From project root:
+cd Web
+npm run dev -- --port 8080
+```
+*Accessible at `http://localhost:8080`*
+
+---
+
 ### All CLI Flags
 
 | Flag | Description | Default |
