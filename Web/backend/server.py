@@ -75,10 +75,15 @@ async def run_scan(scan_id: str, url: str, headless: bool = False, crawl_only: b
         # 1. Crawl
         if not detect_only:
             scans[scan_id]["status"] = "crawling"
-            scans[scan_id]["progress"] = 10
+            
+            def on_crawl_progress(pct, msg):
+                # Map 0-100 to 10-55
+                scans[scan_id]["progress"] = int(10 + (pct / 100) * 45)
+                scans[scan_id]["message"] = msg
+                
             custom_sites = [{"url": url, "reason": "User requested scan"}]
-            crawled_results = await crawl_all_sites(custom_sites=custom_sites)
-            scans[scan_id]["progress"] = 50
+            crawled_results = await crawl_all_sites(custom_sites=custom_sites, on_progress=on_crawl_progress)
+            scans[scan_id]["progress"] = 55
             if not crawled_results:
                 raise Exception("Crawl failed to return results")
             site_data = crawled_results[0]
@@ -108,9 +113,16 @@ async def run_scan(scan_id: str, url: str, headless: bool = False, crawl_only: b
 
         # 2. Detect
         scans[scan_id]["status"] = "detecting"
-        scans[scan_id]["progress"] = 60
-        analysis_result = analyze_site(site_data)
-        scans[scan_id]["progress"] = 80
+        
+        def on_detect_progress(pct, msg):
+            # Map 0-100 to 60-85
+            scans[scan_id]["progress"] = int(60 + (pct / 100) * 25)
+            scans[scan_id]["message"] = msg
+            
+        analysis_result = analyze_site(site_data) # Note: analyze_site for single site doesn't take callback yet, but let's update analyze_all_sites usage if needed.
+        # Actually analyze_site is called here. Let's update it to support callback if we want per-site granularity which is even better.
+        # But analyze_site for ONE site is fast. The loops are inside.
+        scans[scan_id]["progress"] = 85
         
         # 3. Report
         scans[scan_id]["status"] = "reporting"

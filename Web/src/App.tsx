@@ -16,11 +16,14 @@ import { DownloadSection } from "./components/privadb/DownloadSection";
 import { ConfigSection } from "./components/privadb/ConfigSection";
 import { BackToTop } from "./components/privadb/BackToTop";
 import { Volume2, VolumeX } from "lucide-react";
+import { LandingPage } from "./components/privadb/LandingPage";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [showLanding, setShowLanding] = useState(true);
 
 
   // Sync volume state with audio element
@@ -29,6 +32,23 @@ const App = () => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  // Global click listener to unlock audio on first interaction (landing page)
+  useEffect(() => {
+    const handleInteraction = () => {
+      if (audioRef.current) {
+        audioRef.current.play().catch(() => { });
+      }
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+  }, []);
 
   const toggleMute = () => {
     const audio = audioRef.current;
@@ -54,9 +74,22 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 font-sans">
-        <audio ref={audioRef} src="/background_music.mp3" loop autoPlay muted />
+      <audio ref={audioRef} src="/background_music.mp3" loop />
+      <AnimatePresence mode="wait">
+        {showLanding && (
+          <LandingPage
+            key="landing"
+            onReveal={() => setShowLanding(false)}
+          />
+        )}
+      </AnimatePresence>
 
+      <motion.div
+        className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 font-sans"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
         {/* Audio Controls */}
         <div className="fixed bottom-24 right-6 z-50 flex flex-col items-center gap-3 group">
           {/* Volume Slider Drawer (Interactive via mouse events) */}
@@ -153,7 +186,7 @@ const App = () => {
           {/* <ConfigSection /> */}
         </main>
         <BackToTop />
-      </div>
+      </motion.div>
     </ThemeProvider>
   );
 };

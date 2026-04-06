@@ -895,9 +895,12 @@ def analyze_site(site_data: dict) -> dict:
     }
 
 
+from typing import List, Dict, Optional, Callable
+
 def analyze_all_sites(raw_data_dir: str = None,
                       site_limit: int = None,
-                      only_files: list[str] = None) -> list[dict]:
+                      only_files: List[str] = None,
+                      on_progress: Optional[Callable[[float, str], None]] = None) -> List[dict]:
     """
     Analyze all crawled site data in the raw data directory.
 
@@ -924,7 +927,12 @@ def analyze_all_sites(raw_data_dir: str = None,
             json_files = json_files[:site_limit]
     logger.info(f"Analyzing {len(json_files)} crawled sites from {raw_dir}")
 
-    for filename in json_files:
+    total_sites = len(json_files)
+    for i, filename in enumerate(json_files, 1):
+        if on_progress:
+            progress_pct = (i / total_sites) * 100
+            on_progress(progress_pct, f"Analyzing {filename} ({i}/{total_sites})")
+            
         filepath = os.path.join(raw_dir, filename)
         with open(filepath, "r", encoding="utf-8") as f:
             site_data = json.load(f)

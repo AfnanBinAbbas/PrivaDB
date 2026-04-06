@@ -1,12 +1,12 @@
 {
   "url": "https://viadata.store",
   "domain": "viadata.store",
-  "timestamp": "2026-04-06T13:01:19.143560Z",
+  "timestamp": "2026-04-06T13:26:04.408107Z",
   "iterations": [
     {
       "url": "https://viadata.store",
       "domain": "viadata.store",
-      "timestamp": "2026-04-06T13:01:19.143560Z",
+      "timestamp": "2026-04-06T13:26:04.408107Z",
       "indexeddb": {
         "databases": []
       },
@@ -34,7 +34,7 @@
     {
       "url": "https://viadata.store",
       "domain": "viadata.store",
-      "timestamp": "2026-04-06T13:01:38.075863Z",
+      "timestamp": "2026-04-06T13:26:17.800753Z",
       "indexeddb": {
         "databases": []
       },
@@ -62,7 +62,7 @@
     {
       "url": "https://viadata.store",
       "domain": "viadata.store",
-      "timestamp": "2026-04-06T13:01:54.568364Z",
+      "timestamp": "2026-04-06T13:26:32.877162Z",
       "indexeddb": {
         "databases": []
       },

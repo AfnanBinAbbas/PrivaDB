@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import {
   Play, Upload, Plus, X, Settings2, ChevronDown, ChevronUp,
   Globe, Search, BarChart3, Check, AlertCircle, FileText,
@@ -307,12 +307,20 @@ export const LiveScan: React.FC = () => {
     }
   }, []);
 
+  // Cleanup/Stop all scans on mount to prevent ghost scans from previous sessions/reloads
   useEffect(() => {
+    fetch('http://localhost:8000/scan/all/stop', { method: 'POST' }).catch(() => {});
     fetchHistory();
   }, [fetchHistory]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validUrls = urls.filter(u => u.trim().length > 0);
+  const validUrlsToScan = useMemo(() => {
+    if (config.sitesLimit && config.sitesLimit > 0) {
+      return validUrls.slice(0, config.sitesLimit);
+    }
+    return validUrls;
+  }, [validUrls, config.sitesLimit]);
 
   const addUrl = () => setUrls(prev => [...prev, '']);
   const removeUrl = (index: number) => setUrls(prev => prev.filter((_, i) => i !== index));
@@ -343,7 +351,7 @@ export const LiveScan: React.FC = () => {
   const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
   const startScan = useCallback(async () => {
-    if (validUrls.length === 0) return;
+    if (validUrlsToScan.length === 0) return;
     setScanning(true);
     setScanComplete(false);
     setResults([]);
@@ -354,11 +362,11 @@ export const LiveScan: React.FC = () => {
     };
 
     try {
-      for (let i = 0; i < validUrls.length; i++) {
+      for (let i = 0; i < validUrlsToScan.length; i++) {
         if (stopSignalRef.current) break;
         
-        const currentUrl = validUrls[i];
-        const progressPrefix = validUrls.length > 1 ? `[${i + 1}/${validUrls.length}]` : '';
+        const currentUrl = validUrlsToScan[i];
+        const progressPrefix = validUrlsToScan.length > 1 ? `[${i + 1}/${validUrlsToScan.length}]` : '';
 
         // Reset phases for the current site
         setPhases([
@@ -402,8 +410,8 @@ export const LiveScan: React.FC = () => {
           const statusRes = await fetch(`http://localhost:8000/scan/${scan_id}`);
           if (!statusRes.ok) throw new Error('Failed to fetch scan status');
 
-          const data = await statusRes.json() as BackendScanRecord & { progress: number; error?: string };
-          const { status, progress, results: scanResults } = data;
+          const data = await statusRes.json() as BackendScanRecord & { progress: number; message?: string; error?: string };
+          const { status, progress, results: scanResults, message: backendMessage } = data;
 
           // Check again after sleep
           if (stopSignalRef.current) break;
@@ -429,15 +437,24 @@ export const LiveScan: React.FC = () => {
 
             if (isDone(status, phaseIdx)) return { ...p, status: 'done' as const, progress: 100 };
             if (isCurrent(status, phaseIdx)) {
-              let msg = p.message;
-              if (status === 'starting') msg = `${progressPrefix}Initializing playlets...`;
-              if (status === 'crawling') msg = `${progressPrefix}Crawling ${currentUrl}... (This takes ~30s)`;
-              if (status === 'detecting') msg = `${progressPrefix}Analyzing IndexedDB entries...`;
-              if (status === 'reporting') msg = `${progressPrefix}Generating report...`;
+              let msg = backendMessage || p.message;
+              if (!backendMessage) {
+                if (status === 'starting') msg = `${progressPrefix}Initializing playlets...`;
+                if (status === 'crawling') msg = `${progressPrefix}Crawling ${currentUrl}...`;
+                if (status === 'detecting') msg = `${progressPrefix}Analyzing IndexedDB entries...`;
+                if (status === 'reporting') msg = `${progressPrefix}Generating report...`;
+              } else if (!msg.startsWith(progressPrefix)) {
+                msg = `${progressPrefix}${msg}`;
+              }
               
-              // Set the active progress to an indeterminate middle value so it looks active
-              // instead of stuck at 10% global progress for 30s.
-              return { ...p, status: 'running' as const, progress: 65, message: msg };
+              // Calculate relative progress for the current phase
+              let relativeProgress = 0;
+              if (status === 'starting') relativeProgress = Math.min(100, (progress / 10) * 100);
+              else if (status === 'crawling') relativeProgress = Math.min(100, ((progress - 10) / 45) * 100);
+              else if (status === 'detecting') relativeProgress = Math.min(100, ((progress - 60) / 25) * 100);
+              else if (status === 'reporting') relativeProgress = Math.min(100, ((progress - 85) / 15) * 100);
+              
+              return { ...p, status: 'running' as const, progress: Math.max(5, relativeProgress), message: msg };
             }
             return { ...p, status: 'pending' as const, progress: 0 };
           }));
@@ -834,7 +851,7 @@ export const LiveScan: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 py-3 bg-primary/10 text-primary border border-primary/20 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm">
                   <Loader2 size={16} className="animate-spin" />
-                  <span className="font-mono">Processing: {validUrls.length} targets</span>
+                  <span className="font-mono">Processing: {validUrlsToScan.length} targets</span>
                 </div>
                 
                 <div className="flex gap-2">
@@ -871,16 +888,16 @@ export const LiveScan: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <motion.button
                 onClick={() => startScan()}
-                disabled={scanning || validUrls.length === 0}
+                disabled={scanning || validUrlsToScan.length === 0}
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-xl shadow-primary/25 text-base"
-                whileHover={{ scale: (scanning || validUrls.length === 0) ? 1 : 1.02 }}
-                whileTap={{ scale: (scanning || validUrls.length === 0) ? 1 : 0.98 }}
+                whileHover={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 1.02 }}
+                whileTap={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 0.98 }}
               >
                 <Play size={20} fill="currentColor" />
-                <span>Start Discovery Scan ({validUrls.length})</span>
+                <span>Start Discovery Scan ({validUrlsToScan.length})</span>
               </motion.button>
               
-              {validUrls.length > 5 && (
+              {validUrlsToScan.length > 5 && (
                 <span className="text-xs text-muted-foreground font-mono bg-muted/30 px-3 py-1 rounded-full border border-border/40">
                   Batch Mode Active
                 </span>
