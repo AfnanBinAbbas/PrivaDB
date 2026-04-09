@@ -1,0 +1,32 @@
+[
+  {
+    "databaseName": "Beacon_0WEB08V45S4VMCK7_V4",
+    "key": "Beacon_0WEB08V45S4VMCK7_V4/event_table_v4/N1",
+    "value": "dt_screen_dom",
+    "source": "IndexedDB",
+    "sink": "fetch.body",
+    "statusCode": 200,
+    "domain": "wetvinfo.com",
+    "requestUrl": "https://otheve.beacon.qq.com/analytics/v2_upload?appkey=0WEB08V45S4VMCK7"
+  },
+  {
+    "databaseName": "Beacon_0WEB08V45S4VMCK7_V4",
+    "key": "Beacon_0WEB08V45S4VMCK7_V4/event_table_v4/N1",
+    "value": "undefined",
+    "source": "IndexedDB",
+    "sink": "fetch.body",
+    "statusCode": 204,
+    "domain": "wetvinfo.com",
+    "requestUrl": "https://rumt-sg.com/collect/events?id=16bp3tlz2W3E2k9xPZ&uin=&version=1.43.51&aid=966de676-acce-4eb6-89df-165c4042654d&env=production&platform=3&netType=4&vp=1280%20*%20720&sr=1280%20*%20720&sessionId=session-c1d8be71c3e649d9b8af1f7fd5d5c258&from=https%3A%2F%2Fwetv.vip%2Fen&referer="
+  },
+  {
+    "databaseName": "Beacon_0WEB08V45S4VMCK7_V4",
+    "key": "Beacon_0WEB08V45S4VMCK7_V4/event_table_v4/N1",
+    "value": "4.7.3-web",
+    "source": "IndexedDB",
+    "sink": "fetch.url",
+    "statusCode": 200,
+    "domain": "wetvinfo.com",
+    "requestUrl": "https://h.trace.qq.com/kv?attaid=00400014144&token=6478159937&product_id=0WEB08V45S4VMCK7&platform=web&uin=9jHn7MGTsBdwGR15Tms9y6GMAwp1xaa3&model=&os=web&app_version=&sdk_version=4.7.3-web&error_stack=&_dc=0.15112899052545858&error_msg=%5Bfetch%5D+signal+is+aborted+without+reason&error_code=600"
+  }
+]

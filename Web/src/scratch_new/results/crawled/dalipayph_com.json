@@ -1,0 +1,2973 @@
+{
+  "url": "https://dalipayph.com",
+  "domain": "dalipayph.com",
+  "timestamp": "2026-04-06T16:32:13.591420Z",
+  "iterations": [
+    {
+      "url": "https://dalipayph.com",
+      "domain": "dalipayph.com",
+      "timestamp": "2026-04-06T16:32:13.591420Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://dalipayph.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 522
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/styles/main.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-browser.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-ok.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-cloud.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-server.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-error.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/ceph-p3-01/website-builder-data-prod/static/widgets/UX.4.47.2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDI.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://dalipayph.com",
+      "domain": "dalipayph.com",
+      "timestamp": "2026-04-06T16:33:09.564245Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://dalipayph.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/ceph-p3-01/website-builder-data-prod/static/widgets/UX.4.47.2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDI.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/isteam/videos/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/975e8f70-9b7b-4ce3-b201-74c80b5617a6/gpub/374e90c2cf4555/script.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/975e8f70-9b7b-4ce3-b201-74c80b5617a6/gpub/4355a73faa2eb728/script.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://dalipayph.com/markup/ad",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-layout13-Theme-publish-Theme-34e99e26.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/MESSAGING/bs-Component-f95f6b47.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-_rollupPluginBabelHelpers-5804ec33.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-defaultSocialIconPack-a2c518b6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-humanisticFilled-91edd0e1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-imageToHeaderTreatments-e81a288a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index-4e26cd6b.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index3-32156fcc.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-legacyOverrides-42582241.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-loaders-fffeeba5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-overlayTypes-3c1643f3.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-themeOverrides-e736c017.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/form/formIdentifiers-99523055.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/traffic2-0a7e72c6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Recaptcha/badge-e542c4f1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Carousel-7574d33c.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/ColorSwatch-4196a0a9.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/DynamicFontScaler-6cccd626.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-dataAids-dc689f22.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index2-87bd33e6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-navigationDrawer-27f5f1f5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-searchFormLocations-c86f2a99.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_commonjsHelpers-67085353.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_react_commonjs-external-a1351e34.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_rollupPluginBabelHelpers-8ce54c82.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/interopRequireDefault-c83974f7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/dynamicFontScaler-ecd443bf.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-LinkAwareComponent-0e7597ad.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/bs-contact3-contact-form-48030a46.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-FlyoutMenu-Component-bd43c5d0.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-_rollupPluginBabelHelpers-5804ec33.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-data-aids-e16ec476.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-routes-192fdc43.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Form-6710b59f.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-Toggle-37f740c7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/utils/form-1fa99f0a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Recaptcha/recaptcha-loader-481e2d0a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/form/recaptchaTypes-ce199ba5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/signals/js/clients/tti/tti.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "referer": "https://dalipayph.com/"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=49709056-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/ux/fonts/sherpa/1.1/gdsherpa-regular.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://s.zkcdn.net/Advertisers/a166951142d742138d7905bff509d77a.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://ms.godaddy.com/i.gif?e=eyJ2IjoiMS4xNCIsImF2Ijo1ODgwNjU5LCJhdCI6MjQ0NywiYnQiOjAsImNtIjo1OTI1Mjg2NjgsImNoIjo1NDQ0NSwiY2siOnt9LCJjciI6NjU3MDk3NDMyLCJkaSI6IjNmNTI2NzM2OTgxMDRmOWE5M2ZkN2NlOTFmZDE4NjEwIiwiZGoiOjAsImlpIjoiODFkODA5ZTE3YmFlNDhiYTg5M2MxYzU3MmVmODUxMWYiLCJsZSI6WzJdLCJkbSI6MywiZmMiOjgzMTM0NjMxMSwiZmwiOjc5NTIyNjgwMSwiaXAiOiI0NC4yMjUuMTc0LjAiLCJudyI6MTA2NjMsInBjIjoxLCJvcCI6MSwibXAiOjEsImRwIjoxLCJkbiI6MSwiZGciOjEsImVjIjoxLCJnbSI6MCwiZXAiOm51bGwsInByIjoyNTA4MDQsInJ0IjoyLCJycyI6NTAwLCJzYSI6Ijg2Iiwic2IiOiJpLTA5YWZhN2EwZWFmYTQ4MDM3Iiwic3AiOjI1NTk0MjQsInN0IjoxMjc2MjY0LCJ1ayI6InVlMS1mZTVjYjE2NWJiYzk0ZmRkYTEwYTEwOTkyMDQ4M2Q2ZSIsInpuIjozMDc0OTUsInptIjpbMzA3NDk1XSwidHMiOjE3NzU0OTMxOTUzNzgsInBuIjoiZ2Qtd2FtLXBvczEiLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImRjIjoxLCJ0eiI6IkFtZXJpY2EvVG9yb250byIsImJhIjoyMSwiZnEiOjB9&s=LG0_hv6_nbEPOpuBhj23OQXDfNI&omsId=baseline&psName=WAM_BANNER_V1&uawVersion=2.2.1&property:publisher_website_key=wam.md5.d7218616829f3c3e42988b0f53b56638",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://contact.apps-api.instantpage.secureserver.net/v3/recaptcha",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=32768-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://www.google.com/recaptcha/api.js?render=6LfjspgUAAAAABsbjG9id6qXQKZkqb6_Hpce6ui_",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfjspgUAAAAABsbjG9id6qXQKZkqb6_Hpce6ui_&co=aHR0cHM6Ly9kYWxpcGF5cGguY29tOjQ0Mw..&hl=en&v=kUYUkUlSyqkjTSMaN2w3RaOh&size=invisible&anchor-ms=20000&execute-ms=30000&cb=v93luqvr55dy",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "referer": "https://dalipayph.com/",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/styles__ltr.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.google.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.google.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://dalipayph.com",
+      "domain": "dalipayph.com",
+      "timestamp": "2026-04-06T16:33:25.457175Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://dalipayph.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/ceph-p3-01/website-builder-data-prod/static/widgets/UX.4.47.2.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDI.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18Q.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/gfonts/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/isteam/videos/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=0-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/975e8f70-9b7b-4ce3-b201-74c80b5617a6/gpub/374e90c2cf4555/script.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/975e8f70-9b7b-4ce3-b201-74c80b5617a6/gpub/4355a73faa2eb728/script.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=49709056-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+          "method": "GET",
+          "resource_type": "media",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "accept-encoding": "identity;q=1, *;q=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "range": "bytes=32768-",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 206
+          }
+        },
+        {
+          "url": "https://dalipayph.com/markup/ad",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-layout13-Theme-publish-Theme-34e99e26.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/MESSAGING/bs-Component-f95f6b47.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-_rollupPluginBabelHelpers-5804ec33.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-defaultSocialIconPack-a2c518b6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-humanisticFilled-91edd0e1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-imageToHeaderTreatments-e81a288a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index-4e26cd6b.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index3-32156fcc.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-legacyOverrides-42582241.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-loaders-fffeeba5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-overlayTypes-3c1643f3.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-themeOverrides-e736c017.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/form/formIdentifiers-99523055.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/traffic2-0a7e72c6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Recaptcha/badge-e542c4f1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Carousel-7574d33c.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/ColorSwatch-4196a0a9.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/DynamicFontScaler-6cccd626.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-dataAids-dc689f22.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-index2-87bd33e6.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-navigationDrawer-27f5f1f5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-searchFormLocations-c86f2a99.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_commonjsHelpers-67085353.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_react_commonjs-external-a1351e34.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/_rollupPluginBabelHelpers-8ce54c82.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/interopRequireDefault-c83974f7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/c/dynamicFontScaler-ecd443bf.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-LinkAwareComponent-0e7597ad.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/bs-contact3-contact-form-48030a46.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/bs-FlyoutMenu-Component-bd43c5d0.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-_rollupPluginBabelHelpers-5804ec33.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-data-aids-e16ec476.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/CONTACT/c/bs-routes-192fdc43.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Form-6710b59f.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@widget/LAYOUT/c/bs-Toggle-37f740c7.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/utils/form-1fa99f0a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/components/Recaptcha/recaptcha-loader-481e2d0a.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/static/radpack/@wsb/guac-widget-shared/lib/common/constants/form/recaptchaTypes-ce199ba5.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/signals/js/clients/tti/tti.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "referer": "https://dalipayph.com/"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://img1.wsimg.com/blobby/go/ux/fonts/sherpa/1.1/gdsherpa-regular.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://s.zkcdn.net/Advertisers/b55cca58641445c0a3e9a15987e5ef54.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://ms.godaddy.com/i.gif?e=eyJ2IjoiMS4xNCIsImF2Ijo1ODgwNjU5LCJhdCI6MjQ0NywiYnQiOjAsImNtIjo2NDk0NDAzNDgsImNoIjo1NDQ0NSwiY2siOnt9LCJjciI6ODc4MjIzNzkyLCJkaSI6IjE3ZDhiZDRiMzdhOTRlOTY4NjUyYjA1MWQxMzg5Mzk4IiwiZGoiOjAsImlpIjoiNTkwMmE4Y2VhNmE5NDMwMWFiMDI4YWRlZWE3ZmNiODIiLCJsZSI6WzJdLCJkbSI6MywiZmMiOjEwNTI3NTA5NDAsImZsIjo4NjIyMDAwNjksImlwIjoiNDQuMjI1LjE3NC4wIiwibnciOjEwNjYzLCJwYyI6MSwib3AiOjEsIm1wIjoxLCJkcCI6MSwiZG4iOjEsImRnIjoxLCJlYyI6MSwiZ20iOjAsImVwIjpudWxsLCJwciI6MjUwODA0LCJydCI6MiwicnMiOjUwMCwic2EiOiI4NiIsInNiIjoiaS0wZTY4NmUxYjNkODcwNzFkNSIsInNwIjoyNTU0OTk2LCJzdCI6MTI3NjI2NCwidWsiOiJ1ZTEtYmQ1OGQ4YzRmYWVjNGI0YWI4NjllYjVjOTM5Y2IxOTYiLCJ6biI6MzA3NDk1LCJ6bSI6WzMwNzQ5NV0sInRzIjoxNzc1NDkzMjA5NjkxLCJwbiI6ImdkLXdhbS1wb3MxIiwiZ2MiOnRydWUsImdDIjp0cnVlLCJncyI6Im5vbmUiLCJkYyI6MSwidHoiOiJBbWVyaWNhL1Rvcm9udG8iLCJiYSI6MjEsImZxIjowfQ&s=8Ec9BHgOsA5bsuHhl-r_nrOsRaM&omsId=baseline&psName=WAM_BANNER_V1&uawVersion=2.2.1&property:publisher_website_key=wam.md5.d7218616829f3c3e42988b0f53b56638",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://contact.apps-api.instantpage.secureserver.net/v3/recaptcha",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.google.com/recaptcha/api.js?render=6LfjspgUAAAAABsbjG9id6qXQKZkqb6_Hpce6ui_",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://dalipayph.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfjspgUAAAAABsbjG9id6qXQKZkqb6_Hpce6ui_&co=aHR0cHM6Ly9kYWxpcGF5cGguY29tOjQ0Mw..&hl=en&v=kUYUkUlSyqkjTSMaN2w3RaOh&size=invisible&anchor-ms=20000&execute-ms=30000&cb=bdxt8lwhvquu",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "referer": "https://dalipayph.com/",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/styles__ltr.css",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.google.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.google.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.google.com/recaptcha/api2/webworker.js?hl=en&v=kUYUkUlSyqkjTSMaN2w3RaOh",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "accept": "*/*",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/api2/logo_48.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/styles__ltr.css",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.google.com",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.google.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.gstatic.com/recaptcha/releases/kUYUkUlSyqkjTSMaN2w3RaOh/recaptcha__en.js",
+          "method": "GET",
+          "resource_type": "other",
+          "headers": {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "referer": "https://www.google.com/"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://csp.secureserver.net/eventbus/web?clientid=b18ef4f046435b64a469b32c3c1c20a3",
+          "method": "POST",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain;charset=UTF-8",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": "{\"schemaId\":\"urn:shared:user:events:/v1\",\"data\":[{\"global\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"client\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"sdk\":{\"name\":\"scc-c2\",\"version\":\"1.3.0\"},\"device\":{\"viewportWidth\":1280,\"viewportHeight\":720,\"screenResolutionWidth\":1280,\"screenResolutionHeight\":720}},\"page\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"host\":\"dalipayph.com\",\"path\":\"/\",\"location\":\"https://dalipayph.com/\",\"referrer\":\"\",\"sessionPageViewCount\":1},\"context\":{\"userType\":\"c2\",\"visitorId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\",\"sessionId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\"}},\"events\":[{\"schemaId\":\"urn:shared:user:event:/data-platform/signals/page-view/v1\",\"data\":{\"eventCreationTimestamp\":\"2026-04-06T16:33:28.366Z\",\"forensics\":{\"traceIdAdopted\":false},\"traffic\":{\"pageLevelProperties\":{\"ap\":\"IPv2\",\"websiteId\":\"975e8f70-9b7b-4ce3-b201-74c80b5617a6\",\"pd\":\"2025-02-17T15:36:50.278Z\",\"meta.numWidgets\":5,\"meta.theme\":\"layout13\",\"meta.headerMediaType\":\"Video\",\"meta.isOLS\":false,\"meta.isOLA\":false,\"meta.isMembership\":false},\"customProperties\":{}},\"producerEventId\":\"992897cc-6212-4431-b3ac-a9a23ccaee0f\"}},{\"schemaId\":\"urn:shared:user:event:/data-platform/signals/impression/v1\",\"data\":{\"eventCreationTimestamp\":\"2026-04-06T16:33:56.363Z\",\"traffic\":{\"pageLevelProperties\":{\"ap\":\"IPv2\",\"websiteId\":\"975e8f70-9b7b-4ce3-b201-74c80b5617a6\",\"pd\":\"2025-02-17T15:36:50.278Z\",\"meta.numWidgets\":5,\"meta.theme\":\"layout13\",\"meta.headerMediaType\":\"Video\",\"meta.isOLS\":false,\"meta.isOLA\":false,\"meta.isMembership\":false},\"eid\":\"ads.adPlacementKey_gd-wam-pos1.omsId_baseline/psName_WAM_BANNER_V1/impressionId_5902a8cea6a94301ab028adeea7fcb82\",\"customProperties\":{}},\"producerEventId\":\"a67944c8-b164-4d52-854d-194b51f85c22\"}},{\"schemaId\":\"urn:shared:user:event:/data-platform/signals/impression/v1\",\"data\":{\"eventCreationTimestamp\":\"2026-04-06T16:33:56.365Z\",\"traffic\":{\"pageLevelProperties\":{\"ap\":\"IPv2\",\"websiteId\":\"975e8f70-9b7b-4ce3-b201-74c80b5617a6\",\"pd\":\"2025-02-17T15:36:50.278Z\",\"meta.numWidgets\":5,\"meta.theme\":\"layout13\",\"meta.headerMediaType\":\"Video\",\"meta.isOLS\":false,\"meta.isOLA\":false,\"meta.isMembership\":false},\"eid\":\"ads.adPlacementKey_gd-wam-pos1.omsId_baseline/psName_WAM_BANNER_V1/impressionId_5902a8cea6a94301ab028adeea7fcb82\",\"customProperties\":{}},\"producerEventId\":\"119400e0-a98c-4c64-9bd8-5db4872c7b15\"}}]}]}",
+          "response": {
+            "status": 202
+          }
+        },
+        {
+          "url": "https://csp.secureserver.net/eventbus/web?clientid=8da2217409854bee82e12dc4ca0b39fb",
+          "method": "POST",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain;charset=UTF-8",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": "{\"schemaId\":\"urn:shared:user:events:/v1\",\"data\":[{\"global\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"client\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"sdk\":{\"name\":\"scc-c2\",\"version\":\"1.3.0\"},\"device\":{\"viewportWidth\":1280,\"viewportHeight\":720,\"screenResolutionWidth\":1280,\"screenResolutionHeight\":720}},\"page\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"host\":\"dalipayph.com\",\"path\":\"/\",\"location\":\"https://dalipayph.com/\",\"referrer\":\"\",\"sessionPageViewCount\":1},\"context\":{\"userType\":\"c2\",\"visitorId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\",\"sessionId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\"}},\"events\":[{\"schemaId\":\"urn:shared:user:event:/rigor/page-navigation/v1\",\"data\":{\"eventCreationTimestamp\":\"2026-04-06T16:33:56.373Z\",\"navigationType\":\"navigate\",\"timing\":{\"navigation\":{\"connectEnd\":1775493205694,\"connectStart\":1775493205462,\"domComplete\":1775493236360,\"domContentLoadedEventEnd\":1775493236357,\"domContentLoadedEventStart\":1775493236357,\"domInteractive\":1775493208337,\"domLoading\":1775493206166,\"domainLookupEnd\":1775493205462,\"domainLookupStart\":1775493205462,\"fetchStart\":1775493205461,\"navigationStart\":1775493205460,\"requestStart\":1775493205694,\"responseEnd\":1775493206172,\"responseStart\":1775493206158,\"loadEventStart\":1775493236361,\"loadEventEnd\":0,\"pageLoadTime\":30901,\"domContentLoadedTime\":30897,\"domInteractiveTime\":2877,\"pageDownloadTime\":14,\"serverResponseTime\":464,\"serverConnectionTime\":232,\"redirectionTime\":1},\"paint\":{\"largestContentfulPaint\":2680}},\"traffic\":{\"pageLevelProperties\":{\"ap\":\"IPv2\",\"websiteId\":\"975e8f70-9b7b-4ce3-b201-74c80b5617a6\",\"pd\":\"2025-02-17T15:36:50.278Z\",\"meta.numWidgets\":5,\"meta.theme\":\"layout13\",\"meta.headerMediaType\":\"Video\",\"meta.isOLS\":false,\"meta.isOLA\":false,\"meta.isMembership\":false}},\"producerEventId\":\"32a7f2e7-4d89-4938-8d21-abd42a1d70ed\",\"contentLoadType\":\"hard\",\"response\":{\"transferSize\":17495,\"encodedBodySize\":17195,\"decodedBodySize\":89221}}}]}]}",
+          "response": {
+            "status": 202
+          }
+        },
+        {
+          "url": "https://csp.secureserver.net/eventbus/web?clientid=8da2217409854bee82e12dc4ca0b39fb",
+          "method": "POST",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://dalipayph.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain;charset=UTF-8",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": "{\"schemaId\":\"urn:shared:user:events:/v1\",\"data\":[{\"global\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"client\":{\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"sdk\":{\"name\":\"scc-c2\",\"version\":\"1.3.0\"},\"device\":{\"viewportWidth\":1280,\"viewportHeight\":720,\"screenResolutionWidth\":1280,\"screenResolutionHeight\":720}},\"page\":{\"traceId\":\"5051facbc4e04a2b8a1081a9c408d592\",\"host\":\"dalipayph.com\",\"path\":\"/\",\"location\":\"https://dalipayph.com/\",\"referrer\":\"\",\"sessionPageViewCount\":1},\"context\":{\"userType\":\"c2\",\"visitorId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\",\"sessionId\":\"d6f63db8-0520-4bc6-b5d5-d3e9e1349003\"}},\"events\":[{\"schemaId\":\"urn:shared:user:event:/rigor/page-navigation-delayed/v1\",\"data\":{\"eventCreationTimestamp\":\"2026-04-06T16:34:02.379Z\",\"timing\":{\"paint\":{\"largestContentfulPaint\":2680},\"vitals\":{\"cumulativeLayoutShift\":0.039525691699604744,\"timeToInteractive\":30897}},\"traffic\":{\"pageLevelProperties\":{\"ap\":\"IPv2\",\"websiteId\":\"975e8f70-9b7b-4ce3-b201-74c80b5617a6\",\"pd\":\"2025-02-17T15:36:50.278Z\",\"meta.numWidgets\":5,\"meta.theme\":\"layout13\",\"meta.headerMediaType\":\"Video\",\"meta.isOLS\":false,\"meta.isOLA\":false,\"meta.isMembership\":false},\"customProperties\":{\"wam_site_hasPopupWidget\":false,\"wam_site_hasMessagingWidget\":true,\"wam_site_headerTreatment\":\"Fill\",\"wam_site_hasSlideshow\":false,\"wam_site_hasFreemiumBanner\":true,\"wam_site_homepageFirstWidgetType\":\"SOCIAL\",\"wam_site_homepageFirstWidgetPreset\":\"social1\",\"wam_site_businessCategory\":\"coming_soon\",\"wam_site_theme\":\"layout13\",\"wam_site_fontPack\":\"playfair-display\",\"wam_site_cookieBannerEnabled\":true,\"wam_site_hasHomepageHTML\":false,\"wam_site_hasHomepageShop\":false,\"wam_site_hasHomepageOla\":false,\"wam_site_hasHomepageBlog\":false,\"wam_site_hasShop\":false,\"wam_site_hasOla\":false,\"wam_site_planType\":\"freemiumV1\",\"wam_site_isHomepage\":true,\"wam_site_htmlWidget\":false,\"wam_site_networkSpeed\":\"10.00\"}},\"producerEventId\":\"4290d71b-8ffd-477d-bccb-9418b27e422b\"}}]}]}",
+          "response": {
+            "status": 202
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://dalipayph.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 522
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/styles/main.css",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-browser.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-ok.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-cloud.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-server.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://dalipayph.com/cdn-cgi/images/cf-icon-error.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://dalipayph.com/cdn-cgi/styles/main.css",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/ceph-p3-01/website-builder-data-prod/static/widgets/UX.4.47.2.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18Q.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDI.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18Q.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/sourcesanspro/v23/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://img1.wsimg.com/gfonts/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://dalipayph.com",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    }
+  ],
+  "errors": []
+}

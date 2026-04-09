@@ -1,0 +1,115 @@
+{
+  "url": "https://sexchatters.com",
+  "domain": "sexchatters.com",
+  "timestamp": "2026-04-06T17:15:09.038325Z",
+  "iterations": [
+    {
+      "url": "https://sexchatters.com",
+      "domain": "sexchatters.com",
+      "timestamp": "2026-04-06T17:15:09.038325Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sexchatters.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 1
+    },
+    {
+      "url": "https://sexchatters.com",
+      "domain": "sexchatters.com",
+      "timestamp": "2026-04-06T17:15:16.962985Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sexchatters.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 2
+    },
+    {
+      "url": "https://sexchatters.com",
+      "domain": "sexchatters.com",
+      "timestamp": "2026-04-06T17:15:20.658447Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sexchatters.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://sexchatters.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": [
+    "iter1: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n",
+    "iter2: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n",
+    "iter3: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://sexchatters.com/\nCall log:\n  - navigating to \"https://sexchatters.com/\", waiting until \"domcontentloaded\"\n"
+  ]
+}

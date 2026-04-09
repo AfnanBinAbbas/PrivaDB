@@ -12,6 +12,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 import re
 
+
+#mink was here
+#adfsasfasdfa
+
 # Add src/scratch_new to path to import modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "scratch_new")))
 
