@@ -1,0 +1,3113 @@
+{
+  "url": "https://simplypsychology.org",
+  "domain": "simplypsychology.org",
+  "timestamp": "2026-04-06T16:31:27.081544Z",
+  "iterations": [
+    {
+      "url": "https://simplypsychology.org",
+      "domain": "simplypsychology.org",
+      "timestamp": "2026-04-06T16:31:27.081544Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.googleapis.com/css?family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CDM%20Serif%20Display%3Aregular%2Citalic%7CLato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic&display=swap",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aversion-therapy-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/simply-psychology.js?ver=6.9.4",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/logo-no-background.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Mobile-Logo2.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Logo.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/longitudinal-study-design-1-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/information-processing-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/intrinsic-extrinsic-motivation-300x167.jpeg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/memory2-300x228.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/relationship-disrespect-300x214.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/insecure-girlfriend-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/couple-arguing-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/perfect-relationship-300x118.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/generalized-anxiety-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/emotion-dysregulation-anxiety-autism-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/stigma-bias-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Relationships-2-150x150.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Anxiety-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aqa-logo2-1-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/society-1.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/news-icon-300x216.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://library.generateblocks.com/wp-content/uploads/2022/05/pexels-andrew-mcmurtrie-3973905.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://fonts.googleapis.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/flooring/countryLookup",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/launcher/settings.json?off=mediavine",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://keywords.mediavine.com/keyword?pageUrl=https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "x-mv-associated-domain": "www.simplypsychology.org",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3.44.3/wrapper.min.js?bust=1504169248",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://exchange.mediavine.com/usersync.min.js?s2sVersion=production",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://simplypsychology.org",
+      "domain": "simplypsychology.org",
+      "timestamp": "2026-04-06T16:31:45.361212Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.googleapis.com/css?family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CDM%20Serif%20Display%3Aregular%2Citalic%7CLato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic&display=swap",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aversion-therapy-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/simply-psychology.js?ver=6.9.4",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/logo-no-background.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Mobile-Logo2.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Logo.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/longitudinal-study-design-1-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/information-processing-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/intrinsic-extrinsic-motivation-300x167.jpeg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/memory2-300x228.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/relationship-disrespect-300x214.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/insecure-girlfriend-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/couple-arguing-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/perfect-relationship-300x118.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/generalized-anxiety-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/emotion-dysregulation-anxiety-autism-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/stigma-bias-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Relationships-2-150x150.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Anxiety-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aqa-logo2-1-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/society-1.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/news-icon-300x216.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://library.generateblocks.com/wp-content/uploads/2022/05/pexels-andrew-mcmurtrie-3973905.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/flooring/countryLookup",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/launcher/settings.json?off=mediavine",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://keywords.mediavine.com/keyword?pageUrl=https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "x-mv-associated-domain": "www.simplypsychology.org",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3.44.3__cgroup3.42.8-3736-hvrf.2/wrapper.min.js?bust=656185803",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://exchange.mediavine.com/usersync.min.js?s2sVersion=production",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://fonts.googleapis.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://exchange.mediavine.com/ias/check?s2sVersion=production",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3318/fa6cd5e582c41b54b01c.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/cmp/e8484401c62373a45398.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/cmp.php?&cdid=aae8faf2c2da9&h=https%3A%2F%2Fwww.simplypsychology.org%2F&&cmpsetcc=PK-KP&l=en&ls=EN_EN&lp=EN-US&o=1775493108609",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us-cdn.consentmanager.net/delivery/js/cmp_final.min.js?t=2026-4-6",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://faves.grow.me/main.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://api.grow.me/sites/f5965a97-bdb9-4e26-94dc-c42ab6a46aae/config",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://api.grow.me/location-privacy-info",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://api.grow.me/versions",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://faves.grow.me/app.9.42.0.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://some.growplow.events/com.snowplowanalytics.snowplow/tp2",
+          "method": "POST",
+          "resource_type": "ping",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://some.growplow.events/com.snowplowanalytics.snowplow/tp2",
+          "method": "POST",
+          "resource_type": "ping",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://faves.grow.me/uid2SdkLoader-B_zmg2gY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://faves.grow.me/app.9.42.0.js",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://cdn.prod.uidapi.com/uid2-sdk-4.0.1.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/cmp.php?__cmpcc=1&__cmpfcc=1&id=134349&o=1775493113&h=https%3A%2F%2Fwww.simplypsychology.org%2F&&cmpsetcc=PK-KP&l=en&odw=0&dlt=1&l=en&lp=EN-US&cmpsetcc=PK-KP",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us-cdn.consentmanager.net/delivery/customdata/bV8xLndfMTM0MzQ5LnJfLmxfZW4uZF80NDUxNy54XzY2LnYucC50XzQ0NTE3Lnh0XzI1NzY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/6973/da16ca0b9ede5eab8259.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/2445/a23e9e0de04e1bfd7154.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3006/982dcde54b0455fa631c.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/afterScroll/b6a2afd45d3603343cc5.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://metrics.rapidedge.io/gamera.js?ltv=1&audience=1&tpcs=1&partner=mediavine&wait=1",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://btloader.com/tag?o=5161256536244224&domain=www.simplypsychology.org&upapi=true",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/creativeBlocks",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/1596/6392494a2bea8b7ebdac.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3688/cfd6427c7a16a00c51b2.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/8628/e918fb49d8c8866d2131.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/prebid/b562e9210da7be16f704.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/smilewanted/53c50faaa331fc801c85.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/info/?id=134349&did=1&cfdid=1&t=pv.cn.d_reg0.oonv.d_dnsx&h=https%3A%2F%2Fwww.simplypsychology.org%2F&o=1775493116040&l=EN&lv=151073&d=1&ct=14&e=&e2=&e3=&i=&sv=2576&dv=66&&cmpsetcc=PK-KP",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/amazon/v1/adjustments?offering=mediavine",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://imp-dev.mediavine.com/sk?domain=www.simplypsychology.org",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://api.receptivity.io/v1/prebid/1Pw320cuJVXnYuFXFZ0eoE11G/connector/rxConnector.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://config.aps.amazon-adsystem.com/configs/38918095-8e45-4332-88bf-226b3514cb64",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://client.aps.amazon-adsystem.com/publisher.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/iiqMatch/b966bc0af1418e4e991e.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://api.rlcdn.com/api/identity/envelope?pid=44",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://match.adsrvr.org/track/rid?ttd_pid=sne7dew&fmt=json",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://gum.criteo.com/sid/json?origin=prebid&topUrl=https%3A%2F%2Fwww.simplypsychology.org%2F&domain=www.simplypsychology.org&lsw=1&gpp=DBAA&gpp_sid=-1",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://lexicon.33across.com/v1/envelope?pid=0014000000xvEfwAAE&gdpr=0&src=pbjs&ver=10.29.0&coppa=0&gpp=DBAA&gpp_sid=-1",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://id5-sync.com/api/config/prebid",
+          "method": "POST",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain;charset=UTF-8",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": "{\"enabledStorageTypes\":[\"html5\"],\"name\":\"id5Id\",\"params\":{\"partner\":719,\"externalModuleUrl\":\"https://cdn.id5-sync.com/api/1.0/id5PrebidModule.js\"},\"storage\":{\"type\":\"html5\",\"name\":\"id5id\",\"expires\":90,\"refreshInSeconds\":28800},\"bounce\":true}",
+          "response": null
+        },
+        {
+          "url": "https://cdn.id5-sync.com/api/1.0/id5PrebidModule.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://id.crwdcntrl.net/id?c=18338",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "content-type": "text/plain",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://simplypsychology.org",
+      "domain": "simplypsychology.org",
+      "timestamp": "2026-04-06T16:31:59.036481Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.googleapis.com/css?family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CDM%20Serif%20Display%3Aregular%2Citalic%7CLato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic&display=swap",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aversion-therapy-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/simply-psychology.js?ver=6.9.4",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/logo-no-background.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Mobile-Logo2.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Logo.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/longitudinal-study-design-1-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/information-processing-1-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/intrinsic-extrinsic-motivation-300x167.jpeg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/memory2-300x228.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/relationship-disrespect-300x214.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/insecure-girlfriend-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/couple-arguing-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/perfect-relationship-300x118.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/generalized-anxiety-300x200.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/emotion-dysregulation-anxiety-autism-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/stigma-bias-300x169.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Relationships-2-150x150.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/Anxiety-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/aqa-logo2-1-150x150.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/society-1.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.simplypsychology.org/wp-content/uploads/news-icon-300x216.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://library.generateblocks.com/wp-content/uploads/2022/05/pexels-andrew-mcmurtrie-3973905.jpg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+          "method": "GET",
+          "resource_type": "font",
+          "headers": {
+            "origin": "https://www.simplypsychology.org",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://fonts.googleapis.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/flooring/countryLookup",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/launcher/settings.json?off=mediavine",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://keywords.mediavine.com/keyword?pageUrl=https://www.simplypsychology.org/",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "x-mv-associated-domain": "www.simplypsychology.org",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3.44.3/wrapper.min.js?bust=1504169248",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://exchange.mediavine.com/usersync.min.js?s2sVersion=production",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://exchange.mediavine.com/ias/check?s2sVersion=production",
+          "method": "GET",
+          "resource_type": "xhr",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/3318/fa6cd5e582c41b54b01c.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://scripts.mediavine.com/tags/cmp/e8484401c62373a45398.min.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/cmp.php?&cdid=aae8faf2c2da9&h=https%3A%2F%2Fwww.simplypsychology.org%2F&&cmpsetcc=PK-KP&l=en&ls=EN_EN&lp=EN-US&o=1775493128125",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us-cdn.consentmanager.net/delivery/js/cmp_final.min.js?t=2026-4-6",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://faves.grow.me/main.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://api.grow.me/sites/f5965a97-bdb9-4e26-94dc-c42ab6a46aae/config",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://api.grow.me/location-privacy-info",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://api.grow.me/versions",
+          "method": "GET",
+          "resource_type": "fetch",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": null
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/cmp.php?__cmpcc=1&id=134349&o=1775493128&h=https%3A%2F%2Fwww.simplypsychology.org%2F&&cmpsetcc=PK-KP&l=en&odw=0&dlt=1&l=en&lp=EN-US&cmpsetcc=PK-KP",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us-cdn.consentmanager.net/delivery/customdata/bV8xLndfMTM0MzQ5LnJfLmxfZW4uZF80NDUxNy54XzY2LnYucC50XzQ0NTE3Lnh0XzI1NzY.js",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://eu-us.consentmanager.net/delivery/info/?id=134349&did=1&cfdid=1&t=pv.cn.d_reg0.oonv.d_dnsx&h=https%3A%2F%2Fwww.simplypsychology.org%2F&o=1775493129729&l=EN&lv=151073&d=1&ct=14&e=&e2=&e3=&i=&sv=2576&dv=66&&cmpsetcc=PK-KP",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.simplypsychology.org/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://simplypsychology.org/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 301
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://fonts.googleapis.com/css?family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%7CDM%20Serif%20Display%3Aregular%2Citalic%7CLato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic&display=swap",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/aversion-therapy-1-300x169.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://scripts.mediavine.com/tags/simply-psychology.js?ver=6.9.4",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/logo-no-background.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Mobile-Logo2.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/Simply-Psychology-Logo.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/longitudinal-study-design-1-1-300x169.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/information-processing-1-300x169.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/intrinsic-extrinsic-motivation-300x167.jpeg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.simplypsychology.org",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.simplypsychology.org",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/memory2-300x228.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/relationship-disrespect-300x214.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/insecure-girlfriend-300x200.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/couple-arguing-300x200.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/perfect-relationship-300x118.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/generalized-anxiety-300x200.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/emotion-dysregulation-anxiety-autism-300x169.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/stigma-bias-300x169.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/Relationships-2-150x150.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/Anxiety-150x150.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/aqa-logo2-1-150x150.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/society-1.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.simplypsychology.org/wp-content/uploads/news-icon-300x216.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://library.generateblocks.com/wp-content/uploads/2022/05/pexels-andrew-mcmurtrie-3973905.jpg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "method": "GET",
+      "resource_type": "font",
+      "headers": {
+        "origin": "https://www.simplypsychology.org",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://fonts.googleapis.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": null
+    },
+    {
+      "url": "https://scripts.mediavine.com/flooring/countryLookup",
+      "method": "GET",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://scripts.mediavine.com/launcher/settings.json?off=mediavine",
+      "method": "GET",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://keywords.mediavine.com/keyword?pageUrl=https://www.simplypsychology.org/",
+      "method": "GET",
+      "resource_type": "xhr",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "x-mv-associated-domain": "www.simplypsychology.org",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": null
+    },
+    {
+      "url": "https://scripts.mediavine.com/tags/3.44.3/wrapper.min.js?bust=1504169248",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": null
+    },
+    {
+      "url": "https://exchange.mediavine.com/usersync.min.js?s2sVersion=production",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.simplypsychology.org/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": []
+}

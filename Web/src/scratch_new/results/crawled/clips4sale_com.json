@@ -1,0 +1,115 @@
+{
+  "url": "https://clips4sale.com",
+  "domain": "clips4sale.com",
+  "timestamp": "2026-04-06T16:01:13.146698Z",
+  "iterations": [
+    {
+      "url": "https://clips4sale.com",
+      "domain": "clips4sale.com",
+      "timestamp": "2026-04-06T16:01:13.146698Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://clips4sale.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 1
+    },
+    {
+      "url": "https://clips4sale.com",
+      "domain": "clips4sale.com",
+      "timestamp": "2026-04-06T16:01:17.426849Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://clips4sale.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 2
+    },
+    {
+      "url": "https://clips4sale.com",
+      "domain": "clips4sale.com",
+      "timestamp": "2026-04-06T16:01:22.252944Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://clips4sale.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://clips4sale.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": [
+    "iter1: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n",
+    "iter2: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n",
+    "iter3: Navigation error: Page.goto: net::ERR_CONNECTION_RESET at https://clips4sale.com/\nCall log:\n  - navigating to \"https://clips4sale.com/\", waiting until \"domcontentloaded\"\n"
+  ]
+}

@@ -1,0 +1,1313 @@
+{
+  "url": "https://sublimetext.com",
+  "domain": "sublimetext.com",
+  "timestamp": "2026-04-06T17:09:39.593737Z",
+  "iterations": [
+    {
+      "url": "https://sublimetext.com",
+      "domain": "sublimetext.com",
+      "timestamp": "2026-04-06T17:09:39.593737Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_gpu.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_arm64.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_tab_multi.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_auto_complete.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_dark_mode.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_ts.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_syntax.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_python.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_text.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_merge.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/windows_title_bar_dark.png?v2",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_dark.js?v2",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_top.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_bottom.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_image_1a_dark_packed.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_image_1b_dark_packed.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 1
+    },
+    {
+      "url": "https://sublimetext.com",
+      "domain": "sublimetext.com",
+      "timestamp": "2026-04-06T17:09:53.381421Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_gpu.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_arm64.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_tab_multi.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_auto_complete.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_dark_mode.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_ts.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_syntax.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_python.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_text.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_merge.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/windows_title_bar_dark.png?v2",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_dark.js?v2",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_top.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_bottom.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_image_1a_dark_packed.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_image_1b_dark_packed.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 2
+    },
+    {
+      "url": "https://sublimetext.com",
+      "domain": "sublimetext.com",
+      "timestamp": "2026-04-06T17:10:06.762202Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 301
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+          "method": "GET",
+          "resource_type": "stylesheet",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/logo.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_gpu.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_arm64.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_tab_multi.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_auto_complete.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_dark_mode.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_ts.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_syntax.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_python.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_text.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimehq.com/images/sublime_merge.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/windows_title_bar_dark.png?v2",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_dark.js?v2",
+          "method": "GET",
+          "resource_type": "script",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_top.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/images/icon_grey_bottom.svg",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        },
+        {
+          "url": "https://www.sublimetext.com/screencasts/windows_image_1a_dark_packed.png",
+          "method": "GET",
+          "resource_type": "image",
+          "headers": {
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://www.sublimetext.com/",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0"
+          },
+          "post_data": null,
+          "response": {
+            "status": 200
+          }
+        }
+      ],
+      "errors": [],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://sublimetext.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 301
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+      "method": "GET",
+      "resource_type": "stylesheet",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/logo.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_gpu.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_arm64.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_tab_multi.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_auto_complete.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_dark_mode.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_ts.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_syntax.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_python.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimehq.com/images/sublime_text.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimehq.com/images/sublime_merge.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/windows_title_bar_dark.png?v2",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/screencasts/windows_dark.js?v2",
+      "method": "GET",
+      "resource_type": "script",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_grey_top.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/images/icon_grey_bottom.svg",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/sublime_v3.css?v=6dd3f0d56104da1d5a9bb3855a6e0b0d",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/screencasts/windows_image_1a_dark_packed.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "url": "https://www.sublimetext.com/screencasts/windows_image_1b_dark_packed.png",
+      "method": "GET",
+      "resource_type": "image",
+      "headers": {
+        "sec-ch-ua-platform": "\"Windows\"",
+        "referer": "https://www.sublimetext.com/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "post_data": null,
+      "response": {
+        "status": 200
+      }
+    }
+  ],
+  "errors": []
+}

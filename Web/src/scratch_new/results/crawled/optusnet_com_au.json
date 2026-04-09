@@ -1,0 +1,115 @@
+{
+  "url": "https://optusnet.com.au",
+  "domain": "optusnet.com.au",
+  "timestamp": "2026-04-06T17:04:53.345256Z",
+  "iterations": [
+    {
+      "url": "https://optusnet.com.au",
+      "domain": "optusnet.com.au",
+      "timestamp": "2026-04-06T17:04:53.345256Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://optusnet.com.au/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 1
+    },
+    {
+      "url": "https://optusnet.com.au",
+      "domain": "optusnet.com.au",
+      "timestamp": "2026-04-06T17:05:41.193992Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://optusnet.com.au/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 2
+    },
+    {
+      "url": "https://optusnet.com.au",
+      "domain": "optusnet.com.au",
+      "timestamp": "2026-04-06T17:06:29.110063Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://optusnet.com.au/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://optusnet.com.au/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": [
+    "iter1: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n",
+    "iter2: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n",
+    "iter3: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://optusnet.com.au/\", waiting until \"domcontentloaded\"\n"
+  ]
+}

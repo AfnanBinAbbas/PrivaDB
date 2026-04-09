@@ -1,0 +1,115 @@
+{
+  "url": "https://superfastgame.com",
+  "domain": "superfastgame.com",
+  "timestamp": "2026-04-06T17:21:31.121017Z",
+  "iterations": [
+    {
+      "url": "https://superfastgame.com",
+      "domain": "superfastgame.com",
+      "timestamp": "2026-04-06T17:21:31.121017Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://superfastgame.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 1
+    },
+    {
+      "url": "https://superfastgame.com",
+      "domain": "superfastgame.com",
+      "timestamp": "2026-04-06T17:21:34.113291Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://superfastgame.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 2
+    },
+    {
+      "url": "https://superfastgame.com",
+      "domain": "superfastgame.com",
+      "timestamp": "2026-04-06T17:21:37.070059Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://superfastgame.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\""
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 3
+    }
+  ],
+  "indexeddb": {
+    "databases": []
+  },
+  "network_requests": [
+    {
+      "url": "https://superfastgame.com/",
+      "method": "GET",
+      "resource_type": "document",
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\""
+      },
+      "post_data": null,
+      "response": null
+    }
+  ],
+  "errors": [
+    "iter1: Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n",
+    "iter2: Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n",
+    "iter3: Navigation error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://superfastgame.com/\nCall log:\n  - navigating to \"https://superfastgame.com/\", waiting until \"domcontentloaded\"\n"
+  ]
+}
