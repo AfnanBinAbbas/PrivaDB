@@ -256,9 +256,11 @@ async def run_scan(scan_id: str, url: str, headless: bool = False, crawl_only: b
         scans[scan_id]["results"]["stage"] = "full"
         
     except asyncio.CancelledError:
-        scans[scan_id]["status"] = "stopped"
-        scans[scan_id]["message"] = "Scan terminated by user"
-        logger.info(f"Scan {scan_id} was cancelled")
+        # Set status immediately so polling returns the correct state
+        if scan_id in scans:
+            scans[scan_id]["status"] = "stopped"
+            scans[scan_id]["message"] = "Scan terminated by user"
+        logger.info(f"Scan {scan_id} was successfully cancelled")
     except Exception as e:
         scans[scan_id]["status"] = "failed"
         scans[scan_id]["error"] = str(e)
@@ -338,12 +340,16 @@ async def stop_scan(scan_id: str):
 
 @app.post("/scan/all/stop")
 async def stop_all_scans():
-    count = len(active_tasks)
+    count = 0
     for scan_id, task in list(active_tasks.items()):
-        task.cancel()
+        if not task.done():
+            task.cancel()
+            count += 1
         if scan_id in scans:
             scans[scan_id]["status"] = "stopped"
             scans[scan_id]["message"] = "Scan terminated by global stop command"
+    
+    logger.info(f"🛑 Global stop signal sent to {count} active tasks")
     return {"message": f"Stop signal sent to {count} active scans"}
 
 @app.get("/scan/results", response_model=Dict)
