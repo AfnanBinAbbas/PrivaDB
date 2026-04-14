@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Architecture', href: '#architecture' },
   { label: 'Trackers', href: '#trackers' },
   { label: 'Download', href: '#download' },
+  { label: 'Collaborate', href: 'https://github.com/AfnanBinAbbas/PrivaDB/tree/main', external: true },
 ];
 
 export const FloatingNav: React.FC = () => {
@@ -34,8 +35,11 @@ export const FloatingNav: React.FC = () => {
             <a
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-muted/50"
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-muted/50 flex items-center gap-1.5 group"
             >
+              {link.label === 'Collaborate' && <Github size={14} className="group-hover:text-primary transition-colors" />}
               {link.label}
             </a>
           ))}

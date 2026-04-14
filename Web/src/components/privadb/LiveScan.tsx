@@ -596,8 +596,11 @@ export const LiveScan: React.FC = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div variants={itemVariants} className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs text-primary font-medium mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs font-semibold mb-4 text-red-500/90 border border-red-500/20">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            </span>
             Interactive Demo
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Live Scan</h2>
