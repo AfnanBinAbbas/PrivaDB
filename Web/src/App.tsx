@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { ThemeProvider } from "./components/privadb/ThemeProvider";
 import { FloatingNav } from "./components/privadb/FloatingNav";
 import { HeroSection } from "./components/privadb/HeroSection";
-import { MetricsSection } from "./components/privadb/MetricsSection";
+import { ResearchHologram } from "./components/privadb/ResearchHologram";
+import { MethodologyDiagram } from "./components/privadb/MethodologyDiagram";
 import { ArchitectureSection } from "./components/privadb/ArchitectureSection";
 import { LiveScan } from "./components/privadb/LiveScan";
 import { PipelineSection } from "./components/privadb/PipelineSection";
@@ -176,19 +177,16 @@ const App = () => {
         <FloatingNav />
         <main>
           <HeroSection />
+          <MethodologyDiagram />
           <LiveScan />
           <div className="max-w-4xl mx-auto px-4">
             <ScanResults />
           </div>
+          <ResearchHologram />
           <ArchitectureSection />
           <PipelineSection />
           <TrackerDomains />
-
-
-
-          {/* <ResearchTables /> */}
           <DownloadSection />
-          {/* <ConfigSection /> */}
         </main>
         <BackToTop />
       </motion.div>

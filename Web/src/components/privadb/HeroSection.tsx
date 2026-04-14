@@ -90,8 +90,8 @@ export const HeroSection: React.FC = () => {
       >
         {/* Badge */}
         <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm text-muted-foreground mb-6">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Research Project — Dynamic Taint Analysis
+          <span className="w-2 h-2 rounded-full bg-primary" />
+          PrivaDB Dynamic Taint Analysis
         </motion.div>
 
         {/* Logo & Title */}
@@ -99,7 +99,7 @@ export const HeroSection: React.FC = () => {
           <motion.img
             src="/logo.png"
             alt="PrivaDB Logo"
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-contain mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-contain mb-2"
             animate={{ y: [-10, 10, -10] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -117,7 +117,7 @@ export const HeroSection: React.FC = () => {
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <motion.a
             href="#live-scan"
-            className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full font-medium text-sm transition-all glow-sm"
+            className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full font-medium text-sm transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

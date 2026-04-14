@@ -158,7 +158,7 @@ const ScanResults: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center p-12 bg-muted/30 rounded-xl border border-cyan-500/30 neon-glow-cyan"
+        className="flex flex-col items-center justify-center p-12 bg-muted/30 rounded-xl border border-secondary"
       >
         <motion.div 
           animate={{ rotate: 360 }}
@@ -176,7 +176,7 @@ const ScanResults: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-red-500/10 border border-red-500/30 rounded-xl p-8 text-center neon-glow-pink"
+        className="bg-red-500/5 border border-red-500/20 rounded-xl p-8 text-center"
       >
         <motion.div 
           className="flex justify-center mb-4"
@@ -191,7 +191,7 @@ const ScanResults: React.FC = () => {
           <motion.button
             onClick={handleRetry}
             disabled={retrying}
-            className="px-6 py-2 bg-cyan-600 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 neon-glow-cyan"
+            className="px-6 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -228,7 +228,7 @@ const ScanResults: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-purple-500/10 border border-dashed border-purple-500/30 rounded-xl p-12 text-center neon-glow-purple"
+        className="bg-purple-500/5 border border-dashed border-purple-500/20 rounded-xl p-12 text-center"
       >
         <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
           <Database className="h-12 w-12 text-purple-400 mx-auto mb-4 drop-shadow-lg" />
@@ -240,7 +240,7 @@ const ScanResults: React.FC = () => {
         <div className="flex gap-3 justify-center">
           <motion.button
             onClick={handleRetry}
-            className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/50 neon-glow-purple"
+            className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -263,9 +263,9 @@ const ScanResults: React.FC = () => {
         </div>
         <motion.button
           onClick={fetchResults}
-          whileHover={{ scale: 1.05, backgroundColor: 'rgba(var(--primary-rgb), 0.9)' }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg shadow-primary/20 transition-all hover:neon-glow-cyan"
+          className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg transition-all hover:bg-primary/90"
         >
           Refresh Data
         </motion.button>
@@ -278,7 +278,7 @@ const ScanResults: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05 }}
-            className="glass rounded-xl p-4 text-center border border-blue-500/30 hover:border-blue-500/80 neon-glow-blue hover:neon-pulse"
+            className="glass rounded-xl p-4 text-center border border-blue-500/20 hover:border-blue-500/40 transition-colors"
           >
             <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
               <BarChart3 className="mx-auto h-8 w-8 text-blue-400 mb-2 drop-shadow-lg" />
@@ -291,7 +291,7 @@ const ScanResults: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
             whileHover={{ scale: 1.05 }}
-            className="glass rounded-xl p-4 text-center border border-green-500/30 hover:border-green-500/80 neon-glow-green hover:neon-pulse"
+            className="glass rounded-xl p-4 text-center border border-green-500/20 hover:border-green-500/40 transition-colors"
           >
             <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
               <CheckCircle className="mx-auto h-8 w-8 text-green-400 mb-2 drop-shadow-lg" />
@@ -304,7 +304,7 @@ const ScanResults: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="glass rounded-xl p-4 text-center border border-orange-500/30 hover:border-orange-500/80 neon-glow-orange hover:neon-pulse"
+            className="glass rounded-xl p-4 text-center border border-orange-500/20 hover:border-orange-500/40 transition-colors"
           >
             <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               <Shield className="mx-auto h-8 w-8 text-orange-400 mb-2 drop-shadow-lg" />
@@ -317,7 +317,7 @@ const ScanResults: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
             whileHover={{ scale: 1.05 }}
-            className="glass rounded-xl p-4 text-center border border-purple-500/30 hover:border-purple-500/80 neon-glow-purple hover:neon-pulse"
+            className="glass rounded-xl p-4 text-center border border-purple-500/20 hover:border-purple-500/40 transition-colors"
           >
             <motion.div animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
               <Database className="mx-auto h-8 w-8 text-purple-400 mb-2 drop-shadow-lg" />
