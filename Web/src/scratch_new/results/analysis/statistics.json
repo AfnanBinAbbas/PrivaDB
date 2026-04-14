@@ -3,8 +3,8 @@
     "total_sites_analyzed": 1
   },
   "detection_summary": {
-    "total_potential_identifiers": 10,
-    "total_exfiltration_events": 1,
+    "total_potential_identifiers": 0,
+    "total_exfiltration_events": 0,
     "third_party_exfiltrations": 0,
     "known_tracker_exfiltrations": 0,
     "total_inflow_flows": 0,
@@ -13,23 +13,21 @@
   "confidence_breakdown": {
     "high": 0,
     "medium": 0,
-    "low": 1
+    "low": 0
   },
   "site_classification": {
-    "sites_with_any_exfiltration": 1,
+    "sites_with_any_exfiltration": 0,
     "sites_with_high_confidence_tracking": 0
   },
   "top_tracker_domains": {},
-  "identifier_type_distribution": {
-    "idb_key:api_key": 1
-  },
+  "identifier_type_distribution": {},
   "paper_metrics": {
     "overview": {
       "total_sites": 1,
-      "sites_with_idb": 1,
-      "pct_sites_with_idb": 100.0,
-      "total_flows": 1,
-      "outflow_flows": 1,
+      "sites_with_idb": 0,
+      "pct_sites_with_idb": 0.0,
+      "total_flows": 0,
+      "outflow_flows": 0,
       "inflow_flows": 0
     },
     "table_iii_confinement": {
@@ -40,18 +38,18 @@
         "pct_of_total": 0.0
       },
       "external": {
-        "outflow": 1,
+        "outflow": 0,
         "inflow": 0,
-        "total": 1,
-        "pct_of_total": 100.0
+        "total": 0,
+        "pct_of_total": 0.0
       }
     },
     "table_iv_external_breakdown": {
       "same_site": {
-        "outflow": 1,
+        "outflow": 0,
         "tracking": 0,
-        "non_tracking": 1,
-        "pct_of_external": 100.0
+        "non_tracking": 0,
+        "pct_of_external": 0.0
       },
       "cross_site": {
         "outflow": 0,
@@ -62,18 +60,14 @@
     },
     "tracking_classification": {
       "outflow_tracking": 0,
-      "outflow_non_tracking": 1,
+      "outflow_non_tracking": 0,
       "inflow_tracking": 0,
       "inflow_non_tracking": 0,
       "pct_outflow_tracking": 0.0,
       "pct_external_tracking": 0.0
     },
-    "sink_distribution": {
-      "network": 1
-    },
+    "sink_distribution": {},
     "source_distribution": {},
-    "top_databases": {
-      "AppboyServiceWorkerAsyncStorage": 1
-    }
+    "top_databases": {}
   }
 }

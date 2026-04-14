@@ -1,12 +1,46 @@
 {
   "url": "https://youtube.com",
   "domain": "youtube.com",
-  "timestamp": "2026-04-13T20:45:24.868849Z",
+  "timestamp": "2026-04-14T19:55:50.168296Z",
   "iterations": [
     {
       "url": "https://youtube.com",
       "domain": "youtube.com",
-      "timestamp": "2026-04-13T20:45:24.868849Z",
+      "timestamp": "2026-04-14T19:55:50.168296Z",
+      "indexeddb": {
+        "databases": []
+      },
+      "network_requests": [
+        {
+          "url": "https://youtube.com/",
+          "method": "GET",
+          "resource_type": "document",
+          "headers": {
+            "host": "youtube.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "accept-language": "en-US,en;q=0.5",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "connection": "keep-alive",
+            "upgrade-insecure-requests": "1",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          },
+          "post_data": null,
+          "response": null
+        }
+      ],
+      "errors": [
+        "Navigation error: Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "iteration": 1
+    },
+    {
+      "url": "https://youtube.com",
+      "domain": "youtube.com",
+      "timestamp": "2026-04-14T19:56:19.104112Z",
       "indexeddb": {
         "databases": []
       },
@@ -44,7 +78,7 @@
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
             "connection": "keep-alive",
-            "cookie": "__Secure-BUCKET=CIgB"
+            "cookie": "__Secure-BUCKET=CLIB"
           },
           "post_data": null,
           "response": {
@@ -73,7 +107,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.i3oI3kZ6cng.es5.O/am=AAAAgAAAIAE/d=1/br=1/rs=AGKMywFXxJhxMEulIb_ttsVk8iIiewR-QQ/m=kevlar_base_module,kevlar_main_module",
+          "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.kuZJ4t_LBnA.es5.O/am=AAAAAQAAIAE/d=1/br=1/rs=AGKMywGyq4mG5GYypoRYeTlsX8nhvy7zUw/m=kevlar_base_module,kevlar_main_module",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -82,9 +116,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -95,7 +130,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -104,9 +139,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -117,7 +153,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -126,9 +162,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -139,7 +176,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -148,9 +185,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -161,7 +199,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -170,9 +208,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -183,7 +222,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/scheduler.vflset/scheduler.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/scheduler.vflset/scheduler.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -192,9 +231,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -205,7 +245,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -214,9 +254,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -227,7 +268,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/spf.vflset/spf.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/spf.vflset/spf.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -236,9 +277,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -249,7 +291,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/network.vflset/network.js",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/jsbin/network.vflset/network.js",
           "method": "GET",
           "resource_type": "script",
           "headers": {
@@ -258,9 +300,10 @@
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "script",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -287,10 +330,12 @@
             "sec-fetch-site": "cross-site"
           },
           "post_data": null,
-          "response": null
+          "response": {
+            "status": 200
+          }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-home-page-skeleton.css",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/cssbin/www-main-desktop-home-page-skeleton.css",
           "method": "GET",
           "resource_type": "stylesheet",
           "headers": {
@@ -299,9 +344,10 @@
             "accept": "text/css,*/*;q=0.1",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "style",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -312,7 +358,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-onepick.css",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/cssbin/www-onepick.css",
           "method": "GET",
           "resource_type": "stylesheet",
           "headers": {
@@ -321,9 +367,10 @@
             "accept": "text/css,*/*;q=0.1",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "style",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -334,7 +381,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.s6S_52kN6gE.L.B1.O/am=AAAAgIAAMAE/d=0/br=1/rs=AGKMywE0PjSx13gb9ERGfWTIzTIASYguuw",
+          "url": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.78ik6eufHLU.L.B1.O/am=AAAAAYAAMAE/d=0/br=1/rs=AGKMywFzZaynGj0kfZrjzXHFloo__93uOA",
           "method": "GET",
           "resource_type": "stylesheet",
           "headers": {
@@ -343,9 +390,10 @@
             "accept": "text/css,*/*;q=0.1",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "style",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -356,7 +404,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-watch-page-skeleton.css",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/cssbin/www-main-desktop-watch-page-skeleton.css",
           "method": "GET",
           "resource_type": "stylesheet",
           "headers": {
@@ -365,9 +413,10 @@
             "accept": "text/css,*/*;q=0.1",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "style",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
@@ -378,7 +427,7 @@
           }
         },
         {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/img/favicon_144x144.png",
+          "url": "https://www.youtube.com/s/desktop/45b1dc52/img/favicon_144x144.png",
           "method": "GET",
           "resource_type": "image",
           "headers": {
@@ -387,452 +436,11 @@
             "accept": "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5",
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br, zstd",
+            "alt-used": "www.youtube.com",
             "connection": "keep-alive",
             "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
+            "cookie": "__Secure-BUCKET=CLIB; GPS=1; YSC=SYdsOxMyIBk; __Secure-ROLLOUT_TOKEN=CKjro7SHxMbzAhC9_fH3j-6TAxi9_fH3j-6TAw%3D%3D; VISITOR_INFO1_LIVE=gohoBmFOeVY; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDA%3D%3D",
             "sec-fetch-dest": "image",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "upgrade-insecure-requests": "1",
-            "sec-fetch-dest": "iframe",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 302
-          }
-        },
-        {
-          "url": "https://accounts.google.com/InteractiveLogin?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&passive=true&service=youtube&uilel=3&dsh=S-198401323:1776113166548572",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "referer": "https://www.youtube.com/",
-            "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:RDR3kKuuB_6xVeNSjR6PzbYpYoeqKw:g2dy_ENzfDiqWAxK"
-          },
-          "post_data": null,
-          "response": {
-            "status": 302
-          }
-        },
-        {
-          "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&dsh=S-198401323%3A1776113166548572&hl=en&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AT1y2_U6AWP8ZvSg01HMWi2b8FlYjQikBXRvy4Pr9w9qG_EBPXBSyhxsS-no3Y2OktBfNpJabeEWcQ",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "referer": "https://www.youtube.com/",
-            "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:RDR3kKuuB_6xVeNSjR6PzbYpYoeqKw:g2dy_ENzfDiqWAxK"
-          },
-          "post_data": null,
-          "response": {
-            "status": 403
-          }
-        }
-      ],
-      "errors": [
-        "Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
-      ],
-      "iteration": 1
-    },
-    {
-      "url": "https://youtube.com",
-      "domain": "youtube.com",
-      "timestamp": "2026-04-13T20:46:14.755661Z",
-      "indexeddb": {
-        "databases": []
-      },
-      "network_requests": [
-        {
-          "url": "https://youtube.com/",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "upgrade-insecure-requests": "1",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1"
-          },
-          "post_data": null,
-          "response": {
-            "status": 301
-          }
-        },
-        {
-          "url": "https://www.youtube.com/",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://i.ytimg.com/generate_204",
-          "method": "GET",
-          "resource_type": "fetch",
-          "headers": {
-            "host": "i.ytimg.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 204
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.i3oI3kZ6cng.es5.O/am=AAAAAQAAIAE/d=1/br=1/rs=AGKMywF2DBETNq0tDciYeeQRahgUVqLqfw/m=kevlar_base_module,kevlar_main_module",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/scheduler.vflset/scheduler.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/spf.vflset/spf.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/network.vflset/network.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "fonts.googleapis.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-home-page-skeleton.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-onepick.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.s6S_52kN6gE.L.B1.O/am=AAAAAYAAMAE/d=0/br=1/rs=AGKMywFfKx07MOJyPpa62LiUyf4sA4qEOQ",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-watch-page-skeleton.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "style",
             "sec-fetch-mode": "no-cors",
             "sec-fetch-site": "same-origin"
           },
@@ -886,7 +494,7 @@
           }
         },
         {
-          "url": "https://accounts.google.com/InteractiveLogin?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&passive=true&service=youtube&uilel=3&dsh=S1060902602:1776113177968349",
+          "url": "https://accounts.google.com/InteractiveLogin?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&passive=true&service=youtube&uilel=3&dsh=S723528969:1776196602213643",
           "method": "GET",
           "resource_type": "document",
           "headers": {
@@ -897,7 +505,7 @@
             "accept-encoding": "gzip, deflate, br, zstd",
             "referer": "https://www.youtube.com/",
             "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:zDqkrpdfO789D4Iv9eFnOoe7HJE4dw:4pn9GibtUGh0IE43"
+            "cookie": "__Host-GAPS=1:-IhhtADOMnLwO0-1vu8pm8ZYTmAs2A:k7xT1CmeG93CQJDh"
           },
           "post_data": null,
           "response": {
@@ -905,7 +513,7 @@
           }
         },
         {
-          "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&dsh=S1060902602%3A1776113177968349&hl=en&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AT1y2_XkEl5gnUUQGceqC2XjNeJVWkAsjIrSbAJ9jrqGpMfyVD-B3O6h4vv7wEMFSaM0lvy5eDvJZw",
+          "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&dsh=S723528969%3A1776196602213643&hl=en&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AT1y2_Ul2vZdra0B0MF6V_0nIBVE50VAAQdZkRERtws6DyIZFMhx-i_8F6n5jhSVak7n-mtM4xkkhg",
           "method": "GET",
           "resource_type": "document",
           "headers": {
@@ -916,34 +524,11 @@
             "accept-encoding": "gzip, deflate, br, zstd",
             "referer": "https://www.youtube.com/",
             "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:zDqkrpdfO789D4Iv9eFnOoe7HJE4dw:4pn9GibtUGh0IE43"
+            "cookie": "__Host-GAPS=1:-IhhtADOMnLwO0-1vu8pm8ZYTmAs2A:k7xT1CmeG93CQJDh"
           },
           "post_data": null,
           "response": {
             "status": 403
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/img/favicon_144x144.png",
-          "method": "GET",
-          "resource_type": "image",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "alt-used": "www.youtube.com",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CNgC; __Secure-YNID=17.YT=MTZqN5xpyY7RJn8g42d31KnYucAQgIoca9TbHUaV6suB3taQBShSFYSi5cGTFqYMCxZZ492KUqKaWX0WfF6Z0XlCqpdoEFadp7iOkXG2NnZ3HVhRdY4PXuoc3gbGmEjbzBoYIbZB0QH0CjAO876n_1OBbOTjBr6mXVkvAyTMqajkyZBY0fbdjv6BZGDSFVjZEeMvd7AZLNRwtAcnWJPpLNfz7gYWYo4TJbDmpUcaYJB9hiJeZ_fNsm8iK_RL5gtqNHjD1FJsukLgElDWVqyDMOgx9b--v19nKSuvM1xu6g45xG16px9hCUwaHfYZOp0OYsU3m_ioMUNMXsaUtwiQxA; GPS=1; YSC=OW3LAB8qaow; __Secure-ROLLOUT_TOKEN=CJ7Ks-X9saqZ7QEQ7My1l9nrkwMY7My1l9nrkwM%3D; VISITOR_INFO1_LIVE=B4d2Vfcqv58; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgTg%3D%3D",
-            "sec-fetch-dest": "image",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
           }
         }
       ],
@@ -955,7 +540,7 @@
     {
       "url": "https://youtube.com",
       "domain": "youtube.com",
-      "timestamp": "2026-04-13T20:47:05.041259Z",
+      "timestamp": "2026-04-14T19:57:12.737167Z",
       "indexeddb": {
         "databases": []
       },
@@ -978,465 +563,11 @@
             "sec-fetch-user": "?1"
           },
           "post_data": null,
-          "response": {
-            "status": 301
-          }
-        },
-        {
-          "url": "https://www.youtube.com/",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "cookie": "__Secure-BUCKET=CMwD"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://i.ytimg.com/generate_204",
-          "method": "GET",
-          "resource_type": "fetch",
-          "headers": {
-            "host": "i.ytimg.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 204
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base_cow_tracing.en_US.zSRH97GgjQU.es5.O/am=AABAAAAAIAE/d=1/br=1/rs=AGKMywEV2KS040AsOoZkC7LwOTgw6f94Ow/m=kevlar_base_module,kevlar_main_module",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/scheduler.vflset/scheduler.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/spf.vflset/spf.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/network.vflset/network.js",
-          "method": "GET",
-          "resource_type": "script",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "script",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "fonts.googleapis.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-home-page-skeleton.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-onepick.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base_cow_tracing.s6S_52kN6gE.L.B1.O/am=AABAAIAAMAE/d=0/br=1/rs=AGKMywFsWQzwDr4c_CuMSq8HceNIMjxgqA",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-watch-page-skeleton.css",
-          "method": "GET",
-          "resource_type": "stylesheet",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/css,*/*;q=0.1",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "alt-used": "www.youtube.com",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "style",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2",
-          "method": "GET",
-          "resource_type": "font",
-          "headers": {
-            "host": "fonts.gstatic.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "identity",
-            "origin": "https://www.youtube.com",
-            "connection": "keep-alive",
-            "referer": "https://fonts.googleapis.com/",
-            "sec-fetch-dest": "font",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "upgrade-insecure-requests": "1",
-            "sec-fetch-dest": "iframe",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "cross-site"
-          },
-          "post_data": null,
-          "response": {
-            "status": 302
-          }
-        },
-        {
-          "url": "https://www.youtube.com/s/desktop/70bc5332/img/favicon_144x144.png",
-          "method": "GET",
-          "resource_type": "image",
-          "headers": {
-            "host": "www.youtube.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "alt-used": "www.youtube.com",
-            "connection": "keep-alive",
-            "referer": "https://www.youtube.com/",
-            "cookie": "__Secure-BUCKET=CMwD; GPS=1; YSC=uZJ-5X7FvUM; __Secure-ROLLOUT_TOKEN=CK-fm6XklY2BUhDJiMOv2euTAxjJiMOv2euTAw%3D%3D; VISITOR_INFO1_LIVE=NXnDB2F7MgA; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgMg%3D%3D",
-            "sec-fetch-dest": "image",
-            "sec-fetch-mode": "no-cors",
-            "sec-fetch-site": "same-origin"
-          },
-          "post_data": null,
-          "response": {
-            "status": 200
-          }
-        },
-        {
-          "url": "https://accounts.google.com/InteractiveLogin?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&passive=true&service=youtube&uilel=3&dsh=S1478709179:1776113230544675",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "referer": "https://www.youtube.com/",
-            "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:FAWxrc4du_M5Krjce-7FPfk7ZRFuew:rOIyLoAZkVbXZa3F"
-          },
-          "post_data": null,
-          "response": {
-            "status": 302
-          }
-        },
-        {
-          "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&dsh=S1478709179%3A1776113230544675&hl=en&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AT1y2_UTX-wfCzFuYbhoRZP0TLX0PQg5eYs4k_7FwO8YP9lOZKy9d3pMB3hfoqz5jNiX6araX_xy",
-          "method": "GET",
-          "resource_type": "document",
-          "headers": {
-            "host": "accounts.google.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "accept-language": "en-US,en;q=0.5",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "referer": "https://www.youtube.com/",
-            "connection": "keep-alive",
-            "cookie": "__Host-GAPS=1:FAWxrc4du_M5Krjce-7FPfk7ZRFuew:rOIyLoAZkVbXZa3F"
-          },
-          "post_data": null,
-          "response": {
-            "status": 403
-          }
+          "response": null
         }
       ],
       "errors": [
-        "Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
+        "Navigation error: Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
       ],
       "iteration": 3
     }
@@ -1463,440 +594,12 @@
         "sec-fetch-user": "?1"
       },
       "post_data": null,
-      "response": {
-        "status": 301
-      }
-    },
-    {
-      "url": "https://www.youtube.com/",
-      "method": "GET",
-      "resource_type": "document",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "cookie": "__Secure-BUCKET=CIgB"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://i.ytimg.com/generate_204",
-      "method": "GET",
-      "resource_type": "fetch",
-      "headers": {
-        "host": "i.ytimg.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "cross-site"
-      },
-      "post_data": null,
-      "response": {
-        "status": 204
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.i3oI3kZ6cng.es5.O/am=AAAAgAAAIAE/d=1/br=1/rs=AGKMywFXxJhxMEulIb_ttsVk8iIiewR-QQ/m=kevlar_base_module,kevlar_main_module",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/custom-elements-es5-adapter.vflset/custom-elements-es5-adapter.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/webcomponents-sd.vflset/webcomponents-sd.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/intersection-observer.min.vflset/intersection-observer.min.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/scheduler.vflset/scheduler.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/www-i18n-constants-en_US.vflset/www-i18n-constants.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/spf.vflset/spf.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/jsbin/network.vflset/network.js",
-      "method": "GET",
-      "resource_type": "script",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "script",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=YouTube+Sans:wght@300..900&display=swap",
-      "method": "GET",
-      "resource_type": "stylesheet",
-      "headers": {
-        "host": "fonts.googleapis.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/css,*/*;q=0.1",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "sec-fetch-dest": "style",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "cross-site"
-      },
-      "post_data": null,
       "response": null
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-home-page-skeleton.css",
-      "method": "GET",
-      "resource_type": "stylesheet",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/css,*/*;q=0.1",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "style",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-onepick.css",
-      "method": "GET",
-      "resource_type": "stylesheet",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/css,*/*;q=0.1",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "style",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/_/ytmainappweb/_/ss/k=ytmainappweb.kevlar_base.s6S_52kN6gE.L.B1.O/am=AAAAgIAAMAE/d=0/br=1/rs=AGKMywE0PjSx13gb9ERGfWTIzTIASYguuw",
-      "method": "GET",
-      "resource_type": "stylesheet",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/css,*/*;q=0.1",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "style",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/cssbin/www-main-desktop-watch-page-skeleton.css",
-      "method": "GET",
-      "resource_type": "stylesheet",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/css,*/*;q=0.1",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "style",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://www.youtube.com/s/desktop/70bc5332/img/favicon_144x144.png",
-      "method": "GET",
-      "resource_type": "image",
-      "headers": {
-        "host": "www.youtube.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "cookie": "__Secure-BUCKET=CIgB; GPS=1; YSC=ewxQaona5-0; VISITOR_INFO1_LIVE=tZMWDEgVK1Y; VISITOR_PRIVACY_METADATA=CgJQSxIEGgAgDw%3D%3D; __Secure-ROLLOUT_TOKEN=CN2xueu0gb_3_AEQp8L0gtnrkwMYp8L0gtnrkwM%3D",
-        "sec-fetch-dest": "image",
-        "sec-fetch-mode": "no-cors",
-        "sec-fetch-site": "same-origin"
-      },
-      "post_data": null,
-      "response": {
-        "status": 200
-      }
-    },
-    {
-      "url": "https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en",
-      "method": "GET",
-      "resource_type": "document",
-      "headers": {
-        "host": "accounts.google.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "https://www.youtube.com/",
-        "upgrade-insecure-requests": "1",
-        "sec-fetch-dest": "iframe",
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-site": "cross-site"
-      },
-      "post_data": null,
-      "response": {
-        "status": 302
-      }
-    },
-    {
-      "url": "https://accounts.google.com/InteractiveLogin?continue=https://www.youtube.com/signin?action_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&passive=true&service=youtube&uilel=3&dsh=S-198401323:1776113166548572",
-      "method": "GET",
-      "resource_type": "document",
-      "headers": {
-        "host": "accounts.google.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "referer": "https://www.youtube.com/",
-        "connection": "keep-alive",
-        "cookie": "__Host-GAPS=1:RDR3kKuuB_6xVeNSjR6PzbYpYoeqKw:g2dy_ENzfDiqWAxK"
-      },
-      "post_data": null,
-      "response": {
-        "status": 302
-      }
-    },
-    {
-      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&dsh=S-198401323%3A1776113166548572&hl=en&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AT1y2_U6AWP8ZvSg01HMWi2b8FlYjQikBXRvy4Pr9w9qG_EBPXBSyhxsS-no3Y2OktBfNpJabeEWcQ",
-      "method": "GET",
-      "resource_type": "document",
-      "headers": {
-        "host": "accounts.google.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "referer": "https://www.youtube.com/",
-        "connection": "keep-alive",
-        "cookie": "__Host-GAPS=1:RDR3kKuuB_6xVeNSjR6PzbYpYoeqKw:g2dy_ENzfDiqWAxK"
-      },
-      "post_data": null,
-      "response": {
-        "status": 403
-      }
     }
   ],
   "errors": [
-    "iter1: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n",
+    "iter1: Navigation error: Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n",
     "iter2: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n",
-    "iter3: Navigation error: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
+    "iter3: Navigation error: Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://youtube.com/\", waiting until \"domcontentloaded\"\n"
   ]
 }

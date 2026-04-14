@@ -14,7 +14,7 @@ This project, **PrivaDB**, integrates and builds upon several external projects.
 - **URL**: [https://github.com/eleumasc/Comparative-Privacy-Analysis](https://github.com/eleumasc/Comparative-Privacy-Analysis)
 - **Author**: [eleumasc](https://github.com/eleumasc)
 - **Description**: A framework for detecting persistent web tracking via storage APIs.
-- **Integration**: The core logic in `Web/src/scratch_new` is based on the analytical framework and detection heuristics from this project. We have modified and integrated the logic to specifically target IndexedDB and fit the PrivaDB dashboard architecture.
+- **Integration**: Helped in integrating with the `foxhound` binaries.
 
 ## Licensing
 Please refer to the original repositories for their respective license agreements. This project is intended for research and educational purposes.
