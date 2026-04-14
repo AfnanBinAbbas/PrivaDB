@@ -436,52 +436,50 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number }> = ({ item, idx }) =
       }`}
     >
       <div 
-        className="flex items-center justify-between p-3 cursor-pointer"
+        className="grid grid-cols-[auto_minmax(100px,2fr)_minmax(100px,1.5fr)_auto_auto] items-center gap-4 p-3 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="flex items-center gap-4 flex-1 min-w-0">
-          <div className="flex-shrink-0">
-            {item.is_exfiltrated ? (
-              <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
-                <AlertTriangle size={16} className="text-red-400" />
-              </div>
-            ) : (
-              <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/30">
-                <CheckCircle size={16} className="text-green-400" />
-              </div>
-            )}
-          </div>
-          
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-0.5">
-              <span className="font-mono text-xl font-bold text-foreground/90 truncate max-w-[400px]" title={item.idb_value}>
-                {item.idb_value}
-              </span>
-              <span className={`flex-shrink-0 px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                item.tracker_category === 'first_party'
-                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
-              }`}>
-                {item.tracker_category.replace('_', ' ')}
-              </span>
+        <div className="flex-shrink-0">
+          {item.is_exfiltrated ? (
+            <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
+              <AlertTriangle size={16} className="text-red-400" />
             </div>
-            <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
-              <span className="flex items-center gap-1">
-                <Database size={12} /> {item.database}
-              </span>
-              <span className="opacity-30">|</span>
-              <span className="truncate max-w-[200px]" title={item.key}>Key: {item.key}</span>
+          ) : (
+            <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/30">
+              <CheckCircle size={16} className="text-green-400" />
             </div>
-          </div>
+          )}
         </div>
         
-        <div className="flex items-center gap-3 ml-4">
-          <div className="text-right hidden sm:block">
-            <div className={`text-xs font-bold ${item.is_exfiltrated ? 'text-red-400' : 'text-green-400'}`}>
-              {item.is_exfiltrated ? 'EXFILTRATED' : 'SAFE'}
-            </div>
-            <div className="text-[10px] opacity-40">Status: {item.status_code}</div>
+        <div className="min-w-0">
+          <div className="font-mono text-sm font-bold text-foreground/90 truncate" title={item.idb_value}>
+            {item.idb_value}
           </div>
+          <div className="text-[10px] text-muted-foreground mt-0.5">
+            Raw Value • <span className="text-primary hover:underline">Click for more</span>
+          </div>
+        </div>
+
+        <div className="min-w-0 text-[11px] text-muted-foreground flex flex-col gap-0.5">
+          <div className="truncate flex items-center gap-1">
+            <Database size={10} /> {item.database}
+          </div>
+          <div className="truncate">Key: {item.key}</div>
+        </div>
+
+        <div className="hidden sm:flex flex-col items-end gap-1.5 ml-4">
+          <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+            item.tracker_category === 'first_party'
+              ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+              : 'bg-red-500/10 text-red-400 border border-red-500/20'
+          }`}>
+            {item.tracker_category.replace('_', ' ')}
+          </div>
+          <div className={`text-[10px] font-bold ${item.is_exfiltrated ? 'text-red-400' : 'text-green-400'}`}>
+            {item.is_exfiltrated ? 'EXFILTRATED' : 'SAFE'}
+          </div>
+        </div>
+        <div className="flex justify-end">
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             className="text-muted-foreground"
@@ -598,8 +596,8 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
   ];
 
   return (
-    <div className="relative w-full py-8 px-4 bg-black/20 rounded-xl border border-border/20 overflow-x-auto min-w-[800px] mb-6">
-      <div className="flex items-center justify-between gap-4 relative z-10">
+    <div className="relative w-full py-8 px-4 bg-black/5 dark:bg-black/20 rounded-xl border border-border/20 mb-6">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
         {nodes.map((node, i) => {
           const Icon = node.icon;
           return (
@@ -608,40 +606,37 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.2 }}
-                className="flex flex-col items-center gap-3 w-48 text-center group"
+                className="flex flex-col items-center gap-3 text-center group"
               >
-                <div className={`p-4 rounded-2xl bg-muted/40 border border-border/50 ${node.color} shadow-lg relative group-hover:scale-110 transition-transform duration-300`}>
-                  <div className={`absolute inset-0 rounded-2xl opacity-20 blur-xl ${node.color.replace('text-', 'bg-')}`} />
+                <div className={`p-4 rounded-2xl bg-background border border-border/50 ${node.color} shadow-lg relative group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`absolute inset-0 rounded-2xl opacity-10 blur-xl ${node.color.replace('text-', 'bg-')}`} />
                   <Icon size={32} className="relative z-10" />
                 </div>
-                <div className="space-y-1">
-                  <div className={`text-base font-bold ${node.color}`}>${node.label}</div>
-                  <div className="text-[11px] font-mono text-muted-foreground truncate w-full px-2" title={node.sub}>
-                    ${node.sub}
+                <div className="space-y-1 max-w-[120px]">
+                  <div className={`text-sm font-bold ${node.color}`}>{node.label}</div>
+                  <div className="text-[10px] font-mono text-muted-foreground w-full px-1 leading-tight break-words">
+                    {node.sub}
                   </div>
                 </div>
                 
                 {/* Expandable node info */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-full mt-4 left-1/2 -translate-x-1/2 w-56 p-3 glass-strong rounded-lg z-50 text-xs pointer-events-none border border-border/30">
-                  ${node.description}
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-[120%] left-1/2 -translate-x-1/2 w-56 p-3 glass-strong rounded-lg z-50 text-xs pointer-events-none border border-border/30">
+                  {node.description}
                 </div>
               </motion.div>
 
               {i < nodes.length - 1 && (
-                <div className="flex-1 flex items-center justify-center -mx-4">
-                  <div className="relative w-full h-1 bg-border/20 rounded-full overflow-hidden">
+                <div className="flex-1 flex items-center justify-center my-2 md:my-0 md:-mx-4 h-8 md:h-auto">
+                  <div className="relative w-1 h-8 md:w-full md:h-1 bg-border/40 rounded-full overflow-hidden">
                     <motion.div 
-                      className={`absolute inset-y-0 left-0 bg-gradient-to-r ${is3rdParty ? 'from-red-500 to-red-400' : 'from-blue-500 to-cyan-400'}`}
-                      initial={{ width: '0%', left: '-100%' }}
-                      animate={{ 
-                        width: ['20%', '20%', '20%'],
-                        left: ['-20%', '120%'],
-                      }}
+                      className={`absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r ${is3rdParty ? 'from-red-500 to-red-400' : 'from-blue-500 to-cyan-400'}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 1, 0] }}
                       transition={{ 
-                        duration: 2, 
+                        duration: 1.5, 
                         repeat: Infinity, 
                         ease: 'linear',
-                        delay: i * 0.5
+                        delay: i * 0.4
                       }}
                     />
                   </div>

@@ -190,13 +190,29 @@ async def run_scan(scan_id: str, url: str, headless: bool = False, crawl_only: b
             engine_name = "Foxhound (Firefox-based)" if engine == "foxhound" else "Chrome"
             scans[scan_id]["message"] = f"Starting crawl with {engine_name}..."
             
+            # Setup command checks for granular skipping
+            scans[scan_id]["commands"] = {"skip_iteration": False, "skip_domain": False}
+            
+            def check_command(cmd):
+                # If globally stopped, crawler's task.cancelled() will catch it
+                # Here we only check granular commands
+                if scan_id in scans and "commands" in scans[scan_id]:
+                    if scans[scan_id]["commands"].get(cmd, False):
+                        scans[scan_id]["commands"][cmd] = False # Reset flag after consumption
+                        return True
+                return False
+            
             def on_crawl_progress(pct, msg):
                 # Map 0-100 to 10-55
                 scans[scan_id]["progress"] = int(10 + (pct / 100) * 45)
                 scans[scan_id]["message"] = f"[{engine_name}] {msg}"
                 
             custom_sites = [{"url": url, "reason": "User requested scan"}]
-            crawled_results = await crawl_all_sites(custom_sites=custom_sites, on_progress=on_crawl_progress)
+            crawled_results = await crawl_all_sites(
+                custom_sites=custom_sites, 
+                on_progress=on_crawl_progress,
+                check_command=check_command
+            )
             scans[scan_id]["progress"] = 55
             if not crawled_results:
                 raise Exception("Crawl failed to return results")
@@ -337,6 +353,22 @@ async def stop_scan(scan_id: str):
     except Exception as e:
         logger.error(f"Error stopping scan {scan_id}: {str(e)}")
         raise ProcessingError(f"Error stopping scan: {str(e)}")
+
+@app.post("/scan/{scan_id}/skip_iteration")
+async def skip_iteration(scan_id: str):
+    if scan_id in scans and "commands" in scans[scan_id]:
+        scans[scan_id]["commands"]["skip_iteration"] = True
+        logger.info(f"⏭ Skip Iteration signal sent for {scan_id}")
+        return {"message": "Skip iteration signal sent", "scan_id": scan_id}
+    raise NotFoundError(f"Scan with ID '{scan_id}' not found")
+
+@app.post("/scan/{scan_id}/skip_domain")
+async def skip_domain(scan_id: str):
+    if scan_id in scans and "commands" in scans[scan_id]:
+        scans[scan_id]["commands"]["skip_domain"] = True
+        logger.info(f"⏭ Skip Domain signal sent for {scan_id}")
+        return {"message": "Skip domain signal sent", "scan_id": scan_id}
+    raise NotFoundError(f"Scan with ID '{scan_id}' not found")
 
 @app.post("/scan/all/stop")
 async def stop_all_scans():
