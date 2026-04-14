@@ -9,7 +9,7 @@
 [![Collaborate](https://img.shields.io/badge/Collaborate-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/AfnanBinAbbas/PrivaDB/tree/main)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)](LICENSE)
 
-[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Key Intelligence Features
 
@@ -18,7 +18,7 @@
 *   **Atomic Taint Tracking**: Directly monitors data flow at the browser's storage-to-network boundary.
 *   **High-Density Dashboard**: Multi-layered analysis of IndexedDB records with responsible tracker identification.
 
-[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Deployment & Execution Guide
 
@@ -64,7 +64,7 @@ npm run dev
 ```
 Navigate to `http://localhost:8081` (or the port specified in your terminal).
 
-[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## The Investigation Workflow
 
@@ -80,7 +80,7 @@ Once complete, results populate the **"Scan Results"** section.
 - **Safe**: Data accessed but restricted by browser or project policy.
 - **Entropy & Category**: Deep analysis of the identifier's uniqueness and purpose.
 
-[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Legal & Intellectual Property
 Copyright (c) 2026 Afnan Bin Abbas. **All Rights Reserved.**
