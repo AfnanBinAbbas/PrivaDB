@@ -1,23 +1,32 @@
 # Logs and temporary files
 *.log
+**/*.log
 Web/dev_server.log
-results/
+**/.DS_Store
+*.tmp
+*.bak
 
-# Binaries
+# Scan Results (CRITICAL for privacy - prevents info leakage)
+**/results/
+**/crawled/
+**/analysis/
+**/charts/
+
+# Binaries & Large Files
 Web/foxhound/
-!Web/foxhound/results/
+submodules/foxhound/
+Web/package-lock.json
 
 # Node dependencies
 node_modules/
-dist/
+**/dist/
 
 # Python dependencies
-__pycache__/
+**/__pycache__/
 *.pyc
 
-# Environment variables
+# Environment & Private Keys
 .env
 .env.local
-
-# Build outputs
-Web/dist/
+**/*.pem
+**/*.key
