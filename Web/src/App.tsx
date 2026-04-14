@@ -18,13 +18,29 @@ import { BackToTop } from "./components/privadb/BackToTop";
 import { Volume2, VolumeX } from "lucide-react";
 import { LandingPage } from "./components/privadb/LandingPage";
 import { AnimatePresence } from "framer-motion";
+import ScanResults from "./components/privadb/ScanResults";
+import AnimatedLinesBackground from "./components/privadb/AnimatedLinesBackground";
+
+const AppLoadingOverlay = ({ show }: { show: boolean }) => (
+  show ? (
+    <div className="app-loading-overlay">
+      <div className="app-loading-spinner" />
+      <div className="app-loading-text">Loading PrivaDB...</div>
+    </div>
+  ) : null
+);
 
 const App = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [showLanding, setShowLanding] = useState(true);
+  const [appLoading, setAppLoading] = useState(true);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setAppLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Sync volume state with audio element
   useEffect(() => {
@@ -74,6 +90,8 @@ const App = () => {
 
   return (
     <ThemeProvider>
+      <AppLoadingOverlay show={appLoading} />
+      <AnimatedLinesBackground />
       <audio ref={audioRef} src="/background_music.mp3" loop />
       <AnimatePresence mode="wait">
         {showLanding && (
@@ -169,6 +187,7 @@ const App = () => {
                 </p>
                 <LiveExfiltrationMap />
               </div>
+              <ScanResults />
               <FoxhoundResults />
             </div>
           </section>

@@ -43,7 +43,28 @@ This tool:
 ## Architecture
 
 ```
-┌It needs to be updated, I removed the old one :)
+Web/
+├── backend/
+│   └── server.py          # FastAPI backend with dual-engine routing
+├── src/scratch_new/
+│   ├── config.py          # Unified configuration with auto-discovery
+│   ├── main.py            # Chrome live scan entry point
+│   ├── crawler.py         # Playwright-based browser automation
+│   ├── detector.py        # Privacy violation detection
+│   ├── reporter.py        # Result aggregation
+│   ├── results/           # Chrome scan output
+│   └── [other modules]
+├── foxhound-engine/       # Consolidated Foxhound taint tracking
+│   ├── foxhound/
+│   │   ├── foxhound       # Taint tracking executable
+│   │   ├── omni.ja        # Firefox resources
+│   │   └── dependentlibs.list
+│   ├── profiles/          # Firefox browser profiles
+│   ├── results/           # Foxhound output
+│   └── [other foxhound files]
+├── public/                # Static assets
+├── src/                   # React frontend
+└── [config files]
 ```
 
 ---

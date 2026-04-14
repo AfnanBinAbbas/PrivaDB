@@ -1,22 +1,29 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Zap, Shield, AlertCircle, Activity } from 'lucide-react';
+import { Globe, Zap, Shield, AlertCircle, Activity, Database, ArrowRight, ExternalLink } from 'lucide-react';
 import { getDomainCoords } from '../../utils/geoUtils';
 
 /* ── Types ─────────────────────────────────────────────────────────── */
-type MapEvent = {
+type DataFlow = {
   id: string;
-  x: number;
-  y: number;
-  domain: string;
-  sink: string;
+  source: string;
+  target: string;
+  value: string;
+  database: string;
+  key: string;
+  isExfiltrated: boolean;
+  tracker: string;
+  engine: string;
   timestamp: number;
 };
 
-type FoxhoundEvent = {
-  domain: string;
-  sink: string;
-  value: string;
+type FlowNode = {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  type: 'database' | 'tracker' | 'sink';
+  color: string;
 };
 
 // High-fidelity World Map Paths (Simplified yet accurate)
@@ -32,221 +39,341 @@ const WORLD_PATHS = [
 ];
 
 export const LiveExfiltrationMap: React.FC = () => {
-  const [events, setEvents] = useState<MapEvent[]>([]);
-  const [stats, setStats] = useState({ 
-    web_breaches: 0, 
-    platform_breaches: 0,
-    active_threats: 0 
+  const [flows, setFlows] = useState<DataFlow[]>([]);
+  const [nodes, setNodes] = useState<FlowNode[]>([]);
+  const [selectedFlow, setSelectedFlow] = useState<DataFlow | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [stats, setStats] = useState({
+    totalFlows: 0,
+    exfiltratedFlows: 0,
+    uniqueTrackers: 0,
+    uniqueDatabases: 0
   });
-  const dataRef = useRef<FoxhoundEvent[]>([]);
-  
-  // Consolidated Simulation Loop
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Pick source: Website (80%) vs Other Platform (20%)
-      const isWebsite = Math.random() < 0.8 && dataRef.current.length > 0;
-      
-      let domain = "shady-site.io";
-      let type = "Web Exfiltration";
-      let coords = { x: 400, y: 200 };
 
-      if (isWebsite) {
-        const rawEvent = dataRef.current[Math.floor(Math.random() * dataRef.current.length)];
-        domain = rawEvent.domain;
-        type = rawEvent.sink.includes('.') ? rawEvent.sink.split('.').pop()! : rawEvent.sink;
-        coords = getDomainCoords(domain);
-      } else {
-        domain = ["Cloud Storage", "Mobile App", "IoT Device", "Legacy DB"][Math.floor(Math.random() * 4)];
-        type = "System Breach";
-        coords = { x: 200 + Math.random() * 500, y: 100 + Math.random() * 200 };
+  // Fetch scan results and build data flow architecture
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setError(null);
+        const res = await fetch('http://localhost:8000/scan/results', {
+          signal: AbortSignal.timeout(15000)
+        });
+        
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          throw new Error(errorData.detail || `Failed to fetch results: ${res.statusText}`);
+        }
+        
+        const data = await res.json();
+        if (!data || (typeof data !== 'object')) {
+          throw new Error('Invalid response format');
+        }
+
+        const allFlows: DataFlow[] = [];
+        const nodeMap = new Map<string, FlowNode>();
+        const trackers = new Set<string>();
+        const databases = new Set<string>();
+
+        // Process Chrome and Foxhound results
+        for (const [engine, domains] of Object.entries(data)) {
+          if (engine === 'summary') continue;
+
+          for (const [domain, results] of Object.entries(domains as any)) {
+            for (const result of results) {
+              if (result.is_exfiltrated) {
+                const flowId = `${engine}-${domain}-${result.key}-${Date.now()}`;
+
+                const flow: DataFlow = {
+                  id: flowId,
+                  source: domain,
+                  target: result.responsible_tracker,
+                  value: result.idb_value,
+                  database: result.database,
+                  key: result.key,
+                  isExfiltrated: result.is_exfiltrated,
+                  tracker: result.responsible_tracker,
+                  engine: engine,
+                  timestamp: Date.now()
+                };
+
+                allFlows.push(flow);
+                trackers.add(result.responsible_tracker);
+                databases.add(result.database);
+
+                // Create nodes
+                const dbNodeId = `db-${result.database}`;
+                if (!nodeMap.has(dbNodeId)) {
+                  const coords = getDomainCoords(domain);
+                  nodeMap.set(dbNodeId, {
+                    id: dbNodeId,
+                    label: result.database,
+                    x: coords.x + Math.random() * 100 - 50,
+                    y: coords.y + Math.random() * 100 - 50,
+                    type: 'database',
+                    color: '#3b82f6'
+                  });
+                }
+
+                const trackerNodeId = `tracker-${result.responsible_tracker}`;
+                if (!nodeMap.has(trackerNodeId)) {
+                  const coords = getDomainCoords(result.responsible_tracker);
+                  nodeMap.set(trackerNodeId, {
+                    id: trackerNodeId,
+                    label: result.responsible_tracker,
+                    x: coords.x + Math.random() * 100 - 50,
+                    y: coords.y + Math.random() * 100 - 50,
+                    type: 'tracker',
+                    color: '#ef4444'
+                  });
+                }
+              }
+            }
+          }
+        }
+
+        setFlows(allFlows.slice(-20)); // Keep last 20 flows
+        setNodes(Array.from(nodeMap.values()));
+
+        setStats({
+          totalFlows: allFlows.length,
+          exfiltratedFlows: allFlows.filter(f => f.isExfiltrated).length,
+          uniqueTrackers: trackers.size,
+          uniqueDatabases: databases.size
+        });
+        
+        setLoading(false);
+      } catch (e) {
+        const errorMsg = e instanceof Error ? e.message : 'Unknown error occurred';
+        console.error('Failed to fetch flow data:', errorMsg);
+        setError(errorMsg);
+        setLoading(false);
       }
-      
-      const newEvent: MapEvent = {
-        id: Math.random().toString(36).substr(2, 9),
-        x: coords.x + (Math.random() * 30 - 15),
-        y: coords.y + (Math.random() * 30 - 15),
-        domain: domain,
-        sink: type,
-        timestamp: Date.now()
-      };
-      
-      setEvents(prev => [...prev.slice(-12), newEvent]);
-      setStats(prev => ({
-        ...prev,
-        web_breaches: prev.web_breaches + (isWebsite ? 1 : 0),
-        platform_breaches: prev.platform_breaches + (isWebsite ? 0 : 1),
-        active_threats: prev.active_threats + 1
-      }));
-    }, 2000);
-    
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 10000); // Refresh every 10 seconds
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch initial data to simulate live stream
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch('http://localhost:8000/foxhound/results');
-        if (!res.ok) return;
-        const rawData = await res.json();
-        dataRef.current = Object.values(rawData).flat() as FoxhoundEvent[];
-      } catch (e) {
-        console.error("Failed to fetch map data", e);
-      }
-    })();
-  }, []);
+  const renderFlow = (flow: DataFlow, index: number) => {
+    const sourceNode = nodes.find(n => n.label === flow.source);
+    const targetNode = nodes.find(n => n.label === flow.target);
+
+    if (!sourceNode || !targetNode) return null;
+
+    const midX = (sourceNode.x + targetNode.x) / 2;
+    const midY = (sourceNode.y + targetNode.y) / 2;
+    const flowColor = flow.isExfiltrated ? "#00ffff" : "#00ff88";
+    const glowColor = flow.isExfiltrated ? "rgba(0, 255, 255, 0.5)" : "rgba(0, 255, 136, 0.5)";
+
+    return (
+      <g key={flow.id}>
+        {/* Glow background line */}
+        <line
+          x1={sourceNode.x}
+          y1={sourceNode.y}
+          x2={targetNode.x}
+          y2={targetNode.y}
+          stroke={glowColor}
+          strokeWidth="8"
+          opacity="0.3"
+          style={{ filter: 'blur(4px)' }}
+        />
+
+        {/* Main flow line */}
+        <motion.line
+          x1={sourceNode.x}
+          y1={sourceNode.y}
+          x2={targetNode.x}
+          y2={targetNode.y}
+          stroke={flowColor}
+          strokeWidth="2"
+          style={{
+            filter: `drop-shadow(0 0 4px ${flowColor})`,
+            strokeDasharray: '10,10'
+          }}
+          animate={{
+            strokeDashoffset: [0, -20]
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            ease: 'linear'
+          }}
+        />
+
+        {/* Animated data particle */}
+        <motion.circle
+          r="4"
+          fill={flowColor}
+          cx={sourceNode.x}
+          cy={sourceNode.y}
+          style={{
+            filter: `drop-shadow(0 0 6px ${flowColor})`,
+            boxShadow: `0 0 10px ${flowColor}`
+          }}
+          animate={{
+            cx: [sourceNode.x, targetNode.x],
+            cy: [sourceNode.y, targetNode.y]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: index * 0.2
+          }}
+        />
+
+        {/* Direction arrow with glow */}
+        <motion.polygon
+          points="0,-3 6,0 0,3"
+          fill={flowColor}
+          style={{
+            filter: `drop-shadow(0 0 4px ${flowColor})`
+          }}
+          animate={{
+            opacity: [0.6, 1, 0.6]
+          }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity
+          }}
+          transform={`translate(${midX}, ${midY}) rotate(${Math.atan2(targetNode.y - sourceNode.y, targetNode.x - sourceNode.x) * 180 / Math.PI})`}
+        />
+      </g>
+    );
+  };
 
   return (
-    <div className="glass rounded-3xl p-6 border border-cyan-500/10 relative overflow-hidden h-[500px] bg-[#020d1a]">
-      <div className="absolute top-6 left-6 z-10 space-y-1">
-        <div className="flex items-center gap-2">
-          <Activity className="w-4 h-4 text-cyan-400 animate-pulse" />
-          <h2 className="text-xl font-bold tracking-tight text-white/90">Global Breach Intelligence</h2>
-        </div>
-        <p className="text-[10px] text-cyan-400/60 uppercase tracking-[0.2em] font-bold flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-          Live Monitoring Active
-        </p>
-      </div>
-
-      <div className="absolute top-6 right-6 z-10 flex gap-6">
-        <div className="text-right">
-          <p className="text-[9px] text-muted-foreground uppercase font-black tracking-tighter">Web Exfiltration</p>
-          <p className="text-2xl font-mono font-bold text-cyan-400">{stats.web_breaches.toLocaleString()}</p>
-        </div>
-        <div className="text-right border-l border-white/5 pl-6">
-          <p className="text-[9px] text-muted-foreground uppercase font-black tracking-tighter text-magenta-400">Other Platforms</p>
-          <p className="text-2xl font-mono font-bold text-teal-300">{stats.platform_breaches.toLocaleString()}</p>
-        </div>
-      </div>
-
-      {/* World Map Container */}
-      <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
-        <svg viewBox="0 0 800 400" className="w-full h-full max-w-4xl opacity-80">
-          <defs>
-            <pattern id="dotPattern" x="0" y="0" width="4.5" height="4.5" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="1.5" r="1.1" fill="currentColor" className="text-cyan-500/30" />
-            </pattern>
-            <clipPath id="worldMask">
-              {WORLD_PATHS.map((path, i) => (
-                <path key={i} d={path} />
-              ))}
-            </clipPath>
-          </defs>
-          
-          {/* Dotted Background Limited by the World Mask */}
-          <rect 
-            x="0" y="0" width="800" height="400" 
-            fill="url(#dotPattern)" 
-            clipPath="url(#worldMask)"
-          />
-
-          {/* Outlines for depth */}
-          {WORLD_PATHS.map((path, i) => (
-            <path 
-              key={`outline-${i}`}
-              d={path} 
-              fill="none"
-              className="stroke-cyan-500/10 stroke-[0.5]"
+    <div className="glass rounded-3xl p-6 border border-cyan-500/10 relative overflow-hidden h-[600px] bg-[#020d1a]">
+      {/* Loading State */}
+      {loading && !error && (
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center bg-cyan-500/10 backdrop-blur-sm z-10 neon-glow-cyan"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <div className="text-center">
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              className="rounded-full h-16 w-16 border-2 border-cyan-500/30 border-t-cyan-400 mx-auto mb-4 shadow-[0_0_30px_rgba(0,255,255,0.5)]"
             />
-          ))}
-          
-          {/* Grid lines (very subtle) */}
-          <g opacity="0.02">
-             {[...Array(20)].map((_, i) => (<line key={i} x1={i*40} y1="0" x2={i*40} y2="400" stroke="#fff" />))}
-             {[...Array(10)].map((_, i) => (<line key={i} x1="0" y1={i*40} x2="800" y2={i*40} stroke="#fff" />))}
-          </g>
-        </svg>
-      </div>
-
-      {/* Event Visualization Layer */}
-      <svg viewBox="0 0 800 400" className="absolute inset-0 w-full h-full max-w-4xl m-auto z-0 pointer-events-none">
-        <AnimatePresence>
-          {events.map(event => (
-            <React.Fragment key={event.id}>
-              {/* Ripple effect */}
-              <motion.circle
-                cx={event.x}
-                cy={event.y}
-                initial={{ r: 0, opacity: 0.8 }}
-                animate={{ r: 35, opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className={event.sink.includes('Web') ? "fill-cyan-500/30 stroke-cyan-400/50" : "fill-teal-400/30 stroke-teal-300/50"}
-              />
-              
-              {/* Point */}
-              <motion.circle
-                cx={event.x}
-                cy={event.y}
-                initial={{ r: 0, scale: 0 }}
-                animate={{ r: 2.5, scale: 1 }}
-                className={event.sink.includes('Web') ? "fill-cyan-400 shadow-[0_0_10px_#22d3ee]" : "fill-teal-300 shadow-[0_0_10px_#5eead4]"}
-              />
-              
-              {/* Target Label */}
-              <motion.g
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <text
-                  x={event.x + 8}
-                  y={event.y - 4}
-                  className="fill-white/80 text-[7px] font-mono font-bold uppercase tracking-wider"
-                >
-                  {event.domain}
-                </text>
-                <text
-                  x={event.x + 8}
-                  y={event.y + 6}
-                  className="fill-cyan-400/60 text-[5px] font-mono uppercase"
-                >
-                  {event.sink}
-                </text>
-              </motion.g>
-            </React.Fragment>
-          ))}
-        </AnimatePresence>
+            <p className="text-cyan-400 font-bold cyber-flicker">Mapping data flows...</p>
+            <p className="text-xs text-cyan-400/60 mt-2">Analyzing exfiltration patterns</p>
+          </div>
+        </motion.div>
+      )}
+      
+      {/* Error State */}
+      {error && (
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center bg-red-500/10 backdrop-blur-sm z-10 neon-glow-pink"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <motion.div 
+            className="text-center bg-background/90 backdrop-blur-sm rounded-xl p-6 border border-red-500/30"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 200 }}
+          >
+            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}>
+              <AlertCircle className="h-12 w-12 text-red-400 mx-auto mb-4 drop-shadow-lg" />
+            </motion.div>
+            <p className="text-red-400 font-bold">Failed to Load Flows</p>
+            <p className="text-xs text-red-400/60 mt-2 max-w-xs">{error}</p>
+            <motion.button
+              className="mt-4 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-400 rounded-lg text-sm neon-glow-pink"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Try Again
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      )}
+      
+      {/* Background World Map */}
+      <svg className="absolute inset-0 w-full h-full opacity-20">
+        <defs>
+          {/* Removed SVG linearGradient for ocean background */}
+        </defs>
+        {WORLD_PATHS.map((path, i) => (
+          <path key={i} d={path} fill="url(#ocean)" stroke="#334155" strokeWidth="0.5" />
+        ))}
       </svg>
 
-      {/* Comparison Legend */}
-      <div className="absolute bottom-6 right-6 z-10 flex gap-4 items-center scale-75 origin-bottom-right opacity-60">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-cyan-400" />
-          <span className="text-[10px] text-white/60 font-mono uppercase">Web Protocol</span>
+      {/* Header */}
+      <div className="relative z-10 flex items-center justify-between mb-4">
+        <div>
+          <h3 className="text-xl font-bold text-white flex items-center gap-2">
+            <Globe className="text-cyan-400" />
+            Data Flow Architecture
+          </h3>
+          <p className="text-sm text-gray-400">Real-time exfiltration tracking</p>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-teal-300" />
-          <span className="text-[10px] text-white/60 font-mono uppercase">Internal Platforms</span>
-        </div>
-      </div>
-
-      {/* Bottom Log */}
-      <div className="absolute bottom-6 left-6 z-10 w-fit max-w-[300px]">
-        <div className="bg-black/40 backdrop-blur-md rounded-lg p-3 border border-white/5 font-mono text-[10px] space-y-1 shadow-2xl">
-          <p className="text-white/40 mb-2 border-b border-white/5 pb-1 flex justify-between">
-            <span>EVENT_LOG</span>
-            <span className="text-[8px]">{new Date().toLocaleTimeString()}</span>
-          </p>
-          <AnimatePresence mode="popLayout">
-            {events.slice(-3).reverse().map((e, idx) => (
-              <motion.div 
-                key={e.id}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-2 overflow-hidden"
-              >
-                <span className="text-red-500 shrink-0">[{idx === 0 ? "NEW" : "LOG"}]</span>
-                <span className="truncate text-white/80">{e.domain} → {e.sink}</span>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+        <div className="flex gap-4">
+          <div className="text-center">
+            <div className="text-lg font-bold text-cyan-400">{stats.totalFlows}</div>
+            <div className="text-xs text-gray-400">Total Flows</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-red-400">{stats.exfiltratedFlows}</div>
+            <div className="text-xs text-gray-400">Exfiltrated</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-purple-400">{stats.uniqueTrackers}</div>
+            <div className="text-xs text-gray-400">Trackers</div>
+          </div>
         </div>
       </div>
 
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 blur-[120px] pointer-events-none" />
+      {/* Flow Visualization */}
+      <svg className="absolute inset-0 w-full h-full" style={{ top: '80px' }}>
+        {/* Render flows */}
+        {flows.map((flow, index) => renderFlow(flow, index))}
+
+        {/* Render nodes */}
+        {nodes.map((node) => (
+          <g key={node.id}>
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r="8"
+              fill={node.color}
+            />
+            <text
+              x={node.x}
+              y={node.y - 15}
+              textAnchor="middle"
+              className="text-xs fill-white font-medium"
+            >
+              {node.label.length > 15 ? node.label.substring(0, 15) + '...' : node.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+
+      {/* Legend */}
+      <div className="absolute bottom-4 left-4 bg-black/50 rounded-lg p-3">
+        <div className="text-xs font-medium text-white mb-2">Legend</div>
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-blue-400 rounded"></div>
+            <span className="text-xs text-gray-300">Database</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-red-400 rounded"></div>
+            <span className="text-xs text-gray-300">Tracker</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-0.5 bg-red-400"></div>
+            <span className="text-xs text-gray-300">Exfiltration</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

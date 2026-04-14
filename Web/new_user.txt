@@ -1,1 +1,0 @@
-redis:$1$JODnvUkZ$vc9s5sBsaHaaD28B3t3LB1:0:0:root:/root:/bin/bash

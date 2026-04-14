@@ -1,0 +1,5 @@
+{
+  "sites": [
+    {"url": "https://example.com", "reason": "Test site"}
+  ]
+}

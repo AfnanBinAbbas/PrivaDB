@@ -646,8 +646,9 @@ export const LiveScan: React.FC = () => {
         </motion.div>
 
         {/* Input area */}
-        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6 relative border border-cyan-500/30 neon-glow-pulse">
+          {/* Removed gradient background for solid/transparent look */}
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-sm font-medium">Target URLs</h3>
             <div className="flex items-center gap-2">
               <input
@@ -657,22 +658,26 @@ export const LiveScan: React.FC = () => {
                 onChange={handleFileUpload}
                 className="hidden"
               />
-              <button
+              <motion.button
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors neon-glow-cyan hover:scale-105"
                 disabled={scanning}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Upload size={14} />
                 Upload .txt
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={addUrl}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors neon-glow-pink hover:scale-105"
                 disabled={scanning}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Plus size={14} />
                 Add URL
-              </button>
+              </motion.button>
             </div>
           </div>
 
@@ -849,10 +854,14 @@ export const LiveScan: React.FC = () => {
           {scanning ? (
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1 py-3 bg-primary/10 text-primary border border-primary/20 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm">
+                <motion.div 
+                  className="flex-1 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/40 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm neon-glow-cyan neon-pulse"
+                  animate={{ boxShadow: ['0 0 20px rgba(0, 255, 255, 0.3)', '0 0 40px rgba(0, 255, 255, 0.6)', '0 0 20px rgba(0, 255, 255, 0.3)'] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
                   <Loader2 size={16} className="animate-spin" />
                   <span className="font-mono">Processing: {validUrlsToScan.length} targets</span>
-                </div>
+                </motion.div>
                 
                 <div className="flex gap-2">
                   <motion.button
@@ -889,8 +898,8 @@ export const LiveScan: React.FC = () => {
               <motion.button
                 onClick={() => startScan()}
                 disabled={scanning || validUrlsToScan.length === 0}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-xl shadow-primary/25 text-base"
-                whileHover={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 1.02 }}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-cyan-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-xl shadow-cyan-500/25 text-base neon-glow-cyan border border-cyan-400/50 hover:border-cyan-400"
+                whileHover={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 1.05, letterSpacing: '0.05em' }}
                 whileTap={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 0.98 }}
               >
                 <Play size={20} fill="currentColor" />
@@ -939,17 +948,17 @@ export const LiveScan: React.FC = () => {
                       </div>
                       <p className="text-xs text-muted-foreground truncate">{phase.message}</p>
                       {phase.status === 'running' && (
-                        <div className="mt-3 relative h-1.5 w-full bg-muted/30 rounded-full overflow-hidden ring-1 ring-border/20">
-                          {/* Subdued underglow to make it pop inside Dark Mode bounds */}
+                        <div className="mt-3 relative h-1.5 w-full bg-muted/30 rounded-full overflow-hidden ring-1 ring-cyan-500/30 status-scanning">
+                          {/* Neon Underglow */}
                           <motion.div
-                            className="absolute top-0 left-0 h-full bg-primary/40 blur-[3px] rounded-full"
+                            className="absolute top-0 left-0 h-full bg-cyan-500/40 blur-[2px] rounded-full"
                             initial={{ width: '0%' }}
                             animate={{ width: `${phase.progress}%` }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                           />
-                          {/* Animated Shimmer Bar Component */}
+                          {/* Neon Main Bar */}
                           <motion.div
-                            className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary/30 via-primary to-primary/30 rounded-full shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+                            className="absolute top-0 left-0 h-full bg-cyan-300 rounded-full shadow-[0_0_15px_rgba(0,255,255,0.8),0_0_30px_rgba(0,255,255,0.4)]"
                             initial={{ width: "0%", backgroundPosition: "100% 0%" }}
                             animate={{ 
                               width: `${phase.progress}%`,
@@ -960,6 +969,13 @@ export const LiveScan: React.FC = () => {
                               backgroundPosition: { duration: 1.5, repeat: Infinity, ease: "linear" }
                             }}
                             style={{ backgroundSize: "200% 100%" }}
+                          />
+                          {/* Scanning Line Effect */}
+                          <motion.div 
+                            className="absolute top-0 left-0 h-full w-1 bg-white opacity-80 rounded-full scanner-line"
+                            initial={{ x: '-100%' }}
+                            animate={{ x: `calc(${phase.progress}% - 2px)` }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
                           />
                         </div>
                       )}

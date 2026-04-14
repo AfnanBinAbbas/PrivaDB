@@ -43,7 +43,7 @@ const GlitchTitle = ({ text }: { text: string }) => {
         animate={{ opacity: 1, letterSpacing: "-0.02em" }}
         transition={{ duration: 2.5, ease: "easeOut", delay: 0.8 }}
       >
-        <span className="text-gradient drop-shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]">{text}</span>
+        <span className="drop-shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]">{text}</span>
       </motion.h1>
 
       {/* Glitch Layers */}
@@ -122,14 +122,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onReveal }) => {
           y: mousePos.y - 300,
         }}
         style={{
-          background: 'radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%)',
+          background: 'rgba(var(--primary-rgb), 0.08)',
           filter: 'blur(40px)',
         }}
         transition={{ type: 'spring', damping: 30, stiffness: 150 }}
       />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 opacity-20" style={{ backgroundSize: '100% 2px, 3px 100%' }} />
+        <div className="absolute inset-0 bg-black/10 z-10 opacity-20" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 rounded-full blur-[150px] animate-pulse" />
       </div>
 
@@ -178,7 +178,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onReveal }) => {
             Click or Drag to Reveal
             <span className="w-12 h-[1px] bg-primary/30" />
           </div>
-          <div className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent animate-bounce" />
+          <div className="w-px h-16 bg-primary/60 animate-bounce" />
         </motion.div>
       </motion.div>
 

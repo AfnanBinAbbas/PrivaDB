@@ -1,0 +1,23 @@
+# Logs and temporary files
+*.log
+Web/dev_server.log
+results/
+
+# Binaries
+Web/foxhound/
+!Web/foxhound/results/
+
+# Node dependencies
+node_modules/
+dist/
+
+# Python dependencies
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+.env.local
+
+# Build outputs
+Web/dist/
