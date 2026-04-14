@@ -21,6 +21,7 @@ import { LandingPage } from "./components/privadb/LandingPage";
 import { AnimatePresence } from "framer-motion";
 import ScanResults from "./components/privadb/ScanResults";
 import AnimatedLinesBackground from "./components/privadb/AnimatedLinesBackground";
+import { TechStackFooter } from "./components/privadb/TechStackFooter";
 
 const AppLoadingOverlay = ({ show }: { show: boolean }) => (
   show ? (
@@ -187,6 +188,7 @@ const App = () => {
           <PipelineSection />
           <TrackerDomains />
           <DownloadSection />
+          <TechStackFooter />
         </main>
         <BackToTop />
       </motion.div>

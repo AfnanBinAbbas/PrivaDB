@@ -91,7 +91,7 @@ export const HeroSection: React.FC = () => {
         {/* Badge */}
         <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm text-muted-foreground mb-6">
           <span className="w-2 h-2 rounded-full bg-primary" />
-          PrivaDB Dynamic Taint Analysis
+          Priva DB Dynamic Taint Analysis
         </motion.div>
 
         {/* Logo & Title */}
@@ -104,7 +104,7 @@ export const HeroSection: React.FC = () => {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
           <h1 className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter">
-            <span className="text-gradient">PRIVADB</span>
+            <span className="text-gradient">Priva DB</span>
           </h1>
         </motion.div>
 

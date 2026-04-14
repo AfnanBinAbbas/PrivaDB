@@ -43,7 +43,7 @@ const GlitchTitle = ({ text }: { text: string }) => {
         animate={{ opacity: 1, letterSpacing: "-0.02em" }}
         transition={{ duration: 2.5, ease: "easeOut", delay: 0.8 }}
       >
-        <span className="drop-shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)]">{text}</span>
+        <span className="drop-shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] bg-clip-text text-transparent bg-gradient-to-r from-[hsl(0,0%,80%)] to-[hsl(0,0%,70%)]">{text}</span>
       </motion.h1>
 
       {/* Glitch Layers */}
@@ -106,7 +106,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onReveal }) => {
       exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
       transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
       onClick={handleReveal}
-      onDragStart={handleReveal}
+      onPanStart={handleReveal}
     >
       <audio ref={audioRef} src="/logo_reveal_landing_page.mp3" preload="auto" />
       <audio src="/background_music.mp3" loop autoPlay />
@@ -116,9 +116,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onReveal }) => {
 
       {/* Interactive Magic Glow */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none z-0"
+        className="absolute w-[350px] h-[350px] rounded-full pointer-events-none z-0"
         animate={{
-          x: mousePos.x - 300,
+          x: mousePos.x - 600,
           y: mousePos.y - 300,
         }}
         style={{
@@ -164,7 +164,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onReveal }) => {
           />
         </motion.div>
 
-        <GlitchTitle text="PRIVA DB" />
+        <GlitchTitle text="Priva DB" />
 
         {/* Subtitle / Prompt */}
         <motion.div

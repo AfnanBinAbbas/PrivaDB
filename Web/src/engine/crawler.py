@@ -319,7 +319,8 @@ from typing import List, Dict, Optional, Callable
 
 async def crawl_all_sites(site_limit: int = None,
                           custom_sites: List[dict] = None,
-                          on_progress: Optional[Callable[[float, str], None]] = None) -> List[dict]:
+                          on_progress: Optional[Callable[[float, str], None]] = None,
+                          check_command: Optional[Callable[[str], bool]] = None) -> List[dict]:
     """
     Crawl all sites and save per-site JSON output.
 
@@ -362,6 +363,10 @@ async def crawl_all_sites(site_limit: int = None,
             logger.info("Crawl task cancelled by user (site loop)")
             raise asyncio.CancelledError()
             
+        if check_command and check_command("skip_domain"):
+            logger.info("Skipping domain via UI command")
+            continue
+            
         url = site["url"]
         logger.info(f"\n{'='*60}")
         logger.info(f"Site {i}/{len(sites)}: {url}")
@@ -373,6 +378,14 @@ async def crawl_all_sites(site_limit: int = None,
             if asyncio.current_task().cancelled():
                 logger.info("Crawl task cancelled by user (iteration loop)")
                 raise asyncio.CancelledError()
+                
+            if check_command and check_command("skip_iteration"):
+                logger.info("Skipping iteration via UI command")
+                continue
+            
+            if check_command and check_command("skip_domain"):
+                logger.info("Skipping domain via UI command")
+                break
                 
             current_step += 1
             if on_progress:
@@ -540,9 +553,32 @@ async def crawl_all_sites(site_limit: int = None,
                         logger.info("✓ Chrome launched successfully")
                         
                     crawler = SiteCrawler()
-                    iter_result = await crawler.crawl_site(browser, url)
-                    iter_result["iteration"] = iteration
-                    site_iterations.append(iter_result)
+                    skip_type = None
+                    
+                    if check_command:
+                        crawl_task = asyncio.create_task(crawler.crawl_site(browser, url))
+                        while not crawl_task.done():
+                            if check_command("skip_iteration"):
+                                skip_type = "iteration"
+                                crawl_task.cancel()
+                                break
+                            if check_command("skip_domain"):
+                                skip_type = "domain"
+                                crawl_task.cancel()
+                                break
+                            await asyncio.sleep(0.5)
+                            
+                        try:
+                            iter_result = await crawl_task
+                            iter_result["iteration"] = iteration
+                            site_iterations.append(iter_result)
+                        except asyncio.CancelledError:
+                            logger.info(f"Task cancelled via {skip_type} signal.")
+                    else:
+                        iter_result = await crawler.crawl_site(browser, url)
+                        iter_result["iteration"] = iteration
+                        site_iterations.append(iter_result)
+
                 finally:
                     # Robust cleanup: try to close browser, then stop display
                     if browser:
@@ -564,10 +600,17 @@ async def crawl_all_sites(site_limit: int = None,
                             disp.stop()
                         except:
                             pass
+                            
+            if skip_type == "domain":
+                logger.info("Domain skipped during active crawl.")
+                break
 
             # Small delay between iterations
             if iteration < iterations:
                 await asyncio.sleep(2)
+
+        if not site_iterations:
+            continue
 
         # Build combined result with all iterations
         combined = {

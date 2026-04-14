@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import {
   Play, Upload, Plus, X, Settings2, ChevronDown, ChevronUp,
   Globe, Search, BarChart3, Check, AlertCircle, FileText,
-  Loader2, Copy, Download, Trash2, Shield
+  Loader2, Copy, Download, Trash2, Shield, FastForward, SkipForward
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
@@ -521,6 +521,24 @@ export const LiveScan: React.FC = () => {
     }
   };
 
+  const skipIteration = async () => {
+    if (!currentScanId) return;
+    try {
+      await fetch(`http://localhost:8000/scan/${currentScanId}/skip_iteration`, { method: 'POST' });
+    } catch (error) {
+      console.error('Error skipping iteration:', error);
+    }
+  };
+
+  const skipDomain = async () => {
+    if (!currentScanId) return;
+    try {
+      await fetch(`http://localhost:8000/scan/${currentScanId}/skip_domain`, { method: 'POST' });
+    } catch (error) {
+      console.error('Error skipping domain:', error);
+    }
+  };
+
   const stopAllScans = async () => {
     setStopping(true);
     stopSignalRef.current = true;
@@ -854,27 +872,41 @@ export const LiveScan: React.FC = () => {
                   <span className="font-mono">Processing: {validUrlsToScan.length} targets</span>
                 </motion.div>
                 
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2 justify-center sm:justify-start w-full sm:w-auto">
                   <motion.button
-                    onClick={stopScan}
+                    onClick={skipIteration}
                     disabled={stopping}
-                    className="flex-1 sm:flex-none px-6 py-3 bg-amber-500/10 text-amber-600 border border-amber-500/20 rounded-xl font-medium text-sm hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 sm:flex-none px-4 py-3 bg-amber-500/10 text-amber-600 border border-amber-500/20 rounded-xl font-medium text-xs hover:bg-amber-500/20 transition-all flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <X size={16} />
-                    Skip Current
+                    <FastForward size={14} />
+                    Skip Iteration
                   </motion.button>
+
+                  {/* Only show skip domain if it's a multiple domain scan */}
+                  {(config.sitesLimit !== 1 && validUrlsToScan.length > 1) && (
+                    <motion.button
+                      onClick={skipDomain}
+                      disabled={stopping}
+                      className="flex-1 sm:flex-none px-4 py-3 bg-orange-500/10 text-orange-600 border border-orange-500/20 rounded-xl font-medium text-xs hover:bg-orange-500/20 transition-all flex items-center justify-center gap-2"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <SkipForward size={14} />
+                      Skip Domain
+                    </motion.button>
+                  )}
                   
                   <motion.button
                     onClick={stopAllScans}
                     disabled={stopping}
-                    className="flex-1 sm:flex-none px-6 py-3 bg-red-500 text-white rounded-xl font-medium text-sm hover:bg-red-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                    className="w-full sm:w-auto px-4 py-3 bg-red-500 text-white rounded-xl font-medium text-xs hover:bg-red-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/20 mt-2 sm:mt-0"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {stopping ? <Loader2 size={16} className="animate-spin" /> : <Shield size={16} />}
-                    Stop All Sessions
+                    {stopping ? <Loader2 size={14} className="animate-spin" /> : <Shield size={14} />}
+                    Stop All Scans
                   </motion.button>
                 </div>
               </div>

@@ -82,6 +82,30 @@ Once complete, results populate the **"Scan Results"** section.
 
 ---
 
+## 📂 Project Structure
+
+```text
+PrivaDB/
+├── Documentation.md     # In-depth technical architecture and algorithms
+├── README.md            # Execution guide and project overview
+├── ATTRIBUTION.md       # Open-source acknowledgements and credits
+├── LICENSE              # Proprietary license information
+├── References/          # Academic papers and research material
+├── third_party/         # Submodules (e.g., Foxhound engine integration)
+└── Web/                 # Core Monorepo
+    ├── backend/         # FastAPI Engine Controller
+    │   └── server.py    # Orchestrates scan tasks and results
+    ├── public/          # Static assets (logos, 3D graphics)
+    └── src/
+        ├── components/  # React/Vite UI Dashboard
+        └── engine/      # Python Analysis Core (Crawling & Heuristics)
+            ├── config.py
+            ├── crawler.py
+            └── reporter.py
+```
+
+---
+
 ## 📜 Legal & Intellectual Property
 Copyright (c) 2026 Afnan Bin Abbas. **All Rights Reserved.**
 

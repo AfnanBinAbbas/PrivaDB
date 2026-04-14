@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
   /* ─ Neon Button ─ */
   .neon-btn {
     @apply px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-200 border border-cyan-400/40 bg-[#10151a] text-cyan-200;
@@ -121,30 +123,27 @@
       --card-foreground: 0 0% 93%;
       --popover: 0 0% 7%;
       --popover-foreground: 0 0% 93%;
-      --primary: 0 0% 80%;
-      /* Elegant metallic primary */
+      --primary: 191 97% 47%;
+      /* Vivid cyan for interactive elements */
       --primary-foreground: 0 0% 5%;
       --secondary: 0 0% 12%;
       --secondary-foreground: 0 0% 93%;
       --muted: 0 0% 12%;
       --muted-foreground: 0 0% 60%;
-      --accent: 0 0% 80%;
-      /* Elegant metallic primary */
+      --accent: 191 97% 47%;
       --accent-foreground: 0 0% 5%;
       --destructive: 0 63% 31%;
       --destructive-foreground: 0 0% 93%;
       --border: 0 0% 15%;
       --input: 0 0% 15%;
-      --ring: 0 0% 80%;
+      --ring: 191 97% 47%;
 
       /* Custom Tokens */
       --glass-bg: 0 0% 7% / 0.6;
       --glass-border: 0 0% 100% / 0.08;
-      --glow: 0 0% 80%;
-      /* Cyan glow */
+      --glow: 191 97% 47%;
       --gradient-to: hsl(0 0% 50%);
-      /* Magenta end point */
-      --primary-rgb: 204, 204, 204;
+      --primary-rgb: 3, 218, 248;
     }
   }
 
@@ -165,9 +164,19 @@
     }
 
     body {
-      @apply bg-background text-foreground font-sans antialiased;
-      /* Force dark mode for premium feel by default or allow system preference */
+      @apply bg-background text-foreground antialiased;
+      font-family: 'Inter', sans-serif;
     }
+
+    h1 { @apply text-4xl font-bold tracking-tight mb-4; }
+    h2 { @apply text-3xl font-semibold tracking-tight mb-3; }
+    h3 { @apply text-2xl font-semibold tracking-tight mb-3; }
+    h4 { @apply text-xl font-semibold tracking-tight mb-2; }
+    h5 { @apply text-lg font-medium tracking-tight mb-2; }
+    h6 { @apply text-base font-medium tracking-tight mb-2; }
+    p { @apply text-base leading-relaxed mb-4 text-foreground opacity-90 font-normal; }
+    
+    code, pre { font-family: 'JetBrains Mono', monospace; }
 
     /* Premium Noise Overlay */
     body::before {

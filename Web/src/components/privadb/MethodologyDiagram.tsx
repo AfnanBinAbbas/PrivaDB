@@ -6,21 +6,21 @@ const steps = [
   {
     title: "1. The Secret Storage",
     description: "Every website has a secret box called 'IndexedDB' where it keeps your special ID stickers.",
-    image: "/graphics/secret_box.png",
+    image: "/graphics/chest.jpg",
     icon: Database,
     color: "text-blue-500"
   },
   {
     title: "2. Adding the Sticker",
     description: "Our detective team (Chrome & Foxhound) puts a glowing 'Taint Sticker' on your data so we can see it!",
-    image: "/graphics/taint_sticker.png",
+    image: "/graphics/taint_sticker.jpg",
     icon: ShieldCheck,
     color: "text-cyan-500"
   },
   {
     title: "3. The Detective Work",
     description: "Chrome acts like a standard postman, while Foxhound is a supersmart detective dog watching every move.",
-    images: ["/graphics/chrome_postman.png", "/graphics/foxhound_detective.png"],
+    image: "/graphics/foxhound_detective.jpg",
     icon: Search,
     color: "text-orange-500"
   },
@@ -38,9 +38,9 @@ export const MethodologyDiagram: React.FC = () => {
     <section id="methodology" className="py-24 px-4 bg-muted/30 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-12 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
+
       <div className="max-w-5xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -64,31 +64,12 @@ export const MethodologyDiagram: React.FC = () => {
             >
               <div className="glass rounded-3xl p-6 h-full flex flex-col border-primary/10 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
                 <div className="mb-6 relative h-40 flex items-center justify-center overflow-hidden rounded-2xl bg-black/20">
-                  {step.images ? (
-                    <div className="flex gap-2">
-                       <motion.img 
-                        src={step.images[0]} 
-                        alt="Chrome" 
-                        className="w-16 h-16 object-contain"
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
-                       <motion.img 
-                        src={step.images[1]} 
-                        alt="Foxhound" 
-                        className="w-16 h-16 object-contain"
-                        animate={{ y: [0, -7, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity }}
-                      />
-                    </div>
-                  ) : (
-                    <motion.img 
-                      src={step.image} 
-                      alt={step.title} 
-                      className="w-32 h-32 object-contain"
-                      whileHover={{ scale: 1.1, rotate: 2 }}
-                    />
-                  )}
+                  <motion.img
+                    src={step.image}
+                    alt={step.title}
+                    className="w-32 h-32 object-contain"
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                  />
                 </div>
 
                 <div className="flex items-center gap-3 mb-3">
@@ -97,7 +78,7 @@ export const MethodologyDiagram: React.FC = () => {
                   </div>
                   <h3 className="font-bold text-lg tracking-tight">{step.title}</h3>
                 </div>
-                
+
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
@@ -113,7 +94,7 @@ export const MethodologyDiagram: React.FC = () => {
         </div>
 
         {/* Cinematic Bottom Banner */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -124,7 +105,7 @@ export const MethodologyDiagram: React.FC = () => {
             <h4 className="text-xl font-bold">Ready to see it in action?</h4>
             <p className="text-muted-foreground text-sm">Launch a scan above and watch the detecives work in real-time.</p>
           </div>
-          <motion.a 
+          <motion.a
             href="#live-scan"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
