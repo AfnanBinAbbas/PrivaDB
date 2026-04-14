@@ -1,3 +1,6 @@
 [submodule "third_party/Comparative-Privacy-Analysis"]
 	path = third_party/Comparative-Privacy-Analysis
 	url = https://github.com/eleumasc/Comparative-Privacy-Analysis.git
+[submodule "submodules/foxhound"]
+	path = submodules/foxhound
+	url = https://github.com/AfnanBinAbbas/project-foxhound.git
