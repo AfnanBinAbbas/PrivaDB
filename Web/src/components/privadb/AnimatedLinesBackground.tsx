@@ -18,8 +18,9 @@ const AnimatedLinesBackground: React.FC = () => (
           width="2"
           height="1080"
           rx="1"
-          fill="#f3f4f6"
-          opacity="0.08"
+          fill="currentColor"
+          className="text-primary/20 dark:text-primary/10"
+          opacity="0.15"
         >
           <animate
             attributeName="y"

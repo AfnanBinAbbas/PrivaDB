@@ -83,34 +83,34 @@
   /* Premium Lux CSS Foundation */
   @layer base {
     :root {
-      /* PRIVADB Light Theme (Lux Minimal) - #FAFAFA bg, #FFFFFF cards, #111111 text */
-      --background: 0 0% 98%;
-      --foreground: 0 0% 7%;
+      /* PRIVADB Light Theme (Lux Minimal) - Deep Blue / Slate / Cyan */
+      --background: 210 20% 98%;
+      --foreground: 222 47% 11%;
       --card: 0 0% 100%;
-      --card-foreground: 0 0% 7%;
+      --card-foreground: 222 47% 11%;
       --popover: 0 0% 100%;
-      --popover-foreground: 0 0% 7%;
-      --primary: 210 100% 50%;
-      --primary-foreground: 0 0% 100%;
-      --secondary: 0 0% 95%;
-      --secondary-foreground: 0 0% 7%;
-      --muted: 0 0% 95%;
-      --muted-foreground: 0 0% 45%;
-      --accent: 210 100% 50%;
-      --accent-foreground: 0 0% 100%;
-      --destructive: 0 84% 60%;
-      --destructive-foreground: 0 0% 100%;
-      --border: 0 0% 90%;
-      --input: 0 0% 90%;
-      --ring: 210 100% 50%;
-      --radius: 0rem;
+      --popover-foreground: 222 47% 11%;
+      --primary: 221.2 83.2% 53.3%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --accent: 199 89% 48%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 221.2 83.2% 53.3%;
+      --radius: 0.75rem;
 
       /* Custom Tokens */
-      --glass-bg: 255 255 255 / 0.7;
-      --glass-border: 0 0% 0% / 0.05;
-      --glow: 210 100% 50%;
-      --gradient-to: hsl(200 100% 40%);
-      --primary-rgb: 0, 102, 255;
+      --glass-bg: 0 0% 100% / 0.8;
+      --glass-border: 214.3 31.8% 91.4% / 0.5;
+      --glow: 221.2 83.2% 53.3%;
+      --gradient-to: hsl(199 89% 48%);
+      --primary-rgb: 37, 99, 235;
     }
 
     .dark {

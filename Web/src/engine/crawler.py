@@ -9,6 +9,8 @@ import asyncio
 import json
 import os
 import logging
+import signal
+import psutil
 from urllib.parse import urlparse
 from datetime import datetime
 
@@ -144,6 +146,27 @@ def _get_firefox_env():
     return env
 
 
+def _kill_browser_processes():
+    """Forcefully kill any orphaned browser processes started by this task."""
+    try:
+        current_process = psutil.Process()
+        children = current_process.children(recursive=True)
+        for child in children:
+            if child.name().lower() in ["chrome", "firefox", "chromium", "firefox-bin"]:
+                try:
+                    child.terminate()
+                    # Wait a bit then kill if still alive
+                    try:
+                        child.wait(timeout=1)
+                    except psutil.TimeoutExpired:
+                        child.kill()
+                    logger.info(f"Forcefully reaped browser process: {child.pid} ({child.name()})")
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+    except Exception as e:
+        logger.error(f"Error during browser process reaping: {e}")
+
+
 class SiteCrawler:
     """Crawls a single website — extracts IndexedDB data and network requests."""
 
@@ -191,9 +214,12 @@ class SiteCrawler:
             
             # Simple scroll-to-bottom to trigger lazy-loaded scripts/trackers
             try:
+                if asyncio.current_task().cancelled(): raise asyncio.CancelledError()
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await asyncio.sleep(1)
                 await page.evaluate("window.scrollTo(0, 0)")
+            except asyncio.CancelledError:
+                raise
             except:
                 pass
 
@@ -241,6 +267,8 @@ class SiteCrawler:
                 result["indexeddb"] = {"databases": [], "error": error_msg}
                 result["errors"].append(error_msg)
 
+        except asyncio.CancelledError:
+            raise
         except Exception as e:
             err_msg = f"Navigation error: {e}"
             logger.warning(f"  {err_msg}")
@@ -521,8 +549,15 @@ async def crawl_all_sites(site_limit: int = None,
                         try:
                             # Use a small timeout for closing to prevent hanging the cleanup
                             await asyncio.wait_for(browser.close(), timeout=5.0)
-                        except:
-                            logger.warning("Browser close timed out or failed during cleanup")
+                        except asyncio.TimeoutError:
+                            logger.warning("Browser close timed out - attempting force kill")
+                            # If Playwright close hangs, we need to be more aggressive
+                            try:
+                                _kill_browser_processes()
+                            except:
+                                pass
+                        except Exception:
+                            logger.warning("Browser close failed during cleanup")
                     
                     if disp:
                         try:
