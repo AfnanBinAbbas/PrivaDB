@@ -2,25 +2,25 @@
   <img src="Web/public/logo.png" width="200" alt="PrivaDB Logo">
 </p>
 
-# 🕵️‍♂️ PrivaDB: Advanced Privacy Analysis Platform
+# PrivaDB: Advanced Privacy Analysis Platform
 
 **PrivaDB** is a high-fidelity, cyber-intelligence engine engineered to detect and analyze stealthy tracking mechanisms in the modern web. Specifically designed for **IndexedDB Taint Tracking**, it identifies how sensitive user identifiers are stored, retrieved, and exfiltrated to non-consensual third-party sinks.
 
 [![Collaborate](https://img.shields.io/badge/Collaborate-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/AfnanBinAbbas/PrivaDB/tree/main)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)](LICENSE)
 
----
+[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
 
-## 🚀 Key Intelligence Features
+## Key Intelligence Features
 
 *   **Dual-Engine Pipeline**: Deploy either standard Chrome-based analysis or the custom **Foxhound** (Firefox-based) dynamic taint tracking engine.
 *   **Holographic Telemetry**: Real-time visual reporting of global storage trends and exfiltration probabilities.
 *   **Atomic Taint Tracking**: Directly monitors data flow at the browser's storage-to-network boundary.
 *   **High-Density Dashboard**: Multi-layered analysis of IndexedDB records with responsible tracker identification.
 
----
+[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
 
-## 🛠️ Deployment & Execution Guide
+## Deployment & Execution Guide
 
 ### 1. Prerequisites (Prepare Your System)
 Ensure you have the following installed before proceeding:
@@ -64,9 +64,9 @@ npm run dev
 ```
 Navigate to `http://localhost:8081` (or the port specified in your terminal).
 
----
+[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
 
-## 🔍 The Investigation Workflow
+## The Investigation Workflow
 
 ### **Step 1: Configuration**
 Define your target domains in the dashboard. Choose between **Headless** (fast) or **Headed** (visual check) modes. Select your engine: Chrome (Standard) or Foxhound (Detective).
@@ -80,9 +80,9 @@ Once complete, results populate the **"Scan Results"** section.
 - **Safe**: Data accessed but restricted by browser or project policy.
 - **Entropy & Category**: Deep analysis of the identifier's uniqueness and purpose.
 
----
+[---](https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif)
 
-## 📜 Legal & Intellectual Property
+## Legal & Intellectual Property
 Copyright (c) 2026 Afnan Bin Abbas. **All Rights Reserved.**
 
 This software is the proprietary intelligence of the owner. Unauthorized redistribution, modification, or plagiarism is strictly prohibited. For collaborative inquiries, please use the **Collaborate** gateway in the dashboard.
