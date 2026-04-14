@@ -180,7 +180,8 @@ class SiteCrawler:
         }
 
         try:
-            # Navigate
+            # Navigation
+            if asyncio.current_task().cancelled(): raise asyncio.CancelledError()
             await page.goto(
                 url,
                 wait_until="domcontentloaded",
@@ -215,6 +216,8 @@ class SiteCrawler:
                                 db["frame_url"] = frame.url
                                 db["is_main_frame"] = (frame == page.main_frame)
                                 all_idb_data["databases"].append(db)
+                    except asyncio.CancelledError:
+                        raise
                     except Exception as fe:
                         # Some frames might be cross-origin and block evaluation
                         continue
@@ -230,6 +233,8 @@ class SiteCrawler:
                     f"  Extraction complete: {db_count} databases, "
                     f"{total_records} total records across all frames"
                 )
+            except asyncio.CancelledError:
+                raise
             except Exception as e:
                 error_msg = f"IndexedDB extraction failed: {str(e)}"
                 logger.error(f"  {error_msg}")
@@ -511,10 +516,19 @@ async def crawl_all_sites(site_limit: int = None,
                     iter_result["iteration"] = iteration
                     site_iterations.append(iter_result)
                 finally:
+                    # Robust cleanup: try to close browser, then stop display
                     if browser:
-                        await browser.close()
+                        try:
+                            # Use a small timeout for closing to prevent hanging the cleanup
+                            await asyncio.wait_for(browser.close(), timeout=5.0)
+                        except:
+                            logger.warning("Browser close timed out or failed during cleanup")
+                    
                     if disp:
-                        disp.stop()
+                        try:
+                            disp.stop()
+                        except:
+                            pass
 
             # Small delay between iterations
             if iteration < iterations:

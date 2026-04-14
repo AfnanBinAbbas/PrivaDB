@@ -177,20 +177,9 @@ const App = () => {
         <main>
           <HeroSection />
           <LiveScan />
-          <ScanResults />
-          {/* Foxhound Global Dataset Dashboard */}
-          <section id="foxhound-dataset" className="py-24 px-4 bg-muted/20">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Research Findings</h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
-                  Explore the summary of information flow analysis across all 10,000+ analyzed websites.
-                </p>
-                <LiveExfiltrationMap />
-              </div>
-              <FoxhoundResults />
-            </div>
-          </section>
+          <div className="max-w-4xl mx-auto px-4">
+            <ScanResults />
+          </div>
           <ArchitectureSection />
           <PipelineSection />
           <TrackerDomains />
