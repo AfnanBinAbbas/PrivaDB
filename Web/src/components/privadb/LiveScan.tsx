@@ -60,7 +60,6 @@ type ScanResult = {
   confidence: { high: number; medium: number; low: number };
   flowTypes: { confidentiality: number; integrity: number };
   trackerDomains: string[];
-  entropy: { avg: number; max: number };
 };
 
 type BackendScanResults = {
@@ -84,7 +83,6 @@ type BackendScanResults = {
   };
   exfiltration_events: {
     request_domain: string;
-    identifier_entropy: number;
     confidence: string;
   }[];
   stage?: 'crawl_only' | 'full';
@@ -132,10 +130,6 @@ const generateMockResult = (url: string): ScanResult => {
       integrity: rand(Math.floor(conf * 0.2), Math.floor(conf * 0.6)),
     },
     trackerDomains: shuffled.slice(0, numTrackers),
-    entropy: {
-      avg: parseFloat((Math.random() * 2 + 2.5).toFixed(2)),
-      max: parseFloat((Math.random() * 2 + 4).toFixed(2)),
-    },
   };
 };
 
@@ -146,7 +140,7 @@ const ConfidenceBadge: React.FC<{ level: string; count: number }> = ({ level, co
     LOW: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400',
   };
   return (
-    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-mono font-medium ${colors[level]}`}>
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-sm font-mono font-bold ${colors[level]}`}>
       {level} {count}
     </span>
   );
@@ -183,7 +177,7 @@ const ResultCard: React.FC<{ result: ScanResult, index: number }> = ({ result, i
       >
         <div className="flex items-center gap-3 min-w-0">
           <Globe size={16} className="text-primary shrink-0" />
-          <span className="text-sm font-medium truncate">{result.url}</span>
+          <span className="text-base font-semibold truncate">{result.url}</span>
         </div>
         <div className="flex items-center gap-3 shrink-0 ml-4">
           <ConfidenceBadge level="HIGH" count={result.confidence.high} />
@@ -197,16 +191,16 @@ const ResultCard: React.FC<{ result: ScanResult, index: number }> = ({ result, i
       {expanded && (
         <div className="px-5 pb-5 border-t border-border/30 pt-4 space-y-4">
           {/* Stats grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
               { label: 'Databases', value: result.databases },
               { label: 'Tracking Events', value: result.trackingEvents },
-              { label: 'Avg Entropy', value: result.entropy.avg },
-              { label: 'Max Entropy', value: result.entropy.max },
+              { label: 'Confidence', value: result.confidence.high > 0 ? 'CRITICAL' : 'MONITOR' },
+              { label: 'Classification', value: result.trackingEvents > 5 ? 'TRACKER' : 'SAFE' },
             ].map((stat, i) => (
-              <div key={i} className="bg-muted/30 rounded-lg px-3 py-2">
-                <div className="text-xs text-muted-foreground">{stat.label}</div>
-                <div className="text-lg font-mono font-semibold">{stat.value}</div>
+              <div key={i} className="bg-muted/30 rounded-lg px-4 py-3">
+                <div className="text-sm text-muted-foreground mb-1">{stat.label}</div>
+                <div className="text-xl font-mono font-bold">{stat.value}</div>
               </div>
             ))}
           </div>
@@ -295,10 +289,6 @@ export const LiveScan: React.FC = () => {
               integrity: res.flow_classification?.inflow_flows || 0,
             },
             trackerDomains: res.exfiltration_events?.map((e: { request_domain: string }) => e.request_domain) || [],
-            entropy: {
-              avg: res.exfiltration_events?.length ? (res.exfiltration_events.reduce((v: number, e: { identifier_entropy: number }) => v + e.identifier_entropy, 0) / res.exfiltration_events.length) : 0,
-              max: res.exfiltration_events?.length ? Math.max(...res.exfiltration_events.map((e: { identifier_entropy: number }) => e.identifier_entropy)) : 0,
-            },
           };
         });
       setHistory(mappedHistory);
@@ -375,6 +365,8 @@ export const LiveScan: React.FC = () => {
           { name: 'Analysis', icon: Search, status: 'pending', progress: 0, message: 'Static & Dynamic analysis...' },
           { name: 'Reporting', icon: BarChart3, status: 'pending', progress: 0, message: 'Finalizing data...' },
         ]);
+
+        await sleep(500); // Small initial delay for visual smoothness
 
         update(0, { status: 'running', message: `${progressPrefix}Connecting to backend...` });
 
@@ -475,10 +467,6 @@ export const LiveScan: React.FC = () => {
                 integrity: scanResults?.flow_classification?.inflow_flows || 0,
               },
               trackerDomains: scanResults?.exfiltration_events?.map((e: { request_domain: string }) => e.request_domain) || [],
-              entropy: {
-                avg: scanResults?.exfiltration_events?.length ? (scanResults.exfiltration_events.reduce((s: number, e: { identifier_entropy: number }) => s + e.identifier_entropy, 0) / scanResults.exfiltration_events.length) : 0,
-                max: scanResults?.exfiltration_events?.length ? Math.max(...scanResults.exfiltration_events.map((e: { identifier_entropy: number }) => e.identifier_entropy)) : 0,
-              },
             };
 
             setResults(prev => [...prev, mappedResult]);
@@ -646,7 +634,7 @@ export const LiveScan: React.FC = () => {
         </motion.div>
 
         {/* Input area */}
-        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6 relative border border-cyan-500/30 neon-glow-pulse">
+        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6 relative border border-cyan-500/30 neon-glow-pulse shadow-2xl">
           {/* Removed gradient background for solid/transparent look */}
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-sm font-medium">Target URLs</h3>

@@ -325,6 +325,10 @@ async def crawl_all_sites(site_limit: int = None,
     results = []
 
     for i, site in enumerate(sites, 1):
+        if asyncio.current_task().cancelled():
+            logger.info("Crawl task cancelled by user (site loop)")
+            raise asyncio.CancelledError()
+            
         url = site["url"]
         logger.info(f"\n{'='*60}")
         logger.info(f"Site {i}/{len(sites)}: {url}")
@@ -333,6 +337,10 @@ async def crawl_all_sites(site_limit: int = None,
         site_iterations = []
 
         for iteration in range(1, iterations + 1):
+            if asyncio.current_task().cancelled():
+                logger.info("Crawl task cancelled by user (iteration loop)")
+                raise asyncio.CancelledError()
+                
             current_step += 1
             if on_progress:
                 progress_pct = (current_step / total_steps) * 100

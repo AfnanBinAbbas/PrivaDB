@@ -565,6 +565,47 @@ def _generate_charts(results: list[dict], stats: dict, paper_metrics: dict):
         plt.close(fig)
         logger.info(f"📊 Chart → {path}")
 
+    # ── Chart 7: 3D Tracking Landscape (Scatter) ──────────────────
+    try:
+        from mpl_toolkits.mplot3d import Axes3D
+        all_events = [e for r in results for e in r.get("exfiltration_events", [])]
+        if len(all_events) >= 3:
+            fig = plt.figure(figsize=(12, 8))
+            ax = fig.add_subplot(111, projection='3d')
+            
+            # X: Site Index, Y: Tracker Index, Z: Confidence Score
+            unique_sites = list(set(r.get("domain", "unknown") for r in results))
+            unique_trackers = list(set(e.get("request_domain", "unknown") for e in all_events))
+            
+            site_map = {s: i for i, s in enumerate(unique_sites)}
+            tracker_map = {t: i for i, t in enumerate(unique_trackers)}
+            conf_map = {config.CONFIDENCE_HIGH: 3, config.CONFIDENCE_MEDIUM: 2, config.CONFIDENCE_LOW: 1}
+            
+            x = [site_map.get(r.get("domain", "unknown"), 0) for r in results for e in r.get("exfiltration_events", [])]
+            y = [tracker_map.get(e.get("request_domain", "unknown"), 0) for r in results for e in r.get("exfiltration_events", [])]
+            z = [conf_map.get(e.get("confidence", ""), 0) for r in results for e in r.get("exfiltration_events", [])]
+            
+            scatter = ax.scatter(x, y, z, c=z, cmap='coolwarm', s=100, alpha=0.7, edgecolors='w')
+            
+            ax.set_xlabel('Site Index', fontsize=10, labelpad=10)
+            ax.set_ylabel('Tracker Index', fontsize=10, labelpad=10)
+            ax.set_zlabel('Confidence Level', fontsize=10, labelpad=10)
+            ax.set_title("3D Tracking Landscape: Confidence vs Reach", fontsize=15, fontweight='bold', pad=20)
+            
+            # Customizing Z axis
+            ax.set_zticks([1, 2, 3])
+            ax.set_zticklabels(['LOW', 'MEDIUM', 'HIGH'])
+            
+            fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5, label='Confidence Intensity')
+            
+            plt.tight_layout()
+            path = os.path.join(charts_dir, "tracking_landscape_3d.png")
+            fig.savefig(path, dpi=150, bbox_inches="tight")
+            plt.close(fig)
+            logger.info(f"📊 3D Chart → {path}")
+    except Exception as e:
+        logger.warning(f"Could not generate 3D chart: {e}")
+
     logger.info(f"📊 All charts saved to {charts_dir}/")
 
 

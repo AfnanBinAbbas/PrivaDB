@@ -35,25 +35,25 @@ const phases = [
     icon: Search,
     phase: 'Phase 2',
     title: 'Detection',
-    description: 'Entropy analysis engine that identifies tracking identifiers and classifies information flows.',
+    description: 'Dynamic taint analysis engine that identifies storage-to-network information flows and classifies trackers.',
     params: [
       { key: 'MIN_ID_LENGTH', value: '8' },
-      { key: 'ENTROPY_THRESHOLD', value: '3.0' },
-      { key: 'TRACKER_DOMAINS', value: '578' },
+      { key: 'CONFIDENCE', value: '3 levels' },
+      { key: 'TRACKER_DOMAINS', value: '578+' },
     ],
-    code: `def shannon_entropy(data: str) -> float:
-    """Calculate Shannon entropy of a string."""
-    if not data:
-        return 0.0
-    freq = {}
-    for char in data:
-        freq[char] = freq.get(char, 0) + 1
-    length = len(data)
-    entropy = -sum(
-        (count/length) * math.log2(count/length)
-        for count in freq.values()
-    )
-    return entropy`,
+    code: `def find_exfiltrations(identifiers, network_requests, site_domain):
+    """Search for IDB data in network request parameters and bodies."""
+    events = []
+    for id_obj in identifiers:
+        val = id_obj['value']
+        for req in network_requests:
+            if val in req['url'] or val in req.get('post_data', ''):
+                events.append({
+                    'value': val,
+                    'tracker': extract_domain(req['url']),
+                    'confidence': calculate_confidence(id_obj, req)
+                })
+    return events`,
     color: 'from-primary to-purple-500',
   },
   {

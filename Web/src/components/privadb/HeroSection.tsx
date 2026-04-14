@@ -89,7 +89,7 @@ export const HeroSection: React.FC = () => {
         animate="visible"
       >
         {/* Badge */}
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm text-muted-foreground mb-8">
+        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm text-muted-foreground mb-6">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           Research Project — Dynamic Taint Analysis
         </motion.div>
@@ -99,22 +99,22 @@ export const HeroSection: React.FC = () => {
           <motion.img
             src="/logo.png"
             alt="PrivaDB Logo"
-            className="w-32 h-32 md:w-48 md:h-48 object-contain mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-contain mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
             animate={{ y: [-10, 10, -10] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter">
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter">
             <span className="text-gradient">PRIVADB</span>
           </h1>
         </motion.div>
 
         {/* Subtitle */}
-        <motion.p variants={itemVariants} className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+        <motion.p variants={itemVariants} className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
           Detecting Persistent Web Tracking via IndexedDB Dynamic Taint Analysis
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <motion.a
             href="#live-scan"
             className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full font-medium text-sm transition-all glow-sm"

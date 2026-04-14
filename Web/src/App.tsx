@@ -177,6 +177,7 @@ const App = () => {
         <main>
           <HeroSection />
           <LiveScan />
+          <ScanResults />
           {/* Foxhound Global Dataset Dashboard */}
           <section id="foxhound-dataset" className="py-24 px-4 bg-muted/20">
             <div className="max-w-7xl mx-auto">
@@ -187,15 +188,11 @@ const App = () => {
                 </p>
                 <LiveExfiltrationMap />
               </div>
-              <ScanResults />
               <FoxhoundResults />
             </div>
           </section>
-          <MetricsSection />
           <ArchitectureSection />
-
           <PipelineSection />
-          {/* <CodeExplorer /> */}
           <TrackerDomains />
 
 

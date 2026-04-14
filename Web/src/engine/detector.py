@@ -122,47 +122,41 @@ def _check_string_value(value: str, path: str, results: list):
 
 
 def _is_common_value(value: str) -> bool:
-    """Filter out strings that are high-entropy but clearly not tracking IDs."""
+    """Filter out strings that are placeholders, versions, or non-tracking identifiers."""
     lower = value.lower().strip()
     
+    # 0. Placeholders and nulls
+    if lower in ["undefined", "null", "[object object]", "nan", "none"]:
+        return True
+
     # 1. URLs, file paths, common protocols
     if lower.startswith(("http://", "https://", "/", "data:", "blob:", "wss://", "ws://")):
         return True
     if any(ext in lower for ext in [".js", ".css", ".html", ".png", ".jpg", ".svg", ".json", ".map"]):
         return True
         
-    # 2. Domain patterns (e.g., example.com, sub.domain.org)
-    # Aggressive: if it contains a dot with 2+ chars after it at the end of a word-like boundary
-    # OR if it matches a domain pattern anywhere in the string.
+    # 2. Domain patterns
     if re.search(r'[a-z0-9-]+\.[a-z]{2,}', lower):
         return True
         
     # 3. Dates, Timestamps, and Timezones
-    # Timezones: Asia/Karachi, America/New_York (with lower case support)
     if re.search(r'^[a-z]+/[a-z_]+$', lower) or lower.upper() in ["UTC", "GMT", "PST", "EST", "CET", "IST", "JST"]:
         return True
     
-    # ISO-like dates: 2026-04-06 or 06/04/2026
     if re.search(r'^\d{4}-\d{2}-\d{2}', lower) or re.search(r'\d{2}/\d{2}/\d{4}', lower):
         return True
         
-    # Unix timestamps (seconds or milliseconds)
-    # Starts with 16|17|18 (2020-2030 range) and has 10 or 13 digits
     if re.match(r'^(16|17|18)\d{8}(\d{3})?$', lower):
         return True
         
     # 4. Locations: Latitude and Longitude
-    # Matches patterns like 40.7128, -74.0060 or just single coordinates
-    # Looking for: [+-]xx.xxxx where x is 4+ digits
-    if re.search(r'^[+-]?\d{1,3}\.\d{4,}$', lower):
-        return True
-    # Pairs: 40.7128,-74.0060
-    if re.search(r'^-?\d+\.\d+,-?\d+\.\d+$', lower.replace(" ", "")):
+    if re.search(r'^[+-]?\d{1,3}\.\d{4,}$', lower) or re.search(r'^-?\d+\.\d+,-?\d+\.\d+$', lower.replace(" ", "")):
         return True
         
-    # 5. IP-like or version-like
-    if re.match(r'^\d{1,4}(\.\d{1,4}){2,3}$', lower): 
-        return True
+    # 5. Version-like patterns (e.g., 1.2.3, v5.0, 15.0)
+    if re.match(r'^[vV]?\d+(\.\d+)+$', lower) or re.match(r'^\d+\.\d+$', lower):
+        if len(lower) < 10: # Long digit-dot strings might be IDs
+            return True
         
     return False
 
