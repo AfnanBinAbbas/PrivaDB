@@ -79,8 +79,8 @@ export const LiveExfiltrationMap: React.FC = () => {
         for (const [engine, domains] of Object.entries(data)) {
           if (engine === 'summary') continue;
 
-          for (const [domain, results] of Object.entries(domains as any)) {
-            for (const result of results) {
+          for (const [domain, results] of Object.entries(domains as Record<string, any>)) {
+            for (const result of results as any[]) {
               if (result.is_exfiltrated) {
                 const flowId = `${engine}-${domain}-${result.key}-${Date.now()}`;
 
@@ -246,7 +246,7 @@ export const LiveExfiltrationMap: React.FC = () => {
   };
 
   return (
-    <div className="glass rounded-3xl p-6 border border-cyan-500/10 relative overflow-hidden h-[600px] bg-[#020d1a]">
+    <div className="glass rounded-3xl p-4 sm:p-6 border border-cyan-500/10 relative overflow-hidden min-h-[400px] h-[50vh] md:h-[600px] bg-[#020d1a]">
       {/* Loading State */}
       {loading && !error && (
         <motion.div 

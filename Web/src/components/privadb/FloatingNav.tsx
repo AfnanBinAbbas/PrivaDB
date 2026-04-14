@@ -5,9 +5,7 @@ import { useTheme } from './ThemeProvider';
 const navLinks = [
   { label: 'Live Scan', href: '#live-scan' },
   { label: 'Pipeline', href: '#pipeline' },
-  { label: 'Metrics', href: '#metrics' },
   { label: 'Architecture', href: '#architecture' },
-  { label: 'Code', href: '#code' },
   { label: 'Trackers', href: '#trackers' },
   { label: 'Download', href: '#download' },
 ];

@@ -1,1 +1,0 @@
-site_domain,site_url,flow_direction,confinement,cross_origin,source_class,sink_class,database,store,record_key,identifier_key,identifier_value,identifier_value_hash,identifier_reason,identifier_entropy,changed_across_iterations,tracker_domain,request_url,request_method,request_domain,match_location,is_third_party,is_known_tracker,confidence

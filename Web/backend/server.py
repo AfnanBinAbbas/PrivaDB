@@ -18,8 +18,8 @@ import re
 warnings.filterwarnings("ignore", category=UserWarning, message=".*Axes3D.*")
 warnings.filterwarnings("ignore", message=".*3D projection.*")
 
-# Add src/scratch_new to path to import modules
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "scratch_new")))
+# Add src/engine to path to import modules
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "engine")))
 
 try:
     from crawler import crawl_all_sites
@@ -27,8 +27,7 @@ try:
     from reporter import generate_reports
     import config
 except ImportError as e:
-    print(f"Error importing scratch_new modules: {e}")
-    # Fallback/Mock for testing if modules not found
+    logger.error(f"Failed to import engine modules: {e}")
     config = None
 
 app = FastAPI(title="Pixel Perfect Playbook Backend")
@@ -168,9 +167,12 @@ async def run_scan(scan_id: str, url: str, headless: bool = False, crawl_only: b
             logger.info(f"Engine selected: {engine}")
             logger.info(f"Headless: {headless}")
             logger.info(f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+            
+            # Use the new dynamic engine setter to isolate results
+            config.set_engine(engine)
             config.HEADLESS = headless
-            config.ENGINE = engine
             logger.info(f"✓ config.ENGINE set to: {config.ENGINE}")
+            logger.info(f"✓ Results will be saved to: {config.RESULTS_DIR}")
             config.CRAWL_ITERATIONS = 3  # Restoring default iterations for correct detection
             logger.info(f"✓ config.CRAWL_ITERATIONS set to: {config.CRAWL_ITERATIONS}")
         
@@ -346,7 +348,7 @@ async def stop_all_scans():
 
 @app.get("/scan/results", response_model=Dict)
 async def get_scan_results():
-    """Return aggregated results from all completed scans."""
+    """Return aggregated results from all completed scans in both engine silos."""
     try:
         aggregated = {
             "chrome": {},
@@ -355,101 +357,38 @@ async def get_scan_results():
             "last_updated": datetime.datetime.now().isoformat()
         }
         
-        # Process Chrome and Foxhound scan results
-        for scan_id, scan_data in scans.items():
-            if scan_data.get("status") != "completed":
-                continue
-                
-            results = scan_data.get("results", {})
-            engine = results.get("engine", "chrome")
-            domain = results.get("domain", "unknown")
-            
-            if domain not in aggregated[engine]:
-                aggregated[engine][domain] = []
-            
-            exfiltrations = []
-            # Extract exfiltrated values
-            if "exfiltration_events" in results:
-                for exfil in results["exfiltration_events"]:
-                    value = str(exfil.get("identifier_value", ""))
-                    key = str(exfil.get("record_key", "")).lower()
-                    if _is_irrelevant_value(value, key):
-                        continue
-                    exfiltrations.append({
-                        "status_code": exfil.get("request_status", 200),
-                        "idb_value": value,
-                        "tracker_category": "third_party" if exfil.get("is_third_party") else "first_party",
-                        "is_exfiltrated": True,
-                        "responsible_tracker": exfil.get("request_domain", "unknown"),
-                        "database": exfil.get("database", "unknown"),
-                        "key": exfil.get("record_key", "unknown"),
-                        "entropy": exfil.get("identifier_entropy", 0.0)
-                    })
-            
-            # Include IDB values not exfiltrated
-            if "indexeddb_records" in results:
-                for record in results["indexeddb_records"]:
-                    value = str(record.get("value", ""))
-                    key = str(record.get("key", "")).lower()
-                    if _is_irrelevant_value(value, key):
-                        continue
-                    if not any(e["idb_value"] == value and e["key"] == record.get("key") for e in exfiltrations):
-                        exfiltrations.append({
-                            "status_code": 200,
+        # 1. Add results from both engines by querying their dedicated directories
+        for engine_type in ["chrome", "foxhound"]:
+            try:
+                engine_data = await get_engine_results(engine_type)
+                for domain, events in engine_data.items():
+                    if domain not in aggregated[engine_type]:
+                        aggregated[engine_type][domain] = []
+                    
+                    for event in events:
+                        value = str(event.get("value", "") or event.get("idb_value", ""))
+                        key = str(event.get("key", "")).lower()
+                        if _is_irrelevant_value(value, key):
+                            continue
+                            
+                        # Standardize format for dashboard
+                        standardized = {
+                            "status_code": event.get("statusCode", event.get("status_code", 200)),
                             "idb_value": value,
-                            "tracker_category": "first_party",
-                            "is_exfiltrated": False,
-                            "responsible_tracker": "none",
-                            "database": record.get("database", "unknown"),
-                            "key": record.get("key", "unknown"),
-                            "entropy": record.get("entropy", 0.0)
-                        })
-            
-            # Deduplicate
-            unique_results = []
-            seen_keys = set()
-            for item in exfiltrations:
-                dedupe_key = (item.get("idb_value", ""), item.get("key", ""), item.get("status_code", 0), item.get("responsible_tracker", ""), item.get("database", ""))
-                if dedupe_key not in seen_keys:
-                    seen_keys.add(dedupe_key)
-                    unique_results.append(item)
-            
-            aggregated[engine][domain].extend(unique_results)
-            aggregated["summary"]["total_scans"] += 1
-            aggregated["summary"]["completed_scans"] += 1
-            if engine == "chrome":
-                aggregated["summary"]["chrome_scans"] += 1
-            elif engine == "foxhound":
-                aggregated["summary"]["foxhound_scans"] += 1
-        
-        # Add Foxhound file results
-        try:
-            foxhound_data = await get_foxhound_results()
-            for domain, events in foxhound_data.items():
-                if domain not in aggregated["foxhound"]:
-                    aggregated["foxhound"][domain] = []
-                seen_foxhound = set()
-                for event in events:
-                    value = str(event.get("value", ""))
-                    key = str(event.get("key", "")).lower()
-                    if _is_irrelevant_value(value, key):
-                        continue
-                    foxhound_item = {
-                        "status_code": event.get("statusCode", 200),
-                        "idb_value": value,
-                        "tracker_category": "third_party" if event.get("domain") != domain else "first_party",
-                        "is_exfiltrated": True,
-                        "responsible_tracker": event.get("domain", "unknown"),
-                        "database": event.get("databaseName", "unknown"),
-                        "key": event.get("key", "unknown"),
-                        "entropy": 0.0
-                    }
-                    key_tuple = (foxhound_item["idb_value"], foxhound_item["key"], foxhound_item["status_code"], foxhound_item["responsible_tracker"], foxhound_item["database"])
-                    if key_tuple not in seen_foxhound:
-                        seen_foxhound.add(key_tuple)
-                        aggregated["foxhound"][domain].append(foxhound_item)
-        except Exception as e:
-            logger.warning(f"Could not load Foxhound results: {str(e)}")
+                            "tracker_category": "third_party" if (event.get("domain") != domain and event.get("responsible_tracker", "none") != "none") else "first_party",
+                            "is_exfiltrated": event.get("is_exfiltrated", True),
+                            "responsible_tracker": event.get("domain", event.get("responsible_tracker", "unknown")),
+                            "database": event.get("databaseName", event.get("database", "unknown")),
+                            "key": event.get("key", "unknown"),
+                            "entropy": event.get("entropy", 0.0)
+                        }
+                        aggregated[engine_type][domain].append(standardized)
+                        
+                    aggregated["summary"]["total_scans"] += 1
+                    aggregated["summary"]["completed_scans"] += 1
+                    aggregated["summary"][f"{engine_type}_scans"] += 1
+            except Exception as e:
+                logger.warning(f"Could not load {engine_type} results: {str(e)}")
         
         if not aggregated["chrome"] and not aggregated["foxhound"]:
             return {**aggregated, "message": "No scan results available yet. Run a scan to generate results."}
@@ -458,6 +397,38 @@ async def get_scan_results():
     except Exception as e:
         logger.error(f"Error aggregating scan results: {str(e)}")
         raise ProcessingError(f"Error retrieving results: {str(e)}")
+
+async def get_engine_results(engine_name: str) -> Dict:
+    """Helper to aggregate results from a specific dynamic engine silo directory."""
+    run_dir = _find_latest_run(get_engine_results_base(engine_name))
+    if not run_dir:
+        return {}
+        
+    combined = {}
+    files = [f for f in os.listdir(run_dir) if f.endswith(".json")]
+    site_files = [
+        f for f in files 
+        if f not in ("combined_results.json", "global_report.json", "sites.json", "summary.json", "statistics.json")
+        and "+ff1" not in f
+    ]
+    
+    for f_name in site_files:
+        try:
+            site_name = f_name.replace(".json", "").replace("_", ".")
+            with open(os.path.join(run_dir, f_name), "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    combined[site_name] = data
+                elif isinstance(data, dict):
+                    # Handle different result structures dynamically
+                    if "exfiltration_events" in data:
+                        combined[site_name] = data["exfiltration_events"]
+                    else:
+                        combined[site_name] = [data]
+        except Exception as e:
+            logger.warning(f"Failed to load {engine_name} result for {f_name}: {e}")
+            
+    return combined
 
 @app.get("/scan/{scan_id}", response_model=Dict)
 async def get_scan_status(scan_id: str):
@@ -477,118 +448,50 @@ async def get_scan_history():
     return sorted(scans.values(), key=lambda x: x["started_at"], reverse=True)[:10]
 
 # ── Foxhound Results Endpoints ──────────────────────────────────────
-FOXHOUND_RESULTS_BASE = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "..", "..",
-    "Dynamic_Analysis_scratch", "Comparative-Privacy-Analysis", "results"
-))
+def get_engine_results_base(engine_name: str) -> str:
+    """Dynamically resolve results base without hardcoding."""
+    return os.path.abspath(os.path.join(
+        os.path.dirname(__file__), "..", "src", "engine", "results", 
+        "Chrome" if engine_name.lower() == "chrome" else "Foxhound",
+        "analysis"
+    ))
 
-def _find_latest_foxhound_run() -> Optional[str]:
-    """Find the latest foxhound run directory (numeric timestamp)."""
-    if not os.path.isdir(FOXHOUND_RESULTS_BASE):
+def _find_latest_run(results_base: str) -> Optional[str]:
+    """Find the latest run directory in a results base."""
+    if not os.path.isdir(results_base):
         return None
-    runs = [d for d in os.listdir(FOXHOUND_RESULTS_BASE)
-            if os.path.isdir(os.path.join(FOXHOUND_RESULTS_BASE, d)) and d.isdigit()]
-    if not runs:
-        return None
-    return os.path.join(FOXHOUND_RESULTS_BASE, sorted(runs, reverse=True)[0])
+    
+    # Check for site JSONs directly (flat structure)
+    if any(f.endswith(".json") for f in os.listdir(results_base)):
+        return results_base
+        
+    return None
 
 @app.get("/foxhound/results", response_model=Dict)
-async def get_foxhound_results():
-    """Return aggregated results from all site .json files in the latest Foxhound run."""
-    run_dir = _find_latest_foxhound_run()
-    if not run_dir:
-        raise HTTPException(status_code=404, detail="No Foxhound results found")
+async def get_foxhound_results_endpoint():
+    """Return aggregated results from the Foxhound engine silo."""
+    results = await get_engine_results("foxhound")
+    if not results:
+        return {} # Return empty dict instead of 404 to avoid frontend errors
     
-    # Check if we should use the existing combined_results.json (if it's complete)
-    # or aggregate from individual files (more robust for large datasets).
-    # We'll aggregate manually to ensure we pick up all sites.
-    combined = {}
-    
-    # List all files in run_dir
-    files = [f for f in os.listdir(run_dir) if f.endswith(".json")]
-    
-    # Filter for individual site results: exclude known totals/raw files
-    site_files = [
-        f for f in files 
-        if f not in ("combined_results.json", "global_report.json", "sites.json")
-        and "+ff1" not in f # Skip raw Foxhound data
-    ]
-    
-    logger.info(f"Aggregating Foxhound results from {len(site_files)} files in {run_dir}")
-    
-    for f_name in site_files:
-        try:
-            site_name = f_name.replace(".json", "")
-            with open(os.path.join(run_dir, f_name), "r", encoding="utf-8") as f:
-                data = json.load(f)
-                
-                # Filter out entries with irrelevant values
-                filtered_data = []
-                for entry in data:
-                    val = str(entry.get("value", "")).lower()
-                    key = str(entry.get("key", "")).lower()
-                    
-                    # 1. Domain-like pattern
-                    if re.search(r'[a-z0-9-]+\.[a-z]{2,}', val):
-                        continue
-                        
-                    # 2. Timezones (e.g. Asia/Karachi, UTC)
-                    if re.search(r'^[a-z]+/[a-z_]+$', val) or val.upper() in ["UTC", "GMT", "PST", "EST", "CET", "IST", "JST"]:
-                        continue
-                    
-                    # 3. Dates and Timestamps (Unix or ISO)
-                    if len(val) >= 10 and (val.isdigit() or re.search(r'\d{4}-\d{2}-\d{2}', val) or re.search(r'\d{2}/\d{2}/\d{4}', val)):
-                        continue
-                        
-                    # 4. Locations: Latitude and Longitude
-                    if re.search(r'^[+-]?\d{1,3}\.\d{4,}$', val) or re.search(r'^-?\d+\.\d+,-?\d+\.\d+$', val.replace(" ", "")):
-                        continue
-                        
-                    # 5. Metadata-based (Location keywords in key)
-                    location_keywords = ["location", "latitude", "longitude", "timezone", "tz", "lat", "lng", "coord"]
-                    if any(kw in key for kw in location_keywords):
-                        continue
-                    
-                    filtered_data.append(entry)
-                
-                # Only add if it's not an empty list
-                if filtered_data:
-                    combined[site_name] = filtered_data
-        except Exception as e:
-            logger.warning(f"Failed to load Foxhound result for {f_name}: {e}")
+    # Apply filtering for the endpoint specific view if needed
+    filtered_results = {}
+    for domain, events in results.items():
+        fe = []
+        for event in events:
+            value = str(event.get("value", "") or event.get("idb_value", ""))
+            key = str(event.get("key", "")).lower()
+            if not _is_irrelevant_value(value, key):
+                fe.append(event)
+        if fe:
+            filtered_results[domain] = fe
             
-    if not combined:
-        # If no individual files found or they were all empty after filtering
-        combined_path = os.path.join(run_dir, "combined_results.json")
-        if os.path.isfile(combined_path):
-            with open(combined_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                filtered_combined = {}
-                for site, entries in data.items():
-                    fe = []
-                    for e in entries:
-                        v = str(e.get("value", "")).lower()
-                        k = str(e.get("key", "")).lower()
-                        
-                        is_domain = re.search(r'[a-z0-9-]+\.[a-z]{2,}', v)
-                        is_tz = re.search(r'^[a-z]+/[a-z_]+$', v) or v.upper() in ["UTC", "GMT", "PST", "EST", "CET", "IST", "JST"]
-                        is_date = len(v) >= 10 and (v.isdigit() or re.search(r'\d{4}-\d{2}-\d{2}', v) or re.search(r'\d{2}/\d{2}/\d{4}', v))
-                        is_loc = re.search(r'^[+-]?\d{1,3}\.\d{4,}$', v) or re.search(r'^-?\d+\.\d+,-?\d+\.\d+$', v.replace(" ", ""))
-                        is_meta_loc = any(kw in k for kw in ["location", "latitude", "longitude", "timezone", "tz", "lat", "lng", "coord"])
-                        
-                        if not (is_domain or is_tz or is_date or is_loc or is_meta_loc):
-                            fe.append(e)
-                    if fe:
-                        filtered_combined[site] = fe
-                return filtered_combined
-        raise HTTPException(status_code=404, detail="No non-empty Foxhound results found after filtering")
-        
-    return combined
+    return filtered_results
 
 @app.get("/foxhound/report", response_model=Dict)
 async def get_foxhound_report():
     """Return global_report.json from the latest Foxhound run."""
-    run_dir = _find_latest_foxhound_run()
+    run_dir = _find_latest_run(get_engine_results_base("foxhound"))
     if not run_dir:
         raise HTTPException(status_code=404, detail="No Foxhound results found")
     report_path = os.path.join(run_dir, "global_report.json")
@@ -598,11 +501,20 @@ async def get_foxhound_report():
         return json.load(f)
 
 def _is_irrelevant_value(value: str, key: str) -> bool:
-    """Check if value should be filtered out (dates, locations, etc.)"""
-    val_lower = value.lower()
+    """Check if value should be filtered out (dates, locations, undefined, versions, etc.)"""
+    val_lower = value.lower().strip()
     key_lower = key.lower()
     
-    # Domain-like patterns
+    # Filter out common placeholders and noise
+    if val_lower in ["undefined", "null", "[object object]", "nan", "none"]:
+        return True
+        
+    # Version numbers (e.g., 1.2.3, v5.0.1, 15.0)
+    if re.search(r'^[vV]?\d+(\.\d+)+$', val_lower) or re.search(r'^\d+\.\d+$', val_lower):
+        if len(val_lower) < 10: # Long digit strings might be IDs
+            return True
+
+    # Domain-like patterns in values (often just noisy URLs or scripts)
     if re.search(r'[a-z0-9-]+\.[a-z]{2,}', val_lower):
         return True
     
@@ -629,4 +541,17 @@ def _is_irrelevant_value(value: str, key: str) -> bool:
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import sys
+    
+    try:
+        logger.info("Starting PrivaDB Backend on http://0.0.0.0:8000")
+        uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+    except OSError as e:
+        if e.errno == 98:
+            logger.error("❌ Port 8000 is already in use. Please stop the other process or use a different port.")
+            sys.exit(1)
+        else:
+            raise
+    except Exception as e:
+        logger.error(f"❌ Critical error during startup: {e}")
+        sys.exit(1)

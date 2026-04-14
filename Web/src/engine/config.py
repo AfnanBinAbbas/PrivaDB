@@ -8,13 +8,41 @@ and known tracker domain classifications.
 import os
 import re
 
-# ─── Paths ───────────────────────────────────────────────────────────
+# ─── Engine Selection ───────────────────────────────────────────────
+ENGINE = "chrome"  # or "foxhound"
+
+# ─── Dynamic Paths ──────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SITES_FILE = os.path.join(BASE_DIR, "sites.json")
-RESULTS_DIR = os.path.join(BASE_DIR, "results")
+
+def get_results_dir() -> str:
+    """Get the base results directory for the current engine."""
+    # Maps engine name to a properly capitalized folder name
+    folder_name = "Chrome" if ENGINE == "chrome" else "Foxhound"
+    return os.path.join(BASE_DIR, "results", folder_name)
+
+# These will be updated dynamically via set_engine()
+RESULTS_DIR = get_results_dir()
 RAW_DATA_DIR = os.path.join(RESULTS_DIR, "crawled")       # Phase 1: raw crawl JSON
 ANALYSIS_DIR = os.path.join(RESULTS_DIR, "analysis")       # Phase 2: detection output
 CHARTS_DIR = os.path.join(RESULTS_DIR, "charts")           # Phase 3: visualizations
+
+def set_engine(engine_name: str):
+    """
+    Dynamically switch the engine and update all dependent paths.
+    This ensures no hardcoding and a clean separation of results.
+    """
+    global ENGINE, RESULTS_DIR, RAW_DATA_DIR, ANALYSIS_DIR, CHARTS_DIR
+    ENGINE = engine_name.lower()
+    
+    RESULTS_DIR = get_results_dir()
+    RAW_DATA_DIR = os.path.join(RESULTS_DIR, "crawled")
+    ANALYSIS_DIR = os.path.join(RESULTS_DIR, "analysis")
+    CHARTS_DIR = os.path.join(RESULTS_DIR, "charts")
+    
+    # Ensure directories exist
+    for d in [RESULTS_DIR, RAW_DATA_DIR, ANALYSIS_DIR, CHARTS_DIR]:
+        os.makedirs(d, exist_ok=True)
 
 # ─── Crawler Settings ───────────────────────────────────────────────
 HEADLESS = True                    # Set False for debugging
@@ -71,7 +99,8 @@ FIREFOX_EXECUTABLE = os.environ.get("FIREFOX_EXECUTABLE", FIREFOX_BIN)
 FOXHOUND_BIN = _resolve_path(os.environ.get("FOXHOUND_BIN", os.path.join("foxhound", "foxhound")))
 FOXHOUND_RESULTS_DIR = _resolve_path(os.environ.get("FOXHOUND_RESULTS_DIR", os.path.join("foxhound", "results")))
 
-ENGINE = "chrome"
+# Initial directory creation for default engine
+set_engine(ENGINE)
 
 # Compiled patterns for value matching
 UUID_V4_RE = re.compile(

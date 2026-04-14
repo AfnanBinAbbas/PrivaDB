@@ -42,12 +42,12 @@ const AnimatedCounter: React.FC<{ target: number; duration?: number; label: stri
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-      className="glass rounded-xl p-4 flex flex-col items-center gap-2 relative overflow-hidden group"
+      className="glass rounded-xl p-6 flex flex-col items-center gap-4 relative overflow-hidden group min-h-[160px] justify-center"
     >
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${color} blur-3xl`} />
-      <Icon size={20} className="text-primary relative z-10" />
-      <span className="text-2xl font-bold font-mono relative z-10">{count.toLocaleString()}</span>
-      <span className="text-xs text-muted-foreground relative z-10">{label}</span>
+      <Icon size={24} className="text-primary relative z-10" />
+      <span className="text-3xl font-bold font-mono relative z-10">{count.toLocaleString()}</span>
+      <span className="text-sm font-medium text-muted-foreground relative z-10">{label}</span>
     </motion.div>
   );
 };
@@ -108,8 +108,8 @@ const SiteCard: React.FC<{ domain: string; events: FoxhoundEvent[]; index: numbe
             <Globe size={14} className="text-primary" />
           </div>
           <div className="min-w-0">
-            <span className="text-sm font-semibold block truncate">{domain}</span>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-base font-bold block truncate">{domain}</span>
+            <span className="text-xs text-muted-foreground">
               {events.length} exfiltration{events.length !== 1 ? 's' : ''} · {uniqueDbs.length} db{uniqueDbs.length !== 1 ? 's' : ''}
             </span>
           </div>
@@ -156,10 +156,10 @@ const SiteCard: React.FC<{ domain: string; events: FoxhoundEvent[]; index: numbe
                   <table className="w-full text-xs">
                     <thead className="bg-muted/30 sticky top-0">
                       <tr>
-                        <th className="px-3 py-2 text-left font-medium text-muted-foreground">Database</th>
-                        <th className="px-3 py-2 text-left font-medium text-muted-foreground">Key</th>
-                        <th className="px-3 py-2 text-left font-medium text-muted-foreground">Flow</th>
-                        <th className="px-3 py-2 text-left font-medium text-muted-foreground hidden lg:table-cell">Value</th>
+                        <th className="px-6 py-4 text-left font-bold text-muted-foreground uppercase tracking-wider text-sm">Database</th>
+                        <th className="px-6 py-4 text-left font-bold text-muted-foreground uppercase tracking-wider text-sm">Key</th>
+                        <th className="px-6 py-4 text-left font-bold text-muted-foreground uppercase tracking-wider text-sm">Flow</th>
+                        <th className="px-6 py-4 text-left font-bold text-muted-foreground uppercase tracking-wider text-sm hidden lg:table-cell">Value</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -171,20 +171,20 @@ const SiteCard: React.FC<{ domain: string; events: FoxhoundEvent[]; index: numbe
                           transition={{ delay: i * 0.02 }}
                           className="border-t border-border/20 hover:bg-muted/20 transition-colors"
                         >
-                          <td className="px-3 py-2 font-mono text-[11px]">
-                            <div className="flex items-center gap-1.5">
-                              <Database size={10} className="text-primary shrink-0" />
-                              <span className="truncate max-w-[120px]">{evt.databaseName}</span>
+                          <td className="px-4 py-4 font-mono text-base">
+                            <div className="flex items-center gap-2">
+                              <Database size={14} className="text-primary shrink-0" />
+                              <span className="truncate max-w-[180px]" title={evt.databaseName}>{evt.databaseName}</span>
                             </div>
                           </td>
-                          <td className="px-3 py-2 font-mono text-[11px] max-w-[200px] truncate" title={evt.key}>
-                            {evt.key.split('/').pop()}
+<td className="px-4 py-4 font-mono text-base max-w-[250px] truncate" title={evt.key}>
+                            {evt.key.length > 20 ? '…' + evt.key.split('/').pop() : evt.key}
                           </td>
-                          <td className="px-3 py-2">
+                          <td className="px-4 py-4">
                             <FlowArrow source={evt.source} sink={evt.sink} />
                           </td>
-                          <td className="px-3 py-2 font-mono text-[11px] text-muted-foreground max-w-[150px] truncate hidden lg:table-cell" title={evt.value}>
-                            {evt.value.length > 40 ? evt.value.slice(0, 40) + '…' : evt.value}
+                          <td className="px-4 py-4 font-mono text-base text-muted-foreground max-w-[200px] truncate hidden lg:table-cell" title={evt.value}>
+                            {evt.value.length > 60 ? evt.value.slice(0, 60) + '…' : evt.value}
                           </td>
                         </motion.tr>
                       ))}
@@ -280,22 +280,7 @@ export const FoxhoundResults: React.FC = () => {
     );
   }
 
-  /* ── Error ─────────────────────────────────────────────────────────── */
-  if (error) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="glass rounded-xl p-8 text-center"
-      >
-        <AlertTriangle size={28} className="text-amber-400 mx-auto mb-3" />
-        <p className="text-sm font-medium mb-1">Could not load Foxhound results</p>
-        <p className="text-xs text-muted-foreground">{error}</p>
-        <p className="text-xs text-muted-foreground mt-2">Make sure the backend is running on port 8000</p>
-      </motion.div>
-    );
-  }
-
+  /* No Foxhound results available */
   if (!data || Object.keys(data).length === 0) {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass rounded-xl p-8 text-center">

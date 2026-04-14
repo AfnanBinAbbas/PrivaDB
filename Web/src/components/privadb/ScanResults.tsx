@@ -42,12 +42,12 @@ const ScanResults: React.FC = () => {
   useEffect(() => {
     fetchResults();
     
-    // Retry every 5 seconds if there's no data
+    // Retry every 60 seconds if there's no data
     const interval = setInterval(() => {
       if (!data) {
         fetchResults();
       }
-    }, 5000);
+    }, 60000);
     
     return () => clearInterval(interval);
   }, []);
@@ -110,7 +110,10 @@ const ScanResults: React.FC = () => {
     const engines = selectedEngine === 'all' ? ['chrome', 'foxhound'] : [selectedEngine];
 
     for (const engine of engines) {
-      for (const [domain, items] of Object.entries(data[engine] || {})) {
+      const engineData = data[engine as keyof ScanResultsData] as Record<string, ScanResult[]>;
+      if (!engineData) continue;
+
+      for (const [domain, items] of Object.entries(engineData)) {
         const filtered = items.filter(item => {
           const matchesSearch = !searchTerm ||
             item.idb_value.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -253,17 +256,19 @@ const ScanResults: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Scan Results</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-4xl font-extrabold tracking-tight mb-2">Scan Results</h2>
+          <p className="text-xl text-muted-foreground">
             IndexedDB analysis and exfiltration detection
           </p>
         </div>
-        <button
+        <motion.button
           onClick={fetchResults}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90"
+          whileHover={{ scale: 1.05, backgroundColor: 'rgba(var(--primary-rgb), 0.9)' }}
+          whileTap={{ scale: 0.95 }}
+          className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg shadow-primary/20 transition-all hover:neon-glow-cyan"
         >
-          Refresh
-        </button>
+          Refresh Data
+        </motion.button>
       </div>
 
       {/* Summary Stats */}
@@ -364,84 +369,299 @@ const ScanResults: React.FC = () => {
         </div>
       </div>
 
-      {/* Results Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Results Grid - Expanded to Full Width */}
+      <div className="grid grid-cols-1 gap-6">
         {/* Results Table */}
         <div className="glass rounded-xl p-4">
-          <h3 className="text-lg font-semibold mb-4">Detected Values</h3>
-          <div className="space-y-2 max-h-96 overflow-y-auto">
+          <div className="flex items-center justify-between mb-6">
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Database className="text-cyan-400" size={24} />
+              Detected Tracking Identifiers
+            </h3>
+            <div className="text-xs text-muted-foreground bg-muted/30 px-3 py-1 rounded-full border border-border">
+              Showing {Object.keys(filteredResults).length} domains with activity
+            </div>
+          </div>
+          
+          <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
             {Object.entries(filteredResults).map(([domainKey, items]) => {
               const [engine, domain] = domainKey.split(':');
               return (
-                <div key={domainKey} className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                    <Globe size={14} />
-                    <span>{domain}</span>
-                    <span className="px-2 py-0.5 bg-primary/20 text-primary rounded text-xs">
+                <div key={domainKey} className="space-y-3 bg-background/20 rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                    <div className="flex items-center gap-2 text-sm font-bold text-cyan-400">
+                      <Globe size={16} />
+                      <span className="tracking-tight">{domain}</span>
+                    </div>
+                    <span className={`px-3 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase ${
+                      engine === 'chrome' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
+                    }`}>
                       {engine}
                     </span>
                   </div>
-                  {items.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="flex items-center justify-between p-3 bg-background/30 rounded-lg hover:bg-background/50 cursor-pointer"
-                      onClick={() => setSelectedValue(item.idb_value)}
-                    >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          {item.is_exfiltrated ? (
-                            <XCircle size={14} className="text-red-400" />
-                          ) : (
-                            <CheckCircle size={14} className="text-green-400" />
-                          )}
-                          <span className="font-mono text-sm truncate">{item.idb_value}</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>DB: {item.database}</span>
-                          <span>Key: {item.key}</span>
-                          <span>Status: {item.status_code}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`px-2 py-0.5 rounded text-xs ${
-                          item.tracker_category === 'first_party'
-                            ? 'bg-green-500/20 text-green-400'
-                            : 'bg-red-500/20 text-red-400'
-                        }`}>
-                          {item.tracker_category}
-                        </span>
-                        {item.is_exfiltrated && (
-                          <span className="text-xs text-muted-foreground">
-                            → {item.responsible_tracker}
-                          </span>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
+                  
+                  <div className="grid grid-cols-1 gap-2">
+                    {items.map((item, idx) => (
+                      <ResultRow key={idx} item={item} idx={idx} />
+                    ))}
+                  </div>
                 </div>
               );
             })}
             {Object.keys(filteredResults).length === 0 && (
-              <div className="text-center py-8 text-muted-foreground">
-                No results match the current filters
+              <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
+                <Search size={48} className="opacity-20 mb-4" />
+                <p className="text-lg font-medium">No results match your filters</p>
+                <p className="text-sm opacity-60">Try adjusting your search term or engine selection</p>
               </div>
             )}
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
 
-        {/* Entropy Calculator */}
-        <div>
-          <EntropyCalculator
-            value={selectedValue}
-            onEntropyChange={(entropy) => {
-              // Could update results with entropy if needed
-            }}
-          />
+// Sub-component for individual result rows with expandability
+const ResultRow: React.FC<{ item: ScanResult; idx: number }> = ({ item, idx }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: Math.min(idx * 0.05, 0.5) }}
+      className={`group border border-border/30 rounded-lg overflow-hidden transition-all duration-300 ${
+        isExpanded ? 'bg-background/60 border-cyan-500/30 shadow-lg shadow-cyan-950/20' : 'bg-background/20 hover:bg-background/40'
+      }`}
+    >
+      <div 
+        className="flex items-center justify-between p-3 cursor-pointer"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="flex-shrink-0">
+            {item.is_exfiltrated ? (
+              <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30">
+                <AlertTriangle size={16} className="text-red-400" />
+              </div>
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/30">
+                <CheckCircle size={16} className="text-green-400" />
+              </div>
+            )}
+          </div>
+          
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="font-mono text-xl font-bold text-foreground/90 truncate max-w-[400px]" title={item.idb_value}>
+                {item.idb_value}
+              </span>
+              <span className={`flex-shrink-0 px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                item.tracker_category === 'first_party'
+                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
+              }`}>
+                {item.tracker_category.replace('_', ' ')}
+              </span>
+            </div>
+            <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
+              <span className="flex items-center gap-1">
+                <Database size={12} /> {item.database}
+              </span>
+              <span className="opacity-30">|</span>
+              <span className="truncate max-w-[200px]" title={item.key}>Key: {item.key}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-3 ml-4">
+          <div className="text-right hidden sm:block">
+            <div className={`text-xs font-bold ${item.is_exfiltrated ? 'text-red-400' : 'text-green-400'}`}>
+              {item.is_exfiltrated ? 'EXFILTRATED' : 'SAFE'}
+            </div>
+            <div className="text-[10px] opacity-40">Status: {item.status_code}</div>
+          </div>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            className="text-muted-foreground"
+          >
+            <ArrowRight size={16} />
+          </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="border-t border-border/30 bg-background/40"
+          >
+            <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Detection Logic</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Flow Direction</span>
+                    <span className="text-cyan-400 font-medium">Outflow (Storage → Network)</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Confinement</span>
+                    <span className="text-cyan-400 font-medium font-mono text-xs">CROSS-ORIGIN</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Sink Class</span>
+                    <span className="text-cyan-400 font-medium font-mono text-xs">{item.is_exfiltrated ? 'XHR_BODY / FETCH' : 'None'}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Tracking Meta</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Responsible Tracker</span>
+                    <span className={item.is_exfiltrated ? 'text-red-400 font-bold' : 'text-muted-foreground italic'}>
+                      {item.responsible_tracker || 'None detected'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Evidence Confidence</span>
+                    <span className={`font-bold ${item.is_exfiltrated ? 'text-orange-400' : 'text-green-400'}`}>
+                      {item.is_exfiltrated ? 'CRITICAL (HIGH)' : 'LOW / NORMAL'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Exfiltration URL</span>
+                    <span className="text-xs font-mono text-cyan-400 max-w-[200px] truncate text-right">
+                      {item.is_exfiltrated ? 'captured_request.url' : 'N/A'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="md:col-span-2 pt-2 space-y-4">
+                <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2">Taint Tracking Path</h4>
+                <TaintFlowGraph item={item} />
+                
+                <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2">Raw Value (Scrollable)</h4>
+                <div className="p-4 bg-black/40 rounded border border-border/30 font-mono text-base text-cyan-300 break-all max-h-48 overflow-y-auto">
+                  {item.idb_value}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+/* ── TaintFlowGraph Component ────────────────────────────────────── */
+const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
+  const is3rdParty = item.tracker_category === 'third_party';
+  
+  const nodes = [
+    { 
+      id: 'source', 
+      label: 'IndexedDB Source', 
+      sub: `${item.database} / ${item.key}`,
+      icon: Database,
+      color: 'text-cyan-400',
+      description: 'Dynamic data extracted from persistent storage.'
+    },
+    { 
+      id: 'hook', 
+      label: 'Privacy Hook', 
+      sub: 'Proxy: IDBRequest.get()',
+      icon: Shield,
+      color: 'text-blue-400',
+      description: 'Taint engine intercepts retrieval and labels value.'
+    },
+    { 
+      id: 'filter', 
+      label: 'Security Shield', 
+      sub: is3rdParty ? '3rd Party Detected' : '1st Party Verified',
+      icon: Filter,
+      color: is3rdParty ? 'text-red-400' : 'text-green-400',
+      description: 'Party-segregation filter identifies exfiltration intent.'
+    },
+    { 
+      id: 'sink', 
+      label: 'Network Sink', 
+      sub: item.is_exfiltrated ? (item.responsible_tracker || 'Exfiltration') : 'Access Denied',
+      icon: Zap,
+      color: item.is_exfiltrated ? 'text-red-500' : 'text-gray-500',
+      description: item.is_exfiltrated ? 'Value leaked via XHR/Fetch body.' : 'Propagation blocked by browser policy.'
+    }
+  ];
+
+  return (
+    <div className="relative w-full py-8 px-4 bg-black/20 rounded-xl border border-border/20 overflow-x-auto min-w-[800px] mb-6">
+      <div className="flex items-center justify-between gap-4 relative z-10">
+        {nodes.map((node, i) => {
+          const Icon = node.icon;
+          return (
+            <React.Fragment key={node.id}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.2 }}
+                className="flex flex-col items-center gap-3 w-48 text-center group"
+              >
+                <div className={`p-4 rounded-2xl bg-muted/40 border border-border/50 ${node.color} shadow-lg relative group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`absolute inset-0 rounded-2xl opacity-20 blur-xl ${node.color.replace('text-', 'bg-')}`} />
+                  <Icon size={32} className="relative z-10" />
+                </div>
+                <div className="space-y-1">
+                  <div className={`text-base font-bold ${node.color}`}>${node.label}</div>
+                  <div className="text-[11px] font-mono text-muted-foreground truncate w-full px-2" title={node.sub}>
+                    ${node.sub}
+                  </div>
+                </div>
+                
+                {/* Expandable node info */}
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-full mt-4 left-1/2 -translate-x-1/2 w-56 p-3 glass-strong rounded-lg z-50 text-xs pointer-events-none border border-border/30">
+                  ${node.description}
+                </div>
+              </motion.div>
+
+              {i < nodes.length - 1 && (
+                <div className="flex-1 flex items-center justify-center -mx-4">
+                  <div className="relative w-full h-1 bg-border/20 rounded-full overflow-hidden">
+                    <motion.div 
+                      className={`absolute inset-y-0 left-0 bg-gradient-to-r ${is3rdParty ? 'from-red-500 to-red-400' : 'from-blue-500 to-cyan-400'}`}
+                      initial={{ width: '0%', left: '-100%' }}
+                      animate={{ 
+                        width: ['20%', '20%', '20%'],
+                        left: ['-20%', '120%'],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        ease: 'linear',
+                        delay: i * 0.5
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
+      
+      {/* Background connecting lines (SVG) */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
+        <defs>
+          <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#0ea5e9" />
+            <stop offset="100%" stopColor="#ef4444" />
+          </linearGradient>
+        </defs>
+        <path d="M 0 50% L 100% 50%" stroke="url(#flow-grad)" strokeWidth="2" strokeDasharray="10,10" />
+      </svg>
     </div>
   );
 };
