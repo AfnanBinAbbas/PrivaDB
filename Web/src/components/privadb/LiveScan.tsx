@@ -160,7 +160,7 @@ const ResultCard: React.FC<{ result: ScanResult, index: number }> = ({ result, i
         damping: 20, 
         duration: 0.8 
       }}
-      className="glass rounded-xl overflow-hidden border border-border/40 relative shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)] hover:shadow-[0_0_25px_rgba(var(--primary-rgb),0.2)] transition-shadow"
+      className="glass rounded-xl overflow-hidden border border-border/40 relative shadow-md hover:shadow-lg transition-shadow"
     >
       {/* Exfiltration glow pulse */}
       {result.trackingEvents > 0 && (
@@ -637,7 +637,7 @@ export const LiveScan: React.FC = () => {
         </motion.div>
 
         {/* Input area */}
-        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6 relative border border-cyan-500/30 neon-glow-pulse shadow-2xl">
+        <motion.div variants={itemVariants} className="glass rounded-2xl p-6 mb-6 relative border border-border/40 shadow-xl">
           {/* Removed gradient background for solid/transparent look */}
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h3 className="text-sm font-medium">Target URLs</h3>
@@ -651,7 +651,7 @@ export const LiveScan: React.FC = () => {
               />
               <motion.button
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors neon-glow-cyan hover:scale-105"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors hover:scale-105"
                 disabled={scanning}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -661,7 +661,7 @@ export const LiveScan: React.FC = () => {
               </motion.button>
               <motion.button
                 onClick={addUrl}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors neon-glow-pink hover:scale-105"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors hover:scale-105"
                 disabled={scanning}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -846,7 +846,7 @@ export const LiveScan: React.FC = () => {
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">
                 <motion.div 
-                  className="flex-1 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/40 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm neon-glow-cyan neon-pulse"
+                  className="flex-1 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/40 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm transition-all shadow-sm hover:shadow-md"
                   animate={{ boxShadow: ['0 0 20px rgba(0, 255, 255, 0.3)', '0 0 40px rgba(0, 255, 255, 0.6)', '0 0 20px rgba(0, 255, 255, 0.3)'] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
@@ -889,7 +889,7 @@ export const LiveScan: React.FC = () => {
               <motion.button
                 onClick={() => startScan()}
                 disabled={scanning || validUrlsToScan.length === 0}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-cyan-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-xl shadow-cyan-500/25 text-base neon-glow-cyan border border-cyan-400/50 hover:border-cyan-400"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-3.5 rounded-xl bg-cyan-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg text-base border border-cyan-400/50 hover:bg-cyan-700"
                 whileHover={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 1.05, letterSpacing: '0.05em' }}
                 whileTap={{ scale: (scanning || validUrlsToScan.length === 0) ? 1 : 0.98 }}
               >
@@ -991,7 +991,7 @@ export const LiveScan: React.FC = () => {
                 <h3 className="text-lg font-semibold">{results.length > 0 ? 'Current Scan Results' : 'Scan History'}</h3>
                 <button
                   onClick={() => setShowHistory(!showHistory)}
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm rounded-xl glass hover:bg-primary/10 transition-colors text-primary font-medium"
+                  className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg transition-all hover:bg-primary/90 flex items-center gap-2"
                 >
                   {showHistory ? 'View Current' : 'View History'}
                   <FileText size={16} />
