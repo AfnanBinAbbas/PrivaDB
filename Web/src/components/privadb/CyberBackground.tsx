@@ -56,14 +56,14 @@ export const CyberBackground: React.FC<{ children: React.ReactNode }> = ({ child
             y: mousePos.y - 400,
           }}
           style={{
-            background: 'radial-gradient(circle, rgba(var(--primary-rgb), 0.08) 0%, transparent 75%)',
+            background: 'rgba(var(--primary-rgb), 0.08)',
             filter: 'blur(60px)',
           }}
           transition={{ type: 'spring', damping: 40, stiffness: 120 }}
         />
 
         {/* CRT / Scanline Effect */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] z-50 opacity-10 pointer-events-none" style={{ backgroundSize: '100% 4px' }} />
+        <div className="absolute inset-0 bg-black/10 z-50 opacity-10 pointer-events-none" style={{ backgroundSize: '100% 4px' }} />
         
         {/* Dynamic Scanning Bar */}
         <motion.div

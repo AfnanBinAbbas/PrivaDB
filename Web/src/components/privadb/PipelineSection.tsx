@@ -111,7 +111,7 @@ export const PipelineSection: React.FC = () => {
                 <div className={`flex ${isExpanded ? 'md:flex-row' : 'flex-col'} gap-6`}>
                   <div className={isExpanded ? 'md:w-1/3' : ''}>
                     {/* Icon */}
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${phase.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`w-12 h-12 rounded-xl ${phase.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       <Icon size={24} className="text-white" />
                     </div>
 

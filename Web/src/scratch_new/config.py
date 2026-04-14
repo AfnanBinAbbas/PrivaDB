@@ -28,6 +28,49 @@ USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
+def _resolve_path(value: str) -> str:
+    """Resolve a project-relative path only when a path separator is present."""
+    if not value:
+        return value
+    if os.path.isabs(value) or os.path.dirname(value):
+        return os.path.abspath(os.path.join(BASE_DIR, "..", "..", value)) if not os.path.isabs(value) else value
+    return value
+
+def _resolve_firefox_executable() -> str:
+    """Resolve Firefox executable by checking common paths and PATH."""
+    # Check environment variable first
+    if "FIREFOX_EXECUTABLE" in os.environ:
+        return os.environ["FIREFOX_EXECUTABLE"]
+    
+    # Check common installation paths
+    common_paths = [
+        "/usr/bin/firefox",
+        "/usr/local/bin/firefox",
+        "/snap/bin/firefox",
+        "/opt/firefox/firefox",
+    ]
+    for path in common_paths:
+        if os.path.exists(path):
+            return path
+    
+    # Try to find with `which` command
+    try:
+        import subprocess
+        result = subprocess.run(['which', 'firefox'], 
+                              capture_output=True, text=True, timeout=2)
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except Exception:
+        pass
+    
+    # Fallback: return "firefox" and let Playwright handle it
+    return "firefox"
+
+FIREFOX_BIN = os.environ.get("FIREFOX_BIN", _resolve_firefox_executable())
+FIREFOX_EXECUTABLE = os.environ.get("FIREFOX_EXECUTABLE", FIREFOX_BIN)
+FOXHOUND_BIN = _resolve_path(os.environ.get("FOXHOUND_BIN", os.path.join("foxhound", "foxhound")))
+FOXHOUND_RESULTS_DIR = _resolve_path(os.environ.get("FOXHOUND_RESULTS_DIR", os.path.join("foxhound", "results")))
+
 ENGINE = "chrome"
 
 # Compiled patterns for value matching

@@ -1,8 +1,8 @@
 [
   {
     "databaseName": "default",
-    "key": "default/EventReporter/mnmc3aur1aaou9uzmsp",
-    "value": "lo_home_nav",
+    "key": "default/EventReporter/mnxo8hqe3azwjn4iu6",
+    "value": "new_post_topnav",
     "source": "IndexedDB",
     "sink": "fetch.body",
     "statusCode": 200,
