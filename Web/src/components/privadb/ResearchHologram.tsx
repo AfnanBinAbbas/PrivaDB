@@ -17,9 +17,9 @@ const researchData = [
 ];
 
 const radialData = [
-  { name: 'IndexedDB Usage', value: 87, fill: '#0ea5e9' },
-  { name: 'Third Party Spying', value: 42, fill: '#f43f5e' },
-  { name: 'Secure Storage', value: 13, fill: '#10b981' },
+  { name: 'IndexedDB Usage', value: 12, fill: '#0ea5e9' },
+  { name: 'Third Party Spying', value: 10, fill: '#f43f5e' },
+  { name: 'Secure Storage', value: 9, fill: '#10b981' },
 ];
 
 export const ResearchHologram: React.FC = () => {
@@ -38,7 +38,7 @@ export const ResearchHologram: React.FC = () => {
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tighter">Research Findings</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Real-time telemetry from our global crawl of 10,000+ top domains, analyzed via dual-engine taint tracking.
+            Real-time telemetry from our global crawl of 500+ top Tranco domains, analyzed via dual-engine taint tracking.
           </p>
         </motion.div>
 
@@ -59,7 +59,7 @@ export const ResearchHologram: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold uppercase tracking-widest text-cyan-400">Scale Metrics</h3>
-                    <p className="text-[10px] text-muted-foreground">Cumulative Site Analysis</p>
+                    <p className="text-[15px] text-muted-foreground">Cumulative Site Analysis</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -112,7 +112,7 @@ export const ResearchHologram: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold uppercase tracking-widest text-pink-400">Leak Probability</h3>
-                    <p className="text-[10px] text-muted-foreground">Comparative Ecosystem Analysis</p>
+                    <p className="text-[15px] text-muted-foreground">Comparative Ecosystem Analysis</p>
                   </div>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export const ResearchHologram: React.FC = () => {
                       endAngle={0}
                     >
                       <RadialBar
-                        label={{ fill: '#fff', position: 'insideStart', fontSize: '10px' }}
+                        label={{ fill: '#fff', position: 'insideStart', fontSize: '15px' }}
                         background
                         dataKey="value"
                         cornerRadius={10}
@@ -141,8 +141,8 @@ export const ResearchHologram: React.FC = () => {
               <div className="grid grid-cols-3 gap-2 mt-4">
                 {radialData.map((d, i) => (
                   <div key={i} className="text-center">
-                    <div className="text-xs font-bold" style={{ color: d.fill }}>{d.value}%</div>
-                    <div className="text-[8px] text-muted-foreground uppercase">{d.name.split(' ')[0]}</div>
+                    <div className="text-sm font-bold" style={{ color: d.fill }}>{d.value}%</div>
+                    <div className="text-[15px] text-muted-foreground uppercase">{d.name.split(' ')[0]}</div>
                   </div>
                 ))}
               </div>
@@ -153,10 +153,10 @@ export const ResearchHologram: React.FC = () => {
         {/* Floating Stat Micro-Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { label: 'Avg Time / Site', value: '8.4s', icon: Clock, color: 'text-blue-400' },
-            { label: 'Storage Usage', value: '4.2 TB', icon: Database, color: 'text-purple-400' },
-            { label: 'Domains Scanned', value: '12.4k', icon: Globe, color: 'text-cyan-400' },
-            { label: 'Active Sinks', icon: Zap, value: '89', color: 'text-yellow-400' },
+            { label: 'Avg Time / Site', value: '150s', icon: Clock, color: 'text-blue-400' },
+            { label: 'Storage Usage', value: '2.2 GB', icon: Database, color: 'text-purple-400' },
+            { label: 'Domains Scanned', value: '500', icon: Globe, color: 'text-cyan-400' },
+            { label: 'Active Sinks', icon: Zap, value: '13', color: 'text-yellow-400' },
           ].map((stat, i) => (
             <motion.div
               key={i}

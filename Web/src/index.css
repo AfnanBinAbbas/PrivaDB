@@ -166,7 +166,22 @@
     body {
       @apply bg-background text-foreground antialiased;
       font-family: 'Inter', sans-serif;
+      cursor: url('/cursors/default.png') 0 0, auto;
     }
+
+    a, button, [role="button"], label, select, summary, [class*="cursor-pointer"] {
+      cursor: url('/cursors/pointer.png') 0 0, pointer;
+    }
+
+    input, textarea, [contenteditable] {
+      cursor: url('/cursors/text.png') 16 16, text;
+    }
+
+    [disabled], [aria-disabled="true"], [class*="cursor-not-allowed"] {
+      cursor: url('/cursors/not-allowed.png') 0 0, not-allowed;
+    }
+
+
 
     h1 { @apply text-4xl font-bold tracking-tight mb-4; }
     h2 { @apply text-3xl font-semibold tracking-tight mb-3; }

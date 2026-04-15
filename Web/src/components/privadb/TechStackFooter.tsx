@@ -8,7 +8,7 @@ const techStack = [
   { name: 'Framer Motion', url: 'https://cdn.simpleicons.org/framer/0055FF' },
   { name: 'Python', url: 'https://cdn.simpleicons.org/python/3776AB' },
   { name: 'FastAPI', url: 'https://cdn.simpleicons.org/fastapi/009688' },
-  { name: 'Playwright', url: 'https://cdn.simpleicons.org/playwrighttesting/2EAD33' },
+  { name: 'Playwright', url: '/graphics/playwright-seeklogo.png' },
   { name: 'SAP', url: 'https://cdn.simpleicons.org/sap/008FD3' },
   { name: 'Chrome', url: 'https://cdn.simpleicons.org/googlechrome/4285F4' },
   { name: 'Firefox', url: 'https://cdn.simpleicons.org/firefoxbrowser/FF7139' },
