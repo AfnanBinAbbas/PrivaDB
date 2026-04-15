@@ -105,7 +105,7 @@ const ScanResults: React.FC = () => {
   const filteredResults = useMemo(() => {
     if (!data) return {};
 
-    const results: Record<string, ScanResult[]> = {};
+    const results: Record<string, (ScanResult & { _domain: string; _engine: string })[]> = {};
 
     const engines = selectedEngine === 'all' ? ['chrome', 'foxhound'] : [selectedEngine];
 
@@ -114,17 +114,27 @@ const ScanResults: React.FC = () => {
       if (!engineData) continue;
 
       for (const [domain, items] of Object.entries(engineData)) {
-        const filtered = items.filter(item => {
+        // Deduplicate by composite key: value + key + database
+        const seen = new Set<string>();
+        const deduped = items.filter(item => {
+          const fingerprint = `${item.idb_value}|${item.key}|${item.database}`;
+          if (seen.has(fingerprint)) return false;
+          seen.add(fingerprint);
+          return true;
+        });
+
+        const filtered = deduped.filter(item => {
           const matchesSearch = !searchTerm ||
             item.idb_value.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.database.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.responsible_tracker.toLowerCase().includes(searchTerm.toLowerCase());
+            item.responsible_tracker.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            domain.toLowerCase().includes(searchTerm.toLowerCase());
 
           const matchesExfil = !showExfiltratedOnly || item.is_exfiltrated;
 
           return matchesSearch && matchesExfil;
-        });
+        }).map(item => ({ ...item, _domain: domain, _engine: engine }));
 
         if (filtered.length > 0) {
           results[`${engine}:${domain}`] = filtered;
@@ -134,6 +144,7 @@ const ScanResults: React.FC = () => {
 
     return results;
   }, [data, selectedEngine, searchTerm, showExfiltratedOnly]);
+
 
   const stats = useMemo(() => {
     if (!data) return { total: 0, exfiltrated: 0, unique: 0 };
@@ -402,7 +413,7 @@ const ScanResults: React.FC = () => {
                   
                   <div className="grid grid-cols-1 gap-2">
                     {items.map((item, idx) => (
-                      <ResultRow key={idx} item={item} idx={idx} />
+                      <ResultRow key={idx} item={item} idx={idx} domain={domain} engine={engine} />
                     ))}
                   </div>
                 </div>
@@ -423,18 +434,50 @@ const ScanResults: React.FC = () => {
 };
 
 // Sub-component for individual result rows with expandability
-const ResultRow: React.FC<{ item: ScanResult; idx: number }> = ({ item, idx }) => {
+const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engine: string }> = ({ item, idx, domain, engine }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const isThirdParty = item.tracker_category !== 'first_party';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: Math.min(idx * 0.05, 0.5) }}
-      className={`group border border-border/30 rounded-lg overflow-hidden transition-all duration-300 ${
-        isExpanded ? 'bg-background/60 border-cyan-500/30 shadow-lg shadow-cyan-950/20' : 'bg-background/20 hover:bg-background/40'
+      className={`group border rounded-lg overflow-hidden transition-all duration-300 ${
+        isExpanded ? 'bg-background/60 border-cyan-500/30 shadow-lg shadow-cyan-950/20' : 
+        isThirdParty ? 'border-red-500/20 bg-red-500/3 hover:bg-background/40' : 'border-border/30 bg-background/20 hover:bg-background/40'
       }`}
     >
+      {/* Domain + Tracker Party Banner */}
+      <div className={`flex items-center justify-between px-3 py-1.5 border-b text-[10px] font-mono ${
+        isThirdParty ? 'border-red-500/20 bg-red-500/5' : 'border-green-500/20 bg-green-500/5'
+      }`}>
+        <div className="flex items-center gap-1.5 text-muted-foreground">
+          <Globe size={10} />
+          <span className="font-bold text-foreground/80">{domain}</span>
+          {item.responsible_tracker && item.responsible_tracker !== 'N/A' && item.responsible_tracker !== 'Unknown' && (
+            <>
+              <ArrowRight size={8} className="opacity-40" />
+              <span className="text-orange-400 font-semibold">{item.responsible_tracker}</span>
+            </>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${
+            isThirdParty
+              ? 'bg-red-500/10 text-red-400 border-red-500/30'
+              : 'bg-green-500/10 text-green-400 border-green-500/30'
+          }`}>
+            {isThirdParty ? '3rd Party' : '1st Party'}
+          </span>
+          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
+            engine === 'chrome' ? 'text-blue-300' : 'text-orange-300'
+          }`}>
+            {engine}
+          </span>
+        </div>
+      </div>
+
       <div 
         className="grid grid-cols-[auto_minmax(100px,2fr)_minmax(100px,1.5fr)_auto_auto] items-center gap-4 p-3 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
@@ -468,15 +511,11 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number }> = ({ item, idx }) =
         </div>
 
         <div className="hidden sm:flex flex-col items-end gap-1.5 ml-4">
-          <div className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-            item.tracker_category === 'first_party'
-              ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-              : 'bg-red-500/10 text-red-400 border border-red-500/20'
-          }`}>
-            {item.tracker_category.replace('_', ' ')}
-          </div>
           <div className={`text-[10px] font-bold ${item.is_exfiltrated ? 'text-red-400' : 'text-green-400'}`}>
             {item.is_exfiltrated ? 'EXFILTRATED' : 'SAFE'}
+          </div>
+          <div className="text-[10px] text-muted-foreground">
+            ε = {item.entropy?.toFixed(2) ?? '—'}
           </div>
         </div>
         <div className="flex justify-end">
