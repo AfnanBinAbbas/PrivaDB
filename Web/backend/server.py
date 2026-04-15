@@ -21,6 +21,10 @@ warnings.filterwarnings("ignore", message=".*3D projection.*")
 # Add src/engine to path to import modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "engine")))
 
+# Configure logging early so it's available during imports
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 try:
     from crawler import crawl_all_sites
     from detector import analyze_site
