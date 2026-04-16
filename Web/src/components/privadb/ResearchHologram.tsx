@@ -154,8 +154,8 @@ export const ResearchHologram: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
             { label: 'Avg Time / Site', value: '150s', icon: Clock, color: 'text-blue-400' },
-            { label: 'Storage Usage', value: '2.2 GB', icon: Database, color: 'text-purple-400' },
-            { label: 'Domains Scanned', value: '500', icon: Globe, color: 'text-cyan-400' },
+            { label: 'Storage Usage', value: '60.2 MBs', icon: Database, color: 'text-purple-400' },
+            { label: 'Domains Scanned', value: '677+', icon: Globe, color: 'text-cyan-400' },
             { label: 'Active Sinks', icon: Zap, value: '13', color: 'text-yellow-400' },
           ].map((stat, i) => (
             <motion.div
