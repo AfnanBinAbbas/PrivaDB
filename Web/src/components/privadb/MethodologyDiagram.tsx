@@ -1,35 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Search, Database, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const steps = [
+interface Step {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const steps: Step[] = [
   {
-    title: "1. The Secret Storage",
-    description: "Every website has a secret box called 'IndexedDB' where it keeps your special ID stickers.",
+    title: "The Secret Storage",
+    description: "Every website has a secret box called 'IndexedDB' where it keeps your special ID stickers which is commonly called as user identification data.",
     image: "/graphics/chest.jpg",
-    icon: Database,
-    color: "text-blue-500"
   },
   {
-    title: "2. Adding the Sticker",
-    description: "Our detective team (Chrome & Foxhound) puts a glowing 'Taint Sticker' on your data so we can see it!",
+    title: "Adding the Taint Sticker",
+    description: "Our detective team (Chrome & Foxhound) puts a glowing 'Taint Sticker' on your data so we can see it flow from and to the tracker!",
     image: "/graphics/taint_sticker.jpg",
-    icon: ShieldCheck,
-    color: "text-cyan-500"
   },
   {
-    title: "3. The Detective Work",
+    title: "The Detective Work",
     description: "Chrome acts like a standard postman, while Foxhound is a supersmart detective dog watching every move.",
     image: "/graphics/foxhound_detective.jpg",
-    icon: Search,
-    color: "text-orange-500"
   },
   {
-    title: "4. Preventing the Escape",
+    title: "Preventing the Escape",
     description: "If the data tries to fly away in a secret letter to a tracker, we catch it and show you exactly who did it!",
     image: "/graphics/escape.jpeg",
-    icon: Mail,
-    color: "text-pink-500"
   }
 ];
 
@@ -72,10 +70,11 @@ export const MethodologyDiagram: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`p-2 rounded-lg bg-background shadow-inner ${step.color}`}>
-                    <step.icon size={18} />
-                  </div>
+                {/* Title with Number Badge */}
+                <div className="mb-3 flex items-center gap-2">
+                  <span className="text-xs font-mono text-primary/70 bg-primary/10 px-2 py-0.5 rounded">
+                    {i + 1}
+                  </span>
                   <h3 className="font-bold text-lg tracking-tight">{step.title}</h3>
                 </div>
 
@@ -103,7 +102,7 @@ export const MethodologyDiagram: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-pink-500/5 pointer-events-none" />
           <div className="relative z-10 space-y-2 text-center md:text-left">
             <h4 className="text-xl font-bold">Ready to see it in action?</h4>
-            <p className="text-muted-foreground text-sm">Launch a scan above and watch the detecives work in real-time.</p>
+            <p className="text-muted-foreground text-sm">Launch a scan above and watch the detectives work in real-time.</p>
           </div>
           <motion.a
             href="#live-scan"
