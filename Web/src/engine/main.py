@@ -274,7 +274,7 @@ def main():
         sys.stdout = tee
 
     try:
-        # ── Check for existing results (Automated mode bypasses prompt) ──
+        # ── Check for existing results (Overwriting logic) ──
         results_exist = (
             os.path.exists(os.path.join(config.ANALYSIS_DIR, "summary.json"))
             or os.path.exists(os.path.join(config.ANALYSIS_DIR, "statistics.json"))
@@ -301,7 +301,7 @@ def main():
 
         print("\n" + "=" * 70)
         print("  IndexedDB DYNAMIC TAINT ANALYSIS PIPELINE")
-        print("  FYP: Detecting Persistent Web Tracking via IndexedDB")
+        print("  PrivaDB: Detecting Persistent Web Tracking via IndexedDB")
         print("=" * 70 + "\n")
 
         # ── Load custom sites (Direct URL takes precedence) ──────────────

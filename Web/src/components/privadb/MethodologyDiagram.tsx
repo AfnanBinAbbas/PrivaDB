@@ -27,7 +27,7 @@ const steps = [
   {
     title: "4. Preventing the Escape",
     description: "If the data tries to fly away in a secret letter to a tracker, we catch it and show you exactly who did it!",
-    image: "/graphics/flying_letters.png",
+    image: "/graphics/escape.jpeg",
     icon: Mail,
     color: "text-pink-500"
   }
