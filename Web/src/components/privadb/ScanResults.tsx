@@ -321,7 +321,7 @@ const ScanResults: React.FC = () => {
               <Shield className="mx-auto h-8 w-8 text-orange-400 mb-2 drop-shadow-lg" />
             </motion.div>
             <div className="text-2xl font-bold text-orange-400">{stats.exfiltrated}</div>
-            <div className="text-sm text-orange-400/60">Exfiltrated</div>
+            <div className="text-sm text-orange-400/60">User Values Incidents</div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -334,7 +334,7 @@ const ScanResults: React.FC = () => {
               <Database className="mx-auto h-8 w-8 text-purple-400 mb-2 drop-shadow-lg" />
             </motion.div>
             <div className="text-2xl font-bold text-purple-400">{stats.unique}</div>
-            <div className="text-sm text-purple-400/60">Unique Values</div>
+            <div className="text-sm text-purple-400/60">Unique User Values</div>
           </motion.div>
         </div>
       )}
@@ -653,7 +653,7 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
                 </div>
                 <div className="space-y-1 max-w-[120px]">
                   <div className={`text-sm font-bold ${node.color}`}>{node.label}</div>
-                  <div className="text-[10px] font-mono text-muted-foreground w-full px-1 leading-tight break-words">
+                  <div className="text-[13px] font-mono text-muted-foreground w-full px-1 leading-tight break-words">
                     {node.sub}
                   </div>
                 </div>

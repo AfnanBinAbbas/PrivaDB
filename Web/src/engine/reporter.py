@@ -24,6 +24,29 @@ logger = logging.getLogger(__name__)
 
 
 # ─── Table formatting helpers ────────────────────────────────────────
+def count_crawled_sites(results_dir: str = None) -> int:
+    """Count unique domains from crawled directories of both engines."""
+    if results_dir is None:
+        results_dir = config.RESULTS_DIR
+    chrome_crawled = os.path.join(results_dir, "Chrome", "crawled")
+    foxhound_crawled = os.path.join(results_dir, "Foxhound", "crawled")
+    domains = set()
+    
+    def extract_domain(filename: str) -> str:
+        if filename.endswith('.json'):
+            filename = filename[:-5]
+        return filename.replace('_', '.')
+    
+    if os.path.isdir(chrome_crawled):
+        for f in os.listdir(chrome_crawled):
+            if f.endswith('.json'):
+                domains.add(extract_domain(f))
+    if os.path.isdir(foxhound_crawled):
+        for f in os.listdir(foxhound_crawled):
+            if f.endswith('.json'):
+                domains.add(extract_domain(f))
+    return len(domains)
+    
 def _print_table(title: str, headers: list[str], rows: list[list],
                  col_aligns: list[str] = None):
     """
@@ -103,10 +126,10 @@ def generate_reports(analysis_results: list[dict]):
     _write_tracking_csv(analysis_results)
     _write_per_site_json(analysis_results)
     paper_metrics = compute_paper_metrics(analysis_results)
-    stats = _write_statistics_json(analysis_results, paper_metrics)
+    total_crawled_sites = count_crawled_sites()  # new
+    stats = _write_statistics_json(analysis_results, paper_metrics, total_crawled_sites)
     _generate_charts(analysis_results, stats, paper_metrics)
-    _print_console_summary(analysis_results, stats, paper_metrics)
-
+    _print_console_summary(analysis_results, stats, paper_metrics, total_crawled_sites)
 
 def _write_summary_json(results: list[dict]):
     """Write the full structured results to JSON."""
@@ -351,7 +374,8 @@ def _write_per_site_json(results: list[dict]):
 
 
 def _write_statistics_json(results: list[dict],
-                           paper_metrics: dict) -> dict:
+                           paper_metrics: dict,
+                           total_crawled_sites: int) -> dict:
     """Write aggregate statistics + paper metrics to JSON. Returns stats."""
     path = os.path.join(config.ANALYSIS_DIR, "statistics.json")
 
@@ -397,6 +421,7 @@ def _write_statistics_json(results: list[dict],
 
     stats = {
         "crawl_summary": {
+            "total_crawled_sites": total_crawled_sites,
             "total_sites_analyzed": total_sites,
         },
         "detection_summary": {
@@ -610,7 +635,7 @@ def _generate_charts(results: list[dict], stats: dict, paper_metrics: dict):
 
 
 def _print_console_summary(results: list[dict], stats: dict,
-                           paper_metrics: dict):
+                           paper_metrics: dict, total_crawled_sites: int):
     """Print pandas + numpy tabular summary to the console."""
 
     print("\n" + "=" * 70)
@@ -739,6 +764,7 @@ def _print_console_summary(results: list[dict], stats: dict,
     detect = stats["detection_summary"]
     class_headers = ["Classification", "Value"]
     class_rows = [
+        ["Total crawled sites", total_crawled_sites],
         ["Total sites analyzed", stats["crawl_summary"]["total_sites_analyzed"]],
         ["Third-party exfiltrations", detect["third_party_exfiltrations"]],
         ["Known tracker matches", detect["known_tracker_exfiltrations"]],
