@@ -213,7 +213,7 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
                     "request_url": req_url,
                     "request_method": req.get("method", ""),
                     "request_domain": req_domain,
-                    "request_status": req.get("response", {}).get("status", 0),
+                    "request_status": (req.get("response") or {}).get("status", 0),
                     "match_location": match_location,
                     "is_third_party": is_third_party,
                     "is_known_tracker": is_known_tracker,
@@ -249,7 +249,7 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
 
 def _find_value_in_request(value: str, request: dict) -> str | None:
     """Check if a value appears in any part of a network request."""
-    url = request.get("url", "")
+    url = request.get("url") or ""
 
     # Check URL (query params and path)
     if value in url:
@@ -268,9 +268,9 @@ def _find_value_in_request(value: str, request: dict) -> str | None:
             return "post_body_decoded"
 
     # Check specific headers
-    headers = request.get("headers", {})
+    headers = request.get("headers") or {}
     for header_name in ("cookie", "authorization", "x-client-id", "x-request-id"):
-        header_val = headers.get(header_name, "")
+        header_val = headers.get(header_name) or ""
         if value in header_val:
             return f"header:{header_name}"
 
@@ -390,8 +390,8 @@ def detect_integrity_flows(site_data: dict) -> list[dict]:
     Checks if any IndexedDB values contain data that likely originated from
     cookies, URL parameters, or navigator properties (i.e., source → storage).
     """
-    domain = site_data.get("domain", "unknown")
-    url = site_data.get("url", "")
+    domain = site_data.get("domain") or "unknown"
+    url = site_data.get("url") or ""
     integrity_flows = []
 
     # Collect source data from the page
@@ -402,14 +402,14 @@ def detect_integrity_flows(site_data: dict) -> list[dict]:
         url_param_values.update(v for v in vals if len(v) >= config.MIN_ID_LENGTH)
 
     # Scan IDB records for values matching external source patterns
-    idb = site_data.get("indexeddb", {})
-    for db in idb.get("databases", []):
-        db_name = db.get("name", "")
-        for store in db.get("stores", []):
-            store_name = store.get("name", "")
-            for record in store.get("records", []):
+    idb = site_data.get("indexeddb") or {}
+    for db in idb.get("databases") or []:
+        db_name = db.get("name") or ""
+        for store in db.get("stores") or []:
+            store_name = store.get("name") or ""
+            for record in store.get("records") or []:
                 value = record.get("value")
-                key = record.get("key", "")
+                key = record.get("key") or ""
                 base_path = f"{db_name}/{store_name}/{key}"
 
                 # Check if any IDB value contains URL-sourced data
@@ -483,7 +483,7 @@ def compute_paper_metrics(all_results: list[dict]) -> dict:
     total_sites = len(all_results)
     sites_with_idb = sum(
         1 for r in all_results
-        if r.get("indexeddb_summary", {}).get("database_count", 0) > 0
+        if (r.get("indexeddb_summary") or {}).get("database_count", 0) > 0
     )
 
     # Gather all flows
@@ -643,13 +643,14 @@ def _extract_idb_kv_map(idb_data: dict) -> dict:
     Returns dict: { "dbName/storeName/recordKey" : str(value) }
     """
     kv_map = {}
-    for db in idb_data.get("databases", []):
-        db_name = db.get("name", "")
-        for store in db.get("stores", []):
-            store_name = store.get("name", "")
-            for record in store.get("records", []):
-                key = str(record.get("key", ""))
-                value = str(record.get("value", ""))
+    idb_data = idb_data or {}
+    for db in idb_data.get("databases") or []:
+        db_name = db.get("name") or ""
+        for store in db.get("stores") or []:
+            store_name = store.get("name") or ""
+            for record in store.get("records") or []:
+                key = str(record.get("key") or "")
+                value = str(record.get("value") or "")
                 path = f"{db_name}/{store_name}/{key}"
                 kv_map[path] = value
     return kv_map
@@ -676,7 +677,7 @@ def diff_iterations(site_data: dict) -> dict:
     # Extract KV maps from each iteration
     kv_maps = []
     for it in iterations:
-        idb = it.get("indexeddb", {})
+        idb = it.get("indexeddb") or {}
         kv_maps.append(_extract_idb_kv_map(idb))
 
     # Get union of all keys across all iterations
@@ -730,14 +731,14 @@ def analyze_site(site_data: dict) -> dict:
 
     # Step 1: Extract potential identifiers from IndexedDB
     all_identifiers = []
-    idb = site_data.get("indexeddb", {})
+    idb = site_data.get("indexeddb") or {}
 
-    for db in idb.get("databases", []):
-        db_name = db.get("name", "")
-        for store in db.get("stores", []):
-            store_name = store.get("name", "")
-            for record in store.get("records", []):
-                key = record.get("key", "")
+    for db in idb.get("databases") or []:
+        db_name = db.get("name") or ""
+        for store in db.get("stores") or []:
+            store_name = store.get("name") or ""
+            for record in store.get("records") or []:
+                key = record.get("key") or ""
                 value = record.get("value")
                 base_path = f"{db_name}/{store_name}/{key}"
 
@@ -771,7 +772,7 @@ def analyze_site(site_data: dict) -> dict:
         logger.info(f"  Found {len(flat_ids)} potential identifiers")
 
     # Step 2: Find exfiltrations (outflow flows)
-    network = site_data.get("network_requests", [])
+    network = site_data.get("network_requests") or []
     exfiltrations = find_exfiltrations(flat_ids, network, domain)
 
     # Step 3: Classify each exfiltration with paper-aligned labels

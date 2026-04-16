@@ -14,7 +14,7 @@ const triggerSuccessAnimation = () => {
 
   const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-  const interval: any = setInterval(function() {
+  const interval: any = setInterval(function () {
     const timeLeft = animationEnd - Date.now();
 
     if (timeLeft <= 0) {
@@ -153,18 +153,18 @@ const ResultCard: React.FC<{ result: ScanResult, index: number }> = ({ result, i
     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ 
-        delay: index * 0.1, 
-        type: 'spring', 
-        stiffness: 300, 
-        damping: 20, 
-        duration: 0.8 
+      transition={{
+        delay: index * 0.1,
+        type: 'spring',
+        stiffness: 300,
+        damping: 20,
+        duration: 0.8
       }}
       className="glass rounded-xl overflow-hidden border border-border/40 relative shadow-md hover:shadow-lg transition-shadow"
     >
       {/* Exfiltration glow pulse */}
       {result.trackingEvents > 0 && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-xl ring-2 ring-destructive/30 border-destructive/20"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 0.5] }}
@@ -299,7 +299,7 @@ export const LiveScan: React.FC = () => {
 
   // Cleanup/Stop all scans on mount to prevent ghost scans from previous sessions/reloads
   useEffect(() => {
-    fetch('http://localhost:8000/scan/all/stop', { method: 'POST' }).catch(() => {});
+    fetch('http://localhost:8000/scan/all/stop', { method: 'POST' }).catch(() => { });
     fetchHistory();
   }, [fetchHistory]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -354,7 +354,7 @@ export const LiveScan: React.FC = () => {
     try {
       for (let i = 0; i < validUrlsToScan.length; i++) {
         if (stopSignalRef.current) break;
-        
+
         const currentUrl = validUrlsToScan[i];
         const progressPrefix = validUrlsToScan.length > 1 ? `[${i + 1}/${validUrlsToScan.length}]` : '';
 
@@ -438,14 +438,14 @@ export const LiveScan: React.FC = () => {
               } else if (!msg.startsWith(progressPrefix)) {
                 msg = `${progressPrefix}${msg}`;
               }
-              
+
               // Calculate relative progress for the current phase
               let relativeProgress = 0;
               if (status === 'starting') relativeProgress = Math.min(100, (progress / 10) * 100);
               else if (status === 'crawling') relativeProgress = Math.min(100, ((progress - 10) / 45) * 100);
               else if (status === 'detecting') relativeProgress = Math.min(100, ((progress - 60) / 25) * 100);
               else if (status === 'reporting') relativeProgress = Math.min(100, ((progress - 85) / 15) * 100);
-              
+
               return { ...p, status: 'running' as const, progress: Math.max(5, relativeProgress), message: msg };
             }
             return { ...p, status: 'pending' as const, progress: 0 };
@@ -490,7 +490,7 @@ export const LiveScan: React.FC = () => {
       if (!stopSignalRef.current) {
         const errorMessage = error instanceof Error ? error.message : String(error);
         console.error('Scan error:', error);
-        
+
         // Update only the currently running or first pending phase to show the error
         setPhases(prev => {
           let errorSet = false;
@@ -629,26 +629,94 @@ export const LiveScan: React.FC = () => {
           {/* Engine Toggle */}
           <div className="mt-6 inline-flex items-center p-1 glass rounded-xl relative">
             <motion.div
-              className="absolute inset-y-1 w-[calc(50%-4px)] rounded-lg bg-primary/20 border border-primary/30"
+              className="absolute inset-y-1 w-[calc(48%-4px)] rounded-lg bg-primary/20 border border-primary/30"
               animate={{ x: engine === 'chrome' ? 4 : 'calc(100% + 4px)' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
+
+            {/* Chrome Engine Button */}
             <button
               onClick={() => { setEngine('chrome'); }}
-              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                engine === 'chrome' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-              }`}
+              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${engine === 'chrome' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+                }`}
             >
-              <Globe size={15} />
+              <div
+                className="relative w-5 h-5 flex items-center justify-center"
+                style={{ transform: 'translateX(1px)' }}
+              >
+                {/* Radar Glow - Chrome Blue (ONLY when active) */}
+                {engine === 'chrome' && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      backgroundColor: '#4285F4',
+                      filter: 'blur(8px)',
+                      opacity: 0.7
+                    }}
+                    animate={{
+                      scale: [1, 1.8, 1],
+                      opacity: [0.7, 0.1, 0.7]
+                    }}
+                    transition={{
+                      duration: 2,
+                      ease: "easeInOut",
+                      repeat: Infinity
+                    }}
+                  />
+                )}
+
+                {/* Logo - Grayscale by default, color on hover OR when active */}
+                <img
+                  src="https://www.google.com/chrome/static/images/chrome-logo.svg"
+                  alt="Chrome logo"
+                  className={`w-full h-full object-contain relative z-10 transition-all duration-300 ${engine === 'chrome' ? '' : 'grayscale hover:grayscale-0'
+                    }`}
+                  loading="lazy"
+                />
+              </div>
               Chrome (Live Scan)
             </button>
+
+            {/* Foxhound Engine Button */}
             <button
               onClick={() => { setEngine('foxhound'); }}
-              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                engine === 'foxhound' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-              }`}
+              className={`relative z-10 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${engine === 'foxhound' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+                }`}
             >
-              <Shield size={15} />
+              <div
+                className="relative w-6 h-6 flex items-center justify-center"
+                style={{ transform: 'translateX(5px)' }}
+              >
+                {/* Radar Glow - Foxhound Brand Color (ONLY when active) */}
+                {engine === 'foxhound' && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      backgroundColor: '#FF5722', // 🔧 Replace with exact Foxhound brand color
+                      filter: 'blur(10px)',
+                      opacity: 0.7
+                    }}
+                    animate={{
+                      scale: [1, 1.8, 1],
+                      opacity: [0.7, 0.1, 0.7]
+                    }}
+                    transition={{
+                      duration: 2,
+                      ease: "easeInOut",
+                      repeat: Infinity
+                    }}
+                  />
+                )}
+
+                {/* Logo - Grayscale by default, color on hover OR when active */}
+                <img
+                  src="/graphics/foxhound-logo.png"
+                  alt="Foxhound logo"
+                  className={`w-full h-full object-contain relative z-10 transition-all duration-300 ${engine === 'foxhound' ? '' : 'grayscale hover:grayscale-0'
+                    }`}
+                  loading="lazy"
+                />
+              </div>
               Foxhound (Taint Tracking)
             </button>
           </div>
@@ -863,7 +931,7 @@ export const LiveScan: React.FC = () => {
           {scanning ? (
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">
-                <motion.div 
+                <motion.div
                   className="flex-1 py-3 bg-cyan-500/10 text-cyan-400 border border-cyan-500/40 rounded-xl font-medium text-sm flex items-center justify-center gap-3 backdrop-blur-sm transition-all shadow-sm hover:shadow-md"
                   animate={{ boxShadow: ['0 0 20px rgba(0, 255, 255, 0.3)', '0 0 40px rgba(0, 255, 255, 0.6)', '0 0 20px rgba(0, 255, 255, 0.3)'] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -871,7 +939,7 @@ export const LiveScan: React.FC = () => {
                   <Loader2 size={16} className="animate-spin" />
                   <span className="font-mono">Processing: {validUrlsToScan.length} targets</span>
                 </motion.div>
-                
+
                 <div className="flex flex-wrap gap-2 justify-center sm:justify-start w-full sm:w-auto">
                   <motion.button
                     onClick={skipIteration}
@@ -897,7 +965,7 @@ export const LiveScan: React.FC = () => {
                       Skip Domain
                     </motion.button>
                   )}
-                  
+
                   <motion.button
                     onClick={stopAllScans}
                     disabled={stopping}
@@ -910,7 +978,7 @@ export const LiveScan: React.FC = () => {
                   </motion.button>
                 </div>
               </div>
-              
+
               {/* Help text for stopping */}
               <p className="text-[10px] text-muted-foreground text-center italic">
                 Stopping all sessions will terminate the current URL and prevent further URLs in the list from starting.
@@ -928,7 +996,7 @@ export const LiveScan: React.FC = () => {
                 <Play size={20} fill="currentColor" />
                 <span>Start Discovery Scan ({validUrlsToScan.length})</span>
               </motion.button>
-              
+
               {validUrlsToScan.length > 5 && (
                 <span className="text-xs text-muted-foreground font-mono bg-muted/30 px-3 py-1 rounded-full border border-border/40">
                   Batch Mode Active
@@ -983,7 +1051,7 @@ export const LiveScan: React.FC = () => {
                           <motion.div
                             className="absolute top-0 left-0 h-full bg-cyan-300 rounded-full shadow-[0_0_15px_rgba(0,255,255,0.8),0_0_30px_rgba(0,255,255,0.4)]"
                             initial={{ width: "0%", backgroundPosition: "100% 0%" }}
-                            animate={{ 
+                            animate={{
                               width: `${phase.progress}%`,
                               backgroundPosition: ["200% 0%", "-200% 0%"]
                             }}
@@ -994,7 +1062,7 @@ export const LiveScan: React.FC = () => {
                             style={{ backgroundSize: "200% 100%" }}
                           />
                           {/* Scanning Line Effect */}
-                          <motion.div 
+                          <motion.div
                             className="absolute top-0 left-0 h-full w-1 bg-white opacity-80 rounded-full scanner-line"
                             initial={{ x: '-100%' }}
                             animate={{ x: `calc(${phase.progress}% - 2px)` }}
