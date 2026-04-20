@@ -6,3 +6,5 @@ pandas
 matplotlib
 python-multipart
 psutil
+config
+

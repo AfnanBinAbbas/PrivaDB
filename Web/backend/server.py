@@ -34,7 +34,7 @@ except ImportError as e:
     logger.error(f"Failed to import engine modules: {e}")
     config = None
 
-app = FastAPI(title="Pixel Perfect Playbook Backend")
+app = FastAPI(title="PrivaDB Backend")
 
 # Enable CORS for frontend
 app.add_middleware(

@@ -41,14 +41,14 @@ const ScanResults: React.FC = () => {
 
   useEffect(() => {
     fetchResults();
-    
+
     // Retry every 60 seconds if there's no data
     const interval = setInterval(() => {
       if (!data) {
         fetchResults();
       }
     }, 60000);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -56,27 +56,27 @@ const ScanResults: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       const response = await fetch('http://localhost:8000/scan/results', {
         headers: { 'Content-Type': 'application/json' },
         signal: AbortSignal.timeout(30000) // 30 second timeout
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData.detail || 
-          errorData.error || 
+          errorData.detail ||
+          errorData.error ||
           `Server error: ${response.status} ${response.statusText}`
         );
       }
-      
+
       const result = await response.json();
       setData(result);
       setError(null);
     } catch (err) {
       let errorMessage = 'Unknown error occurred';
-      
+
       if (err instanceof TypeError) {
         if (err.message.includes('Failed to fetch')) {
           errorMessage = 'Cannot connect to backend server. Is it running on port 8000?';
@@ -88,7 +88,7 @@ const ScanResults: React.FC = () => {
       } else if (err instanceof Error) {
         errorMessage = err.message;
       }
-      
+
       setError(errorMessage);
       console.error('Error fetching results:', err);
     } finally {
@@ -96,7 +96,7 @@ const ScanResults: React.FC = () => {
       setRetrying(false);
     }
   };
-  
+
   const handleRetry = async () => {
     setRetrying(true);
     await fetchResults();
@@ -171,7 +171,7 @@ const ScanResults: React.FC = () => {
         animate={{ opacity: 1 }}
         className="flex flex-col items-center justify-center p-12 bg-muted/30 rounded-xl border border-secondary"
       >
-        <motion.div 
+        <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           className="rounded-full h-16 w-16 border-2 border-cyan-500/30 border-t-cyan-400 mb-4 shadow-[0_0_20px_rgba(0,255,255,0.5)]"
@@ -189,7 +189,7 @@ const ScanResults: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-red-500/5 border border-red-500/20 rounded-xl p-8 text-center"
       >
-        <motion.div 
+        <motion.div
           className="flex justify-center mb-4"
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
@@ -291,7 +291,7 @@ const ScanResults: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="glass rounded-xl p-4 text-center border border-blue-500/20 hover:border-blue-500/40 transition-colors"
           >
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
+            <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               <BarChart3 className="mx-auto h-8 w-8 text-blue-400 mb-2 drop-shadow-lg" />
             </motion.div>
             <div className="text-2xl font-bold text-blue-400">{data.summary.total_scans}</div>
@@ -304,7 +304,7 @@ const ScanResults: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="glass rounded-xl p-4 text-center border border-green-500/20 hover:border-green-500/40 transition-colors"
           >
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
+            <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               <CheckCircle className="mx-auto h-8 w-8 text-green-400 mb-2 drop-shadow-lg" />
             </motion.div>
             <div className="text-2xl font-bold text-green-400">{data.summary.completed_scans}</div>
@@ -330,7 +330,7 @@ const ScanResults: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="glass rounded-xl p-4 text-center border border-purple-500/20 hover:border-purple-500/40 transition-colors"
           >
-            <motion.div animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
+            <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               <Database className="mx-auto h-8 w-8 text-purple-400 mb-2 drop-shadow-lg" />
             </motion.div>
             <div className="text-2xl font-bold text-purple-400">{stats.unique}</div>
@@ -385,7 +385,7 @@ const ScanResults: React.FC = () => {
         {/* Results Table */}
         <div className="glass rounded-xl p-4">
           <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <Database className="text-cyan-400" size={24} />
               Detected Tracking Identifiers
             </h3>
@@ -393,7 +393,7 @@ const ScanResults: React.FC = () => {
               Showing {Object.keys(filteredResults).length} domains with activity
             </div>
           </div>
-          
+
           <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
             {Object.entries(filteredResults).map(([domainKey, items]) => {
               const [engine, domain] = domainKey.split(':');
@@ -404,13 +404,12 @@ const ScanResults: React.FC = () => {
                       <Globe size={16} />
                       <span className="tracking-tight">{domain}</span>
                     </div>
-                    <span className={`px-3 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase ${
-                      engine === 'chrome' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
-                    }`}>
+                    <span className={`px-3 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase ${engine === 'chrome' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
+                      }`}>
                       {engine}
                     </span>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 gap-2">
                     {items.map((item, idx) => (
                       <ResultRow key={idx} item={item} idx={idx} domain={domain} engine={engine} />
@@ -443,15 +442,13 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: Math.min(idx * 0.05, 0.5) }}
-      className={`group border rounded-lg overflow-hidden transition-all duration-300 ${
-        isExpanded ? 'bg-background/60 border-cyan-500/30 shadow-lg shadow-cyan-950/20' : 
+      className={`group border rounded-lg overflow-hidden transition-all duration-300 ${isExpanded ? 'bg-background/60 border-cyan-500/30 shadow-lg shadow-cyan-950/20' :
         isThirdParty ? 'border-red-500/20 bg-red-500/3 hover:bg-background/40' : 'border-border/30 bg-background/20 hover:bg-background/40'
-      }`}
+        }`}
     >
       {/* Domain + Tracker Party Banner */}
-      <div className={`flex items-center justify-between px-3 py-1.5 border-b text-[10px] font-mono ${
-        isThirdParty ? 'border-red-500/20 bg-red-500/5' : 'border-green-500/20 bg-green-500/5'
-      }`}>
+      <div className={`flex items-center justify-between px-3 py-1.5 border-b text-[10px] font-mono ${isThirdParty ? 'border-red-500/20 bg-red-500/5' : 'border-green-500/20 bg-green-500/5'
+        }`}>
         <div className="flex items-center gap-1.5 text-muted-foreground">
           <Globe size={10} />
           <span className="font-bold text-foreground/80">{domain}</span>
@@ -463,22 +460,20 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${
-            isThirdParty
-              ? 'bg-red-500/10 text-red-400 border-red-500/30'
-              : 'bg-green-500/10 text-green-400 border-green-500/30'
-          }`}>
+          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border ${isThirdParty
+            ? 'bg-red-500/10 text-red-400 border-red-500/30'
+            : 'bg-green-500/10 text-green-400 border-green-500/30'
+            }`}>
             {isThirdParty ? '3rd Party' : '1st Party'}
           </span>
-          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
-            engine === 'chrome' ? 'text-blue-300' : 'text-orange-300'
-          }`}>
+          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${engine === 'chrome' ? 'text-blue-300' : 'text-orange-300'
+            }`}>
             {engine}
           </span>
         </div>
       </div>
 
-      <div 
+      <div
         className="grid grid-cols-[auto_minmax(100px,2fr)_minmax(100px,1.5fr)_auto_auto] items-center gap-4 p-3 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
@@ -493,7 +488,7 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
             </div>
           )}
         </div>
-        
+
         <div className="min-w-0">
           <div className="font-mono text-sm font-bold text-foreground/90 truncate" title={item.idb_value}>
             {item.idb_value}
@@ -554,7 +549,7 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-3">
                 <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Tracking Meta</h4>
                 <div className="space-y-2">
@@ -578,11 +573,11 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
                   </div>
                 </div>
               </div>
-              
+
               <div className="md:col-span-2 pt-2 space-y-4">
                 <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2">Taint Tracking Path</h4>
                 <TaintFlowGraph item={item} />
-                
+
                 <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2">Raw Value (Scrollable)</h4>
                 <div className="p-4 bg-black/40 rounded border border-border/30 font-mono text-base text-cyan-300 break-all max-h-48 overflow-y-auto">
                   {item.idb_value}
@@ -598,35 +593,35 @@ const ResultRow: React.FC<{ item: ScanResult; idx: number; domain: string; engin
 /* ── TaintFlowGraph Component ────────────────────────────────────── */
 const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
   const is3rdParty = item.tracker_category === 'third_party';
-  
+
   const nodes = [
-    { 
-      id: 'source', 
-      label: 'IndexedDB Source', 
+    {
+      id: 'source',
+      label: 'IndexedDB Source',
       sub: `${item.database} / ${item.key}`,
       icon: Database,
       color: 'text-cyan-400',
       description: 'Dynamic data extracted from persistent storage.'
     },
-    { 
-      id: 'hook', 
-      label: 'Privacy Hook', 
+    {
+      id: 'hook',
+      label: 'Privacy Hook',
       sub: 'Proxy: IDBRequest.get()',
       icon: Shield,
       color: 'text-blue-400',
       description: 'Taint engine intercepts retrieval and labels value.'
     },
-    { 
-      id: 'filter', 
-      label: 'Security Shield', 
+    {
+      id: 'filter',
+      label: 'Security Shield',
       sub: is3rdParty ? '3rd Party Detected' : '1st Party Verified',
       icon: Filter,
       color: is3rdParty ? 'text-red-400' : 'text-green-400',
       description: 'Party-segregation filter identifies exfiltration intent.'
     },
-    { 
-      id: 'sink', 
-      label: 'Network Sink', 
+    {
+      id: 'sink',
+      label: 'Network Sink',
       sub: item.is_exfiltrated ? (item.responsible_tracker || 'Exfiltration') : 'Access Denied',
       icon: Zap,
       color: item.is_exfiltrated ? 'text-red-500' : 'text-gray-500',
@@ -657,7 +652,7 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
                     {node.sub}
                   </div>
                 </div>
-                
+
                 {/* Expandable node info */}
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-[120%] left-1/2 -translate-x-1/2 w-56 p-3 glass-strong rounded-lg z-50 text-xs pointer-events-none border border-border/30">
                   {node.description}
@@ -667,13 +662,13 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
               {i < nodes.length - 1 && (
                 <div className="flex-1 flex items-center justify-center my-2 md:my-0 md:-mx-4 h-8 md:h-auto">
                   <div className="relative w-1 h-8 md:w-full md:h-1 bg-border/40 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className={`absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r ${is3rdParty ? 'from-red-500 to-red-400' : 'from-blue-500 to-cyan-400'}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: [0, 1, 0] }}
-                      transition={{ 
-                        duration: 1.5, 
-                        repeat: Infinity, 
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
                         ease: 'linear',
                         delay: i * 0.4
                       }}
@@ -685,7 +680,7 @@ const TaintFlowGraph: React.FC<{ item: ScanResult }> = ({ item }) => {
           );
         })}
       </div>
-      
+
       {/* Background connecting lines (SVG) */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
         <defs>
