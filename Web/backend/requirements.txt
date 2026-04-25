@@ -6,5 +6,5 @@ pandas
 matplotlib
 python-multipart
 psutil
-config
-
+httpx
+pydantic>=2.5.0,<3.0.0

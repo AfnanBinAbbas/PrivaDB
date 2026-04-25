@@ -15,7 +15,7 @@ import logging
 from collections import Counter
 from urllib.parse import urlparse, parse_qs, unquote
 
-import config
+import app_config as config
 
 logger = logging.getLogger(__name__)
 

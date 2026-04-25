@@ -17,8 +17,7 @@ import json
 import logging
 import sys
 import os
-import config
-
+import app_config as config
 
 class Tee:
     """Duplicates stdout to both the original stdout and a file."""

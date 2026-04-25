@@ -59,12 +59,12 @@ export const LiveExfiltrationMap: React.FC = () => {
         const res = await fetch('http://localhost:8000/scan/results', {
           signal: AbortSignal.timeout(15000)
         });
-        
+
         if (!res.ok) {
           const errorData = await res.json().catch(() => ({}));
           throw new Error(errorData.detail || `Failed to fetch results: ${res.statusText}`);
         }
-        
+
         const data = await res.json();
         if (!data || (typeof data !== 'object')) {
           throw new Error('Invalid response format');
@@ -141,7 +141,7 @@ export const LiveExfiltrationMap: React.FC = () => {
           uniqueTrackers: trackers.size,
           uniqueDatabases: databases.size
         });
-        
+
         setLoading(false);
       } catch (e) {
         const errorMsg = e instanceof Error ? e.message : 'Unknown error occurred';
@@ -249,13 +249,13 @@ export const LiveExfiltrationMap: React.FC = () => {
     <div className="glass rounded-3xl p-4 sm:p-6 border border-cyan-500/10 relative overflow-hidden min-h-[400px] h-[50vh] md:h-[600px] bg-[#020d1a]">
       {/* Loading State */}
       {loading && !error && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 flex items-center justify-center bg-cyan-500/10 backdrop-blur-sm z-10 neon-glow-cyan"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           <div className="text-center">
-            <motion.div 
+            <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
               className="rounded-full h-16 w-16 border-2 border-cyan-500/30 border-t-cyan-400 mx-auto mb-4 shadow-[0_0_30px_rgba(0,255,255,0.5)]"
@@ -265,15 +265,15 @@ export const LiveExfiltrationMap: React.FC = () => {
           </div>
         </motion.div>
       )}
-      
+
       {/* Error State */}
       {error && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 flex items-center justify-center bg-red-500/10 backdrop-blur-sm z-10 neon-glow-pink"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <motion.div 
+          <motion.div
             className="text-center bg-background/90 backdrop-blur-sm rounded-xl p-6 border border-red-500/30"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
@@ -294,7 +294,7 @@ export const LiveExfiltrationMap: React.FC = () => {
           </motion.div>
         </motion.div>
       )}
-      
+
       {/* Background World Map */}
       <svg className="absolute inset-0 w-full h-full opacity-20">
         <defs>

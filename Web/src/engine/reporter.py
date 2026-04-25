@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use("Agg")  # Non-interactive backend for server/headless
 import matplotlib.pyplot as plt
 
-import config
+import app_config as config
 from detector import compute_paper_metrics
 
 logger = logging.getLogger(__name__)

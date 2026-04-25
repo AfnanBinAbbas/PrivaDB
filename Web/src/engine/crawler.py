@@ -13,10 +13,8 @@ import signal
 import psutil
 from urllib.parse import urlparse
 from datetime import datetime
-
 from playwright.async_api import async_playwright
-
-import config
+import app_config as config
 
 # Disable D-Bus for Firefox to prevent headless mode crashes on systems without proper D-Bus
 # This is set before Playwright is imported to ensure all Firefox processes inherit these settings
