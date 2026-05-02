@@ -20,6 +20,7 @@ Web/package-lock.json
 # Node dependencies
 node_modules/
 **/dist/
+**/package-lock.json
 
 # Python dependencies
 **/__pycache__/
