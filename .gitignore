@@ -13,7 +13,7 @@ Web/dev_server.log
 **/charts/
 
 # Binaries & Large Files
-Web/foxhound/
+#Web/foxhound/
 submodules/foxhound/
 Web/package-lock.json
 
