@@ -70,7 +70,8 @@ PrivaDB operates in two stages. Run these in separate terminal sessions:
 #### **Stage A: The Intelligence Backend**
 Starts the FastAPI server which manages scan tasks and results.
 ```bash
-cd Web/backend
+cd Web/backend
+source venv/bin/activate   # Activate the virtual env
 python server.py
 ```
 
@@ -128,6 +129,19 @@ PrivaDB/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+## Troubleshooting & Common Errors
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `invalid ELF header` when launching Foxhound | Git LFS files not pulled – `libxul.so` is a small pointer file instead of the real binary. | Run `git lfs pull` from the repository root. Then verify: `file Web/foxhound/foxhound` should show `ELF 64-bit LSB executable`. |
+| `A module that was compiled using NumPy 1.x cannot be run in NumPy 2.x` | NumPy 2.x was installed automatically, but `pandas`, `numexpr`, `bottleneck` are not yet compatible. | Inside your virtual environment: `pip install 'numpy<2'`. Or re‑create the venv and use the provided `requirements.txt`. |
+| `address already in use` on port 8000 | Another process (e.g., a Docker container or previous server) is occupying the port. | `sudo fuser -k 8000/tcp` or `docker stop $(docker ps -q --filter publish=8000)`. |
+| Browser does not open (Linux, headless=False) | No X11 display available. | The crawler automatically falls back to Xvfb. Install it: `sudo apt install xvfb`. Or run in headless mode from the dashboard. |
+| Playwright warns “your OS is not officially supported” | Running on a distribution not in the official list (e.g., Pop!_OS). | This is safe – Playwright will download a fallback build for Ubuntu 22.04. Ignore the warning. |
+| `Foxhound binary not found` | The symbolic link or binary path is incorrect. | Ensure `Web/foxhound/foxhound` exists and is executable. Re‑run `git lfs pull`. |
+| `_ARRAY_API not found` or `AttributeError: _ARRAY_API not found` | Incompatible NumPy version again. | Re‑install NumPy 1.x as described above, then reinstall `numexpr` and `bottleneck`: `pip install --force-reinstall numexpr bottleneck`. |
+| `C extension: None not built` while importing pandas | Pandas is being imported from a source directory (accidental local folder) or the installation is incomplete. | Always run from the virtual environment; never keep a local `pandas/` folder. Reinstall pandas: `pip install --force-reinstall pandas`. |
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 ## Legal & Intellectual Property
 Copyright (c) 2026 Afnan Bin Abbas. **All Rights Reserved.**
 
