@@ -23,26 +23,44 @@
 ## Deployment & Execution Guide
 
 ### 1. Prerequisites (Prepare Your System)
-Ensure you have the following installed before proceeding:
+
 - **Python 3.10+** (Required for the analysis engine and backend)
 - **Node.js 18+ & NPM** (Required for the intelligence dashboard)
-- **Foxhound Submodule**: Ensure submodules are initialized for the Firefox engine.
-- **Chrome Playwright**: For standard Chromium-based analysis.
+- **Git LFS** (Required – the Foxhound binary is stored with Git Large File Storage)
+- **Playwright** (Manages browser dependencies)
 
 ### 2. Physical Installation
+
+> **IMPORTANT: Complete pull using Git LFS**  
+> The Foxhound binary (especially `libxul.so`) is too large for GitHub and is stored via LFS.  
+> **If you skip `git lfs pull`, you will get the `invalid ELF header` error when launching a scan.**
+
 ```bash
 # Clone the repository
 git clone https://github.com/AfnanBinAbbas/PrivaDB.git
 cd PrivaDB
 
-# Install Python dependencies
-pip install -r requirements.txt
+# *** CRITICAL: Pull all Git LFS objects ***
+git lfs pull
 
-# Install Playwright browser binaries
+# Now navigate to the backend for Python setup
+cd Web/backend
+
+# Create and activate a virtual environment (strongly recommended)
+python3 -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+# Upgrade pip and install Python dependencies
+pip install --upgrade pip
+pip install -r ../requirements.txt
+
+# Install Playwright browsers (Firefox is needed for Foxhound)
+playwright install firefox
+# Optional: also install Chromium for the Chrome engine
 playwright install chromium
 
-# Install Frontend dependencies
-cd Web
+# Install frontend dependencies
+cd ../   # back to Web/
 npm install
 ```
 
@@ -91,16 +109,20 @@ PrivaDB/
 ├── ATTRIBUTION.md       # Open-source acknowledgements and credits
 ├── LICENSE              # Proprietary license information
 ├── References/          # Academic papers and research material
-├── third_party/         # Submodules (e.g., Foxhound engine integration)
+├── third_party/         # Submodules (e.g., Comparative-Privacy-Analysis)
+├── foxhound-engine/     # External reference (if any)
 └── Web/                 # Core Monorepo
     ├── backend/         # FastAPI Engine Controller
     │   └── server.py    # Orchestrates scan tasks and results
+    ├── foxhound/        # Custom Firefox build (stored with Git LFS)
     ├── public/          # Static assets (logos, 3D graphics)
+    ├── requirements.txt # Python dependencies
     └── src/
         ├── components/  # React/Vite UI Dashboard
         └── engine/      # Python Analysis Core (Crawling & Heuristics)
             ├── config.py
             ├── crawler.py
+            ├── detector.py
             └── reporter.py
 ```
 
