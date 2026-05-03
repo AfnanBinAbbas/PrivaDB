@@ -1,0 +1,40 @@
+FROM mcr.microsoft.com/playwright/python:v1.55.0-noble
+
+WORKDIR /app
+
+# Install build tools (only needed for some Python packages)
+RUN apt-get update && apt-get install -y gcc g++ make && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies
+COPY Web/requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire Web/ directory (backend code + foxhound + src/engine)
+COPY Web/ ./
+
+# Make Foxhound binary executable
+RUN chmod +x /app/foxhound/foxhound
+
+# Create symlink from the expected path to the actual binary location
+RUN mkdir -p /app/foxhound-engine && \
+    ln -s /app/foxhound/foxhound /app/foxhound-engine/foxhound
+
+# Install Playwright browsers (needs root)
+RUN python -m playwright install firefox chromium && \
+    python -m playwright install-deps
+
+# Create a non‑root user for runtime
+RUN groupadd -r privadb && useradd -r -g privadb privadb
+
+# Make the results directory writable by privadb
+RUN mkdir -p /app/src/engine/results && \
+    chown -R privadb:privadb /app/src/engine/results
+
+# Environment variable for Foxhound
+ENV FOXHOUND_BIN=/app/foxhound-engine/foxhound
+
+# Switch to the non‑root user
+USER privadb
+
+EXPOSE 8000
+CMD ["uvicorn", "backend.server:app", "--host", "0.0.0.0", "--port", "8000"]

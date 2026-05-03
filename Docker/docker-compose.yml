@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..                    # project root (one level up)
+      dockerfile: Docker/Dockerfile.backend
+    container_name: privadb-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - FOXHOUND_BIN=/app/foxhound-engine/foxhound
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    networks:
+      - privadb-net
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile.frontend
+    container_name: privadb-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - privadb-net
+
+networks:
+  privadb-net:
+    driver: bridge
