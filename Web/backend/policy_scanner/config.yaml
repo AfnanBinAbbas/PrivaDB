@@ -1,0 +1,68 @@
+timeout_seconds: 10
+user_agents:
+  - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15"
+paths_to_check:
+  - "/privacy"
+  - "/privacy-policy"
+  - "/terms"
+  - "/legal"
+frameworks:
+  GDPR:
+    - clause: "Article 7 – Consent"
+      keywords: ["consent", "opt-in", "opt in", "prior consent"]
+      severity: "high"
+      reason: "Requires explicit user consent before data collection."
+      remediation: "Add clear consent mechanisms and explanations."
+    - clause: "Right to Access"
+      keywords: ["right to access", "access your data", "data portability"]
+      severity: "medium"
+      reason: "Users must be able to request a copy of their personal data."
+      remediation: "Provide a data-access request form or instructions."
+    - clause: "Right to Erasure"
+      keywords: ["right to erasure", "delete your data", "right to be forgotten"]
+      severity: "high"
+      reason: "Users must be able to request deletion of their personal data."
+      remediation: "Add clear instructions on how users can request data deletion."
+    - clause: "DPO Contact"
+      keywords: ["dpo", "data protection officer"]
+      severity: "medium"
+      reason: "Companies processing significant data need a designated DPO."
+      remediation: "Provide contact details for the Data Protection Officer."
+    - clause: "Data Breach Notification"
+      keywords: ["data breach", "breach notification"]
+      severity: "high"
+      reason: "Users must be notified within 72 hours of a data breach."
+      remediation: "Include a section explaining the data breach protocol."
+  CCPA:
+    - clause: "Do Not Sell My Info"
+      keywords: ["do not sell", "opt-out", "opt out"]
+      severity: "high"
+      reason: "Requires a clear link to opt-out of data selling."
+      remediation: "Add a clear 'Do Not Sell My Personal Information' link."
+    - clause: "Notice at Collection"
+      keywords: ["categories of personal information", "notice at collection"]
+      severity: "medium"
+      reason: "Users must be informed about data categories being collected."
+      remediation: "List the categories of personal information collected."
+    - clause: "Financial Incentive"
+      keywords: ["financial incentive", "price difference"]
+      severity: "low"
+      reason: "Notice is required if financial incentives are offered for data."
+      remediation: "Explain any financial incentives linked to data collection."
+  ePrivacy:
+    - clause: "Cookie Consent"
+      keywords: ["cookie consent", "cookie policy"]
+      severity: "high"
+      reason: "Consent must be obtained before storing non-essential cookies."
+      remediation: "Implement a cookie banner requiring opt-in."
+    - clause: "Prior Consent for Storage"
+      keywords: ["prior consent for storage", "before storing"]
+      severity: "high"
+      reason: "Explicit consent is needed before storing trackers."
+      remediation: "Ensure trackers are not set until consent is given."
+    - clause: "Information about tracking"
+      keywords: ["information about tracking", "tracking technologies"]
+      severity: "medium"
+      reason: "Users must be informed about the tracking technologies used."
+      remediation: "Provide details on all tracking technologies used on the site."

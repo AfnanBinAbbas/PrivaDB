@@ -11,6 +11,7 @@ import uuid
 import datetime
 from urllib.parse import urlparse
 from fastapi.middleware.cors import CORSMiddleware
+from policy_scanner.api import router as policy_router
 import logging
 import re
 
@@ -490,6 +491,8 @@ def _is_irrelevant_value(value: str, key: str) -> bool:
     if any(kw in key_lower for kw in location_keywords):
         return True
     return False
+
+app.include_router(policy_router, prefix="/api/v1")
 
 if __name__ == "__main__":
     import uvicorn

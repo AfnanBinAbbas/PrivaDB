@@ -1,0 +1,13 @@
+# Instructions for patching Web/backend/server.py
+
+1. Add the import statement near the top (e.g. after `from fastapi.middleware.cors import CORSMiddleware`):
+
+```python
+from policy_scanner.api import router as policy_router
+```
+
+2. Add the router inclusion before the `if __name__ == "__main__":` block:
+
+```python
+app.include_router(policy_router, prefix="/api/v1")
+```

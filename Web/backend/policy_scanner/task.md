@@ -1,0 +1,20 @@
+- [x] Create backend package `policy_scanner`
+  - [x] Add `__init__.py`
+  - [x] Add `exceptions.py`
+  - [x] Add `config.yaml`
+  - [x] Implement `fetcher.py`
+  - [x] Implement `analyzer.py`
+  - [x] Implement `api.py`
+  - [x] Add `README.md`
+  - [x] Add `requirements_policy_scanner.txt`
+  - [x] Write unit tests `tests/test_policy_scanner.py`
+- [x] Create frontend components under `src/components/PolicyScanner`
+  - [x] `PolicyScanButton.tsx`
+  - [x] `PolicyResults.tsx`
+  - [x] `index.ts`
+- [x] Create integration instruction files
+  - [x] `Web/backend/server_patch_instructions.txt`
+  - [x] `Web/src/integration_patch.txt`
+- [x] Verify build and run tests
+  - [x] Run `pytest`
+  - [ ] Manual UI verification
