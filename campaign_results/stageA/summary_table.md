@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **1083/10000** terminal (1082 done, 1 failed) · running/pending: 8917
+Progress: **1210/10000** terminal (1209 done, 1 failed) · running/pending: 8790
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T17:19:32+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T17:49:48+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 243676 |
-| storage exfils | 253697 |
-| IndexedDB databases | 979 |
-| IndexedDB records | 1775 |
-| exfil events | 5240 |
-| idb-hook flows | 820 |
+| taint flows | 270569 |
+| storage exfils | 287911 |
+| IndexedDB databases | 1122 |
+| IndexedDB records | 2043 |
+| exfil events | 5624 |
+| idb-hook flows | 831 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -23,16 +23,16 @@ Top sites by taint flows:
 | sharethrough.com | 8574 |
 | hostgator.com.br | 7160 |
 | zoho.com | 4466 |
+| amap.com | 3636 |
 | capcut.com | 3480 |
 | ups.com | 2605 |
+| siemens.com | 2448 |
 | afternic.com | 2123 |
+| vnexpress.net | 2102 |
+| clarin.com | 1968 |
 | gamepass.com | 1871 |
 | adobe.net | 1840 |
-| adobe.com | 1621 |
-| theverge.com | 1495 |
-| imgur.com | 1444 |
-| xboxlive.com | 1435 |
-| biblegateway.com | 1393 |
+| battle.net | 1649 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -44,15 +44,15 @@ Sites with IndexedDB records (mission scope):
 | pinterest.com | 88 |
 | businessinsider.com | 75 |
 | pinimg.com | 74 |
+| clarin.com | 70 |
 | cnn.com | 66 |
 | accuweather.com | 65 |
 | independent.co.uk | 63 |
 | washingtonpost.com | 60 |
+| lanacion.com.ar | 60 |
 | tiktok.com | 59 |
+| cricinfo.com | 42 |
 | flightradar24.com | 39 |
-| aol.com | 38 |
-| biblegateway.com | 35 |
-| atlassian.net | 35 |
 
 Failed sites (1): youtube.com
 
