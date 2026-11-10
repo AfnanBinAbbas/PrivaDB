@@ -219,7 +219,7 @@ const ScanResults: React.FC = () => {
             )}
           </motion.button>
           <motion.a
-            href="http://localhost:8081"
+            href="/"
             className="px-6 py-2 bg-muted text-foreground rounded-lg hover:bg-muted/80"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

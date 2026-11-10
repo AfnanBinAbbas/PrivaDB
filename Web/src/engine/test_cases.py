@@ -27,7 +27,7 @@ from urllib.parse import urlparse
 
 from playwright.async_api import async_playwright
 
-import config
+import app_config as config
 from crawler import SiteCrawler, EXTRACT_INDEXEDDB_SCRIPT
 from detector import (
     analyze_site,

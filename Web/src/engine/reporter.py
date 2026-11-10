@@ -151,9 +151,17 @@ def _write_tracking_csv(results: list[dict]):
     """Write one row per exfiltration event to CSV."""
     path = os.path.join(config.ANALYSIS_DIR, "tracking_events.csv")
 
+    def _clip(v):
+        """Clip value fields for the CSV so embedded scripts/commas stay sane."""
+        v = "" if v is None else str(v)
+        if len(v) > 500:
+            v = v[:500] + "…[truncated]"
+        return v
+
     fieldnames = [
         "site_domain",
         "site_url",
+        "mechanism",
         "flow_direction",
         "confinement",
         "cross_origin",
@@ -176,6 +184,10 @@ def _write_tracking_csv(results: list[dict]):
         "is_third_party",
         "is_known_tracker",
         "confidence",
+        "source_function",
+        "source_line",
+        "storage_source",
+        "target",
     ]
 
     with open(path, "w", newline="", encoding="utf-8") as f:
@@ -189,7 +201,7 @@ def _write_tracking_csv(results: list[dict]):
             # Outflow flows (exfiltrations)
             for evt in r.get("exfiltration_events", []):
                 import hashlib
-                val = evt.get("identifier_value", "")
+                val = _clip(evt.get("identifier_value", ""))
                 val_hash = hashlib.sha256(val.encode()).hexdigest()[:16]
                 # Extract the IDB key name from the reason (e.g. "idb_key:userId")
                 reason = evt.get("identifier_reason", "")
@@ -201,6 +213,7 @@ def _write_tracking_csv(results: list[dict]):
                 writer.writerow({
                     "site_domain": domain,
                     "site_url": url,
+                    "mechanism": "stealth",
                     "flow_direction": evt.get("flow_direction", "outflow"),
                     "confinement": evt.get("confinement", ""),
                     "cross_origin": evt.get("cross_origin", ""),
@@ -216,13 +229,17 @@ def _write_tracking_csv(results: list[dict]):
                     "identifier_entropy": round(evt.get("identifier_entropy", 0), 2),
                     "changed_across_iterations": evt.get("changed_across_iterations", ""),
                     "tracker_domain": tracker,
-                    "request_url": evt.get("request_url", ""),
+                    "request_url": _clip(evt.get("request_url", "")),
                     "request_method": evt.get("request_method", ""),
                     "request_domain": req_domain,
                     "match_location": evt.get("match_location", ""),
                     "is_third_party": evt.get("is_third_party", False),
                     "is_known_tracker": evt.get("is_known_tracker", False),
                     "confidence": evt.get("confidence", ""),
+                    "source_function": "",
+                    "source_line": "",
+                    "storage_source": "",
+                    "target": _clip(evt.get("request_url", "")),
                 })
 
             # Inflow flows
@@ -234,6 +251,7 @@ def _write_tracking_csv(results: list[dict]):
                 writer.writerow({
                     "site_domain": domain,
                     "site_url": url,
+                    "mechanism": "stealth",
                     "flow_direction": "inflow",
                     "confinement": iflow.get("confinement", "internal"),
                     "cross_origin": iflow.get("cross_origin", ""),
@@ -256,6 +274,92 @@ def _write_tracking_csv(results: list[dict]):
                     "is_third_party": False,
                     "is_known_tracker": False,
                     "confidence": "",
+                    "source_function": "",
+                    "source_line": "",
+                    "storage_source": "",
+                    "target": "",
+                })
+
+            # Taint flows (Foxhound taint tracking)
+            for tf in r.get("taint_flows", []):
+                import hashlib
+                val = _clip(tf.get("tainted_value", ""))
+                val_hash = hashlib.sha256(val.encode()).hexdigest()[:16] if val else ""
+                # Only network sinks carry a real target URL; DOM/execution
+                # sinks (script.text, innerHTML, eval, document.write) may have
+                # raw content that must not be dumped into request_url.
+                net_tf = tf.get("sink_kind") == "EXTERNAL"
+                tf_target = _clip(tf.get("target", "")) if net_tf else ""
+                tf_domain = tf.get("request_domain", "") if net_tf else ""
+
+                writer.writerow({
+                    "site_domain": domain,
+                    "site_url": url,
+                    "mechanism": "taint",
+                    "flow_direction": tf.get("flow_direction", "outflow"),
+                    "confinement": tf.get("confinement", ""),
+                    "cross_origin": tf.get("cross_origin", ""),
+                    "source_class": tf.get("source_operation", ""),
+                    "sink_class": tf.get("sink", ""),
+                    "database": "",
+                    "store": "",
+                    "record_key": "",
+                    "identifier_key": "",
+                    "identifier_value": val,
+                    "identifier_value_hash": val_hash,
+                    "identifier_reason": f"taint:{tf.get('source_hint', '')}",
+                    "identifier_entropy": 0,
+                    "changed_across_iterations": "",
+                    "tracker_domain": tf_domain if tf.get("is_known_tracker") else "",
+                    "request_url": tf_target,
+                    "request_method": "",
+                    "request_domain": tf_domain,
+                    "match_location": "",
+                    "is_third_party": tf.get("is_third_party", False),
+                    "is_known_tracker": tf.get("is_known_tracker", False),
+                    "confidence": tf.get("confidence", ""),
+                    "source_function": tf.get("source_function", ""),
+                    "source_line": tf.get("source_line", ""),
+                    "storage_source": tf.get("storage_source", ""),
+                    "target": tf_target,
+                })
+
+            # IDB hook flows (empirical IDB read -> network send)
+            for hf in r.get("idb_hook_flows", []):
+                import hashlib
+                val = _clip(hf.get("idb_value", ""))
+                val_hash = hashlib.sha256(val.encode()).hexdigest()[:16] if val else ""
+
+                writer.writerow({
+                    "site_domain": domain,
+                    "site_url": url,
+                    "mechanism": "idb_hook",
+                    "flow_direction": hf.get("flow_direction", "outflow"),
+                    "confinement": hf.get("confinement", ""),
+                    "cross_origin": hf.get("cross_origin", ""),
+                    "source_class": hf.get("source_operation", ""),
+                    "sink_class": hf.get("sink", ""),
+                    "database": "",
+                    "store": hf.get("source_store", ""),
+                    "record_key": "",
+                    "identifier_key": "",
+                    "identifier_value": val,
+                    "identifier_value_hash": val_hash,
+                    "identifier_reason": f"idb_hook:{hf.get('sink_hook', '')}",
+                    "identifier_entropy": 0,
+                    "changed_across_iterations": "",
+                    "tracker_domain": hf.get("request_domain", "") if hf.get("is_known_tracker") else "",
+                    "request_url": _clip(hf.get("target", "")),
+                    "request_method": "",
+                    "request_domain": hf.get("request_domain", ""),
+                    "match_location": hf.get("sink_hook", ""),
+                    "is_third_party": hf.get("is_third_party", False),
+                    "is_known_tracker": hf.get("is_known_tracker", False),
+                    "confidence": hf.get("confidence", ""),
+                    "source_function": hf.get("source_function", ""),
+                    "source_line": "",
+                    "storage_source": "idb",
+                    "target": _clip(hf.get("target", "")),
                 })
 
     logger.info(f"📊 Tracking events CSV → {path}")
@@ -350,13 +454,60 @@ def _write_per_site_json(results: list[dict]):
                 "statusCode": status_code if status_code is not None else 200,
                 "domain": domain,
                 "requestUrl": evt.get("request_url", ""),
+                "mechanism": "stealth",
+            })
+
+        # Taint flows
+        for tf in r.get("taint_flows", []):
+            status_code = _find_status_code(tf.get("target", ""), network)
+            entries.append({
+                "databaseName": "",
+                "key": "",
+                "value": tf.get("tainted_value", ""),
+                "source": tf.get("source_operation", ""),
+                "sink": tf.get("sink", ""),
+                "statusCode": status_code if status_code is not None else 200,
+                "domain": domain,
+                "requestUrl": tf.get("target", ""),
+                "mechanism": "taint",
+                "source_function": tf.get("source_function", ""),
+                "source_line": tf.get("source_line", ""),
+                "storage_source": tf.get("storage_source", ""),
+                "confinement": tf.get("confinement", ""),
+                "cross_origin": tf.get("cross_origin", ""),
+                "confidence": tf.get("confidence", ""),
+                "is_third_party": tf.get("is_third_party", False),
+                "is_known_tracker": tf.get("is_known_tracker", False),
+            })
+
+        # IDB hook flows
+        for hf in r.get("idb_hook_flows", []):
+            status_code = _find_status_code(hf.get("target", ""), network)
+            entries.append({
+                "databaseName": "",
+                "key": hf.get("source_store", ""),
+                "value": hf.get("idb_value", ""),
+                "source": hf.get("source_operation", ""),
+                "sink": hf.get("sink", ""),
+                "statusCode": status_code if status_code is not None else 200,
+                "domain": domain,
+                "requestUrl": hf.get("target", ""),
+                "mechanism": "idb_hook",
+                "source_function": hf.get("source_function", ""),
+                "sink_function": hf.get("sink_function", ""),
+                "sink_hook": hf.get("sink_hook", ""),
+                "confinement": hf.get("confinement", ""),
+                "cross_origin": hf.get("cross_origin", ""),
+                "confidence": hf.get("confidence", ""),
+                "is_third_party": hf.get("is_third_party", False),
+                "is_known_tracker": hf.get("is_known_tracker", False),
             })
 
         if entries:
             combined[domain] = entries
 
             # Write individual site JSON
-            safe_domain = domain.replace(".", "_").replace("/", "_")
+            safe_domain = domain.replace(".", "_").replace("/", "_").replace(":", "_")
             site_path = os.path.join(config.ANALYSIS_DIR, f"{safe_domain}.json")
             with open(site_path, "w", encoding="utf-8") as f:
                 json.dump(entries, f, indent=2, ensure_ascii=False, default=str)
@@ -431,6 +582,38 @@ def _write_statistics_json(results: list[dict],
             "known_tracker_exfiltrations": known_tracker_exfils,
             "total_inflow_flows": total_integrity,
             "sites_with_inflow_flows": sites_with_integrity,
+        },
+        "dynamic_flows_summary": {
+            "total": sum(
+                r.get("dynamic_flows", {}).get("total", 0) for r in results
+            ),
+            "taint": sum(
+                r.get("dynamic_flows", {}).get("taint", 0) for r in results
+            ),
+            "idb_hook": sum(
+                r.get("dynamic_flows", {}).get("idb_hook", 0) for r in results
+            ),
+            "high_confidence": sum(
+                r.get("dynamic_flows", {}).get("high_confidence", 0) for r in results
+            ),
+            "medium_confidence": sum(
+                r.get("dynamic_flows", {}).get("medium_confidence", 0) for r in results
+            ),
+            "low_confidence": sum(
+                r.get("dynamic_flows", {}).get("low_confidence", 0) for r in results
+            ),
+            "external": sum(
+                r.get("dynamic_flows", {}).get("external", 0) for r in results
+            ),
+            "tracker_targets": sum(
+                r.get("dynamic_flows", {}).get("tracker_targets", 0) for r in results
+            ),
+            "sites_with_taint_flows": sum(
+                1 for r in results if r.get("taint_flows")
+            ),
+            "sites_with_idb_hook_flows": sum(
+                1 for r in results if r.get("idb_hook_flows")
+            ),
         },
         "confidence_breakdown": {
             "high": high,
@@ -648,11 +831,14 @@ def _print_console_summary(results: list[dict], stats: dict,
         net = r.get("network_summary", {})
         exf = r.get("exfiltration_summary", {})
         fc = r.get("flow_classification", {})
+        dyn = r.get("dynamic_flows", {})
         site_data.append({
             "Domain": r.get("domain", "?"),
             "Net Reqs": net.get("total_requests", 0),
             "IDs Found": r.get("identifiers_found", 0),
             "Exfil": exf.get("total", 0),
+            "Taint": dyn.get("taint", 0),
+            "IDB Hook": dyn.get("idb_hook", 0),
             "HIGH": exf.get("high_confidence", 0),
             "MED": exf.get("medium_confidence", 0),
             "LOW": exf.get("low_confidence", 0),
@@ -663,9 +849,10 @@ def _print_console_summary(results: list[dict], stats: dict,
 
     df_sites = pd.DataFrame(site_data)
 
-    # Show only sites with activity (exfiltrations or inflow flows)
+    # Show only sites with activity (exfiltrations, inflow flows, or dynamic flows)
     df_active = df_sites[
         (df_sites["Exfil"] > 0) | (df_sites["Inflow"] > 0)
+        | (df_sites["Taint"] > 0) | (df_sites["IDB Hook"] > 0)
     ].copy()
 
     if not df_active.empty:

@@ -6,11 +6,14 @@ network requests for downstream tracking detection.
 """
 
 import asyncio
+import functools
 import json
 import os
 import logging
 import signal
+import threading
 import psutil
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 from datetime import datetime
 from playwright.async_api import async_playwright
@@ -128,6 +131,198 @@ async () => {
 }
 """
 
+# ─── Foxhound Taint Collection ──────────────────────────────────────
+# Foxhound's SpiderMonkey engine tags strings that originate from taint
+# sources (document.cookie, location.*, localStorage.getItem, XHR.response,
+# MessageEvent, ...). When a tainted value reaches a sink (fetch.url,
+# XMLHttpRequest.open, navigator.sendBeacon, img.src, form.action, ...) the
+# built-in "taint-exporter@sap.com" extension POSTs {detail, taint} JSON to
+# the pref `tainting.export.url`. We run a tiny local server to collect it.
+# NOTE (verified empirically): IndexedDB reads are NOT taint sources and
+# taint does NOT survive an IDB put/get round-trip, so IDB-origin flows are
+# additionally covered by FLOW_HOOKS_INIT_SCRIPT below.
+
+
+class TaintCaptureServer:
+    """Local HTTP capture endpoint for Foxhound taint export events."""
+
+    def __init__(self):
+        self._server = None
+        self._thread = None
+        self.events = []
+        self._lock = threading.Lock()
+        self.port = None
+
+    def start(self):
+        handler = functools.partial(_TaintHandler, self)
+        self._server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+        self.port = self._server.server_address[1]
+        self._thread = threading.Thread(target=self._server.serve_forever,
+                                        daemon=True)
+        self._thread.start()
+        return self
+
+    def stop(self):
+        if self._server:
+            self._server.shutdown()
+            self._server.server_close()
+            self._server = None
+
+    def add_event(self, data):
+        with self._lock:
+            self.events.append(data)
+
+    def drain(self):
+        with self._lock:
+            out, self.events = self.events, []
+            return out
+
+
+class _TaintHandler(BaseHTTPRequestHandler):
+    """CORS-enabled handler: accepts OPTIONS preflight + JSON POST bodies."""
+
+    def __init__(self, server, *args, **kwargs):
+        self.capture = server
+        super().__init__(*args, **kwargs)
+
+    def _cors_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self._cors_headers()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length) if length else b""
+        try:
+            data = json.loads(body.decode("utf-8", "ignore")) if body else {}
+        except Exception:
+            data = {"raw": body.decode("utf-8", "ignore")}
+        self.capture.add_event(data)
+        self.send_response(200)
+        self._cors_headers()
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(b"{}")
+
+    def log_message(self, fmt, *args):
+        pass
+
+
+# ─── Flow Hooks (IDB read + network send instrumentation) ───────────
+# IndexedDB is a taint blackout for Foxhound (reads are not sources and
+# taint is lost on put/get). To keep the DB->network path visible we wrap
+# IDB reads and network senders in-page and record the value + the JS
+# function that performed the read/send (source/sink function attribution).
+FLOW_HOOKS_INIT_SCRIPT = r"""
+(() => {
+  if (window.__prividb_hooks) return;
+  const H = (window.__prividb_hooks = { reads: [], sends: [] });
+  function push(arr, rec) {
+    try {
+      let v = typeof rec.value === "string" ? rec.value : JSON.stringify(rec.value);
+      if (v !== undefined && v !== null && arr === H.reads && (!v || v === "null")) return;
+      if (v !== undefined) {
+        if (v.length > 2000) v = v.slice(0, 2000);
+        rec.value = v;
+      }
+      if (arr.length >= 1000) arr.shift();
+      arr.push(rec);
+    } catch (e) {}
+  }
+  function caller() {
+    try {
+      const lines = (new Error().stack || "").split("\n").slice(2);
+      for (const l of lines) {
+        const t = l.trim();
+        if (!t.startsWith("at ")) continue;
+        const f = t.slice(3).replace(/\s*\(.*$/, "").trim();
+        const m = t.match(/\(([^)]*)\)\s*$/);
+        return { fn: f, loc: (m && m[1]) || "" };
+      }
+    } catch (e) {}
+    return { fn: "", loc: "" };
+  }
+  // --- IndexedDB reads ---
+  try {
+    for (const proto of [IDBObjectStore.prototype, IDBIndex.prototype]) {
+      const ops = ["get", "getAll", "getAllKeys", "getKey", "openCursor", "openKeyCursor"];
+      for (const op of ops) {
+        const orig = proto[op];
+        if (typeof orig !== "function") continue;
+        proto[op] = function (...args) {
+          const c = caller();
+          const store = (this && this.name) || "";
+          const req = orig.apply(this, args);
+          try {
+            req.addEventListener("success", () => {
+              try {
+                const res = req.result;
+                const vals = Array.isArray(res) ? res : (res && typeof res === "object") ? [res] : [];
+                for (const v of vals) {
+                  push(H.reads, { op, store, value: v, fn: c.fn, loc: c.loc, ts: Date.now() });
+                }
+              } catch (e) {}
+            });
+          } catch (e) {}
+          return req;
+        };
+      }
+    }
+  } catch (e) {}
+  // --- Network senders ---
+  try {
+    const origFetch = window.fetch;
+    window.fetch = function (...args) {
+      const c = caller();
+      const url = (args[0] && args[0].url) || String(args[0] || "");
+      const body = args[1] ? String(args[1].body || "") : "";
+      push(H.sends, { op: "fetch", url, body, fn: c.fn, loc: c.loc, ts: Date.now() });
+      return origFetch.apply(this, args);
+    };
+  } catch (e) {}
+  try {
+    const open = XMLHttpRequest.prototype.open;
+    const send = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function (method, url, ...rest) {
+      const c = caller();
+      this.__prividb_xurl = url;
+      push(H.sends, { op: "XMLHttpRequest.open", url: String(url || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+      return open.apply(this, [method, url, ...rest]);
+    };
+    XMLHttpRequest.prototype.send = function (body) {
+      const c = caller();
+      push(H.sends, { op: "XMLHttpRequest.send", url: this.__prividb_xurl || "", body: String(body || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+      return send.apply(this, [body]);
+    };
+  } catch (e) {}
+  try {
+    const sb = navigator.sendBeacon;
+    navigator.sendBeacon = function (url, data) {
+      const c = caller();
+      push(H.sends, { op: "sendBeacon", url: String(url || ""), body: String(data || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+      return sb.apply(this, arguments);
+    };
+  } catch (e) {}
+  try {
+    Object.defineProperty(Image.prototype, "src", {
+      configurable: true,
+      get() { return this.__prividb_src; },
+      set(v) {
+        const c = caller();
+        this.__prividb_src = v;
+        push(H.sends, { op: "img.src", url: String(v || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+      }
+    });
+  } catch (e) {}
+})();
+"""
+
 
 def _get_firefox_env():
     """Create environment dict for Firefox with D-Bus disabled and display configured."""
@@ -168,8 +363,10 @@ def _kill_browser_processes():
 class SiteCrawler:
     """Crawls a single website — extracts IndexedDB data and network requests."""
 
-    def __init__(self):
+    def __init__(self, taint_capture: TaintCaptureServer = None, hooks: bool = False):
         self.network_requests = []
+        self.taint_capture = taint_capture
+        self.hooks = hooks
 
     async def crawl_site(self, browser, url: str) -> dict:
         """
@@ -183,7 +380,15 @@ class SiteCrawler:
         context = await browser.new_context(
             user_agent=config.USER_AGENT,
             ignore_https_errors=True,
+            no_viewport=True,
         )
+        # Install IDB-read/sender instrumentation before any page exists so
+        # every frame (main + iframes) records source/sink JS functions.
+        if self.hooks:
+            try:
+                await context.add_init_script(script=FLOW_HOOKS_INIT_SCRIPT)
+            except Exception as e:
+                logger.warning(f"  Flow hooks init failed: {e}")
         page = await context.new_page()
         self.network_requests = []
 
@@ -197,6 +402,8 @@ class SiteCrawler:
             "timestamp": datetime.utcnow().isoformat() + "Z",
             "indexeddb": {"databases": []},
             "network_requests": [],
+            "taint_events": [],
+            "flow_hooks": {"reads": [], "sends": []},
             "errors": [],
         }
 
@@ -275,6 +482,34 @@ class SiteCrawler:
         # Attach captured network data
         result["network_requests"] = self.network_requests
         logger.info(f"  Network: {len(self.network_requests)} requests captured")
+
+        # Collect per-frame flow hooks (IDB reads + network sends)
+        if self.hooks:
+            try:
+                hooks = {"reads": [], "sends": []}
+                for frame in page.frames:
+                    try:
+                        frame_hooks = await frame.evaluate("window.__prividb_hooks")
+                        if frame_hooks:
+                            hooks["reads"].extend(frame_hooks.get("reads", []))
+                            hooks["sends"].extend(frame_hooks.get("sends", []))
+                    except Exception:
+                        continue
+                result["flow_hooks"] = hooks
+                logger.info(
+                    f"  Flow hooks: {len(hooks['reads'])} IDB reads, "
+                    f"{len(hooks['sends'])} network sends"
+                )
+            except Exception as e:
+                logger.warning(f"  Flow hook collection failed: {e}")
+
+        # Drain this iteration's Foxhound taint reports (give in-flight
+        # exporter POSTs a moment to arrive)
+        if self.taint_capture is not None:
+            await asyncio.sleep(0.6)
+            taint_events = self.taint_capture.drain()
+            result["taint_events"] = taint_events
+            logger.info(f"  Foxhound taint flows captured: {len(taint_events)}")
 
         await context.close()
         return result
@@ -522,6 +757,7 @@ async def crawl_all_sites(site_limit: int = None,
                 logger.info(f"Launch mode: headless={launch_headless}, DISPLAY={os.environ.get('DISPLAY', 'unset')}")
 
                 browser = None
+                taint_capture = None
                 try:
                     if config.ENGINE == "foxhound":
                         logger.info(f"")
@@ -529,14 +765,31 @@ async def crawl_all_sites(site_limit: int = None,
                         logger.info(f"Executable: {config.FOXHOUND_BIN}")
                         logger.info(f"Headless mode: {launch_headless}")
                         logger.info(f"Foxhound binary exists: {os.path.exists(config.FOXHOUND_BIN)}")
+                        logger.info(f"Foxhound taint tracking: {'ENABLED' if config.TAINT_TRACKING_ENABLED else 'DISABLED'}")
                         logger.info(f"Firefox args: {firefox_args}")
                         logger.info(f"🦊 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 🦊")
+
+                        taint_prefs = {}
+                        if config.TAINT_TRACKING_ENABLED:
+                            # Local capture endpoint for Foxhound taint exports.
+                            # Must exist before launch so the exporter knows where to POST.
+                            taint_capture = TaintCaptureServer().start()
+                            logger.info(f"✓ Taint capture server on 127.0.0.1:{taint_capture.port}")
+                            taint_prefs = {
+                                "tainting.active": True,
+                                "tainting.export.url": f"http://127.0.0.1:{taint_capture.port}/",
+                                # Disable CSP so the exporter's POST to the local
+                                # capture server can't be blocked by page connect-src.
+                                "security.csp.enable": False,
+                            }
+
                         # Use custom Foxhound executable (not Playwright's managed Firefox)
                         browser = await pw.firefox.launch(
                             headless=launch_headless,
                             executable_path=config.FOXHOUND_BIN,
                             args=firefox_args,
                             env=_get_firefox_env(),
+                            firefox_user_prefs=taint_prefs or None,
                             timeout=60000  # 60 seconds (Xvfb startup overhead)
                         )
                         logger.info(f"✓ Foxhound launched successfully")
@@ -550,8 +803,16 @@ async def crawl_all_sites(site_limit: int = None,
                         logger.info(f"✓ Chrome launched successfully")
                         logger.info("✓ Chrome launched successfully")
                         
-                    crawler = SiteCrawler()
+                    crawler = SiteCrawler(
+                        taint_capture=taint_capture,
+                        hooks=(config.ENGINE == "foxhound" and config.TAINT_TRACKING_ENABLED),
+                    )
                     skip_type = None
+                    browser_version = ""
+                    try:
+                        browser_version = browser.version or ""
+                    except Exception:
+                        pass
                     
                     if check_command:
                         crawl_task = asyncio.create_task(crawler.crawl_site(browser, url))
@@ -569,12 +830,14 @@ async def crawl_all_sites(site_limit: int = None,
                         try:
                             iter_result = await crawl_task
                             iter_result["iteration"] = iteration
+                            iter_result["browser_version"] = browser_version
                             site_iterations.append(iter_result)
                         except asyncio.CancelledError:
                             logger.info(f"Task cancelled via {skip_type} signal.")
                     else:
                         iter_result = await crawler.crawl_site(browser, url)
                         iter_result["iteration"] = iteration
+                        iter_result["browser_version"] = browser_version
                         site_iterations.append(iter_result)
 
                 finally:
@@ -592,7 +855,20 @@ async def crawl_all_sites(site_limit: int = None,
                                 pass
                         except Exception:
                             logger.warning("Browser close failed during cleanup")
-                    
+
+                    # Drain any final Foxhound taint reports and stop the server
+                    if taint_capture is not None:
+                        leftover = taint_capture.drain()
+                        if leftover:
+                            for it in site_iterations:
+                                it.setdefault("taint_events", [])
+                            target = site_iterations[-1] if site_iterations else None
+                            if target:
+                                target["taint_events"].extend(leftover)
+                            logger.info(f"  Taint drain: +{len(leftover)} late events")
+                        taint_capture.stop()
+                        taint_capture = None
+
                     if disp:
                         try:
                             disp.stop()
@@ -611,11 +887,31 @@ async def crawl_all_sites(site_limit: int = None,
             continue
 
         # Build combined result with all iterations
+        import platform
+        import sys as _sys
+        try:
+            from importlib.metadata import version as _pkg_version
+            _pw_version = _pkg_version("playwright")
+        except Exception:
+            _pw_version = "unknown"
+        run_meta = {
+            "engine": config.ENGINE,
+            "headless": bool(config.HEADLESS),
+            "iterations": iterations,
+            "user_agent": config.USER_AGENT,
+            "browser_version": site_iterations[-1].get("browser_version", ""),
+            "playwright_version": _pw_version,
+            "python_version": _sys.version.split()[0],
+            "platform": platform.platform(),
+            "taint_tracking_enabled": bool(getattr(config, "TAINT_TRACKING_ENABLED", False)),
+            "captured_at": datetime.utcnow().isoformat() + "Z",
+        }
         combined = {
             "url": url,
             "domain": site_iterations[0]["domain"],
             "timestamp": site_iterations[0]["timestamp"],
             "iterations": site_iterations,
+            "run_meta": run_meta,
             # Use the first iteration as the primary data for backward compat
             "indexeddb": site_iterations[0].get("indexeddb", {"databases": []}),
             "network_requests": site_iterations[0].get("network_requests", []),

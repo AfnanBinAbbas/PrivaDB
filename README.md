@@ -48,7 +48,7 @@ python3 -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 
 # Install Python dependencies
-pip3 install -r requirements.txt
+pip3 install -r Web/requirements.txt
 
 # Install Playwright browsers (Firefox is needed for Foxhound)
 playwright install firefox
@@ -67,7 +67,7 @@ PrivaDB operates in two stages. Run these in separate terminal sessions:
 Starts the FastAPI server which manages scan tasks and results.
 ```bash
 cd Web/backend
-source venv/bin/activate   # Activate the virtual environment
+source ../../venv/bin/activate   # Activate the repository-root virtual environment
 python3 server.py
 ```
 
@@ -91,8 +91,8 @@ Press **"Start Scan"**. The backend will spin up an isolated browser instance, i
 
 ### **Step 3: Intelligence Analysis**
 Once complete, results populate the **"Scan Results"** section. 
-- **Exfiltrated**: Data that successfully reached a third-party server.
-- **Safe**: Data accessed but restricted by browser or project policy.
+- **Exfiltrated**: identifier observed inside a network request (substring match, transform-aware match, or a Foxhound taint/hook-verified flow — the `mechanism` field says which).
+- **Not observed leaving the browser**: no matching network activity was captured for this identifier during the crawl (this is a measurement result, not a guarantee of safety).
 - **Entropy & Category**: Deep analysis of the identifier's uniqueness and purpose.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
@@ -107,7 +107,6 @@ PrivaDB/
 ├── LICENSE              # Proprietary license information
 ├── References/          # Academic papers and research material
 ├── third_party/         # Submodules (e.g., Comparative-Privacy-Analysis)
-├── foxhound-engine/     # External reference (if any)
 └── Web/                 # Core Monorepo
     ├── backend/         # FastAPI Engine Controller
     │   └── server.py    # Orchestrates scan tasks and results
@@ -117,10 +116,11 @@ PrivaDB/
     └── src/
         ├── components/  # React/Vite UI Dashboard
         └── engine/      # Python Analysis Core (Crawling & Heuristics)
-            ├── config.py
+            ├── app_config.py
             ├── crawler.py
             ├── detector.py
-            └── reporter.py
+            ├── reporter.py
+            └── schema.py   # Unified exfiltration-event schema
 ```
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">

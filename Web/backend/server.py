@@ -11,7 +11,6 @@ import uuid
 import datetime
 from urllib.parse import urlparse
 from fastapi.middleware.cors import CORSMiddleware
-from policy_scanner.api import router as policy_router
 import logging
 import re
 
@@ -21,6 +20,11 @@ warnings.filterwarnings("ignore", message=".*3D projection.*")
 
 # Add src/engine to path to import modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src", "engine")))
+# Add the backend dir itself so `policy_scanner` resolves regardless of cwd
+# (needed when launched as `uvicorn backend.server:app` from the repo root/Docker)
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+from policy_scanner.api import router as policy_router
 
 # Configure logging early
 logging.basicConfig(level=logging.INFO)
@@ -37,10 +41,17 @@ except ImportError as e:
 
 app = FastAPI(title="PrivaDB Backend")
 
-# Enable CORS for frontend
+# CORS: locked to the local dashboard origins by default. Override with
+# PRIVADB_CORS_ORIGINS (comma-separated) when serving the UI elsewhere.
+_cors_origins = [
+    o.strip() for o in os.environ.get(
+        "PRIVADB_CORS_ORIGINS",
+        "http://localhost:8080,http://127.0.0.1:8080,http://localhost:5173,http://127.0.0.1:5173"
+    ).split(",") if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -88,7 +99,9 @@ class ErrorResponse(BaseModel):
 
 class ScanRequest(BaseModel):
     url: str
-    max_pages: Optional[int] = 5
+    # Number of fresh-browser crawl iterations per site (was previously
+    # silently ignored). None → engine default (3).
+    max_pages: Optional[int] = None
     headless: Optional[bool] = False
     crawl_only: Optional[bool] = False
     detect_only: Optional[bool] = False
@@ -99,7 +112,8 @@ class ScanRequest(BaseModel):
             "example": {
                 "url": "https://example.com",
                 "engine": "chrome",
-                "headless": True
+                "headless": True,
+                "max_pages": 3
             }
         }
     )
@@ -147,7 +161,7 @@ async def processing_error_handler(request, exc):
 
 async def run_scan(scan_id: str, url: str, headless: bool = False,
                    crawl_only: bool = False, detect_only: bool = False,
-                   engine: str = "chrome"):
+                   engine: str = "chrome", iterations: Optional[int] = None):
     try:
         if config is None:
             raise ProcessingError("Engine modules not properly imported. Check that src/engine is accessible.")
@@ -167,7 +181,11 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
         config.HEADLESS = headless
         logger.info(f"✓ config.ENGINE set to: {config.ENGINE}")
         logger.info(f"✓ Results will be saved to: {config.RESULTS_DIR}")
-        config.CRAWL_ITERATIONS = 3
+        # Clamp user-supplied iteration count to a sane range
+        if iterations is not None:
+            config.CRAWL_ITERATIONS = max(1, min(int(iterations), 20))
+        else:
+            config.CRAWL_ITERATIONS = 3
         logger.info(f"✓ config.CRAWL_ITERATIONS set to: {config.CRAWL_ITERATIONS}")
         
         if not url.startswith(("http://", "https://")):
@@ -284,7 +302,8 @@ async def start_scan(request: ScanRequest):
         }
         
         task = asyncio.create_task(run_scan(
-            scan_id, request.url, request.headless, request.crawl_only, request.detect_only, request.engine
+            scan_id, request.url, request.headless, request.crawl_only, request.detect_only, request.engine,
+            iterations=request.max_pages
         ))
         active_tasks[scan_id] = task
         
@@ -496,9 +515,14 @@ app.include_router(policy_router, prefix="/api/v1")
 
 if __name__ == "__main__":
     import uvicorn
+    # Bind to loopback only — this server can launch browsers and fetch
+    # arbitrary URLs, so it must not be reachable from the network.
+    # Docker sets PRIVADB_HOST=0.0.0.0 inside the container.
+    host = os.environ.get("PRIVADB_HOST", "127.0.0.1")
+    port = int(os.environ.get("PRIVADB_PORT", "8000"))
     try:
-        logger.info("Starting PrivaDB Backend on http://0.0.0.0:8000")
-        uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+        logger.info(f"Starting PrivaDB Backend on http://{host}:{port}")
+        uvicorn.run(app, host=host, port=port, log_level="info")
     except OSError as e:
         if e.errno == 98:
             logger.error("❌ Port 8000 is already in use. Please stop the other process or use a different port.")

@@ -31,3 +31,7 @@ node_modules/
 .env.local
 **/*.pem
 **/*.key
+
+# Virtual environments
+venv/
+**/venv/

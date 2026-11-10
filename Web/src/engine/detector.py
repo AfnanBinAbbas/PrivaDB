@@ -38,18 +38,18 @@ def extract_potential_ids(value, path: str = "") -> list[dict]:
     Recursively extract potential tracking identifiers from an IndexedDB value.
 
     Logic: any string value with length >= MIN_ID_LENGTH (8) is flagged
-    as a potential identifier. No pattern matching — purely length-based.
+    as a potential identifier (length gate), then classified by pattern
+    (UUID / hex / base64 / high-entropy) when possible.
 
     Returns list of dicts: {value, path, reason, entropy}
     """
     results = []
-#(Sir ko dikhana)
     if isinstance(value, str):
         if len(value) >= config.MIN_ID_LENGTH and not _is_common_value(value):
             results.append({
                 "value": value,
                 "path": path,
-                "reason": "idb_value",
+                "reason": _classify_string_reason(value) or "idb_value",
                 "entropy": shannon_entropy(value),
             })
     elif isinstance(value, dict):
@@ -72,53 +72,35 @@ def extract_potential_ids(value, path: str = "") -> list[dict]:
     return results
 
 
-def _check_string_value(value: str, path: str, results: list):
-    """Check a string value for tracking identifier patterns."""
-    if len(value) < config.MIN_ID_LENGTH:
-        return
+def _classify_string_reason(value: str) -> str | None:
+    """Classify a candidate string by tracking-identifier pattern.
 
-    # UUID v4
+    Returns one of: uuid_v4, hex_string, base64_blob, high_entropy —
+    or None when no pattern matches. Used by extract_potential_ids to
+    label the length-gated candidates with their shape.
+    """
+    if len(value) < config.MIN_ID_LENGTH:
+        return None
+
+    # UUID v4 (search: UUID may be embedded in a longer string)
     if config.UUID_V4_RE.search(value):
-        for match in config.UUID_V4_RE.finditer(value):
-            results.append({
-                "value": match.group(),
-                "path": path,
-                "reason": "uuid_v4",
-                "entropy": shannon_entropy(match.group()),
-            })
-        return
+        return "uuid_v4"
 
     # Hex string (≥16 chars)
     if config.HEX_STRING_RE.match(value):
-        results.append({
-            "value": value,
-            "path": path,
-            "reason": "hex_string",
-            "entropy": shannon_entropy(value),
-        })
-        return
+        return "hex_string"
 
     # Base64 blob
     if config.BASE64_RE.match(value) and len(value) >= 20:
-        results.append({
-            "value": value,
-            "path": path,
-            "reason": "base64_blob",
-            "entropy": shannon_entropy(value),
-        })
-        return
+        return "base64_blob"
 
     # High-entropy string (likely random identifier)
     entropy = shannon_entropy(value)
-    if entropy >= config.ENTROPY_THRESHOLD and len(value) >= 12 and len(value) <= 128:
-        # Exclude common non-tracking high-entropy strings
+    if entropy >= config.ENTROPY_THRESHOLD and 12 <= len(value) <= 128:
         if not _is_common_value(value):
-            results.append({
-                "value": value,
-                "path": path,
-                "reason": "high_entropy",
-                "entropy": entropy,
-            })
+            return "high_entropy"
+
+    return None
 
 
 def _is_common_value(value: str) -> bool:
@@ -710,6 +692,305 @@ def diff_iterations(site_data: dict) -> dict:
     }
 
 
+# ─── Foxhound Taint Flow Parsing ──────────────────────────────────
+# Foxhound tags strings at taint sources and reports full CFG flows when
+# a tainted string reaches a sink. Each taint[] entry is a flow: flow[0]
+# is the sink operation, the last op with source:true is the source read.
+# The tainted substring is detail["str"][begin:end].
+#
+# IMPORTANT (verified empirically): IndexedDB reads are a *taint blackout* —
+# Foxhound does not tag IDB reads as sources, and taint round-tripped
+# through IDB comes back clean. So IDB-specific exfiltration is recovered
+# by the FLOW_HOOKS_INIT_SCRIPT instrumentation (analyze_idb_hook_flows)
+# rather than by taint flows. Taint covers localStorage/sessionStorage/
+# cookie/location/MessageEvent sources; the IDB hooks cover IDB reads.
+_TAINT_SINK_SOURCE_MAP = {
+    "fetch.url": ("fetch.url", "EXTERNAL"),
+    "fetch.body": ("fetch.body", "EXTERNAL"),
+    "XMLHttpRequest.open": ("xhr_url", "EXTERNAL"),
+    "XMLHttpRequest.send": ("xhr_body", "EXTERNAL"),
+    "XMLHttpRequest.setRequestHeader": ("header", "EXTERNAL"),
+    "navigator.sendBeacon": ("sendbeacon", "EXTERNAL"),
+    "img.src": ("img_src", "EXTERNAL"),
+    "script.src": ("script_src", "EXTERNAL"),
+    "localStorage.setItem": ("localStorage", "LOCALSTORAGE"),
+    "sessionStorage.setItem": ("sessionStorage", "SESSIONSTORAGE"),
+    "document.write": ("document.write", "LEGACY"),
+    "eval": ("eval", "EXEC"),
+    "Function.closure": ("Function.ctor", "EXEC"),
+}
+
+
+def _safe_urljoin(base: str, part: str) -> str:
+    from urllib.parse import urljoin
+    try:
+        return urljoin(base or "", part or "")
+    except Exception:
+        return part or ""
+
+
+def _sink_target(sink: str, loc: str, part: str) -> str:
+    """Resolve a sink's tainted operand to the absolute URL where relevant."""
+    if not part:
+        return ""
+    if sink in ("fetch.url", "XMLHttpRequest.open", "navigator.sendBeacon",
+                 "img.src", "script.src"):
+        return _safe_urljoin(loc, part)
+    if sink == "fetch.body":
+        return part
+    return part
+
+
+def _taint_confidence(conf_level: str) -> str:
+    mapping = {"HIGH": config.CONFIDENCE_HIGH,
+               "MEDIUM": config.CONFIDENCE_MEDIUM,
+               "LOW": config.CONFIDENCE_LOW}
+    return mapping.get((conf_level or "").upper(), config.CONFIDENCE_MEDIUM)
+
+
+def parse_taint_flows(events: list, site_domain: str,
+                      network_requests: list[dict] = None,
+                      idb_data: dict = None) -> list[dict]:
+    """
+    Convert raw Foxhound taint events into analysis flows.
+
+    Each event -> one or more flows (one per taint[] entry). A flow records
+    the sink, the source JS function, the tainted value, whether the source
+    was a Web Storage read (localStorage/sessionStorage) versus an
+    IDB-related context, and the 1P/3P classification of the sink target.
+
+    IDB data is threaded through so flows that originate from a storage
+    read can be cross-referenced (even though Foxhound itself doesn't taint
+    IDB reads, the IDB hook layer can fill that gap).
+    """
+    flows = []
+    observed = set()
+
+    for ev in events or []:
+        detail = ev.get("detail", {}) or {}
+        sink = detail.get("sink", "")
+        sink_str = detail.get("str", "") or ""
+        loc = detail.get("loc", "") or ""
+        subframe = detail.get("subframe", False)
+        event_ts = detail.get("timestamp")
+
+        for taint_ent in (ev.get("taint") or []):
+            begin = taint_ent.get("begin", 0)
+            end = taint_ent.get("end", begin)
+            flow_ops = taint_ent.get("flow", []) or []
+
+            source_op = None
+            source_loc = None
+            for op in flow_ops:
+                if op.get("source"):
+                    source_op = op
+                    source_loc = op.get("location", {}) or {}
+                    break
+
+            if source_op is None:
+                continue
+
+            source_js_func = (source_loc.get("function") or "").strip()
+            source_js_file = (source_loc.get("filename") or "").split("?")[0].rsplit("/", 1)[-1]
+            source_js_line = source_loc.get("line")
+            source_operation = source_op.get("operation", "")
+            source_hint = source_operation.split(".")[-1]
+
+            tainted_value = sink_str[begin:end] if sink_str else sink_str
+            target = _sink_target(sink, loc, tainted_value)
+
+            sink_class, sink_kind = _TAINT_SINK_SOURCE_MAP.get(
+                sink, (sink, "EXTERNAL")
+            )
+
+            # 1P/3P classification of the sink target
+            req_domain = urlparse(target).netloc if target else ""
+            is_3p = bool(req_domain) and not _is_same_party(site_domain, req_domain)
+            is_tracker = _is_known_tracker(req_domain) if req_domain else False
+
+            confidence = config.CONFIDENCE_MEDIUM
+            if sink_kind == "EXTERNAL" and is_3p:
+                confidence = config.CONFIDENCE_HIGH if is_tracker else config.CONFIDENCE_MEDIUM
+            elif sink_kind == "EXTERNAL" and not req_domain:
+                confidence = config.CONFIDENCE_MEDIUM
+            elif sink_kind in ("LOCALSTORAGE", "SESSIONSTORAGE"):
+                confidence = config.CONFIDENCE_LOW  # stays on-device
+
+            # Storage-source flag for report UI
+            storage_source = "storage" if source_operation in (
+                "localStorage.getItem", "sessionStorage.getItem"
+            ) else ("url_like" if source_operation in (
+                "location.search", "location.href", "location.hash"
+            ) else ("cookie" if source_operation == "document.cookie"
+                    else "other"))
+
+            dedupe_key = (
+                sink, source_operation, source_loc.get("line"),
+                source_loc.get("scripthash"), target
+            )
+            if dedupe_key in observed:
+                continue
+            observed.add(dedupe_key)
+
+            flows.append({
+                "mechanism": "taint",
+                "sink": sink_class,
+                "sink_kind": sink_kind,
+                "source_operation": source_operation,
+                "source_function": source_js_func or None,
+                "source_file": source_js_file or None,
+                "source_line": source_js_line,
+                "source_hint": source_hint,
+                "tainted_value": tainted_value,
+                "target": target or None,
+                "request_domain": req_domain or None,
+                "is_third_party": bool(is_3p),
+                "is_known_tracker": bool(is_tracker),
+                "subframe": subframe,
+                "timestamp": event_ts,
+                "storage_source": storage_source,
+                "flow_direction": config.FLOW_OUTFLOW if sink_kind == "EXTERNAL"
+                                  else "storage_egress",
+                "confinement": classify_confinement(
+                    site_domain, req_domain) if req_domain else config.CONFINEMENT_INTERNAL,
+                "cross_origin": classify_cross_origin(
+                    site_domain, req_domain) if req_domain else None,
+                "confidence": confidence,
+            })
+
+    return flows
+
+
+# ─── IDB Hook Flow Matching ───────────────────────────────────────
+def _norm_url(u: str) -> str:
+    return (u or "").strip().rstrip("/")
+
+
+def analyze_idb_hook_flows(hooks: dict, network_requests: list[dict],
+                           site_domain: str, loc: str = "") -> list[dict]:
+    """
+    Match IDB reads (recorded by the flow-hook init script) to external
+    network sends (same init script), closing the Foxhound IDB taint
+    blackout. Returns flows of the form:
+        source: IDB read (store/op + caller JS fn)
+        sink:   network send (url + caller JS fn)
+    """
+    if not hooks:
+        return []
+
+    reads = hooks.get("reads", []) or []
+    sends = hooks.get("sends", []) or []
+    if not reads or not sends:
+        return []
+
+    flows = []
+
+    for read in reads:
+        read_val = read.get("value", "") or ""
+        if not read_val or len(read_val) < config.MIN_ID_LENGTH:
+            continue
+
+        # Try to JSON-parse the read value; if it's an object, extract
+        # leaf strings to match against send URLs (IDB records often store
+        # nested objects where individual fields appear in network params).
+        try:
+            parsed = json.loads(read_val) if read_val.startswith(("{", "[")) else None
+        except Exception:
+            parsed = None
+
+        needles = set()
+        needles.add(read_val)
+        needles.add(unquote(read_val))
+        if isinstance(parsed, dict):
+            for v in parsed.values():
+                if isinstance(v, str) and v:
+                    needles.add(v)
+                    needles.add(unquote(v))
+        elif isinstance(parsed, list):
+            for v in parsed:
+                if isinstance(v, str) and v:
+                    needles.add(v)
+                    needles.add(unquote(v))
+
+        # Also add re-encoded forms
+        from urllib.parse import quote as _quote
+        encoded_needles = set()
+        for n in needles:
+            if n and n not in ("null", "undefined"):
+                try:
+                    encoded_needles.add(_quote(n, safe=""))
+                except Exception:
+                    pass
+
+        matched_sends = []
+        for snd in sends:
+            s_url = snd.get("url", "") or ""
+            s_body = snd.get("body", "") or ""
+            decoded_url = unquote(s_url)
+            decoded_body = unquote(s_body)
+            for needle in needles:
+                if (needle and (needle in s_url or needle in decoded_url
+                                or needle in s_body or needle in decoded_body)):
+                    matched_sends.append(snd)
+                    break
+            else:
+                for enc in encoded_needles:
+                    if enc and (enc in s_url or enc in s_body):
+                        matched_sends.append(snd)
+                        break
+
+        if not matched_sends:
+            continue
+
+        sink_doms = set()
+        for snd in matched_sends:
+            try:
+                sink_doms.add(urlparse(snd.get("url", "")).netloc)
+            except Exception:
+                pass
+
+        for snd in matched_sends:
+            s_url = snd.get("url", "") or ""
+            req_domain = urlparse(s_url).netloc
+            is_3p = bool(req_domain) and not _is_same_party(site_domain, req_domain)
+            is_tracker = _is_known_tracker(req_domain) if req_domain else False
+
+            read_store = read.get("store", "")
+            read_op = read.get("op", "get")
+
+            flows.append({
+                "mechanism": "idb_hook",
+                "sink": snd.get("op", "network"),
+                "sink_kind": "EXTERNAL",
+                "source_operation": f"IDB.{read_op}",
+                "source_function": read.get("fn") or None,
+                "source_file": None,
+                "source_line": None,
+                "source_hint": read_op,
+                "source_store": read_store,
+                "idb_value": read_val,
+                "target": s_url,
+                "request_domain": req_domain or None,
+                "is_third_party": bool(is_3p),
+                "is_known_tracker": bool(is_tracker),
+                "sink_function": snd.get("fn") or None,
+                "sink_hook": snd.get("op", ""),
+                "subframe": False,
+                "timestamp": snd.get("ts") or read.get("ts"),
+                "storage_source": "idb",
+                "flow_direction": config.FLOW_OUTFLOW,
+                "confinement": classify_confinement(
+                    site_domain, req_domain) if req_domain else config.CONFINEMENT_INTERNAL,
+                "cross_origin": classify_cross_origin(
+                    site_domain, req_domain) if req_domain else None,
+                "confidence": config.CONFIDENCE_HIGH if (is_3p and is_tracker)
+                              else (config.CONFIDENCE_MEDIUM if is_3p
+                                    else config.CONFIDENCE_LOW),
+            })
+
+    return flows
+
+
 def analyze_site(site_data: dict) -> dict:
     """
     Run the full detection pipeline on a single site's crawled data.
@@ -770,6 +1051,37 @@ def analyze_site(site_data: dict) -> dict:
         flat_ids = changed_ids
     else:
         logger.info(f"  Found {len(flat_ids)} potential identifiers")
+
+    # Step 1b: Aggregate Foxhound taint flows + IDB hook flows across
+    # iterations (these live under each iteration's crawl result).
+    iterations = site_data.get("iterations", []) or []
+    taint_flows = []
+    idb_hook_flows = []
+    seen_taint = set()
+    seen_hook = set()
+    site_loc = site_data.get("url", "") or ""
+    for it in iterations:
+        it_network = it.get("network_requests", []) or []
+        for tf in parse_taint_flows(it.get("taint_events", []), domain,
+                                    it_network, it.get("indexeddb")):
+            k = (tf.get("sink"), tf.get("source_operation"),
+                 tf.get("source_line"), tf.get("target"))
+            if k in seen_taint:
+                continue
+            seen_taint.add(k)
+            taint_flows.append(tf)
+        for hf in analyze_idb_hook_flows(it.get("flow_hooks", {}), it_network,
+                                         domain, site_loc):
+            k = (hf.get("source_function"), hf.get("source_store"),
+                 hf.get("target"))
+            if k in seen_hook:
+                continue
+            seen_hook.add(k)
+            idb_hook_flows.append(hf)
+
+    logger.info(
+        f"  Taint flows: {len(taint_flows)} | IDB hook flows: {len(idb_hook_flows)}"
+    )
 
     # Step 2: Find exfiltrations (outflow flows)
     network = site_data.get("network_requests") or []
@@ -876,9 +1188,35 @@ def analyze_site(site_data: dict) -> dict:
             "medium_confidence": med,
             "low_confidence": low,
         },
+        "taint_flows": taint_flows,
+        "idb_hook_flows": idb_hook_flows,
+        "dynamic_flows": {
+            "total": len(taint_flows) + len(idb_hook_flows),
+            "taint": len(taint_flows),
+            "idb_hook": len(idb_hook_flows),
+            "high_confidence": sum(
+                1 for f in taint_flows + idb_hook_flows
+                if f.get("confidence") == config.CONFIDENCE_HIGH
+            ),
+            "medium_confidence": sum(
+                1 for f in taint_flows + idb_hook_flows
+                if f.get("confidence") == config.CONFIDENCE_MEDIUM
+            ),
+            "low_confidence": sum(
+                1 for f in taint_flows + idb_hook_flows
+                if f.get("confidence") == config.CONFIDENCE_LOW
+            ),
+            "external": sum(
+                1 for f in taint_flows + idb_hook_flows
+                if f.get("confinement") == config.CONFINEMENT_EXTERNAL
+            ),
+            "tracker_targets": sum(
+                1 for f in taint_flows + idb_hook_flows if f.get("is_known_tracker")
+            ),
+        },
         "inflow_flows": integrity_flows,
         "flow_classification": {
-            "outflow_flows": len(exfiltrations),
+            "outflow_flows": len(exfiltrations) + len(taint_flows) + len(idb_hook_flows),
             "inflow_flows": len(integrity_flows),
             "internal_flows": internal_count,
             "external_flows": external_count,

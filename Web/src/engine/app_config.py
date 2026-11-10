@@ -11,6 +11,26 @@ import re
 # ─── Engine Selection ───────────────────────────────────────────────
 ENGINE = "chrome"  # or "foxhound"
 
+# ─── Dynamic Taint Tracking ─────────────────────────────────────────
+# Master switch for the Foxhound taint-capture + IDB hook instrumentation.
+# When disabled the crawler runs plain (no capture server, no exporter
+# prefs, no init script) — taint_events/flow_hooks just stay empty.
+# Independent of ENGINE: has no effect with chrome engine.
+TAINT_TRACKING_ENABLED = True
+
+
+def set_taint_tracking(enabled: bool):
+    """
+    Easily turn the dynamic taint-tracking feature on or off.
+
+    Args:
+        enabled: True to capture Foxhound taint flows + IDB read/sender
+                 hooks, False to run the crawler without any instrumentation.
+    """
+    global TAINT_TRACKING_ENABLED
+    TAINT_TRACKING_ENABLED = bool(enabled)
+    return TAINT_TRACKING_ENABLED
+
 # ─── Dynamic Paths ──────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SITES_FILE = os.path.join(BASE_DIR, "sites.json")

@@ -11,6 +11,8 @@ services:
     environment:
       - FOXHOUND_BIN=/app/foxhound-engine/foxhound
       - PYTHONUNBUFFERED=1
+      - PRIVADB_HOST=0.0.0.0
+      - PRIVADB_CORS_ORIGINS=http://localhost,http://127.0.0.1
     restart: unless-stopped
     volumes:
       - ./data:/app/data
