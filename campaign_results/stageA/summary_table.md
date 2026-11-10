@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **569/10000** terminal (568 done, 1 failed) · running/pending: 9431
+Progress: **658/10000** terminal (657 done, 1 failed) · running/pending: 9342
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T14:48:55+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T15:19:03+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 125104 |
-| storage exfils | 120029 |
-| IndexedDB databases | 416 |
-| IndexedDB records | 974 |
-| exfil events | 3018 |
-| idb-hook flows | 608 |
+| taint flows | 140799 |
+| storage exfils | 139689 |
+| IndexedDB databases | 471 |
+| IndexedDB records | 1057 |
+| exfil events | 3053 |
+| idb-hook flows | 656 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -20,6 +20,7 @@ Top sites by taint flows:
 |---|---:|
 | php.net | 35583 |
 | capcut.com | 3480 |
+| ups.com | 2605 |
 | afternic.com | 2123 |
 | gamepass.com | 1871 |
 | adobe.net | 1840 |
@@ -32,7 +33,6 @@ Top sites by taint flows:
 | force.com | 1335 |
 | arubanetworks.com | 1333 |
 | aliyun.com | 1327 |
-| sohu.com | 1265 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -43,6 +43,7 @@ Sites with IndexedDB records (mission scope):
 | pinterest.com | 88 |
 | businessinsider.com | 75 |
 | cnn.com | 66 |
+| accuweather.com | 65 |
 | washingtonpost.com | 60 |
 | tiktok.com | 59 |
 | aol.com | 38 |
@@ -52,7 +53,6 @@ Sites with IndexedDB records (mission scope):
 | bbc.com | 24 |
 | netangels.ru | 14 |
 | mts.ru | 14 |
-| medium.com | 14 |
 
 Failed sites (1): youtube.com
 
