@@ -96,6 +96,12 @@ def _worker(url: str, engine: str, headless: bool, iterations: int,
                 (analysis.get("storage_analysis") or {}).get(
                     "storage_exfiltrations") or []),
             "result_path": out_path,
+            # IDB fields for campaign results sync (results_sync)
+            "idb_dbs": (analysis.get("indexeddb_summary") or {}).get(
+                "database_count", 0),
+            "idb_records": (analysis.get("indexeddb_summary") or {}).get(
+                "total_records", 0),
+            "client_ids": analysis.get("client_identifiers_found", 0),
         }
         conn.send({"status": "done", "summary": small})
     except Exception as e:
