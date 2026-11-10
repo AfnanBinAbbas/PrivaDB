@@ -96,4 +96,6 @@ sudo docker build -f Docker/Dockerfile.frontend -t privadb-frontend .
 - Foxhound binary provenance: `Web/foxhound/application.ini` BuildID `20251126175156` (Firefox 137.0 base), recorded per crawl in `run_meta.foxhound_build_id`.
 - **Playwright FF driver must be patched** (`python scripts/patch_playwright_ff.py`) after every playwright install/upgrade — unpatched, live pages with location-less page errors crash the driver and silently empty all JS-based extraction (batches then report `identifiers: 0` despite network capture).
 - Paper §4.1 UID detection needs `iterations ≥ 2` (fresh profiles) + reload pass (`UID_RELOAD_CHECK`); with `iterations=1` the classifier reports `evaluated: false` instead of guessing.
-- Live study artifacts: `data/scale/live15c.jsonl` (14/15 sites done), per-site analyses in `data/scale/results/`, HTML reports in `results/Foxhound/reports/`.
+- Live study artifacts: pilot committed under `campaign_results/live15/`; raw working copies in `data/scale/` (job stores are gitignored) and `results/` (gitignored) with per-site HTML reports in `results/<Engine>/reports/`.
+- Campaign CPU policy: run with `--max-cpu 50` — the governor holds new scan launches while aggregate CPU is above the cap (in-flight drains; floor of 1 for progress when the host baseline itself is above the cap). Watch the `⏳ CPU … throttled` lines in the batch log.
+- `--prune-raw` removes raw crawl JSONs after analysis (run_meta embedded); pruned sites cannot be re-analyzed via `detect_only` — keep raw for sites you plan to re-run.

@@ -161,6 +161,15 @@ Samples: `Web/src/engine/testbed/samples/`.
 | `DNS_CNAME_CHECKS` | `True` (app_config) | CNAME-cloaking lookups (one `dig` per host, cached) |
 | `UID_RELOAD_CHECK` | `True` | Paper §4.1 condition 2: same-session reload pass (iteration 1) for client-identifier confirmation — needs `iterations ≥ 2` for conditions 4/5 |
 
+Scale-campaign CLI flags (`scale.py`): `--max-cpu 50` (CPU governor —
+above the cap no NEW simultaneous scan starts; in-flight scans drain,
+floor of 1 keeps progress), `--prune-raw` (delete each site's raw crawl
+JSON after its analysis is written — needed for 10k-scale disk budgets;
+run_meta is embedded in the analysis first, and `detect_only` re-runs
+become unavailable for pruned sites), `--list/--sample` (Tranco tiers),
+`tranco.py --select-idb <results_dir>` (Stage-B input: sites with IDB
+activity).
+
 CI runs byte-compile + backend tests + TypeScript/build on every push
 (`.github/workflows/ci.yml`). The measurement suites live in
 `Web/src/engine/testbed/` (smoke / consent / storage / scale /

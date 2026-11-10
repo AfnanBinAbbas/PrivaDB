@@ -42,7 +42,7 @@ def _slug(url: str) -> str:
 
 
 def _worker(url: str, engine: str, headless: bool, iterations: int,
-            consent_study: bool, conn):
+            consent_study: bool, prune_raw: bool, conn):
     """Runs in a spawned process. Sends {"status", "summary"} on conn."""
     try:
         import asyncio
@@ -67,10 +67,24 @@ def _worker(url: str, engine: str, headless: bool, iterations: int,
             conn.send({"status": "failed", "error": "empty crawl"})
             return
         analysis = analyze_site(site_data)
+        # provenance rides with the analysis so raw crawls can be pruned
+        # without losing run_meta (browser/foxhound build versions)
+        if not analysis.get("run_meta"):
+            analysis["run_meta"] = site_data.get("run_meta") or {}
 
         out_path = os.path.join(RESULTS_DIR, f"{_slug(url)}.json")
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(analysis, f, indent=1, default=str)
+
+        if prune_raw:
+            try:
+                dom = str(site_data.get("domain", "")).replace(
+                    ".", "_").replace("/", "_")
+                rawp = os.path.join(config.RAW_DATA_DIR, f"{dom}.json")
+                if os.path.exists(rawp):
+                    os.remove(rawp)
+            except Exception:
+                pass
 
         small = {
             "domain": analysis.get("domain"),
@@ -102,7 +116,9 @@ class ScaleRunner:
     def __init__(self, urls: list[str], store, workers: int = 3,
                  engine: str = "chrome", headless: bool = True,
                  iterations: int = 1, timeout: float = 180.0,
-                 attempts: int = 2, consent_study: bool = False):
+                 attempts: int = 2, consent_study: bool = False,
+                 max_cpu: Optional[float] = None,
+                 prune_raw: bool = False):
         self.urls = urls
         self.store = store
         self.workers = max(1, workers)
@@ -112,7 +128,36 @@ class ScaleRunner:
         self.timeout = timeout
         self.attempts = max(1, attempts)
         self.consent_study = consent_study
+        # CPU governor: when system CPU exceeds max_cpu (%), no NEW
+        # simultaneous scan is started — in-flight scans drain first
+        # (floor of 1 keeps progress when the host baseline is already
+        # above the cap from other apps).
+        self.max_cpu = max_cpu
+        self.prune_raw = prune_raw
+        self.throttle_events = 0
+        self._last_cpu_log = 0.0
+        if max_cpu is not None:
+            try:
+                import psutil
+                psutil.cpu_percent(interval=None)   # prime the counter
+            except Exception:
+                pass
         self.ctx = mp.get_context("spawn")
+
+    def _cpu_pct(self, sample: float = 0.5) -> Optional[float]:
+        """Current aggregate CPU % (0-100 across all cores); loadavg
+        approximation when psutil is unavailable."""
+        if self.max_cpu is None:
+            return None
+        try:
+            import psutil
+            return float(psutil.cpu_percent(interval=sample))
+        except Exception:
+            try:
+                return min(100.0, os.getloadavg()[0]
+                           / (os.cpu_count() or 1) * 100)
+            except Exception:
+                return None
 
     def run(self) -> dict:
         for u in self.urls:
@@ -130,7 +175,7 @@ class ScaleRunner:
             p = self.ctx.Process(
                 target=_worker,
                 args=(url, self.engine, self.headless, self.iterations,
-                      self.consent_study, child_conn),
+                      self.consent_study, self.prune_raw, child_conn),
                 daemon=True)
             p.start()
             child_conn.close()
@@ -142,6 +187,22 @@ class ScaleRunner:
 
         while queue or running:
             while queue and len(running) < self.workers:
+                # CPU governor (user cap): above max_cpu → hold new
+                # launches while ≥1 scan is already in flight; floor of
+                # 1 guarantees progress even if the host baseline sits
+                # above the cap because of other apps.
+                cpu = self._cpu_pct()
+                if (cpu is not None and cpu > (self.max_cpu or 0)
+                        and len(running) >= 1):
+                    self.throttle_events += 1
+                    now = time.time()
+                    if now - self._last_cpu_log > 60:
+                        print(f"  ⏳ CPU {cpu:.0f}% > cap "
+                              f"{self.max_cpu:.0f}% — throttled: "
+                              f"{len(running)} in flight, "
+                              f"{len(queue)} queued (waiting for drain)")
+                        self._last_cpu_log = now
+                    break
                 launch(queue.popleft())
 
             # harvest
@@ -183,6 +244,9 @@ class ScaleRunner:
 
         stats = self.store.counts()
         print(f"  batch finished in {time.time() - t0:.0f}s → {stats}")
+        if self.max_cpu is not None:
+            print(f"  CPU governor: cap {self.max_cpu:.0f}% — "
+                  f"throttled launch waves: {self.throttle_events}")
         return {"stats": stats, "results": results_log}
 
     def _fail(self, url: str, error: str, queue: deque):
@@ -306,6 +370,15 @@ def main():
     ap.add_argument("--iterations", type=int, default=1)
     ap.add_argument("--timeout", type=float, default=180.0)
     ap.add_argument("--attempts", type=int, default=2)
+    ap.add_argument("--max-cpu", type=float, default=None, metavar="PCT",
+                    help="CPU cap in %% (0-100): above it no NEW "
+                         "simultaneous scan starts (in-flight drains; "
+                         "floor of 1 always allowed). e.g. 50")
+    ap.add_argument("--prune-raw", action="store_true",
+                    help="delete each site's raw crawl JSON after its "
+                         "analysis is written (run_meta is embedded in "
+                         "the analysis first) — required for 10k-scale "
+                         "disk budgets")
     ap.add_argument("--consent-study", action="store_true")
     ap.add_argument("--db", default=os.path.join(DEFAULT_SCALE_DIR,
                                                   "scale.sqlite"))
@@ -328,7 +401,8 @@ def main():
         urls, store, workers=args.workers, engine=args.engine,
         headless=not args.headed, iterations=args.iterations,
         timeout=args.timeout, attempts=args.attempts,
-        consent_study=args.consent_study)
+        consent_study=args.consent_study,
+        max_cpu=args.max_cpu, prune_raw=args.prune_raw)
     outcome = runner.run()
 
     if not args.no_reports:

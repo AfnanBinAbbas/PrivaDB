@@ -88,6 +88,30 @@ def sample_domains(limit: int, path: Optional[str] = None) -> list[str]:
     return [d for _r, d in load_list(path, sample=limit)]
 
 
+def select_idb_sites(results_dir: str, min_records: int = 1) -> list[str]:
+    """Stage-B selector: domains whose analysis shows IndexedDB
+    activity — records ≥ min_records, OR idb-hook flows, OR extracted
+    identifiers (reads that may have happened before deletion)."""
+    import glob
+    import json as _json
+    hits = set()
+    for path in glob.glob(os.path.join(results_dir, "*.json")):
+        try:
+            with open(path, encoding="utf-8") as f:
+                a = _json.load(f)
+        except Exception:
+            continue
+        summary = a.get("indexeddb_summary") or {}
+        records = int(summary.get("total_records") or 0)
+        hooks = int((a.get("dynamic_flows") or {}).get("idb_hook") or 0)
+        idents = int(a.get("identifiers_found") or 0)
+        if records >= min_records or hooks > 0 or idents > 0:
+            dom = str(a.get("domain") or "")
+            if dom and "." in dom and not dom.startswith("localhost"):
+                hits.add(dom.lower())
+    return sorted(hits)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", default=None,
@@ -97,7 +121,24 @@ def main():
     ap.add_argument("--download", action="store_true",
                     help="fetch current Tranco top-1m first")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--select-idb", metavar="RESULTS_DIR", default=None,
+                    help="Stage B: emit a list file of sites from these "
+                         "analysis results that show IndexedDB activity")
+    ap.add_argument("--min-records", type=int, default=1,
+                    help="Stage B: minimum IDB records to include")
     args = ap.parse_args()
+
+    if args.select_idb:
+        doms = select_idb_sites(args.select_idb, args.min_records)
+        lines = [f"0,{d}" for d in doms]
+        text = "\n".join(lines) + ("\n" if lines else "")
+        if args.out:
+            with open(args.out, "w") as f:
+                f.write(text)
+            print(f"{len(doms)} IDB-active sites → {args.out}")
+        else:
+            sys.stdout.write(text)
+        return 0 if doms else 1
 
     src = args.list
     if args.download:
