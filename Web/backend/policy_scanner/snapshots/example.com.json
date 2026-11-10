@@ -1,7 +1,7 @@
 {
  "domain": "example.com",
  "policy_url": "https://example.com/privacy",
- "fetched_at": "2026-11-10T09:54:34.616206+00:00",
+ "fetched_at": "2026-11-10T10:04:04.078138+00:00",
  "sha256": "2a09e71552ae76f7d9b6dc6deaf615c519ede5749781306c448ab35bc500dee7",
  "words": 6,
  "disclosures": {
