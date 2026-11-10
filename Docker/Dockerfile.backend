@@ -32,6 +32,8 @@ RUN mkdir -p /app/src/engine/results && \
 
 # Environment variable for Foxhound
 ENV FOXHOUND_BIN=/app/foxhound-engine/foxhound
+# Containers must listen on all interfaces (host default is loopback)
+ENV PRIVADB_HOST=0.0.0.0
 
 # Switch to the non‑root user
 USER privadb

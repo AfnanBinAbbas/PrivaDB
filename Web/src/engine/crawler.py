@@ -1333,6 +1333,21 @@ async def crawl_all_sites(site_limit: int = None,
             "taint_tracking_enabled": bool(getattr(config, "TAINT_TRACKING_ENABLED", False)),
             "captured_at": datetime.utcnow().isoformat() + "Z",
         }
+        # Foxhound build pin (Phase 10): application.ini BuildID + binary
+        # size — identifies the exact custom Firefox under test.
+        try:
+            ini = os.path.join(os.path.dirname(config.FOXHOUND_BIN),
+                               "application.ini")
+            with open(ini) as f:
+                for line in f:
+                    if line.startswith("BuildID="):
+                        run_meta["foxhound_build_id"] = line.strip().split(
+                            "=", 1)[1]
+                        break
+            run_meta["foxhound_bin_size"] = os.path.getsize(
+                config.FOXHOUND_BIN)
+        except Exception:
+            pass
         combined = {
             "url": url,
             "domain": site_iterations[0]["domain"],

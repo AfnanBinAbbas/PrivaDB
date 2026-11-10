@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "buildout/**"]
+  pull_request:
+
+jobs:
+  python:
+    name: Python tests + compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r Web/requirements.txt
+      - name: Byte-compile engine + backend
+        run: |
+          python -m compileall -q Web/src/engine Web/backend
+      - name: Backend unit tests (SSRF, disclosure/gap, policy scanner)
+        working-directory: Web/backend
+        run: python -m pytest tests/ -q
+
+  frontend:
+    name: TypeScript check + build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        working-directory: Web
+        run: npm install
+      - name: Type check
+        working-directory: Web
+        run: npx tsc --noEmit
+      - name: Build
+        working-directory: Web
+        run: npm run build
+
+  # Full measurement suites (ground truth / consent / storage / scale)
+  # need browsers + the vendored Foxhound binary (Git LFS). They are
+  # intentionally NOT in the push path — run before a paper release:
+  #   Web/src/engine/testbed/run_smoke.py --engine chrome --headless
+  #   Web/src/engine/testbed/evaluate.py  --engine chrome --headless

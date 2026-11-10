@@ -56,16 +56,24 @@ class GapResponse(BaseModel):
     error: Optional[str] = None
 
 def is_safe_url(url: str) -> bool:
+    """SSRF-safe target check — delegates to the shared guard
+    (private ranges, DNS-resolved answers, cloud metadata)."""
     try:
-        parsed = urlparse(url)
-        if parsed.scheme not in ('http', 'https'):
-            return False
-        # Very basic check, in production use proper DNS resolution and IP checks
-        if parsed.hostname in ('localhost', '127.0.0.1', '0.0.0.0'):
-            return False
-        return True
+        import os as _os
+        import sys as _sys
+        _sys.path.insert(0, _os.path.abspath(_os.path.join(
+            _os.path.dirname(__file__), "..")))
+        from security import is_public_url
+        return is_public_url(url)
     except Exception:
-        return False
+        # fall back to the old minimal check if security.py unavailable
+        try:
+            parsed = urlparse(url)
+            return parsed.scheme in ("http", "https") and \
+                parsed.hostname not in ("localhost", "127.0.0.1",
+                                        "0.0.0.0")
+        except Exception:
+            return False
 
 @router.post("/policy/scan", response_model=PolicyScanResponse)
 async def scan_policy(request: PolicyScanRequest):

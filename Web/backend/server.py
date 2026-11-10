@@ -25,6 +25,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "s
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from policy_scanner.api import router as policy_router
+from security import is_public_url
 
 # Configure logging early
 logging.basicConfig(level=logging.INFO)
@@ -286,6 +287,16 @@ async def start_scan(request: ScanRequest):
     try:
         if not request.url or len(request.url.strip()) == 0:
             raise ValidationException("URL cannot be empty")
+        # SSRF guard: the crawler and policy fetcher make outbound
+        # requests on behalf of API callers — reject private/metadata
+        # targets (PRIVADB_ALLOW_PRIVATE_TARGETS=true for lab use).
+        probe = request.url if request.url.startswith(
+            ("http://", "https://")) else "https://" + request.url
+        if not is_public_url(probe):
+            raise ValidationException(
+                "Target rejected by SSRF guard (private, loopback, "
+                "link-local or metadata address). Set "
+                "PRIVADB_ALLOW_PRIVATE_TARGETS=true to scan lab targets.")
         if request.engine not in ["chrome", "foxhound"]:
             raise ValidationException(f"Invalid engine '{request.engine}'. Must be 'chrome' or 'foxhound'")
         if request.detect_only and config is None:

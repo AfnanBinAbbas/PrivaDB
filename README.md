@@ -125,6 +125,23 @@ PrivaDB/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+## Operational Flags
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `PRIVADB_HOST` | `127.0.0.1` | Backend bind address (`0.0.0.0` in Docker) |
+| `PRIVADB_PORT` | `8000` | Backend port |
+| `PRIVADB_CORS_ORIGINS` | localhost dashboard origins | Comma-separated allowed origins |
+| `PRIVADB_ALLOW_PRIVATE_TARGETS` | unset (guarded) | Set `true` to allow scanning localhost/RFC1918 lab targets (SSRF guard off) |
+| `FOXHOUND_BIN` | `foxhound/foxhound` | Custom Firefox build path |
+| `DNS_CNAME_CHECKS` | `True` (app_config) | CNAME-cloaking lookups (one `dig` per host, cached) |
+
+CI runs byte-compile + backend tests + TypeScript/build on every push
+(`.github/workflows/ci.yml`). The measurement suites live in
+`Web/src/engine/testbed/` (smoke / consent / storage / scale /
+evaluate) and are run before a release — they need browsers and the
+Git-LFS Foxhound binary.
+
 ## Legal & Intellectual Property
 Copyright (c) 2026 Afnan Bin Abbas. **All Rights Reserved.**
 
