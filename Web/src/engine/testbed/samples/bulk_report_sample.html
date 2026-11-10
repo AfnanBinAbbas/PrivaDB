@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PrivaDB report_html.py 1.0">
+<meta name="description" content="2 site(s) — IndexedDB tracking measurement + GRC screening">
+<title>PrivaDB bulk scan report</title>
+<style>
+:root{--bg:#ffffff;--fg:#1a1d21;--muted:#5b6470;--line:#d7dce2;
+--accent:#0b5fff;--pass:#0a6b34;--fail:#a4171b;--warn:#8a5a00;
+--info:#37506b;--na:#5b6470;--chip:#f2f4f7}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,
+Arial,sans-serif;color:var(--fg);background:var(--bg)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:#fff;padding:8px 12px;
+z-index:9;border:2px solid var(--accent)}
+header.masthead{border-bottom:3px solid var(--fg);padding:24px 4vw 16px}
+header.masthead h1{margin:0 0 4px;font-size:1.6rem}
+header.masthead .sub{color:var(--muted);font-size:.92rem}
+.classification{display:inline-block;margin-top:8px;padding:2px 10px;
+border:1px solid var(--fg);font-size:.8rem;letter-spacing:.04em;
+text-transform:uppercase}
+nav.toc{padding:12px 4vw;border-bottom:1px solid var(--line);
+background:var(--chip)}
+nav.toc a{margin-right:16px;color:var(--accent);font-size:.9rem}
+main{padding:8px 4vw 40px;max-width:1100px}
+section{margin-top:28px}
+h2{font-size:1.25rem;border-bottom:1px solid var(--line);
+padding-bottom:6px;margin-top:8px}
+h3{font-size:1.02rem;margin-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,
+minmax(150px,1fr));gap:10px;padding:0;list-style:none}
+.cards li{border:1px solid var(--line);border-radius:8px;padding:10px;
+background:var(--chip)}
+.cards .num{font-size:1.4rem;font-weight:700}
+.cards .lbl{font-size:.78rem;color:var(--muted);text-transform:
+uppercase;letter-spacing:.04em}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.9rem}
+caption{text-align:left;font-weight:600;padding:6px 0;
+caption-side:top}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;
+vertical-align:top}
+thead th{background:var(--chip)}
+th[scope=row]{font-weight:600;background:#fafbfc}
+.status{font-weight:700;white-space:nowrap}
+.status.PASS{color:var(--pass)}
+.status.FAIL{color:var(--fail)}
+.status.WARN{color:var(--warn)}
+.status.INFO{color:var(--info)}
+.status.NA{color:var(--na)}
+.sev{font-size:.8rem;color:var(--muted)}
+.hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em}
+details{margin:8px 0;border:1px solid var(--line);border-radius:6px;
+padding:8px 10px}
+summary{cursor:pointer;font-weight:600}
+pre{white-space:pre-wrap;word-break:break-word;font-size:.78rem;
+background:var(--chip);padding:8px;border-radius:6px;overflow:auto}
+.gauge{font-size:2rem;font-weight:800}
+.gauge.high{color:var(--fail)}.gauge.mid{color:var(--warn)}
+.gauge.low{color:var(--pass)}
+footer{border-top:3px solid var(--fg);padding:16px 4vw;
+color:var(--muted);font-size:.85rem}
+footer .disc{border:1px solid var(--line);padding:10px;background:
+var(--chip);margin-top:8px;color:var(--fg)}
+a{color:var(--accent)}
+ul.tight{margin:6px 0;padding-left:20px}
+@media print{
+ nav.toc,.skip{display:none}
+ body{font-size:11pt}
+ section{page-break-inside:auto}
+ h2{page-break-after:avoid}
+ table{page-break-inside:auto}
+ tr{page-break-inside:avoid}
+ details{border:none}
+ details>summary{display:none}
+ details[open]{display:block}
+ a[href]:after{content:""}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="masthead">
+  <h1>PrivaDB bulk scan report</h1>
+  <div class="sub">2 site(s) — IndexedDB tracking measurement + GRC screening</div>
+  <div class="sub">Generated 2026-11-10T10:26:02+00:00 · PrivaDB report_html.py v1.0</div>
+  <span class="classification">Confidential — research measurement</span>
+</header>
+<nav class="toc" aria-label="Report contents"><a href="#summary">1. Executive summary</a><a href="#sites">2. Per-site results</a><a href="#grc">3. GRC aggregates</a><a href="#fails">4. Most frequent failures</a><a href="#method">5. Methodology</a><a href="#limits">6. Limitations</a></nav>
+<main id="main">
+<section id="summary" aria-labelledby="sum-h"><h2 id="sum-h">1. Executive summary</h2><p><strong>2</strong> site(s) analysed · <strong>2</strong> with IndexedDB data · <strong>26</strong> third-party identifier flows across the batch · average GRC risk <strong>22.0</strong>/100 (worst <strong>22</strong>).</p><ul class="cards"><li><div class="num">2</div><div class="lbl">Sites</div></li><li><div class="num">2</div><div class="lbl">With IndexedDB</div></li><li><div class="num">26</div><div class="lbl">3rd-party flows</div></li><li><div class="num">22.0</div><div class="lbl">Avg risk /100</div></li></ul></section>
+<section id="sites" aria-labelledby="st-h"><h2 id="st-h">2. Per-site results</h2><table><caption>One row per analysed site (values hashed in per-site reports)</caption><thead><tr><th scope="col">Domain</th><th scope="col">Engine</th><th scope="col">IDB seen</th><th scope="col">Identifier flows</th><th scope="col">3rd-party</th><th scope="col">Dynamic</th><th scope="col">Risk /100</th><th scope="col">GRC F/W</th></tr></thead><tbody><tr><th scope="row">localhost:18765</th><td>foxhound</td><td>yes</td><td>14</td><td>13</td><td>17</td><td>22</td><td>2F/1W</td></tr><tr><th scope="row">localhost:18766</th><td>chrome</td><td>yes</td><td>14</td><td>13</td><td>17</td><td>22</td><td>2F/1W</td></tr></tbody></table></section>
+<section id="grc" aria-labelledby="gr-h"><h2 id="gr-h">3. GRC aggregates across the batch</h2><table><caption>Check outcomes per framework (all sites)</caption><thead><tr><th scope="col">Framework</th><th scope="col">Pass</th><th scope="col">Fail</th><th scope="col">Warn</th><th scope="col">N/A</th><th scope="col">Info</th></tr></thead><tbody><tr><th scope="row">GDPR</th><td>6</td><td>6</td><td>2</td><td>16</td><td>2</td></tr><tr><th scope="row">ePrivacy</th><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td></tr><tr><th scope="row">CCPA</th><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th scope="row">ISO27001</th><td>2</td><td>2</td><td>0</td><td>6</td><td>0</td></tr></tbody></table></section>
+<section id="fails" aria-labelledby="fl-h"><h2 id="fl-h">4. Most frequent control failures</h2><table><caption>FAIL count per check id</caption><thead><tr><th scope="col">Check</th><th scope="col">Sites failing</th></tr></thead><tbody><tr><th scope="row">GRC-07</th><td>2</td></tr><tr><th scope="row">GRC-12</th><td>2</td></tr></tbody></table></section>
+<section id="method"><h2>5. Methodology</h2><p>Each site: fresh browser context, IDB + multi-store extraction, in-page flow hooks, Foxhound taint capture, transform-aware matching, entity attribution; GRC checks computed from the same evidence (headers/policy fetched best-effort unless stated otherwise). Per-site standalone reports contain full evidence tables.</p></section>
+<section id="limits"><h2>6. Limitations</h2><ul class="tight"><li>Indicative screening — not legal certification.</li><li>Automation fingerprint and single vantage point bound external validity.</li><li>HttpOnly cookies invisible to in-page capture.</li><li>N/A outcomes reflect unavailable evidence (policy/headers/consent study), not compliance.</li></ul></section>
+</main>
+<footer>
+<div>Report version 1.0 · generator PrivaDB report_html.py ·
+ all identifier values rendered as SHA-256 hashes (16 hex chars).</div>
+<div class="sev">2 site rows · 4 total FAIL outcomes</div>
+<div class="disc"><strong>Disclaimer.</strong> This document is an
+indicative technical screening produced by an automated measurement
+tool. It is not a legal certification, audit opinion, or advice from a
+Data Protection Officer. Compliance conclusions must be validated by a
+qualified reviewer.</div>
+</footer>
+</body>
+</html>

@@ -3,7 +3,7 @@ import os
 import asyncio
 import warnings
 from fastapi import FastAPI, HTTPException, BackgroundTasks
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional, Dict
 import json
@@ -84,7 +84,10 @@ async def root():
             "scan_history": "/history",
             "scan_results": "/scan/results",
             "foxhound_results": "/foxhound/results",
-            "foxhound_report": "/foxhound/report"
+            "foxhound_report": "/foxhound/report",
+            "scan_html_report": "/scan/{scan_id}/report",
+            "reports_list": "/reports",
+            "bulk_report": "/reports/bulk?live=1"
         }
     }
 
@@ -267,6 +270,13 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
         results["engine"] = engine
         scans[scan_id]["results"] = results
         scans[scan_id]["results"]["stage"] = "full"
+
+        # Phase 12: HTML report (standalone + GRC) in the background —
+        # pollers already see "completed"; report appears moments later.
+        try:
+            asyncio.create_task(_bg_generate_report(scan_id))
+        except RuntimeError:
+            pass
         
     except asyncio.CancelledError:
         if scan_id in scans:
@@ -527,6 +537,186 @@ def _is_irrelevant_value(value: str, key: str) -> bool:
     if any(kw in key_lower for kw in location_keywords):
         return True
     return False
+
+
+# ─── Phase 12: HTML reports + GRC ───────────────────────────────────
+def _reports_dir(engine: str) -> str:
+    d = os.path.abspath(os.path.join(
+        os.path.dirname(__file__), "..", "src", "engine", "results",
+        "Chrome" if str(engine).lower() == "chrome" else "Foxhound",
+        "reports"))
+    os.makedirs(d, exist_ok=True)
+    return d
+
+
+def _crawl_meta(engine: str, domain: str) -> dict:
+    """run_meta from the raw crawl file for this domain, if present."""
+    raw_dir = os.path.abspath(os.path.join(
+        os.path.dirname(__file__), "..", "src", "engine", "results",
+        "Chrome" if str(engine).lower() == "chrome" else "Foxhound",
+        "crawled"))
+    path = os.path.join(raw_dir, f"{domain.replace('.', '_')}.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            return (json.load(f).get("run_meta") or {})
+    except Exception:
+        return {}
+
+
+def _build_scan_report(scan_id: str) -> str:
+    """Blocking: render + write the standalone HTML for one scan.
+    Returns the file path."""
+    import grc as grc_mod
+    import report_html
+
+    rec = scans[scan_id]
+    if rec.get("report_path") and os.path.exists(rec["report_path"]):
+        return rec["report_path"]
+    url = rec.get("url") or ""
+    analysis = rec.get("results") or {}
+    engine = analysis.get("engine") or (
+        rec.get("config", {}) or {}).get("engine") or "chrome"
+    domain = urlparse(url).netloc or url
+
+    header_info = grc_mod.fetch_headers(url)
+    policy_info = grc_mod.load_policy_info(url)
+    grc_report = grc_mod.run_grc_checks(
+        analysis, url, policy_info=policy_info,
+        header_info=header_info)
+
+    sources = []
+    raw_path = os.path.join(
+        os.path.dirname(_reports_dir(engine)), "crawled",
+        f"{domain.replace('.', '_')}.json")
+    if os.path.exists(raw_path):
+        sources.append(os.path.relpath(raw_path, os.path.dirname(
+            os.path.dirname(_reports_dir(engine)))))
+    sources.append(f"in-memory scan record {scan_id}")
+
+    html_doc = report_html.render_scan_report(
+        analysis, url, grc_report,
+        run_meta=_crawl_meta(engine, domain),
+        scan_meta={"started_at": str(rec.get("started_at", "")),
+                   "status": rec.get("status", "")},
+        sources=sources)
+
+    safe = re.sub(r"[^A-Za-z0-9._-]", "_", domain)[:60] or "target"
+    out = os.path.join(_reports_dir(engine),
+                       f"{safe}_{scan_id[:8]}.html")
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(html_doc)
+    rec["report_path"] = out
+    rec["grc_summary"] = grc_report.get("summary")
+    rec["grc_risk_score"] = (grc_report.get("summary") or {}).get(
+        "risk_score")
+    logger.info(f"  HTML report → {out}")
+    return out
+
+
+async def _bg_generate_report(scan_id: str):
+    try:
+        await asyncio.to_thread(_build_scan_report, scan_id)
+    except Exception as e:
+        logger.warning(f"HTML report generation failed for "
+                       f"{scan_id}: {e}")
+
+
+@app.get("/scan/{scan_id}/report")
+async def get_scan_report(scan_id: str):
+    """Standalone HTML report (Phase 12) for one scan."""
+    if scan_id not in scans:
+        raise NotFoundError(f"Scan with ID '{scan_id}' not found")
+    rec = scans[scan_id]
+    path = rec.get("report_path")
+    if not path or not os.path.exists(path):
+        if rec.get("status") != "completed":
+            raise ProcessingError(
+                "Report not ready — scan has not completed yet.")
+        try:
+            path = await asyncio.to_thread(_build_scan_report, scan_id)
+        except Exception as e:
+            raise ProcessingError(f"Report generation failed: {e}")
+    return FileResponse(path, media_type="text/html; charset=utf-8",
+                        filename=os.path.basename(path))
+
+
+@app.get("/reports")
+async def list_reports():
+    """All generated HTML reports (both engines)."""
+    out = []
+    for engine in ("chrome", "foxhound"):
+        d = _reports_dir(engine)
+        for name in sorted(os.listdir(d)):
+            if not name.endswith(".html"):
+                continue
+            full = os.path.join(d, name)
+            out.append({
+                "engine": engine, "name": name,
+                "bytes": os.path.getsize(full),
+                "generated_at": datetime.datetime.fromtimestamp(
+                    os.path.getmtime(full)).isoformat(),
+                "url": f"/reports/{engine}/{name}",
+            })
+    return {"reports": out}
+
+
+@app.get("/reports/{engine}/{name}")
+async def serve_report(engine: str, name: str):
+    if engine not in ("chrome", "foxhound"):
+        raise NotFoundError("Unknown engine for reports")
+    safe = os.path.basename(name)  # no traversal
+    path = os.path.join(_reports_dir(engine), safe)
+    if not os.path.exists(path):
+        raise NotFoundError(f"Report '{safe}' not found")
+    return FileResponse(path, media_type="text/html; charset=utf-8")
+
+
+@app.get("/reports/bulk")
+async def bulk_report(live: int = 0):
+    """Executive HTML over every analysed site (both engines).
+
+    live=1 adds per-site response-header checks (slow: one fetch per
+    site, capped at 40). Policy fetch stays off for bulk runs.
+    """
+    import grc as grc_mod
+    import report_html
+
+    sites = []
+    for engine in ("chrome", "foxhound"):
+        summary = os.path.join(get_engine_results_base(engine),
+                               "summary.json")
+        if not os.path.exists(summary):
+            continue
+        try:
+            with open(summary, encoding="utf-8") as f:
+                entries = json.load(f)
+        except Exception:
+            continue
+        for entry in entries if isinstance(entries, list) else []:
+            domain = entry.get("domain") or entry.get("url") or "?"
+            url = entry.get("url") or f"https://{domain}"
+            headers = None
+            if live and len(sites) < 40:
+                headers = grc_mod.fetch_headers(url, timeout=5.0)
+            grc_report = grc_mod.run_grc_checks(
+                entry, url, policy_info=None, header_info=headers)
+            sites.append({"domain": domain, "url": url,
+                          "engine": engine, "analysis": entry,
+                          "grc": grc_report,
+                          "run_meta": _crawl_meta(engine, domain)})
+    if not sites:
+        raise ProcessingError(
+            "No analysed sites available for a bulk report yet.")
+
+    html_doc = report_html.render_bulk_report(sites)
+    out = os.path.join(_reports_dir("chrome"),
+                       "bulk_latest_live.html" if live
+                       else "bulk_latest.html")
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(html_doc)
+    return FileResponse(out, media_type="text/html; charset=utf-8",
+                        filename=os.path.basename(out))
+
 
 app.include_router(policy_router, prefix="/api/v1")
 

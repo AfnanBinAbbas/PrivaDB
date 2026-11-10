@@ -272,14 +272,26 @@ const ScanResults: React.FC = () => {
             IndexedDB analysis and exfiltration detection
           </p>
         </div>
-        <motion.button
-          onClick={fetchResults}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg transition-all hover:bg-primary/90"
-        >
-          Refresh Data
-        </motion.button>
+        <div className="flex items-center gap-3">
+          <a
+            href="http://localhost:8000/reports/bulk"
+            target="_blank"
+            rel="noreferrer"
+            title="Executive HTML report with GRC compliance checks across all analysed sites"
+            className="px-6 py-3 bg-muted text-foreground rounded-full font-bold shadow-lg transition-all hover:bg-muted/80 flex items-center gap-2 text-sm"
+          >
+            <Download size={16} />
+            HTML Report (GRC)
+          </a>
+          <motion.button
+            onClick={fetchResults}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold shadow-lg transition-all hover:bg-primary/90"
+          >
+            Refresh Data
+          </motion.button>
+        </div>
       </div>
 
       {/* Summary Stats */}

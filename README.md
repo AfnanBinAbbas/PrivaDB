@@ -125,6 +125,27 @@ PrivaDB/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+## HTML Reports & GRC Compliance (Phase 12)
+
+Every completed scan renders a **standalone, standards-compliant HTML
+report** (semantic HTML5, WCAG-oriented tables/skip-link, print styles,
+zero JavaScript, identifier values only as SHA-256 hashes) including
+**GRC compliance screening** against GDPR, ePrivacy, CCPA and
+ISO/IEC 27001:2022 — each check backed by measured evidence (consent
+study, flow data, policy disclosures, response headers).
+
+| Endpoint | Output |
+|---|---|
+| `GET /scan/{scan_id}/report` | Single-target report (+ auto-generated in background after each scan) |
+| `GET /reports` | List of all generated reports (both engines) |
+| `GET /reports/{engine}/{name}` | Serve a stored report |
+| `GET /reports/bulk` | Executive report across every analysed site (`?live=1` adds per-site header checks) |
+
+Bulk/scale runs write per-site reports plus `bulk_latest.html` into
+`results/<Engine>/reports/`. The dashboard links to both
+("HTML Report" on the scan view, "HTML Report (GRC)" on results).
+Samples: `Web/src/engine/testbed/samples/`.
+
 ## Operational Flags
 
 | Variable | Default | Purpose |

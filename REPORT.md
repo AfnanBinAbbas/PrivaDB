@@ -42,7 +42,8 @@ branch `buildout/full-plan` (base: `3be2f58b`, tagged
 - **Phase 8** (`76ae0ce6`): Tranco loader + vendored top-1000, dual-backend job store (SQLite when available — verified under system Python; JSONL fallback for this venv which lacks `_sqlite3`), `scale.py` parallel spawned workers + timeout + retries + implicit resume + single-threaded report pass — **7/7**.
 - **Phase 9** (`12e9f339`): `disclosure.py` (structured storage/vendor/purpose extraction sharing the Disconnect vocabulary, whitespace-normalized, snapshot persistence), `gap.py` (received − disclosed companies, IndexedDB observed-but-undisclosed verdict, category→purpose gap), `POST /policy/gap`, fixture tests — **14/14 backend tests** incl. legacy.
 - **Phase 10** (`e3026bc8`): SSRF guard (schemes, literals + DNS-resolved private/metadata; `PRIVADB_ALLOW_PRIVATE_TARGETS` lab override, metadata never allowed) live-verified on `/scan`; CI workflow (compileall + pytest + tsc + build); Docker `PRIVADB_HOST` fix; `requirements.lock.txt`; foxhound `BuildID` pin in `run_meta`.
-- **Phase 11** (this commit): `paper_report.py` → `PAPER_REPORT.md` (every figure traced to a JSON artifact), this report, `MANIFEST.md`.
+- **Phase 11** (`c2fa6a0f`): `paper_report.py` → `PAPER_REPORT.md` (every figure traced to a JSON artifact), this report, `MANIFEST.md`.
+- **Phase 12** (this commit): HTML reporting — `grc.py` (14 evidence-driven checks across GDPR/ePrivacy/CCPA/ISO 27001 with risk scoring + framework rollups, header/policy collectors SSRF-guarded) and `report_html.py` (standalone single + bulk renderers: HTML5 semantics, skip-link, captioned/scope tables, print CSS, zero JS, hash-only values, provenance + disclaimer); auto-generated after each scan, `GET /scan/{id}/report`, `GET /reports`, `GET /reports/bulk[?live=1]`; scale writes per-site + bulk HTML; dashboard links added; tests: 19/19 backend.
 
 ## Headline measurements (details: PAPER_REPORT.md)
 

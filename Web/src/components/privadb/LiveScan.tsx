@@ -1112,6 +1112,18 @@ export const LiveScan: React.FC = () => {
                           <Download size={14} />
                           Export JSON
                         </button>
+                        {lastScanId && (
+                          <a
+                            href={`http://localhost:8000/scan/${lastScanId}/report`}
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Standalone HTML report with GRC compliance checks"
+                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                          >
+                            <FileText size={14} />
+                            HTML Report
+                          </a>
+                        )}
                         <button
                           onClick={() => { setResults([]); setPhases([]); setScanComplete(false); }}
                           className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-destructive/10 hover:text-destructive transition-colors"

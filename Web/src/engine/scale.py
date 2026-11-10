@@ -204,7 +204,9 @@ class ScaleRunner:
 
 
 def _generate_reports(results_dir: str, engine: str) -> Optional[str]:
-    """Single-threaded report generation over every scale analysis."""
+    """Single-threaded report generation over every scale analysis —
+    detector reports (CSV/JSON/charts) + Phase 12 HTML: one standalone
+    report per site plus a bulk executive report."""
     try:
         import app_config as config
         from reporter import generate_reports
@@ -220,10 +222,73 @@ def _generate_reports(results_dir: str, engine: str) -> Optional[str]:
         if not analyses:
             return None
         generate_reports(analyses)
-        return os.path.join(config.ANALYSIS_DIR, "summary.json")
+        summary_path = os.path.join(config.ANALYSIS_DIR, "summary.json")
+
+        # Phase 12: HTML reports for the batch
+        try:
+            html_paths = _html_reports(analyses, engine)
+            print(f"  HTML reports: {len(html_paths)} per-site + bulk")
+        except Exception as e:
+            print(f"  HTML report generation skipped: {e}")
+        return summary_path
     except Exception as e:
         print(f"  report generation failed: {e}")
         return None
+
+
+def _html_reports(analyses: list[dict], engine: str) -> list[str]:
+    """Render Phase-12 HTML (per-site + bulk) for scale results.
+    GRC uses analysis evidence only (headers/policy stay off so batch
+    runs remain offline-friendly); evidence_inputs record that."""
+    import grc as grc_mod
+    import report_html
+    import re as _re
+
+    out_dir = os.path.join(ENGINE_DIR, "results",
+                           "Chrome" if engine.lower() == "chrome"
+                           else "Foxhound", "reports")
+    os.makedirs(out_dir, exist_ok=True)
+    paths = []
+    sites = []
+    for a in analyses:
+        domain = a.get("domain") or a.get("url") or "unknown"
+        url = a.get("url") or f"https://{domain}"
+        grc_report = grc_mod.run_grc_checks(
+            a, url, policy_info=None, header_info=None)
+        sites.append({"domain": domain, "url": url, "engine": engine,
+                      "analysis": a, "grc": grc_report})
+        # provenance: run_meta lives on the raw crawl, not the analysis
+        run_meta = a.get("run_meta") or {}
+        if not run_meta:
+            try:
+                import app_config as _cfg
+                _cfg.set_engine(engine)
+                raw = os.path.join(
+                    _cfg.RAW_DATA_DIR,
+                    f"{str(domain).replace('.', '_')}.json")
+                with open(raw, encoding="utf-8") as f:
+                    run_meta = (json.load(f).get("run_meta") or {})
+            except Exception:
+                run_meta = {}
+        html_doc = report_html.render_scan_report(
+            a, url, grc_report,
+            run_meta=run_meta,
+            scan_meta={"started_at": a.get("timestamp", ""),
+                       "status": "completed"},
+            sources=[f"data/scale/results/{_slug(url)}.json"])
+        safe = _re.sub(r"[^A-Za-z0-9._-]", "_", str(domain))[:60]
+        path = os.path.join(out_dir, f"scale_{safe}.html")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html_doc)
+        paths.append(path)
+
+    if sites:
+        bulk = report_html.render_bulk_report(sites)
+        bpath = os.path.join(out_dir, "bulk_latest.html")
+        with open(bpath, "w", encoding="utf-8") as f:
+            f.write(bulk)
+        paths.append(bpath)
+    return paths
 
 
 def main():
