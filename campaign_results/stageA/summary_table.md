@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **486/10000** terminal (485 done, 1 failed) · running/pending: 9514
+Progress: **569/10000** terminal (568 done, 1 failed) · running/pending: 9431
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T14:18:48+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T14:48:55+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 107705 |
-| storage exfils | 100667 |
-| IndexedDB databases | 366 |
-| IndexedDB records | 941 |
+| taint flows | 125104 |
+| storage exfils | 120029 |
+| IndexedDB databases | 416 |
+| IndexedDB records | 974 |
 | exfil events | 3018 |
-| idb-hook flows | 402 |
+| idb-hook flows | 608 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -19,6 +19,7 @@ Top sites by taint flows:
 | site | taint flows |
 |---|---:|
 | php.net | 35583 |
+| capcut.com | 3480 |
 | afternic.com | 2123 |
 | gamepass.com | 1871 |
 | adobe.net | 1840 |
@@ -26,13 +27,12 @@ Top sites by taint flows:
 | xboxlive.com | 1435 |
 | salesforce.com | 1386 |
 | dropbox.com | 1384 |
+| npr.org | 1371 |
 | avast.com | 1358 |
+| force.com | 1335 |
 | arubanetworks.com | 1333 |
 | aliyun.com | 1327 |
-| alidns.com | 1250 |
-| amplitude.com | 1079 |
-| trendmicro.com | 1060 |
-| dynatrace.com | 1032 |
+| sohu.com | 1265 |
 
 Sites with IndexedDB records (mission scope):
 
