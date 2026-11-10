@@ -1,0 +1,99 @@
+{
+  "engine": "foxhound",
+  "page": "http://localhost:18765/storage.html",
+  "passed": true,
+  "n_pass": 7,
+  "n_total": 7,
+  "checks": [
+    {
+      "name": "S1 other_storage captured (ls + cookies)",
+      "passed": true,
+      "detail": "captured={\"localStorage\": 1, \"sessionStorage\": 2, \"cookies\": 1, \"caches\": 0, \"service_workers\": 0, \"frames\": 1}"
+    },
+    {
+      "name": "S2 localStorage value exfiltrated (storage_exfiltrations)",
+      "passed": true,
+      "detail": "1 hit(s), chains=[('raw',)]"
+    },
+    {
+      "name": "S2b classified third-party (localhost page \u2192 127.0.0.1 sink)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "S3 respawn: IDB-restored 'respawn_restored' cookie detected",
+      "passed": true,
+      "detail": "candidates=1, names=[['respawn_restored']]"
+    },
+    {
+      "name": "S4 comparison covers IDB + 5 other stores",
+      "passed": true,
+      "detail": "keys=['caches', 'cookies', 'indexeddb', 'localStorage', 'service_workers', 'sessionStorage']"
+    },
+    {
+      "name": "S4b IDB row populated by main pass",
+      "passed": true,
+      "detail": "idb={'identifiers': 2, 'exfil_events': 0, 'third_party_exfils': 0}"
+    },
+    {
+      "name": "S5 sessionStorage control value captured",
+      "passed": true,
+      "detail": "ss count=2"
+    }
+  ],
+  "storage_analysis": {
+    "comparison": {
+      "localStorage": {
+        "identifiers": 1,
+        "exfil_events": 1,
+        "third_party_exfils": 1
+      },
+      "sessionStorage": {
+        "identifiers": 2,
+        "exfil_events": 0,
+        "third_party_exfils": 0
+      },
+      "cookies": {
+        "identifiers": 1,
+        "exfil_events": 0,
+        "third_party_exfils": 0
+      },
+      "caches": {
+        "identifiers": 0,
+        "exfil_events": 0,
+        "third_party_exfils": 0
+      },
+      "service_workers": {
+        "identifiers": 0,
+        "exfil_events": 0,
+        "third_party_exfils": 0
+      },
+      "indexeddb": {
+        "identifiers": 2,
+        "exfil_events": 0,
+        "third_party_exfils": 0
+      }
+    },
+    "captured": {
+      "localStorage": 1,
+      "sessionStorage": 2,
+      "cookies": 1,
+      "caches": 0,
+      "service_workers": 0,
+      "frames": 1
+    },
+    "respawn_candidates": [
+      {
+        "value_hash": "5501b94c5360ca15",
+        "stores": [
+          "indexeddb",
+          "cookies"
+        ],
+        "cookie_names": [
+          "respawn_restored"
+        ]
+      }
+    ],
+    "storage_exfil_count": 1
+  }
+}

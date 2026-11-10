@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>PrivaDB storage test</title></head>
+<body>
+<h1>storage test</h1>
+<script>
+// GROUND TRUTH (Phase 6):
+//   S1 localStorage: KNOWN_LSVAL stored + exfiltrated via query param
+//      → must appear in storage_exfiltrations with mechanism=localStorage
+//   S2 RESPAWN: id written to IDB AND cookie, cookie DELETED, page
+//      reloads, id restored FROM IDB into a cookie named
+//      'respawn_restored' — the cookie only exists because IDB
+//      resurrected it. Detection: respawn_candidates entry containing
+//      'respawn_restored' + value in both stores.
+//   S3 sessionStorage: KNOWN_SSVAL stored (no exfil — control).
+const SINK = "__SINK_BASE__";
+const KNOWN_LSVAL = "ls-value-fedcba98765432101122334455667788";
+const KNOWN_SSVAL = "ss-value-887766554433221100ffeeddccbbaa99";
+const RESPAWN_ID = "respawn-id-1234567890abcdef1234567890abcd";
+
+function getCookie(n) {
+  const m = document.cookie.match(new RegExp("(?:^|; )" + n + "=([^;]*)"));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function setCookie(n, v, opts) {
+  document.cookie = n + "=" + encodeURIComponent(v) + "; path=/; "
+    + (opts || "max-age=31536000");
+}
+
+// --- S1: localStorage value + exfil ---
+try {
+  localStorage.setItem("tracker_ls", KNOWN_LSVAL);
+  fetch(`${SINK}/store-exfil?ls=${encodeURIComponent(
+    localStorage.getItem("tracker_ls"))}`).catch(() => {});
+} catch (e) {}
+
+// --- S3: sessionStorage control ---
+try { sessionStorage.setItem("session_only", KNOWN_SSVAL); } catch (e) {}
+
+// --- S2: respawn cycle ---
+(function () {
+  const restored = getCookie("respawn_restored");
+  if (restored) {
+    // Cookie exists — only possible if THIS path set it (see below)
+    return;
+  }
+  const openReq = indexedDB.open("respawn_db", 1);
+  openReq.onupgradeneeded = (e) => {
+    const db = e.target.result;
+    if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+  };
+  openReq.onsuccess = (e) => {
+    const db = e.target.result;
+    try {
+      const rtx = db.transaction("ids", "readonly");
+      const g = rtx.objectStore("ids").get("id");
+      g.onsuccess = () => {
+        if (g.result && g.result.v) {
+          // RESPAWN: IDB still has it → restore the cookie, then mark
+          setCookie("respawn_restored", g.result.v);
+          try { sessionStorage.setItem("respawn_step", "restored"); } catch (e) {}
+        } else {
+          // FIRST LOAD: create in both stores, then DELETE the plain
+          // cookie, then reload — next load must come from IDB.
+          const wtx = db.transaction("ids", "readwrite");
+          wtx.objectStore("ids").put({ v: RESPAWN_ID }, "id");
+          wtx.oncomplete = () => {
+            setCookie("respawn_plain", RESPAWN_ID);
+            // delete the cookie we just made
+            document.cookie =
+              "respawn_plain=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            setTimeout(() => location.reload(), 300);
+          };
+        }
+      };
+    } catch (e) {}
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "engine": "chrome",
+  "headless": true,
+  "seed": "partition-seed-aabbccddeeff001122334455667788",
+  "events": [
+    {
+      "state": "stored",
+      "v": "partition-seed-aabbccddeeff001122334455667788",
+      "ts": 1794302519.7235596
+    },
+    {
+      "state": "seen",
+      "v": "partition-seed-aabbccddeeff001122334455667788",
+      "ts": 1794302522.7655115
+    }
+  ],
+  "partitioned": false,
+  "verdict": "NOT partitioned \u2014 iframe localStorage visible across different top-level sites (cross-site tracking vector)"
+}

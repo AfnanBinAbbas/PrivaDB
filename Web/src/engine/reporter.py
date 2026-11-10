@@ -374,6 +374,56 @@ def _write_tracking_csv(results: list[dict]):
                     "target": _clip(hf.get("target", "")),
                 })
 
+            # Phase 6: non-IDB storage exfiltrations (localStorage,
+            # sessionStorage, cookies, caches, service workers)
+            for se in r.get("storage_exfiltrations", []):
+                import hashlib
+                val = _clip(se.get("identifier_value", ""))
+                val_hash = hashlib.sha256(val.encode()).hexdigest()[:16] if val else ""
+                stype = se.get("storage_type", "unknown")
+
+                writer.writerow({
+                    "site_domain": domain,
+                    "site_url": url,
+                    "mechanism": stype,
+                    "flow_direction": "outflow",
+                    "confinement": se.get("confinement", ""),
+                    "cross_origin": se.get("cross_origin", ""),
+                    "source_class": f"{stype}.{se.get('match_location', '')}",
+                    "sink_class": se.get("match_location", ""),
+                    "database": se.get("database", ""),
+                    "store": se.get("store", ""),
+                    "record_key": se.get("record_key", ""),
+                    "identifier_key": se.get("record_key", ""),
+                    "identifier_value": val,
+                    "identifier_value_hash": val_hash,
+                    "identifier_reason": se.get("identifier_reason", ""),
+                    "identifier_entropy": se.get("identifier_entropy", 0),
+                    "changed_across_iterations": "",
+                    "tracker_domain": se.get("request_domain", "")
+                                       if se.get("is_known_tracker") else "",
+                    "request_url": _clip(se.get("request_url", "")),
+                    "request_method": se.get("request_method", ""),
+                    "request_domain": se.get("request_domain", ""),
+                    "match_location": se.get("match_location", ""),
+                    "matched_variant": _clip(se.get("matched_variant", "")),
+                    "transform_chain": "|".join(
+                        se.get("transform_chain", []) or []),
+                    "is_third_party": se.get("is_third_party", False),
+                    "is_known_tracker": se.get("is_known_tracker", False),
+                    "tracker_entity_company": (se.get("tracker_entity")
+                                               or {}).get("company") or "",
+                    "tracker_entity_category": (se.get("tracker_entity")
+                                                or {}).get("category") or "",
+                    "cname_target": se.get("cname_target") or "",
+                    "cname_cloaked": se.get("cname_cloaked", False),
+                    "confidence": se.get("confidence", ""),
+                    "source_function": "",
+                    "source_line": "",
+                    "storage_source": stype,
+                    "target": _clip(se.get("request_url", "")),
+                })
+
     logger.info(f"📊 Tracking events CSV → {path}")
 
 
@@ -513,6 +563,30 @@ def _write_per_site_json(results: list[dict]):
                 "confidence": hf.get("confidence", ""),
                 "is_third_party": hf.get("is_third_party", False),
                 "is_known_tracker": hf.get("is_known_tracker", False),
+            })
+
+        # Phase 6: non-IDB storage exfiltrations
+        for se in r.get("storage_exfiltrations", []):
+            status_code = _find_status_code(se.get("request_url", ""), network)
+            stype = se.get("storage_type", "unknown")
+            entries.append({
+                "databaseName": f"{stype}:{se.get('database', '')}".strip(":"),
+                "key": se.get("record_key", ""),
+                "value": se.get("identifier_value", ""),
+                "source": f"storage:{stype}",
+                "sink": _map_sink_name(se),
+                "statusCode": status_code if status_code is not None else 200,
+                "domain": domain,
+                "requestUrl": se.get("request_url", ""),
+                "mechanism": stype,
+                "match_location": se.get("match_location", ""),
+                "transform_chain": se.get("transform_chain", []),
+                "confinement": se.get("confinement", ""),
+                "cross_origin": se.get("cross_origin", ""),
+                "confidence": se.get("confidence", ""),
+                "is_third_party": se.get("is_third_party", False),
+                "is_known_tracker": se.get("is_known_tracker", False),
+                "tracker_entity": se.get("tracker_entity"),
             })
 
         if entries:

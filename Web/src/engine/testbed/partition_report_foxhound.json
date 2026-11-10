@@ -1,0 +1,19 @@
+{
+  "engine": "foxhound",
+  "headless": false,
+  "seed": "partition-seed-aabbccddeeff001122334455667788",
+  "events": [
+    {
+      "state": "stored",
+      "v": "partition-seed-aabbccddeeff001122334455667788",
+      "ts": 1794302529.9720678
+    },
+    {
+      "state": "seen",
+      "v": "partition-seed-aabbccddeeff001122334455667788",
+      "ts": 1794302532.9698782
+    }
+  ],
+  "partitioned": false,
+  "verdict": "NOT partitioned \u2014 iframe localStorage visible across different top-level sites (cross-site tracking vector)"
+}

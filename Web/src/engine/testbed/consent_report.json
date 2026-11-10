@@ -1,5 +1,5 @@
 {
-  "engine": "chrome",
+  "engine": "foxhound",
   "page": "http://localhost:18765/consent.html?misbehave=1",
   "passed": true,
   "n_pass": 12,

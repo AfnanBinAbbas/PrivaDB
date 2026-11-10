@@ -263,6 +263,7 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
                 "transform_chain": chain,
                 "all_transform_chains": chains,
                 "mechanism": ("transform" if is_transformed else "substring"),
+                "storage_type": identifier.get("storage_type", "indexeddb"),
                 "is_third_party": is_third_party,
                 "is_known_tracker": is_known_tracker,
                 "tracker_entity": entity,
@@ -1295,6 +1296,163 @@ def analyze_idb_writes(hooks: dict, site_domain: str,
     }
 
 
+def analyze_other_storage(site_data: dict, site_domain: str) -> dict:
+    """
+    Phase 6: run the SAME identifier extraction + transform-aware
+    matching over localStorage, sessionStorage, cookies, Cache Storage
+    and service workers — so IDB can be compared to every other store
+    on one axis.
+
+    Returns:
+      {
+        "comparison": {storage_type: {identifiers, exfil_events,
+                                      third_party_exfils}},
+        "storage_exfiltrations": [events…],   # all non-IDB exfil events
+        "respawn_candidates": [{value_hash, stores:[...]}…],  # same value
+                                                  # in cookie AND idb
+        "captured": {storage_type: counts…},
+      }
+    """
+    other = site_data.get("other_storage") or {}
+    network = site_data.get("network_requests") or []
+
+    # ── build identifier pools per storage type ──
+    pools: dict[str, list[dict]] = {
+        "localStorage": [], "sessionStorage": [], "cookies": [],
+        "caches": [], "service_workers": [],
+    }
+
+    def _tag(idents, storage_type):
+        for i in idents:
+            i["storage_type"] = storage_type
+        return idents
+
+    for store_name in ("localStorage", "sessionStorage"):
+        blob = other.get(store_name) or {}
+        # include frame copies (iframes may hold third-party storage)
+        sources = [(None, blob)]
+        for fr in other.get("frames") or []:
+            fblob = fr.get(store_name) or {}
+            if fblob:
+                sources.append((fr.get("frame_url", ""), fblob))
+        seen_keys = set()
+        for frame_url, fb in sources:
+            for k, v in fb.items():
+                key = (frame_url or "", k)
+                if key in seen_keys:
+                    continue
+                seen_keys.add(key)
+                path = f"{store_name}/{k}"
+                idents = extract_potential_ids(v, path)
+                for i in idents:
+                    i["record_key"] = k
+                    i["store"] = store_name
+                    i["database"] = frame_url or ""
+                pools[store_name].extend(_tag(idents, store_name))
+
+    for ck in other.get("cookies") or []:
+        val = str(ck.get("value", ""))
+        idents = extract_potential_ids(val, f"cookies/{ck.get('name','')}")
+        for i in idents:
+            i["record_key"] = ck.get("name", "")
+            i["store"] = "cookies"
+        pools["cookies"].extend(_tag(idents, "cookies"))
+
+    # Cache request URLs: the URL itself may carry identifiers
+    for cname, urls in (other.get("caches") or {}).items():
+        for u in urls or []:
+            fake_idents = extract_potential_ids(
+                u, f"caches/{cname}")
+            # also treat full URL as candidate (query strings embedded)
+            fake_idents.extend(extract_potential_ids(
+                str(u), f"caches/{cname}/url"))
+            for i in fake_idents:
+                i["store"] = f"caches/{cname}"
+            pools["caches"].extend(_tag(fake_idents, "caches"))
+
+    for sw_url in other.get("service_workers") or []:
+        idents = extract_potential_ids(str(sw_url), "service_workers")
+        for i in idents:
+            i["store"] = "service_workers"
+        pools["service_workers"].extend(_tag(idents, "service_workers"))
+
+    # ── same matching on each pool ──
+    storage_exfils: list[dict] = []
+    comparison: dict[str, dict] = {}
+    idb_ident_values = set()
+
+    # IDB pool (from first-iteration extraction, same as main pass)
+    idb = site_data.get("indexeddb") or {}
+    for db in idb.get("databases") or []:
+        for store in db.get("stores") or []:
+            for record in store.get("records") or []:
+                for ident in extract_potential_ids(
+                        record.get("value"),
+                        f"{db.get('name','')}/{store.get('name','')}/"
+                        f"{record.get('key','')}"):
+                    idb_ident_values.add(str(ident.get("value", "")))
+
+    for stype, idents in pools.items():
+        # dedupe identifiers within pool by value (frames may duplicate)
+        dedup = {}
+        for i in idents:
+            dedup.setdefault(str(i.get("value", "")), i)
+        idents = list(dedup.values())
+        exfils = find_exfiltrations(idents, network, site_domain)
+        for e in exfils:
+            e["storage_type"] = stype
+        storage_exfils.extend(exfils)
+        comparison[stype] = {
+            "identifiers": len(idents),
+            "exfil_events": len(exfils),
+            "third_party_exfils": sum(1 for e in exfils
+                                      if e.get("is_third_party")),
+        }
+
+    # IDB row is filled by analyze_site (it owns the main-pass counts);
+    # placeholder keeps the axis shape stable when called standalone.
+    comparison.setdefault("indexeddb", {
+        "identifiers": 0, "exfil_events": 0, "third_party_exfils": 0,
+    })
+
+    # ── respawn candidates: value present in BOTH cookies and IDB ──
+    cookie_names_by_val: dict[str, list[str]] = {}
+    for c in other.get("cookies") or []:
+        cookie_names_by_val.setdefault(str(c.get("value", "")), []).append(
+            str(c.get("name", "")))
+    import hashlib
+    respawn = []
+    for v in idb_ident_values & set(cookie_names_by_val):
+        if len(v) >= config.MIN_ID_LENGTH:
+            respawn.append({
+                "value_hash": hashlib.sha256(
+                    v.encode("utf-8", "ignore")).hexdigest()[:16],
+                "stores": ["indexeddb", "cookies"],
+                "cookie_names": cookie_names_by_val.get(v, []),
+            })
+
+    captured = {
+        "localStorage": len(other.get("localStorage") or {}),
+        "sessionStorage": len(other.get("sessionStorage") or {}),
+        "cookies": len(other.get("cookies") or []),
+        "caches": len(other.get("caches") or {}),
+        "service_workers": len(other.get("service_workers") or []),
+        "frames": len(other.get("frames") or []),
+    }
+    logger.info(
+        f"  Storage comparison: "
+        + ", ".join(f"{k}={v['identifiers']}ids/{v['exfil_events']}exfil"
+                    for k, v in comparison.items())
+        + f" | respawn candidates: {len(respawn)}"
+    )
+    return {
+        "comparison": comparison,
+        "storage_exfiltrations": storage_exfils,
+        "respawn_candidates": respawn,
+        "captured": captured,
+    }
+
+
 def _analyze_consent(iterations: list[dict], site_domain: str) -> dict | None:
     """
     Phase 4: compare consent conditions for one site.
@@ -1641,6 +1799,16 @@ def analyze_site(site_data: dict) -> dict:
         f"({sum(1 for e in exfiltrations if e.get('taint_confirmed'))} taint-corroborated)"
     )
 
+    # Step 3b: Phase 6 — same matching over every other store, so IDB
+    # can be compared against localStorage/cookies/caches on one axis.
+    storage_analysis = analyze_other_storage(site_data, domain)
+    storage_analysis["comparison"]["indexeddb"] = {
+        "identifiers": len(flat_ids),
+        "exfil_events": len(exfiltrations),
+        "third_party_exfils": sum(1 for e in exfiltrations
+                                  if e.get("is_third_party")),
+    }
+
     # Step 4: Inflow (source → IDB).
     # Response-proven inflow (Phase 2 hooks) takes precedence; the legacy
     # URL-param/navigator heuristic still runs as a fallback for crawls
@@ -1776,6 +1944,7 @@ def analyze_site(site_data: dict) -> dict:
         },
         "inflow_flows": integrity_flows,
         "consent_analysis": consent_analysis,
+        "storage_analysis": storage_analysis,
         "write_attribution": {
             "total_writes": write_analysis["write_count"],
             "responses_captured": write_analysis["response_count"],

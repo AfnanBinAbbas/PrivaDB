@@ -469,6 +469,69 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
 })();
 """
 
+# ─── Other persistence mechanisms (Phase 6) ─────────────────────────
+# localStorage / sessionStorage / cookies / Cache Storage / service
+# workers, captured so IDB can be compared against every other store
+# on one axis (the comparison the project title promises).
+EXTRACT_OTHER_STORAGE_SCRIPT = r"""
+async () => {
+  const out = {localStorage: {}, sessionStorage: {}, cookies: [],
+               caches: {}, service_workers: [], errors: []};
+  const clip = (s, n) => (s && s.length > n) ? s.slice(0, n) : s;
+
+  // Web Storage (capped: 200 entries each, values ≤2000 chars)
+  for (const [name, store] of [["localStorage", window.localStorage],
+                               ["sessionStorage", window.sessionStorage]]) {
+    try {
+      const n = store.length;
+      for (let i = 0; i < n && i < 200; i++) {
+        const k = store.key(i);
+        out[name][k] = clip(String(store.getItem(k) ?? ""), 2000);
+      }
+    } catch (e) { out.errors.push(name + ": " + e); }
+  }
+
+  // Cookies (document.cookie; HttpOnly cookies are invisible here —
+  // noted in the report as a measurement limitation)
+  try {
+    const raw = document.cookie || "";
+    for (const pair of raw.split(";")) {
+      const eq = pair.indexOf("=");
+      if (eq === -1) continue;
+      const k = pair.slice(0, eq).trim();
+      const v = clip(pair.slice(eq + 1).trim(), 1000);
+      if (k) out.cookies.push({name: k, value: v});
+      if (out.cookies.length >= 100) break;
+    }
+  } catch (e) { out.errors.push("cookies: " + e); }
+
+  // Cache Storage — names + request URLs (bodies stay out of the dump)
+  try {
+    if (window.caches && caches.keys) {
+      const names = await caches.keys();
+      for (const name of names.slice(0, 20)) {
+        const cache = await caches.open(name);
+        const reqs = await cache.keys();
+        out.caches[name] = reqs.slice(0, 50).map((r) => r.url);
+      }
+    }
+  } catch (e) { out.errors.push("caches: " + e); }
+
+  // Service worker registrations
+  try {
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      out.service_workers = regs.slice(0, 20).map(
+        (r) => (r.active || r.installing || r.waiting
+                ? (r.active || r.installing || r.waiting).scriptURL
+                : ""));
+    }
+  } catch (e) { out.errors.push("sw: " + e); }
+
+  return out;
+}
+"""
+
 
 def _get_firefox_env():
     """Create environment dict for Firefox with D-Bus disabled and display configured."""
@@ -633,6 +696,10 @@ class SiteCrawler:
             "domain": domain,
             "timestamp": datetime.utcnow().isoformat() + "Z",
             "indexeddb": {"databases": []},
+            "other_storage": {"localStorage": {}, "sessionStorage": {},
+                              "cookies": [], "caches": {},
+                              "service_workers": [], "frames": [],
+                              "errors": []},
             "network_requests": [],
             "taint_events": [],
             "flow_hooks": {"reads": [], "sends": [], "writes": [], "responses": []},
@@ -700,6 +767,47 @@ class SiteCrawler:
                 logger.info(
                     f"  Extraction complete: {db_count} databases, "
                     f"{total_records} total records across all frames"
+                )
+
+                # Phase 6: other persistence mechanisms — same frames as
+                # IDB so the comparison is on identical page state.
+                other = {"localStorage": {}, "sessionStorage": {},
+                         "cookies": [], "caches": {},
+                         "service_workers": [], "frames": [],
+                         "errors": []}
+                for frame in frames:
+                    try:
+                        fo = await frame.evaluate(EXTRACT_OTHER_STORAGE_SCRIPT)
+                        if not fo:
+                            continue
+                        other["frames"].append(
+                            {"frame_url": frame.url,
+                             "is_main_frame": frame == page.main_frame,
+                             "localStorage": fo.get("localStorage", {}),
+                             "sessionStorage": fo.get("sessionStorage", {}),
+                             "cookies": fo.get("cookies", []),
+                             "caches": fo.get("caches", {}),
+                             "service_workers": fo.get("service_workers", [])})
+                        # main-frame copy at top level for convenience
+                        if frame == page.main_frame:
+                            other["localStorage"] = fo.get("localStorage", {})
+                            other["sessionStorage"] = fo.get("sessionStorage", {})
+                            other["cookies"] = fo.get("cookies", [])
+                            other["caches"] = fo.get("caches", {})
+                            other["service_workers"] = fo.get(
+                                "service_workers", [])
+                        other["errors"].extend(fo.get("errors", []))
+                    except asyncio.CancelledError:
+                        raise
+                    except Exception:
+                        continue
+                result["other_storage"] = other
+                logger.info(
+                    f"  Other storage: ls={len(other['localStorage'])} "
+                    f"ss={len(other['sessionStorage'])} "
+                    f"cookies={len(other['cookies'])} "
+                    f"caches={len(other['caches'])} "
+                    f"sw={len(other['service_workers'])}"
                 )
             except asyncio.CancelledError:
                 raise
@@ -1221,6 +1329,11 @@ async def crawl_all_sites(site_limit: int = None,
             "run_meta": run_meta,
             # Use the first iteration as the primary data for backward compat
             "indexeddb": site_iterations[0].get("indexeddb", {"databases": []}),
+            "other_storage": site_iterations[0].get("other_storage", {
+                "localStorage": {}, "sessionStorage": {}, "cookies": [],
+                "caches": {}, "service_workers": [], "frames": [],
+                "errors": [],
+            }),
             "network_requests": site_iterations[0].get("network_requests", []),
             "errors": [],
         }
