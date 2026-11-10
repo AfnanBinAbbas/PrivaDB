@@ -16,7 +16,7 @@ Regenerate measurements: `PAPER_REPORT.md` §9 has the full sequence.
 | `Web/src/engine/testbed/scale_report.json` | `testbed/run_scale.py --engine chrome --headed` | store mode `jsonl` — this venv's Python lacks `_sqlite3`; SQLite path unit-verified under system Python |
 | `Web/src/engine/testbed/partition_report_chrome.json` `..._foxhound.json` | `testbed/run_partition.py --engine <e>` | verdict specific to the localhost/127.0.0.1 top-level pair |
 | `Web/backend/tests/*` | `python -m pytest Web/backend/tests -q` | 26 passed (SSRF + disclosure/gap + legacy policy + report/GRC + paper UID) |
-| `Web/src/engine/testbed/samples/scan_report_sample.html` | rendered from the evaluation crawl (real testbed flows) | standards checklist verified; values hashed |
+| `Web/src/engine/testbed/samples/scan_report_sample.html` | rendered from the evaluation crawl (real testbed flows) | standards checklist verified; raw leaked values + source/sink columns (sensitive) |
 | `Web/src/engine/testbed/samples/bulk_report_sample.html` | rendered from two analyses | counts-only executive view |
 | `.github/workflows/ci.yml` | — | runs compileall + pytest + `tsc --noEmit` + `npm run build` |
 

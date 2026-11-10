@@ -10,8 +10,11 @@ Standards followed:
     conveyed by TEXT (not colour alone), high-contrast palette,
     works with JavaScript disabled (zero JS; native <details>)
   * Print: @media print styles, forced page-breaks before sections
-  * Evidence hygiene: identifier values appear ONLY as sha256:16
-    hashes; raw values never rendered
+  * Evidence: per-site reports show the LEAKED VALUES in clear (clipped
+    to 140 chars) next to their SHA-256:16 hash, each row carrying its
+    source (IDB record / taint source / storage) and sink (destination
+    URL / write target). Treat per-site reports as SENSITIVE. The bulk
+    report stays aggregate-only (counts, no values).
   * Provenance: generator + version + generated-at + source run_meta
     + input artifact paths on every report
   * Portability: single self-contained file, no external requests
@@ -79,6 +82,9 @@ th[scope=row]{font-weight:600;background:#fafbfc}
 .sev{font-size:.8rem;color:var(--muted)}
 .hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 font-size:.85em}
+.leak{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em;background:#fff7e6;padding:1px 4px;border-radius:3px;
+word-break:break-all}
 details{margin:8px 0;border:1px solid var(--line);border-radius:6px;
 padding:8px 10px}
 summary{cursor:pointer;font-weight:600}
@@ -162,7 +168,9 @@ def _toc(items: list[tuple[str, str]]) -> str:
 def _footer(extra: str = "") -> str:
     return f"""<footer>
 <div>Report version {_e(REPORT_VERSION)} · generator {_e(GENERATOR)} ·
- all identifier values rendered as SHA-256 hashes (16 hex chars).</div>
+ <strong>sensitive:</strong> this per-site report contains raw leaked
+ values (clipped to 140 chars) with their SHA-256:16 hashes and
+ source/sink provenance — store and share it accordingly.</div>
 {extra}
 <div class="disc"><strong>Disclaimer.</strong> This document is an
 indicative technical screening produced by an automated measurement
@@ -295,36 +303,136 @@ def _grc_section(grc: dict) -> str:
     return "\n".join(out)
 
 
+def _val(v) -> str:
+    """Leaked value: raw (clipped) + hash side-by-side."""
+    s = "" if v is None else str(v)
+    clipped = s if len(s) <= 140 else s[:140] + "…"
+    return (f'<span class="leak">{_e(clipped)}</span> '
+            f'<span class="hash">{_h(s)}</span>')
+
+
+def _entity_cell(e: dict) -> str:
+    ent = e.get("tracker_entity") or {}
+    name = ent.get("company") or "—"
+    cat = f' {_e("(" + ent["category"] + ")")}' if ent.get("category") else ""
+    return f"{_e(name)}{cat}"
+
+
+def _flow_rows(view: dict) -> list[dict]:
+    """Normalise every flow mechanism into one source→value→sink row
+    set: exfiltration events, storage exfils, taint flows, IDB-hook
+    flows, and inflow (network → storage) flows."""
+    rows: list[dict] = []
+
+    for e in view["exfils"]:
+        db = e.get("database") or ""
+        st = e.get("store") or ""
+        rk = e.get("record_key") or ""
+        src = (f"IDB {_e(db)}/{_e(st)}/{_e(rk)}".rstrip("/")
+               if (db or st or rk)
+               else f"IDB {_e(e.get('identifier_path', 'record'))}")
+        rows.append({
+            "dir": "outflow", "source": src,
+            "value": e.get("identifier_value"),
+            "sink": f"{_e(e.get('match_location', ''))} → "
+                    f"{_e(e.get('request_url', ''))}",
+            "mech": _e(e.get("mechanism", "substring")),
+            "entity": _entity_cell(e), "tp": e.get("is_third_party"),
+            "conf": _e(e.get("confidence", "")),
+        })
+
+    for e in (view["storage"].get("storage_exfiltrations") or []):
+        stype = e.get("storage_type", "storage")
+        rows.append({
+            "dir": "outflow",
+            "source": f"{_e(stype)} {_e(e.get('store', ''))}"
+                      f"/{_e(e.get('record_key', ''))}".rstrip("/"),
+            "value": e.get("identifier_value"),
+            "sink": f"{_e(e.get('match_location', ''))} → "
+                    f"{_e(e.get('request_url', ''))}",
+            "mech": _e(stype), "entity": _entity_cell(e),
+            "tp": e.get("is_third_party"),
+            "conf": _e(e.get("confidence", "")),
+        })
+
+    for t in view["taint"]:
+        fn = t.get("source_function") or ""
+        line = t.get("source_line")
+        src = _e(t.get("source_operation", "taint source"))
+        if fn:
+            src += f' <span class="hash">{_e(fn)}' + (
+                f":{_e(line)}</span>" if line is not None else "</span>")
+        rows.append({
+            "dir": "outflow", "source": src,
+            "value": t.get("tainted_value"),
+            "sink": f"{_e(t.get('sink', ''))} → {_e(t.get('target', ''))}",
+            "mech": "taint", "entity": _entity_cell(t),
+            "tp": t.get("is_third_party"),
+            "conf": _e(t.get("confidence", "")),
+        })
+
+    for h in view["hooks"]:
+        fn = h.get("source_function") or ""
+        src = f"IDB read {_e(h.get('source_store', ''))}"
+        if fn:
+            src += f' <span class="hash">via {_e(fn)}</span>'
+        sink_fn = h.get("sink_function") or ""
+        sink = f"{_e(h.get('sink', ''))} → {_e(h.get('target', ''))}"
+        if sink_fn:
+            sink += f' <span class="hash">by {_e(sink_fn)}</span>'
+        rows.append({
+            "dir": "outflow", "source": src,
+            "value": h.get("idb_value"), "sink": sink,
+            "mech": "idb_hook", "entity": _entity_cell(h),
+            "tp": h.get("is_third_party"),
+            "conf": _e(h.get("confidence", "")),
+        })
+
+    for i in view["inflow"]:
+        resp = i.get("response_url") or i.get("request_domain") or ""
+        rows.append({
+            "dir": "inflow",
+            "source": f"network {_e(resp)}",
+            "value": i.get("value"),
+            "sink": f"{_e(i.get('sink_class', 'IDB write'))} → "
+                    f"{_e(i.get('database', ''))}"
+                    f"/{_e(i.get('store', ''))}"
+                    f"/{_e(i.get('record_key', ''))}".rstrip("/"),
+            "mech": _e(i.get("mechanism", "response_match")),
+            "entity": _entity_cell(i), "tp": i.get("is_third_party"),
+            "conf": _e(i.get("confidence", "")),
+        })
+    return rows
+
+
 def _flows_table(view: dict) -> str:
-    rows = []
-    for e in view["all_flow_events"][:80]:
-        ent = e.get("tracker_entity") or {}
-        cname = (f'→ {_e(e.get("cname_target"))}'
-                 if e.get("cname_cloaked") else "")
-        rows.append(
-            "<tr>"
-            f'<td><span class="hash">{_h(e.get("identifier_value"))}</span></td>'
-            f'<td>{_e(e.get("mechanism", e.get("storage_type", "")))}</td>'
-            f'<td>{_e(e.get("match_location", e.get("sink", "")))}</td>'
-            f'<td>{_e(e.get("request_domain", ""))} {cname}</td>'
-            f'<td>{_e(ent.get("company") or "—")}'
-            f' {_e("(" + ent["category"] + ")" if ent.get("category") else "")}</td>'
-            f'<td>{"yes" if e.get("is_third_party") else "no"}</td>'
-            f'<td>{_e(e.get("confidence", ""))}</td>'
-            "</tr>")
+    """Leaked-values table: every flow with its source, raw value
+    (clipped + hash) and sink — outflow and inflow side by side."""
+    rows = _flow_rows(view)
     if not rows:
         return ('<p>No identifier flows measured in this scan.</p>')
+    shown = rows[:150]
+    body = "".join(
+        "<tr>"
+        f'<td>{r["dir"]}</td><td>{r["source"]}</td>'
+        f'<td>{_val(r["value"])}</td><td>{r["sink"]}</td>'
+        f'<td>{r["mech"]}</td><td>{r["entity"]}</td>'
+        f'{"<td>yes</td>" if r["tp"] else "<td>no</td>"}'
+        f'<td>{r["conf"]}</td>'
+        "</tr>" for r in shown)
     return (
-        '<table><caption>Identifier flows (values hashed; up to 80 of '
-        f'{len(view["all_flow_events"])})</caption><thead><tr>'
-        '<th scope="col">Identifier (hash)</th>'
+        '<table><caption>Leaked values with source → sink provenance '
+        '(raw values clipped to 140 chars + SHA-256:16; '
+        f'showing {len(shown)} of {len(rows)})</caption><thead><tr>'
+        '<th scope="col">Direction</th>'
+        '<th scope="col">Source</th>'
+        '<th scope="col">Leaked value (+ hash)</th>'
+        '<th scope="col">Sink</th>'
         '<th scope="col">Mechanism</th>'
-        '<th scope="col">Match / sink</th>'
-        '<th scope="col">Destination</th>'
         '<th scope="col">Entity</th>'
         '<th scope="col">Third party</th>'
         '<th scope="col">Confidence</th></tr></thead><tbody>'
-        + "".join(rows) + "</tbody></table>")
+        + body + "</tbody></table>")
 
 
 def _consent_section(view: dict) -> str:
@@ -436,7 +544,7 @@ def render_scan_report(analysis: dict,
         f"PrivaDB scan report — {domain}",
         f"IndexedDB tracking measurement + GRC screening for "
         f"{target_url}",
-        "Confidential — research measurement"),
+        "Confidential — contains raw leaked values (sensitive)"),
         _toc(toc_items)]
 
     # 1 summary
@@ -517,7 +625,7 @@ def render_scan_report(analysis: dict,
         '<details><summary>Source artifacts</summary><ul class="tight">'
         + (src_items or "<li>—</li>") +
         '</ul></details>'
-        '<details><summary>Analysis snapshot (JSON, hashed values)'
+        '<details><summary>Analysis snapshot (JSON, raw values may appear)'
         '</summary><pre>'
         + _e(json.dumps(
             {k: analysis.get(k) for k in (
@@ -543,8 +651,9 @@ def render_scan_report(analysis: dict,
         'provenance comes from the in-page hook layer.</li>'
         '<li>Policy- and header-based checks are best-effort and may '
         'be N/A when the target blocks collection.</li>'
-        '<li>Values are hashed in this report; raw identifiers remain '
-        'only in local run artifacts.</li>'
+        '<li>Per-site reports display raw leaked values (clipped) with '
+        'source/sink provenance — treat them as sensitive personal '
+        'data; the bulk report contains aggregates only.</li>'
         '</ul></section>')
 
     parts.append("</main>")
@@ -647,8 +756,8 @@ def render_bulk_report(sites: list[dict]) -> str:
     parts.append(
         '<section id="sites" aria-labelledby="st-h">'
         '<h2 id="st-h">2. Per-site results</h2>'
-        '<table><caption>One row per analysed site (values hashed in '
-        'per-site reports)</caption><thead><tr>'
+        '<table><caption>One row per analysed site (aggregates only — '
+        'raw values live in the per-site reports)</caption><thead><tr>'
         '<th scope="col">Domain</th><th scope="col">Engine</th>'
         '<th scope="col">IDB seen</th>'
         '<th scope="col">Identifier flows</th>'

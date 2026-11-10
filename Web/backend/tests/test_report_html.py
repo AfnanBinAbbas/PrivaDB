@@ -43,7 +43,26 @@ def _analysis_with_findings():
              "cname_cloaked": True, "cname_target": "safe.shop.example",
              "cross_origin": "same_site", "confinement": "internal"},
         ],
-        "taint_flows": [], "idb_hook_flows": [], "inflow_flows": [],
+        "taint_flows": [],
+        "idb_hook_flows": [{
+            "idb_value": RAW_SECRET, "sink": "fetch.url",
+            "target": "https://tracker.example.net/fetch?u=" + RAW_SECRET,
+            "source_store": "ids", "source_function": "sendUid",
+            "sink_function": "window.fetch",
+            "confidence": "HIGH", "is_third_party": True,
+            "is_known_tracker": True,
+            "tracker_entity": {"company": "Klaviyo",
+                               "category": "Advertising"}}],
+        "inflow_flows": [{
+            "flow_direction": "inflow", "source_class": "network_response",
+            "sink_class": "IDBObjectStore.put",
+            "value": RAW_SECRET,
+            "response_url": "https://api.shop.example/session?sid="
+                            + RAW_SECRET,
+            "database": "shop_db", "store": "session", "record_key": "s1",
+            "mechanism": "response_match", "confidence": "MEDIUM",
+            "is_third_party": False, "is_known_tracker": False,
+            "confinement": "internal", "cross_origin": "same_site"}],
         "dynamic_flows": {"total": 0},
         "consent_analysis": {
             "headline": {
@@ -256,9 +275,21 @@ def test_single_report_html_standards():
     assert "Framework rollup" in doc
     assert "GRC-07" in doc and "Recommendations" in doc
     assert "GDPR" in doc and "ePrivacy" in doc and "CCPA" in doc
-    # evidence hygiene: hashes yes, raw value NO
+    # evidence: RAW leaked values shown with hash + source/sink columns
     assert "sha256:" in doc
-    assert RAW_SECRET not in doc
+    assert RAW_SECRET in doc                      # value visible
+    assert "Leaked value (+ hash)" in doc
+    assert ">Source<" in doc and ">Sink<" in doc
+    # source provenance rendered per mechanism
+    assert "IDB " in doc and "IDB read ids" in doc
+    assert "sendUid" in doc and "window.fetch" in doc     # hook src/sink fns
+    assert "network https://api.shop.example/session" in doc  # inflow source
+    assert "response_match" in doc                            # inflow mech
+    assert "IDBObjectStore.put" in doc                        # inflow sink
+    assert 'class="leak"' in doc                          # value styling
+    # sensitivity marking present
+    assert "raw leaked values" in doc.lower() or \
+        "contains raw leaked values" in doc
     # provenance
     assert "foxhound_build_id" in doc
     assert "Limitations" in doc
@@ -291,8 +322,9 @@ def test_bulk_report_html():
     assert "Most frequent control failures" in doc
     assert "not a legal certification" in doc
     assert "@media print" in doc
-    # bulk shows counts only — raw identifiers never rendered
+    # bulk stays aggregates-only — raw identifiers never rendered there
     assert RAW_SECRET not in doc
+    assert "aggregates only" in doc
     # no external asset references
     assert 'src="' not in doc and "<link " not in doc
     print("test_bulk_report_html OK")

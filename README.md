@@ -129,7 +129,10 @@ PrivaDB/
 
 Every completed scan renders a **standalone, standards-compliant HTML
 report** (semantic HTML5, WCAG-oriented tables/skip-link, print styles,
-zero JavaScript, identifier values only as SHA-256 hashes) including
+zero JavaScript; per-site reports list every **leaked value in clear**
+(clipped to 140 chars + SHA-256:16) next to its **source and sink**
+provenance — handle them as sensitive; the bulk report stays
+aggregates-only) including
 **GRC compliance screening** against GDPR, ePrivacy, CCPA and
 ISO/IEC 27001:2022 — each check backed by measured evidence (consent
 study, flow data, policy disclosures, response headers).
