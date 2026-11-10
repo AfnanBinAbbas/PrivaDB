@@ -303,7 +303,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 403,adnxs.com,pending,0,,,,,,,,
 2832,adnxs.net,pending,0,,,,,,,,
 63,adobe.com,done,1,0,0,0,0,0,1621,0,479
-133,adobe.io,running,1,,,,,,,,
+133,adobe.io,done,1,0,0,0,0,0,547,0,1306
 420,adobe.net,pending,0,,,,,,,,
 6171,adobecces.com,pending,0,,,,,,,,
 440,adobedc.net,pending,0,,,,,,,,
