@@ -167,6 +167,63 @@ async def processing_error_handler(request, exc):
         content={"error": "Processing Error", "detail": exc.message, "status_code": 500, "timestamp": datetime.datetime.now().isoformat()}
     )
 
+
+def _finalize_partial(scan_id: str, url: str, engine: str,
+                      partial_sink: dict) -> Optional[dict]:
+    """Sync: build + persist a partial crawl from the sink (usable
+    from cancellation handlers — no awaits allowed here).
+
+    Returns the saved site_data (partial=True) or None when nothing
+    usable was collected. Also reaps stray browser processes."""
+    iterations = partial_sink.get("iterations") or []
+    if not iterations:
+        return None
+    domain = urlparse(url).netloc
+    combined = {
+        "url": url,
+        "domain": domain,
+        "timestamp": partial_sink.get("timestamp")
+                     or datetime.datetime.now().isoformat() + "Z",
+        "iterations": iterations,
+        "partial": True,
+        "indexeddb": iterations[0].get("indexeddb",
+                                       {"databases": []}),
+        "network_requests": iterations[0].get("network_requests", []),
+        "run_meta": {
+            "engine": engine,
+            "headless": bool(scans.get(scan_id, {}).get(
+                "config", {}).get("headless")),
+            "iterations_completed": len(iterations),
+            "captured_at": datetime.datetime.now().isoformat() + "Z",
+            "partial": True,
+        },
+        "errors": ["cancelled by user after "
+                   f"{len(iterations)} iteration(s)"],
+    }
+    for i, it in enumerate(iterations, 1):
+        for err in it.get("errors", []):
+            combined["errors"].append(f"iter{i}: {err}")
+
+    # reap any browser stragglers synchronously
+    try:
+        from crawler import _kill_browser_processes
+        _kill_browser_processes()
+    except Exception:
+        pass
+
+    raw_dir = config.RAW_DATA_DIR
+    os.makedirs(raw_dir, exist_ok=True)
+    safe_domain = domain.replace(".", "_").replace("/", "_")
+    path = os.path.join(raw_dir, f"{safe_domain}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(combined, f, indent=2, ensure_ascii=False, default=str)
+    if scan_id in scans:
+        scans[scan_id]["partial_crawl_path"] = path
+    logger.info(
+        f"Partial crawl saved -> {path} ({len(iterations)} iteration(s))")
+    return combined
+
+
 async def run_scan(scan_id: str, url: str, headless: bool = False,
                    crawl_only: bool = False, detect_only: bool = False,
                    engine: str = "chrome", iterations: Optional[int] = None,
@@ -202,9 +259,17 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
             
         crawled_results = None
         domain = urlparse(url).netloc
-        
+        # Cooperative stop bookkeeping: the crawler mirrors completed
+        # iterations here after every iteration, so a cancel can still
+        # persist "the current state".
+        partial_sink: Dict = {}
+
+        def _stopped() -> bool:
+            return bool(scans.get(scan_id, {}).get("stop_requested"))
+
         if not detect_only:
-            scans[scan_id]["status"] = "crawling"
+            if not _stopped():
+                scans[scan_id]["status"] = "crawling"
             engine_name = "Foxhound (Firefox-based)" if engine == "foxhound" else "Chrome"
             scans[scan_id]["message"] = f"Starting crawl with {engine_name}..."
             scans[scan_id]["commands"] = {"skip_iteration": False, "skip_domain": False}
@@ -225,12 +290,25 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
                 custom_sites=custom_sites, 
                 on_progress=on_crawl_progress,
                 check_command=check_command,
-                consent_study=consent_study
+                consent_study=consent_study,
+                partial_sink=partial_sink,
             )
             scans[scan_id]["progress"] = 55
             if not crawled_results:
-                raise Exception("Crawl failed to return results")
-            site_data = crawled_results[0]
+                if _stopped() or partial_sink.get("iterations"):
+                    # stopped before any site finished — persist what we have
+                    site_data = _finalize_partial(
+                        scan_id, url, engine, partial_sink)
+                    if site_data is None:
+                        if scan_id in scans:
+                            scans[scan_id]["status"] = "stopped"
+                            scans[scan_id]["message"] = (
+                                "Stopped before any data was collected")
+                        return
+                else:
+                    raise Exception("Crawl failed to return results")
+            else:
+                site_data = crawled_results[0]
         else:
             crawl_file = os.path.join(config.RAW_DATA_DIR, f"{domain.replace('.', '_')}.json")
             if not os.path.exists(crawl_file):
@@ -240,7 +318,12 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
             scans[scan_id]["progress"] = 40
 
         if crawl_only:
-            scans[scan_id]["status"] = "completed"
+            if _stopped():
+                scans[scan_id]["status"] = "stopped"
+                scans[scan_id]["message"] = (
+                    "Stopped — crawl data saved (crawl-only mode)")
+            else:
+                scans[scan_id]["status"] = "completed"
             scans[scan_id]["progress"] = 100
             scans[scan_id]["completed_at"] = datetime.datetime.now()
             scans[scan_id]["results"] = {
@@ -252,24 +335,38 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
             }
             return
 
-        scans[scan_id]["status"] = "detecting"
+        if not _stopped():
+            scans[scan_id]["status"] = "detecting"
         analysis_result = analyze_site(site_data)
         scans[scan_id]["progress"] = 85
-        
-        scans[scan_id]["status"] = "reporting"
+
+        if not _stopped():
+            scans[scan_id]["status"] = "reporting"
         generate_reports([analysis_result])
-        
+
         summary_path = os.path.join(config.ANALYSIS_DIR, "summary.json")
         with open(summary_path, 'r') as f:
             all_summaries = json.load(f)
             results = next((s for s in all_summaries if s.get("domain") == domain), all_summaries[0])
-            
-        scans[scan_id]["status"] = "completed"
+
+        if _stopped() or site_data.get("partial"):
+            # Stopped by user: keep the stopped state but attach the
+            # analysis of everything collected so far.
+            n_iter = len(site_data.get("iterations") or [])
+            scans[scan_id]["status"] = "stopped"
+            scans[scan_id]["message"] = (
+                f"Stopped by user — partial state saved "
+                f"({n_iter} crawl iteration(s) analyzed)")
+        else:
+            scans[scan_id]["status"] = "completed"
+            scans[scan_id]["message"] = "Scan completed successfully"
         scans[scan_id]["progress"] = 100
         scans[scan_id]["completed_at"] = datetime.datetime.now()
         results["engine"] = engine
+        results["partial"] = bool(site_data.get("partial"))
         scans[scan_id]["results"] = results
-        scans[scan_id]["results"]["stage"] = "full"
+        scans[scan_id]["results"]["stage"] = (
+            "partial" if site_data.get("partial") else "full")
 
         # Phase 12: HTML report (standalone + GRC) in the background —
         # pollers already see "completed"; report appears moments later.
@@ -279,10 +376,55 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
             pass
         
     except asyncio.CancelledError:
-        if scan_id in scans:
-            scans[scan_id]["status"] = "stopped"
-            scans[scan_id]["message"] = "Scan terminated by user"
-        logger.info(f"Scan {scan_id} was successfully cancelled")
+        # Cancel landed inside the crawl — persist + analyze whatever
+        # the partial sink holds, so stopping never loses collected data.
+        try:
+            site_data = _finalize_partial(scan_id, url, engine,
+                                          partial_sink)
+            if site_data is not None:
+                analysis_result = analyze_site(site_data)
+                analysis_result["partial"] = True
+                generate_reports([analysis_result])
+                summary_path = os.path.join(config.ANALYSIS_DIR,
+                                            "summary.json")
+                with open(summary_path, 'r') as f:
+                    all_summaries = json.load(f)
+                results = next(
+                    (s for s in all_summaries
+                     if s.get("domain") == urlparse(url).netloc),
+                    all_summaries[0])
+                results["engine"] = engine
+                results["partial"] = True
+                scans[scan_id]["results"] = results
+                scans[scan_id]["results"]["stage"] = "partial"
+                scans[scan_id]["progress"] = 100
+                n_iter = len(site_data.get("iterations") or [])
+                scans[scan_id]["message"] = (
+                    f"Stopped by user — partial state saved "
+                    f"({n_iter} crawl iteration(s) analyzed)")
+                logger.info(
+                    f"Scan {scan_id} cancelled — partial results saved "
+                    f"({n_iter} iterations)")
+            else:
+                scans[scan_id]["message"] = (
+                    "Stopped by user — no data had been collected yet")
+                logger.info(f"Scan {scan_id} cancelled before any data")
+        except Exception as save_err:
+            logger.error(
+                f"Failed to save partial state for {scan_id}: {save_err}")
+            if scan_id in scans:
+                scans[scan_id]["message"] = (
+                    f"Stopped by user (partial save failed: {save_err})")
+        finally:
+            if scan_id in scans:
+                scans[scan_id]["status"] = "stopped"
+                scans[scan_id]["completed_at"] = datetime.datetime.now()
+            # HTML report for the partial state as well
+            try:
+                if scan_id in scans and scans[scan_id].get("results"):
+                    asyncio.create_task(_bg_generate_report(scan_id))
+            except RuntimeError:
+                pass
     except Exception as e:
         scans[scan_id]["status"] = "failed"
         scans[scan_id]["error"] = str(e)
@@ -349,12 +491,15 @@ async def stop_scan(scan_id: str):
     try:
         if scan_id not in scans:
             raise NotFoundError(f"Scan with ID '{scan_id}' not found")
+        # Cooperative flag FIRST (run_scan polls it during sync phases
+        # where task.cancel() alone cannot take effect), then cancel.
+        scans[scan_id]["stop_requested"] = True
         if scan_id in active_tasks:
             task = active_tasks[scan_id]
             task.cancel()
             logger.info(f"✓ Scan {scan_id} stop signal sent")
         scans[scan_id]["status"] = "stopped"
-        scans[scan_id]["message"] = "Scan stopped by user"
+        scans[scan_id]["message"] = "Stopping — saving collected state…"
         return {"message": "Scan stopped successfully", "scan_id": scan_id}
     except NotFoundError:
         raise
@@ -382,12 +527,15 @@ async def skip_domain(scan_id: str):
 async def stop_all_scans():
     count = 0
     for scan_id, task in list(active_tasks.items()):
+        if scan_id in scans:
+            scans[scan_id]["stop_requested"] = True
         if not task.done():
             task.cancel()
             count += 1
         if scan_id in scans:
             scans[scan_id]["status"] = "stopped"
-            scans[scan_id]["message"] = "Scan terminated by global stop command"
+            scans[scan_id]["message"] = (
+                "Stopping — saving collected state…")
     logger.info(f"🛑 Global stop signal sent to {count} active tasks")
     return {"message": f"Stop signal sent to {count} active scans"}
 

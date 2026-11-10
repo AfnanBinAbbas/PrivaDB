@@ -85,7 +85,35 @@ type BackendScanResults = {
     request_domain: string;
     confidence: string;
   }[];
-  stage?: 'crawl_only' | 'full';
+  stage?: 'crawl_only' | 'full' | 'partial';
+  partial?: boolean;
+};
+
+/**
+ * Map one backend scan record onto the UI result model.
+ * Shared by the normal completion path and the stop-reconcile path
+ * (stopped scans attach analyzed partial results).
+ */
+const mapBackendToScanResult = (
+  data: BackendScanRecord & { message?: string },
+  fallbackUrl: string,
+): ScanResult => {
+  const r = data.results;
+  return {
+    url: data.url || fallbackUrl,
+    databases: r?.indexeddb_summary?.database_count || 0,
+    trackingEvents: r?.exfiltration_summary?.total || 0,
+    confidence: {
+      high: r?.exfiltration_summary?.high_confidence || 0,
+      medium: r?.exfiltration_summary?.medium_confidence || 0,
+      low: r?.exfiltration_summary?.low_confidence || 0,
+    },
+    flowTypes: {
+      confidentiality: r?.flow_classification?.outflow_flows || 0,
+      integrity: r?.flow_classification?.inflow_flows || 0,
+    },
+    trackerDomains: r?.exfiltration_events?.map((e) => e.request_domain) || [],
+  };
 };
 
 type BackendScanRecord = {
@@ -256,6 +284,8 @@ export const LiveScan: React.FC = () => {
   const [config, setConfig] = useState<ScanConfig>(defaultConfig);
   const [scanning, setScanning] = useState(false);
   const [stopping, setStopping] = useState(false);
+  const [stopError, setStopError] = useState<string | null>(null);
+  const [stopNotice, setStopNotice] = useState<string | null>(null);
   const [currentScanId, setCurrentScanId] = useState<string | null>(null);
   const [phases, setPhases] = useState<ScanPhase[]>([]);
   const [results, setResults] = useState<ScanResult[]>([]);
@@ -272,7 +302,8 @@ export const LiveScan: React.FC = () => {
       const data = await response.json();
 
       const mappedHistory = data
-        .filter((s: BackendScanRecord) => s.status === 'completed' && s.results)
+        .filter((s: BackendScanRecord) =>
+          (s.status === 'completed' || s.status === 'stopped') && !!s.results)
         .map((s: BackendScanRecord) => {
           const res = s.results!;
           return {
@@ -346,6 +377,8 @@ export const LiveScan: React.FC = () => {
     setScanComplete(false);
     setResults([]);
     stopSignalRef.current = false;
+    setStopError(null);
+    setStopNotice(null);
 
     const update = (idx: number, patch: Partial<ScanPhase>) => {
       setPhases(prev => prev.map((p, i) => (i === idx ? { ...p, ...patch } : p)));
@@ -403,7 +436,7 @@ export const LiveScan: React.FC = () => {
           if (!statusRes.ok) throw new Error('Failed to fetch scan status');
 
           const data = await statusRes.json() as BackendScanRecord & { progress: number; message?: string; error?: string };
-          const { status, progress, results: scanResults, message: backendMessage } = data;
+          const { status, progress, message: backendMessage } = data;
 
           // Check again after sleep
           if (stopSignalRef.current) break;
@@ -452,24 +485,7 @@ export const LiveScan: React.FC = () => {
           }));
 
           if (status === 'completed') {
-            // Map backend results to frontend format
-            const mappedResult: ScanResult = {
-              url: data.url || currentUrl,
-              databases: scanResults?.indexeddb_summary?.database_count || 0,
-              trackingEvents: scanResults?.exfiltration_summary?.total || 0,
-              confidence: {
-                high: scanResults?.exfiltration_summary?.high_confidence || 0,
-                medium: scanResults?.exfiltration_summary?.medium_confidence || 0,
-                low: scanResults?.exfiltration_summary?.low_confidence || 0,
-              },
-              flowTypes: {
-                confidentiality: scanResults?.flow_classification?.outflow_flows || 0,
-                integrity: scanResults?.flow_classification?.inflow_flows || 0,
-              },
-              trackerDomains: scanResults?.exfiltration_events?.map((e: { request_domain: string }) => e.request_domain) || [],
-            };
-
-            setResults(prev => [...prev, mappedResult]);
+            setResults(prev => [...prev, mapBackendToScanResult(data, currentUrl)]);
             completed = true;
             triggerSuccessAnimation(); // Fire creative UI animation
             fetchHistory(); // Refresh history after scan
@@ -481,6 +497,40 @@ export const LiveScan: React.FC = () => {
           }
         }
         if (stopSignalRef.current) break;
+      }
+
+      // Stop pressed: wait for the backend to persist + analyze the
+      // partial state, then reconcile the UI with whatever it saved.
+      if (stopSignalRef.current) {
+        let final: (BackendScanRecord & { message?: string }) | null = null;
+        for (let i = 0; i < 8 && !final?.results; i++) {
+          await sleep(1500);
+          try {
+            const res = await fetch(`http://localhost:8000/scan/${scan_id}`);
+            if (!res.ok) break;
+            final = await res.json() as BackendScanRecord & { message?: string };
+          } catch {
+            setStopNotice('Stopped locally — backend unreachable for final state');
+            final = null;
+            break;
+          }
+          const msg = final?.message || '';
+          if (!final?.results &&
+              (msg.includes('no data') || msg.includes('failed'))) break;
+        }
+        if (final?.results) {
+          setResults(prev => [...prev, mapBackendToScanResult(final!, currentUrl)]);
+          setPhases(prev => prev.map(p =>
+            p.status === 'error'
+              ? { ...p, status: 'done' as const, progress: 100,
+                  message: 'Stopped — partial results saved' }
+              : p));
+          setStopNotice(final.message ||
+            'Stopped — partial results saved and analyzed');
+        } else if (final) {
+          setStopNotice(final.message || 'Stopped by user');
+        }
+        fetchHistory();
       }
 
       if (!stopSignalRef.current) {
@@ -513,11 +563,23 @@ export const LiveScan: React.FC = () => {
   const stopScan = async () => {
     if (!currentScanId) return;
     setStopping(true);
+    setStopError(null);
     stopSignalRef.current = true;
     try {
-      await fetch(`http://localhost:8000/scan/${currentScanId}/stop`, { method: 'POST' });
+      const res = await fetch(
+        `http://localhost:8000/scan/${currentScanId}/stop`,
+        { method: 'POST' });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error(`Stop rejected (HTTP ${res.status})${detail ? `: ${detail.slice(0, 120)}` : ''}`);
+      }
     } catch (error) {
+      // Stop failed — keep polling so the user sees live status and
+      // can press Stop again, instead of a silently frozen UI.
       console.error('Error stopping scan:', error);
+      stopSignalRef.current = false;
+      setStopping(false);
+      setStopError(error instanceof Error ? error.message : String(error));
     }
   };
 
@@ -541,11 +603,17 @@ export const LiveScan: React.FC = () => {
 
   const stopAllScans = async () => {
     setStopping(true);
+    setStopError(null);
     stopSignalRef.current = true;
     try {
-      await fetch(`http://localhost:8000/scan/all/stop`, { method: 'POST' });
+      const res = await fetch('http://localhost:8000/scan/all/stop',
+        { method: 'POST' });
+      if (!res.ok) throw new Error(`Stop-all rejected (HTTP ${res.status})`);
     } catch (error) {
       console.error('Error stopping all scans:', error);
+      stopSignalRef.current = false;
+      setStopping(false);
+      setStopError(error instanceof Error ? error.message : String(error));
     }
   };
 
@@ -928,6 +996,18 @@ export const LiveScan: React.FC = () => {
 
         {/* Run button and Active Scan Controls */}
         <motion.div variants={itemVariants}>
+          {stopError && (
+            <div role="alert"
+              className="mb-3 px-4 py-2.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium">
+              {stopError} — the scan may still be running; press Stop again.
+            </div>
+          )}
+          {stopNotice && (
+            <div role="status"
+              className="mb-3 px-4 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-medium">
+              {stopNotice}
+            </div>
+          )}
           {scanning ? (
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">

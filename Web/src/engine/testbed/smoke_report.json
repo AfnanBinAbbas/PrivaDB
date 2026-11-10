@@ -4,7 +4,7 @@
     {
       "name": "G0a sink received IDB uid (browser-side ground truth)",
       "passed": true,
-      "detail": "8 sink requests total"
+      "detail": "16 sink requests total"
     },
     {
       "name": "G0b sink received localStorage value (browser-side ground truth)",
@@ -85,49 +85,97 @@
       "method": "GET",
       "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794305057.0100183
+      "ts": 1794308933.0046558
     },
     {
       "method": "POST",
       "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
       "body": "",
-      "ts": 1794305057.0127199
-    },
-    {
-      "method": "GET",
-      "path": "/smoke-sink?c=benign-constant-string",
-      "body": "",
-      "ts": 1794305057.0137498
+      "ts": 1794308933.0064821
     },
     {
       "method": "GET",
       "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794305057.0140352
+      "ts": 1794308933.0078423
     },
     {
       "method": "GET",
       "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
       "body": "",
-      "ts": 1794305057.014865
+      "ts": 1794308933.0085247
+    },
+    {
+      "method": "GET",
+      "path": "/smoke-sink?c=benign-constant-string",
+      "body": "",
+      "ts": 1794308933.0090346
     },
     {
       "method": "GET",
       "path": "/payload?tag=inflow",
       "body": "",
-      "ts": 1794305057.0159671
+      "ts": 1794308933.010246
     },
     {
       "method": "POST",
       "path": "/post",
       "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
-      "ts": 1794305057.023938
+      "ts": 1794308933.0216472
     },
     {
       "method": "GET",
       "path": "/tracker.js",
       "body": "",
-      "ts": 1794305057.0871437
+      "ts": 1794308933.0948918
+    },
+    {
+      "method": "GET",
+      "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794308942.3464422
+    },
+    {
+      "method": "GET",
+      "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794308942.3597856
+    },
+    {
+      "method": "GET",
+      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
+      "body": "",
+      "ts": 1794308942.3612726
+    },
+    {
+      "method": "GET",
+      "path": "/smoke-sink?c=benign-constant-string",
+      "body": "",
+      "ts": 1794308942.3637774
+    },
+    {
+      "method": "GET",
+      "path": "/payload?tag=inflow",
+      "body": "",
+      "ts": 1794308942.3656418
+    },
+    {
+      "method": "POST",
+      "path": "/post",
+      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
+      "ts": 1794308942.3672936
+    },
+    {
+      "method": "POST",
+      "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
+      "body": "",
+      "ts": 1794308942.3677795
+    },
+    {
+      "method": "GET",
+      "path": "/tracker.js",
+      "body": "",
+      "ts": 1794308942.3983707
     }
   ],
   "analysis_snapshot": {
