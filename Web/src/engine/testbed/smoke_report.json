@@ -1,10 +1,10 @@
 {
-  "engine": "foxhound",
+  "engine": "chrome",
   "checks": [
     {
       "name": "G0a sink received IDB uid (browser-side ground truth)",
       "passed": true,
-      "detail": "6 sink requests total"
+      "detail": "7 sink requests total"
     },
     {
       "name": "G0b sink received localStorage value (browser-side ground truth)",
@@ -14,7 +14,7 @@
     {
       "name": "G1 substring exfil: IDB uid found in network request",
       "passed": true,
-      "detail": "1 event(s), mechanisms=['substring']"
+      "detail": "3 event(s), mechanisms=['transform']"
     },
     {
       "name": "G1b classified third-party",
@@ -24,17 +24,12 @@
     {
       "name": "G1c match covers URL and/or POST body",
       "passed": true,
-      "detail": "url"
+      "detail": "post_body,url"
     },
     {
       "name": "G1d idb_hook flow: IDB read \u2192 network send",
       "passed": true,
-      "detail": "6 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
-    },
-    {
-      "name": "G3 taint flow: localStorage.getItem \u2192 sink",
-      "passed": true,
-      "detail": "known-value=1 any-localStorage-src=1 (total taint flows: 1)"
+      "detail": "3 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
     },
     {
       "name": "G5 no false positive on non-IDB constant",
@@ -65,62 +60,78 @@
       "name": "G8 attribution: first-party (inline) writes classified",
       "passed": true,
       "detail": "roles=['first_party']"
+    },
+    {
+      "name": "G9 transform-aware match: sha256(uid) + base64(uid) in query",
+      "passed": true,
+      "detail": "chains seen=['base64', 'raw', 'sha256', 'strip_padding', 'truncate16']"
+    },
+    {
+      "name": "G10 dedup keeps distinct (id,destination) flows",
+      "passed": true,
+      "detail": "3 events across 3 URLs"
     }
   ],
   "passed": true,
-  "n_pass": 13,
-  "n_total": 13,
+  "n_pass": 14,
+  "n_total": 14,
   "sink_received": [
     {
       "method": "GET",
       "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794297385.2629905
-    },
-    {
-      "method": "POST",
-      "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
-      "body": "",
-      "ts": 1794297385.2706065
-    },
-    {
-      "method": "GET",
-      "path": "/smoke-sink?c=benign-constant-string",
-      "body": "",
-      "ts": 1794297385.2752507
-    },
-    {
-      "method": "GET",
-      "path": "/payload?tag=inflow",
-      "body": "",
-      "ts": 1794297385.2766418
+      "ts": 1794298226.4827626
     },
     {
       "method": "POST",
       "path": "/post",
       "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
-      "ts": 1794297385.3006737
+      "ts": 1794298226.492747
+    },
+    {
+      "method": "POST",
+      "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
+      "body": "",
+      "ts": 1794298226.4932628
+    },
+    {
+      "method": "GET",
+      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
+      "body": "",
+      "ts": 1794298226.6395128
+    },
+    {
+      "method": "GET",
+      "path": "/smoke-sink?c=benign-constant-string",
+      "body": "",
+      "ts": 1794298226.6425211
+    },
+    {
+      "method": "GET",
+      "path": "/payload?tag=inflow",
+      "body": "",
+      "ts": 1794298226.6451097
     },
     {
       "method": "GET",
       "path": "/tracker.js",
       "body": "",
-      "ts": 1794297385.401948
+      "ts": 1794298226.6838431
     }
   ],
   "analysis_snapshot": {
     "identifiers_found": 6,
-    "exfiltrations": 1,
-    "taint_flows": 1,
-    "idb_hook_flows": 6,
+    "exfiltrations": 3,
+    "taint_flows": 0,
+    "idb_hook_flows": 3,
     "dynamic_flows": {
-      "total": 7,
-      "taint": 1,
-      "idb_hook": 6,
+      "total": 3,
+      "taint": 0,
+      "idb_hook": 3,
       "high_confidence": 0,
-      "medium_confidence": 7,
+      "medium_confidence": 3,
       "low_confidence": 0,
-      "external": 6,
+      "external": 3,
       "tracker_targets": 0
     }
   }

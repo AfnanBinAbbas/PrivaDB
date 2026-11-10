@@ -135,6 +135,10 @@ BASE64_RE = re.compile(r'^[A-Za-z0-9+/]{20,}={0,2}$')
 MIN_ID_LENGTH = 8
 # Shannon entropy threshold for high-entropy string detection
 ENTROPY_THRESHOLD = 3.0
+# Scored-identifier gate (Phase 3 model; see transforms.score_identifier).
+# 0.0 = disabled (legacy length/diff gates only) — Phase 7 ablation
+# evaluates where this should sit.
+ID_SCORE_THRESHOLD = 0.0
 
 # ─── Known Tracker Domains ──────────────────────────────────────────
 # Derived from BQ_trackersdomains_Q2.txt — third-party script domains

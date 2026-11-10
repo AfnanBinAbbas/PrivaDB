@@ -81,9 +81,18 @@ async () => {
                             req.onsuccess = () => { values = req.result; };
                             keyReq.onsuccess = () => { keys = keyReq.result; };
 
-                            tx.oncomplete = () => {
+                            tx.oncomplete = async () => {
                                 const keyPath = store.keyPath;
-                                const entries = keys.map((k, i) => {
+                                const entries = [];
+                                const hex = (ab) => {
+                                    const b = new Uint8Array(ab);
+                                    let s = "";
+                                    for (let i = 0; i < b.length && i < 64; i++)
+                                        s += b[i].toString(16).padStart(2, "0");
+                                    return "hex:" + s;
+                                };
+                                for (let i = 0; i < keys.length; i++) {
+                                    const k = keys[i];
                                     let val = values[i];
                                     // Unwrap: if value is {key/k: X, value: Y},
                                     // extract Y as the actual value
@@ -96,8 +105,32 @@ async () => {
                                             delete val[keyPath];
                                         }
                                     }
-                                    return { key: k, value: val };
-                                });
+                                    // Phase 3: serialize non-string IDB types
+                                    // (numbers/Dates/Blobs/typed arrays) so they
+                                    // enter the identifier candidate pool.
+                                    if (val instanceof Date) {
+                                        val = val.toISOString();
+                                    } else if (val instanceof ArrayBuffer) {
+                                        val = hex(val);
+                                    } else if (ArrayBuffer.isView(val)) {
+                                        val = hex(val.buffer.slice(
+                                            val.byteOffset,
+                                            val.byteOffset + val.byteLength));
+                                    } else if (typeof Blob !== "undefined"
+                                               && val instanceof Blob) {
+                                        try {
+                                            if (val.size <= 4096) {
+                                                val = await val.text();
+                                            } else {
+                                                val = {__blob_size: val.size,
+                                                       __blob_type: val.type || ""};
+                                            }
+                                        } catch (e) {
+                                            val = {__blob_size: val.size};
+                                        }
+                                    }
+                                    entries.push({ key: k, value: val });
+                                }
                                 resolve(entries);
                             };
                             tx.onerror = () => reject(tx.error);
@@ -106,7 +139,9 @@ async () => {
                         dbData.stores.push({
                             name: storeName,
                             recordCount: records.length,
-                            records: records.slice(0, 200)  // Cap per store
+                            records: records.slice(0, 200),  // Cap per store
+                            truncated: records.length > 200,
+                            truncatedCount: Math.max(0, records.length - 200)
                         });
                     } catch (storeErr) {
                         dbData.stores.push({
@@ -507,6 +542,9 @@ class SiteCrawler:
         page.on("request", self._on_request)
         page.on("response", self._on_response)
 
+        # ── WebSocket frame capture (values can travel over WS too) ─
+        page.on("websocket", self._on_websocket)
+
         result = {
             "url": url,
             "domain": domain,
@@ -658,6 +696,49 @@ class SiteCrawler:
                 if req["url"] == url and req["response"] is None:
                     req["response"] = {"status": status}
                     break
+        except Exception:
+            pass
+
+    def _on_websocket(self, ws):
+        """Capture WebSocket frames (send/receive) for transform matching.
+
+        Frames are attached to the network entry created for the WS
+        handshake request, so the matcher sees them alongside headers.
+        """
+        try:
+            # Find/create the handshake request entry
+            entry = None
+            for req in reversed(self.network_requests):
+                if req["url"] == ws.url:
+                    entry = req
+                    break
+            if entry is None:
+                entry = {"url": ws.url, "method": "GET",
+                         "resource_type": "websocket",
+                         "headers": {}, "post_data": None,
+                         "response": None, "ws_frames": []}
+                self.network_requests.append(entry)
+            entry.setdefault("ws_frames", [])
+
+            def _cap(payload, direction):
+                try:
+                    if isinstance(payload, (bytes, bytearray)):
+                        payload = payload.decode("utf-8", "ignore")
+                    payload = str(payload)
+                    if len(payload) > 4000:
+                        payload = payload[:4000]
+                    frames = entry["ws_frames"]
+                    if len(frames) >= 100:
+                        frames.pop(0)
+                    frames.append({"direction": direction,
+                                   "payload": payload,
+                                   "ts": datetime.utcnow().isoformat() + "Z"})
+                except Exception:
+                    pass
+
+            ws.on("framesent", lambda pl: _cap(pl, "send"))
+            ws.on("framereceived", lambda pl: _cap(pl, "receive"))
+            ws.on("close", lambda: None)
         except Exception:
             pass
 

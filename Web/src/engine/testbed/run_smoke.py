@@ -339,6 +339,35 @@ def main():
                 "first_party" in fp_roles or "unknown" in fp_roles,
                 f"roles={sorted(fp_roles)}"))
 
+        # G9 (Phase 3): transformed exfil — sha256(uid) and base64(uid)
+        # sent in a query param must match via transform chains, not raw.
+        tf_events = [e for e in exfils
+                     if str(e.get("identifier_value", "")) == KNOWN_UID
+                     and e.get("mechanism") in ("transform", "both")]
+        all_chains = {c for e in tf_events
+                      for c in (e.get("all_transform_chains")
+                                or e.get("transform_chain") or [])}
+        has_sha = "sha256" in all_chains
+        has_b64 = "base64" in all_chains
+        results.append(_check(
+            "G9 transform-aware match: sha256(uid) + base64(uid) in query",
+            has_sha and has_b64,
+            f"chains seen={sorted(all_chains)}"))
+
+        # G9b: WS/headers — via unit-level check (page doesn't use WS);
+        # header matching is exercised by transforms.search_request
+        # against all headers (smoke sends no custom headers → skip).
+
+        # G10: dedup fix — flows counted per (id, sink, location), so the
+        # uid appears in multiple distinct events (get/pixel/track URLs)
+        uid_events = [e for e in exfils
+                      if str(e.get("identifier_value", "")) == KNOWN_UID]
+        distinct_urls = {e.get("request_url") for e in uid_events}
+        results.append(_check(
+            "G10 dedup keeps distinct (id,destination) flows",
+            len(distinct_urls) >= 2,
+            f"{len(uid_events)} events across {len(distinct_urls)} URLs"))
+
         # Coverage summary
         print("\n=== Pipeline coverage ===")
         print(f"  identifiers:        {analysis.get('identifiers_found')}")

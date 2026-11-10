@@ -16,6 +16,7 @@ from collections import Counter
 from urllib.parse import urlparse, parse_qs, unquote
 
 import app_config as config
+import transforms as tf
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +52,17 @@ def extract_potential_ids(value, path: str = "") -> list[dict]:
                 "path": path,
                 "reason": _classify_string_reason(value) or "idb_value",
                 "entropy": shannon_entropy(value),
+            })
+    elif isinstance(value, (int, float)) and not isinstance(value, bool):
+        # Phase 3: numeric identifiers (long ids, epoch-ms timestamps used
+        # as ids) enter the pool too — matched as their decimal string.
+        num_s = str(value)
+        if len(num_s) >= config.MIN_ID_LENGTH and not _is_common_value(num_s):
+            results.append({
+                "value": num_s,
+                "path": path,
+                "reason": "numeric_id",
+                "entropy": shannon_entropy(num_s),
             })
     elif isinstance(value, dict):
         for k, v in value.items():
@@ -149,6 +161,13 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
     """
     Search all network requests for occurrences of extracted identifiers.
 
+    Matching is transform-aware (Phase 3): every identifier is expanded
+    into its encoded/hashed variants (urlencode, base64, hex, md5/sha1/
+    sha256, JSON-escaped, truncated prefixes) and searched across URL,
+    POST bodies (raw/JSON/form), ALL headers and WebSocket frames.
+    Each event records its transform_chain so reports can quantify how
+    much exfiltration plain substring matching would miss.
+
     Returns list of exfiltration events.
     """
     events = []
@@ -169,60 +188,89 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
         if any(key in reason or key in path for key in location_keywords):
             continue
 
+        # Expand into transform variants once per identifier
+        needles = tf.generate_variants(id_value)
+        needles.update(tf.truncated_prefixes(id_value))
+        if not needles:
+            continue
+
         for req in network_requests:
             req_url = req.get("url", "")
             if not req_url:
                 continue
 
-            match_location = _find_value_in_request(id_value, req)
-            if match_location:
-                req_domain = urlparse(req_url).netloc
-                is_third_party = not _is_same_party(site_domain, req_domain)
-                is_known_tracker = _is_known_tracker(req_domain)
+            hit = tf.search_request(req, needles)
+            if not hit:
+                continue
+            match_location = hit["location"]
+            all_hits = hit.get("all_hits") or [
+                {"location": hit["location"], "variant": hit["variant"],
+                 "transform_chain": hit["transform_chain"]}]
+            # Union of every chain observed in this request (a URL may
+            # carry md5(uid) AND base64(uid) simultaneously)
+            chains = []
+            for h in all_hits:
+                for c in h.get("transform_chain") or ["raw"]:
+                    if c not in chains:
+                        chains.append(c)
+            chain = hit["transform_chain"]
+            is_transformed = any(c != "raw" for c in chains)
+            req_domain = urlparse(req_url).netloc
+            is_third_party = not _is_same_party(site_domain, req_domain)
+            is_known_tracker = _is_known_tracker(req_domain)
 
-                confidence = _calculate_confidence(
-                    identifier, is_third_party, is_known_tracker
-                )
+            confidence = _calculate_confidence(
+                identifier, is_third_party, is_known_tracker
+            )
 
-                events.append({
-                    "identifier_value": id_value,
-                    "identifier_path": identifier["path"],
-                    "identifier_reason": identifier["reason"],
-                    "identifier_entropy": identifier["entropy"],
-                    "database": identifier.get("database", ""),
-                    "store": identifier.get("store", ""),
-                    "record_key": identifier.get("record_key", ""),
-                    "request_url": req_url,
-                    "request_method": req.get("method", ""),
-                    "request_domain": req_domain,
-                    "request_status": (req.get("response") or {}).get("status", 0),
-                    "match_location": match_location,
-                    "is_third_party": is_third_party,
-                    "is_known_tracker": is_known_tracker,
-                    "confidence": confidence,
-                })
+            events.append({
+                "identifier_value": id_value,
+                "identifier_path": identifier["path"],
+                "identifier_reason": identifier["reason"],
+                "identifier_entropy": identifier["entropy"],
+                "identifier_score": identifier.get("score", 0.0),
+                "database": identifier.get("database", ""),
+                "store": identifier.get("store", ""),
+                "record_key": identifier.get("record_key", ""),
+                "request_url": req_url,
+                "request_method": req.get("method", ""),
+                "request_domain": req_domain,
+                "request_status": (req.get("response") or {}).get("status", 0),
+                "match_location": match_location,
+                "matched_variant": hit["variant"],
+                "transform_chain": chain,
+                "all_transform_chains": chains,
+                "mechanism": ("transform" if is_transformed else "substring"),
+                "is_third_party": is_third_party,
+                "is_known_tracker": is_known_tracker,
+                "confidence": confidence,
+            })
 
-    # Deduplicate and filter false positives
+    # Dedup (Phase 3 fix): keep every distinct (identifier, destination,
+    # match_location) flow. The old rule collapsed everything to one event
+    # per domain, understating flow counts. Display-side aggregation is
+    # the reporter's job, not the detector's.
     seen = {}
-    conf_map = {config.CONFIDENCE_HIGH: 3, config.CONFIDENCE_MEDIUM: 2, config.CONFIDENCE_LOW: 1, "": 0}
-    
     for evt in events:
-        # Deduplicate: only show 1 instance per unique tracker domain
-        domain = evt["request_domain"]
-        if domain not in seen:
-            seen[domain] = evt
-        else:
-            # Keep the one with higher confidence
-            if conf_map.get(evt["confidence"], 0) > conf_map.get(seen[domain]["confidence"], 0):
-                seen[domain] = evt
-                
+        key = (evt["identifier_value"], evt["request_domain"],
+               evt["match_location"], evt["request_url"])
+        prev = seen.get(key)
+        if prev is None:
+            seen[key] = evt
+            continue
+        # Same flow seen twice: keep the higher-confidence record
+        conf_map = {config.CONFIDENCE_HIGH: 3, config.CONFIDENCE_MEDIUM: 2,
+                    config.CONFIDENCE_LOW: 1, "": 0}
+        if conf_map.get(evt["confidence"], 0) > conf_map.get(prev["confidence"], 0):
+            seen[key] = evt
+
     unique_events = []
-    for domain, evt in seen.items():
+    site_lower = site_domain.lower().strip()
+    base_site = site_lower.replace("www.", "")
+    for evt in seen.values():
         # Filter: skip if the identifier value is just the site domain
         id_val = evt["identifier_value"].lower().strip()
-        site_lower = site_domain.lower().strip()
-        base_site = site_lower.replace("www.", "")
-        if id_val == site_lower or id_val == base_site or id_val == f"www.{base_site}":
+        if id_val in (site_lower, base_site, f"www.{base_site}"):
             continue  # Domain self-match → false positive
         unique_events.append(evt)
 
@@ -1250,6 +1298,29 @@ def analyze_site(site_data: dict) -> dict:
     # Flatten
     flat_ids = [item for sublist in all_identifiers for item in sublist]
 
+    # Phase 3: attach a scored-identifier rating (entropy + key-name shape
+    # + pattern + persistence). Threshold is a tunable knob (Phase 7
+    # ablation decides its final value; 0.0 = scoring recorded but the
+    # legacy length/diff gates remain the only filters).
+    for ident in flat_ids:
+        key_name = ""
+        if ident.get("reason", "").startswith("idb_key:"):
+            key_name = ident["reason"].split(":", 1)[1]
+        ident.update(tf.score_identifier(
+            str(ident.get("value", "")),
+            key_name=key_name,
+            entropy=float(ident.get("entropy", -1)),
+            changed_across_iterations=bool(
+                ident.get("changed_across_iterations")),
+            reasons=str(ident.get("reason", "")),
+        ))
+    score_thr = float(getattr(config, "ID_SCORE_THRESHOLD", 0.0) or 0.0)
+    if score_thr > 0.0:
+        before = len(flat_ids)
+        flat_ids = [i for i in flat_ids
+                    if float(i.get("score", 0)) >= score_thr]
+        logger.info(f"  Score gate ≥{score_thr}: {before} → {len(flat_ids)}")
+
     # Filter: if we have diff data, keep identifiers from CHANGED records,
     # OR static records that have very high entropy (likely persistent IDs)
     if changed_paths:
@@ -1284,14 +1355,14 @@ def analyze_site(site_data: dict) -> dict:
     seen_inflow = set()
     for it in iterations:
         it_network = it.get("network_requests", []) or []
-        for tf in parse_taint_flows(it.get("taint_events", []), domain,
-                                    it_network, it.get("indexeddb")):
-            k = (tf.get("sink"), tf.get("source_operation"),
-                 tf.get("source_line"), tf.get("target"))
+        for tf_ev in parse_taint_flows(it.get("taint_events", []), domain,
+                                       it_network, it.get("indexeddb")):
+            k = (tf_ev.get("sink"), tf_ev.get("source_operation"),
+                 tf_ev.get("source_line"), tf_ev.get("target"))
             if k in seen_taint:
                 continue
             seen_taint.add(k)
-            taint_flows.append(tf)
+            taint_flows.append(tf_ev)
         it_hooks = it.get("flow_hooks", {})
         for hf in analyze_idb_hook_flows(it_hooks, it_network,
                                          domain, site_loc):
@@ -1364,12 +1435,17 @@ def analyze_site(site_data: dict) -> dict:
 
     for evt in exfiltrations:
         val = str(evt.get("identifier_value", ""))
-        mech = ["substring"]
+        # Base mechanism from Phase 3 matching: "transform" when a
+        # non-raw variant matched, else "substring".
+        base_mech = evt.get("mechanism") or "substring"
+        if base_mech == "both":
+            base_mech = "substring"
+        mech = [base_mech]
         if val in taint_values:
             mech.append("taint")
         if val in hook_values:
             mech.append("idb_hook")
-        evt["mechanism"] = "both" if len(mech) > 1 else "substring"
+        evt["mechanism"] = "both" if len(mech) > 1 else base_mech
         evt["taint_confirmed"] = len(mech) > 1
         evt["corroborating_mechanisms"] = mech
 
@@ -1427,6 +1503,18 @@ def analyze_site(site_data: dict) -> dict:
             "database_count": len(idb.get("databases", [])),
             "total_records": sum(
                 s.get("recordCount", 0)
+                for d in idb.get("databases", [])
+                for s in d.get("stores", [])
+            ),
+            # Phase 3: report extractor truncation instead of hiding it
+            "truncated_stores": sum(
+                1
+                for d in idb.get("databases", [])
+                for s in d.get("stores", [])
+                if s.get("truncated")
+            ),
+            "truncated_records": sum(
+                s.get("truncatedCount", 0)
                 for d in idb.get("databases", [])
                 for s in d.get("stores", [])
             ),
