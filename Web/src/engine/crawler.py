@@ -1150,56 +1150,65 @@ async def crawl_all_sites(site_limit: int = None,
                 
                 # Firefox: Try to use existing X11 display first, fallback to Xvfb
                 if config.ENGINE == "foxhound":
-                    import subprocess
-                    xvfb_created = False
-                    
-                    # First: Try to find an existing X11 display
-                    logger.info("Firefox: Checking for existing X11 displays...")
-                    candidates = [':0', ':1', ':2', ':3', ':4']
-                    if os.environ.get('DISPLAY'):
-                        candidates.insert(0, os.environ.get('DISPLAY'))
-                    
-                    for d in candidates:
-                        try:
-                            test_env = os.environ.copy()
-                            test_env['DISPLAY'] = d
-                            result = subprocess.run(['xdpyinfo'], env=test_env,
-                                                  stdout=subprocess.DEVNULL, 
-                                                  stderr=subprocess.DEVNULL, 
-                                                  timeout=2, check=True)
-                            os.environ['DISPLAY'] = d
-                            logger.info(f"✓ Using existing X11 display: {d}")
-                            break
-                        except Exception:
-                            logger.debug(f"Display {d} not available")
-                            continue
-                    else:
-                        # No existing X11 display - create Xvfb
-                        logger.info("No X11 display found, creating Xvfb virtual display...")
-                        try:
-                            from pyvirtualdisplay import Display
-                            import time
-                            disp = Display(visible=0, size=(1920, 1080))
-                            disp.start()
-                            time.sleep(1)
-                            display_num = f":{disp.display}"
-                            os.environ['DISPLAY'] = display_num
-                            xvfb_created = True
-                            logger.info(f"✓ Created Xvfb virtual display: {display_num}")
-                        except (ImportError, Exception) as e:
-                            logger.error(f"✗ Cannot create Xvfb: {e}")
-                            logger.warning("Will attempt Firefox in headless mode...")
-                    
-                    # Firefox with real X11 display: use headed mode (headless causes hangs)
-                    # Firefox with Xvfb virtual display: use headless=True (headed causes crashes)
-                    if xvfb_created:
+                    if config.HEADLESS:
+                        # Operator wants headless: NEVER touch the
+                        # real X display (no windows on their screen)
+                        # and no Xvfb — Firefox runs fully headless.
                         launch_headless = True
-                        logger.info("Using Xvfb: launch_headless=True (required for virtual display)")
+                        logger.info(
+                            "🦊 Headless mode — no browser windows "
+                            "(operator request: do not disturb)")
                     else:
-                        # Real X11 display exists - use headed mode even if config.HEADLESS=True
-                        # (headed mode is more stable for Firefox than headless)
-                        launch_headless = False
-                        logger.info("Real X11 display found: using headed mode (more stable for Firefox)")
+                        import subprocess
+                        xvfb_created = False
+                    
+                        # First: Try to find an existing X11 display
+                        logger.info("Firefox: Checking for existing X11 displays...")
+                        candidates = [':0', ':1', ':2', ':3', ':4']
+                        if os.environ.get('DISPLAY'):
+                            candidates.insert(0, os.environ.get('DISPLAY'))
+                    
+                        for d in candidates:
+                            try:
+                                test_env = os.environ.copy()
+                                test_env['DISPLAY'] = d
+                                result = subprocess.run(['xdpyinfo'], env=test_env,
+                                                      stdout=subprocess.DEVNULL, 
+                                                      stderr=subprocess.DEVNULL, 
+                                                      timeout=2, check=True)
+                                os.environ['DISPLAY'] = d
+                                logger.info(f"✓ Using existing X11 display: {d}")
+                                break
+                            except Exception:
+                                logger.debug(f"Display {d} not available")
+                                continue
+                        else:
+                            # No existing X11 display - create Xvfb
+                            logger.info("No X11 display found, creating Xvfb virtual display...")
+                            try:
+                                from pyvirtualdisplay import Display
+                                import time
+                                disp = Display(visible=0, size=(1920, 1080))
+                                disp.start()
+                                time.sleep(1)
+                                display_num = f":{disp.display}"
+                                os.environ['DISPLAY'] = display_num
+                                xvfb_created = True
+                                logger.info(f"✓ Created Xvfb virtual display: {display_num}")
+                            except (ImportError, Exception) as e:
+                                logger.error(f"✗ Cannot create Xvfb: {e}")
+                                logger.warning("Will attempt Firefox in headless mode...")
+                    
+                        # Firefox with real X11 display: use headed mode (headless causes hangs)
+                        # Firefox with Xvfb virtual display: use headless=True (headed causes crashes)
+                        if xvfb_created:
+                            launch_headless = True
+                            logger.info("Using Xvfb: launch_headless=True (required for virtual display)")
+                        else:
+                            # Real X11 display exists - use headed mode even if config.HEADLESS=True
+                            # (headed mode is more stable for Firefox than headless)
+                            launch_headless = False
+                            logger.info("Real X11 display found: using headed mode (more stable for Firefox)")
                 
                 # Chrome: In no-headless mode, try to use X11 display or Xvfb
                 elif config.ENGINE == "chrome" and not config.HEADLESS:
