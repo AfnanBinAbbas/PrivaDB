@@ -160,8 +160,11 @@ class ScaleRunner:
                 return None
 
     def run(self) -> dict:
-        for u in self.urls:
-            self.store.ensure(u)
+        if hasattr(self.store, "ensure_many"):
+            self.store.ensure_many(self.urls)
+        else:
+            for u in self.urls:
+                self.store.ensure(u)
         queue = deque(self.store.pending())
         done_before = len(self.store.completed())
         print(f"  queue={len(queue)} (resume skipped {done_before} done)")

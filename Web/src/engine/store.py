@@ -105,6 +105,30 @@ class SiteStore:
                         "updated_at": time.time()}
                     self._dump_jsonl_locked()
 
+    def ensure_many(self, urls: list[str]):
+        """Idempotent batch upsert — one dump instead of N rewrites
+        (the per-call ensure is O(n²) on the jsonl backend at 10k)."""
+        with self._lock:
+            added = False
+            if self.mode == "sqlite":
+                for u in urls:
+                    cur = self._conn.execute(
+                        "INSERT OR IGNORE INTO sites (url) VALUES (?)",
+                        (u,))
+                    added = added or bool(cur.rowcount)
+                if added:
+                    self._conn.commit()
+            else:
+                for u in urls:
+                    if u not in self._jobs:
+                        self._jobs[u] = {
+                            "url": u, "status": "pending",
+                            "attempts": 0, "error": None,
+                            "summary": None, "updated_at": time.time()}
+                        added = True
+                if added:
+                    self._dump_jsonl_locked()
+
     def mark(self, url: str, status: str, error: Optional[str] = None,
              summary: Optional[dict] = None, bump_attempt: bool = False):
         with self._lock:
