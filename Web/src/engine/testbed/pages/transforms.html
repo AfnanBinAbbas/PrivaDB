@@ -139,6 +139,32 @@ function readIDB(db, key) {
   });
 }
 
+// Paper §4.1 ground truth: an INSTANCE-UNIQUE id — random once per
+// fresh browser profile, stable across reloads (C2) — so across
+// iterations the same key holds significantly-different values (C4/C5).
+// A static value (TID) must NOT classify as a client identifier.
+function ensureInstanceUid(db) {
+  return new Promise((resolve) => {
+    try {
+      const rtx = db.transaction("ids", "readonly");
+      const g = rtx.objectStore("ids").get("instance_uid");
+      g.onsuccess = () => {
+        if (g.result !== undefined && g.result !== null) {
+          return resolve(g.result);
+        }
+        const bytes = crypto.getRandomValues(new Uint8Array(16));
+        const v = Array.from(bytes)
+          .map((b) => b.toString(16).padStart(2, "0")).join("");
+        const wtx = db.transaction("ids", "readwrite");
+        wtx.objectStore("ids").put(v, "instance_uid");
+        wtx.oncomplete = () => resolve(v);
+        wtx.onerror = () => resolve(null);
+      };
+      g.onerror = () => resolve(null);
+    } catch (e) { resolve(null); }
+  });
+}
+
 async function run() {
   const db = await writeIDB([["tid", TID], ["tenc", TENC],
                              ["csrf", CSRF], ["version", VERSION],
@@ -146,6 +172,7 @@ async function run() {
                              // legacy changed-records filter activate on
                              // multi-iteration crawls (Phase 7 ablation)
                              ["volatile", String(Date.now())]]);
+  await ensureInstanceUid(db);   // per-profile UID, stable on reload
   const tid = await readIDB(db, "tid");
   const tenc = await readIDB(db, "tenc");
   const csrf = await readIDB(db, "csrf");

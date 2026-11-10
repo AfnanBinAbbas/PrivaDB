@@ -1,6 +1,6 @@
 # PrivaDB — Measurement Report (generated)
 
-Generated: `2026-11-10T10:04:38+00:00` · generator: `Web/src/engine/paper_report.py`
+Generated: `2026-11-10T11:31:16+00:00` · generator: `Web/src/engine/paper_report.py`
 
 Every figure below is read from the JSON artifacts produced by the testbed suites and detector runs; the source file is named in each section.
 
@@ -16,14 +16,14 @@ Every figure below is read from the JSON artifacts produced by the testbed suite
 - **python_version**: `3.12.7`
 - **platform**: `Linux-7.1.5+kali-amd64-x86_64-with-glibc2.43`
 - **user_agent**: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36`
-- **captured_at**: `2026-11-10T10:04:27.645157Z`
+- **captured_at**: `2026-11-10T11:31:02.231793Z`
 
 ## 1. Headline metrics (site-level)
 
 *Source: `results/<engine>/analysis/summary.json`*
 
-- **chrome**: 1 site analyses — 0 (0.0%) with IndexedDB data; 0 with exfiltration flows; 0 sending identifiers to third parties; 0 dynamic (taint/hook) flows total
-- **foxhound**: 1 site analyses — 1 (100.0%) with IndexedDB data; 1 with exfiltration flows; 0 sending identifiers to third parties; 892 dynamic (taint/hook) flows total
+- **chrome**: 4 site analyses — 4 (100.0%) with IndexedDB data; 2 with exfiltration flows; 2 sending identifiers to third parties; 11 dynamic (taint/hook) flows total; **0 paper-confirmed IndexedDB client identifiers (§4.1)**
+- **foxhound**: 19 site analyses — 9 (47.4%) with IndexedDB data; 16 with exfiltration flows; 3 sending identifiers to third parties; 5056 dynamic (taint/hook) flows total; **0 paper-confirmed IndexedDB client identifiers (§4.1)**
 
 ## 2. Method comparison — the core contribution
 

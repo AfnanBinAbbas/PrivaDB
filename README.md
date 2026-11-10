@@ -156,6 +156,7 @@ Samples: `Web/src/engine/testbed/samples/`.
 | `PRIVADB_ALLOW_PRIVATE_TARGETS` | unset (guarded) | Set `true` to allow scanning localhost/RFC1918 lab targets (SSRF guard off) |
 | `FOXHOUND_BIN` | `foxhound/foxhound` | Custom Firefox build path |
 | `DNS_CNAME_CHECKS` | `True` (app_config) | CNAME-cloaking lookups (one `dig` per host, cached) |
+| `UID_RELOAD_CHECK` | `True` | Paper §4.1 condition 2: same-session reload pass (iteration 1) for client-identifier confirmation — needs `iterations ≥ 2` for conditions 4/5 |
 
 CI runs byte-compile + backend tests + TypeScript/build on every push
 (`.github/workflows/ci.yml`). The measurement suites live in

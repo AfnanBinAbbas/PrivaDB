@@ -142,6 +142,10 @@ ID_SCORE_THRESHOLD = 0.0
 # Phase 5: resolve CNAMEs of subdomains to detect cloaking (one DNS
 # lookup per unique host, cached). Set False to disable DNS traffic.
 DNS_CNAME_CHECKS = True
+# Paper §4.1 client-identifier detection (uid.py): run a same-session
+# reload pass (iteration 1) to verify condition 2 — "same value when
+# the page is reloaded". Adds ~one page-load per crawl.
+UID_RELOAD_CHECK = True
 # Phase 7: keep the legacy changed-records filter measurable (it drops
 # static identifiers whenever any record changes — recall 1.0 → 0.17 on
 # the testbed). False = fixed filter (score >= 0.4 survives diff).

@@ -89,12 +89,16 @@ def headline_metrics(data: dict) -> list[str]:
                    for e in (r.get("exfiltration_events") or []))]
         dyn = sum((r.get("dynamic_flows") or {}).get("total", 0)
                   for r in summary)
+        client_ids = sum(int(r.get("client_identifiers_found") or 0)
+                         for r in summary)
         lines.append(
             f"- **{key.split('_')[1]}**: {total} site analyses — "
             f"{len(sites)} ({_pct(len(sites) / total if total else 0)}) "
             f"with IndexedDB data; {len(with_exfil)} with exfiltration "
             f"flows; {len(third_party_sites)} sending identifiers to "
-            f"third parties; {dyn} dynamic (taint/hook) flows total")
+            f"third parties; {dyn} dynamic (taint/hook) flows total; "
+            f"**{client_ids} paper-confirmed IndexedDB client "
+            f"identifiers (§4.1)**")
     return lines or ["_no detector summary found — run a scan first._"]
 
 

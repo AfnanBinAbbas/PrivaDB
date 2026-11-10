@@ -288,6 +288,40 @@ def main():
             print(f"  {label:24} {s['predicted']:>5} {s['fp']:>4} "
                   f"{s['fn']:>4} {prec:>7} {s['recall']:.3f}")
 
+        # ── Paper §4.1 client-identifier classification (IDB only) ──
+        # Classify from the FULL 2-iteration crawl — the methods table
+        # above deliberately uses the diff-neutral 1-iteration view,
+        # which can never satisfy paper conditions C4/C5.
+        import uid as paper_uid
+        uid_report_full = paper_uid.classify_site(
+            site_data.get("iterations") or [])
+        uid_sum = uid_report_full
+        uid_confirmed = [i for i in uid_report_full.get("identifiers", [])
+                         if i.get("confirmed")]
+        uid_checks = []
+        def _uid(name, ok, detail=""):
+            uid_checks.append({"name": name, "passed": bool(ok),
+                               "detail": detail})
+            print(f"  [{'PASS' if ok else 'FAIL'}] UID: {name}"
+                  + (f" — {detail}" if detail else ""))
+        _uid("§4.1 evaluated (≥2 fresh iterations)",
+             uid_sum.get("evaluated") is True,
+             f"reason={uid_sum.get('reason', 'ok')}")
+        conf_keys = [i.get("key", "") for i in uid_confirmed]
+        _uid("instance-unique UID confirmed (C4/C5 + reload)",
+             any(k.endswith("/instance_uid") for k in conf_keys),
+             f"confirmed keys={conf_keys}")
+        tid_key = [i.get("key", "") for i in (uid_sum.get("identifiers") or [])
+                   if i.get("key", "").endswith("/tid")]
+        tid_ok = (not tid_key) or all(
+            not i.get("confirmed")
+            for i in (uid_sum.get("identifiers") or [])
+            if i.get("key", "").endswith("/tid"))
+        _uid("static value NOT misclassified as UID",
+             tid_ok, f"tid keys={tid_key}")
+        print(f"  paper scope: {uid_sum.get('scope')} · "
+              f"{uid_sum.get('paper')}")
+
         # ── noise: two extra independent crawls ──
         counts = [len(full_ev)]
         for run_idx in (2, 3):
@@ -319,6 +353,13 @@ def main():
             },
             "methods": methods,
             "ablations": abl,
+            "paper_uid": {
+                "summary": {k: uid_sum.get(k) for k in (
+                    "evaluated", "confirmed_count", "candidate_count",
+                    "reload_checked", "scope", "paper", "reason")},
+                "confirmed_keys": conf_keys,
+                "checks": uid_checks,
+            },
             "noise": noise,
             "flow_coverage": {
                 "transforms_fn": methods["transforms (full)"][
@@ -329,8 +370,11 @@ def main():
         }
         with open(REPORT, "w") as f:
             json.dump(report, f, indent=2, default=str)
-        print(f"\n  report → {REPORT}")
-        return 0
+        uid_ok = all(c["passed"] for c in uid_checks)
+        print(f"\n  UID checks: {sum(c['passed'] for c in uid_checks)}"
+              f"/{len(uid_checks)}")
+        print(f"  report → {REPORT}")
+        return 0 if uid_ok else 1
     finally:
         sink.shutdown()
         page.shutdown()

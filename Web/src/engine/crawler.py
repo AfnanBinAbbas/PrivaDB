@@ -665,7 +665,8 @@ class SiteCrawler:
             return {"error": str(e), "db_count": 0, "record_count": 0}
 
     async def crawl_site(self, browser, url: str,
-                         consent_action: str = None) -> dict:
+                         consent_action: str = None,
+                         reload_check: bool = False) -> dict:
         """
         Visit a URL, extract IndexedDB data and captured network requests.
 
@@ -674,6 +675,9 @@ class SiteCrawler:
         banner is detected after load, IDB is snapshotted pre- and
         post-act, and the outcome (state/click/error) is recorded in
         result["consent"].
+        reload_check: paper §4.1 condition 2 — after extraction, reload
+        the page in the SAME session and capture IDB again into
+        result["reload_check"] so uid.py can verify value persistence.
 
         Returns a dict with keys: url, domain, timestamp, indexeddb,
         network_requests, consent.
@@ -821,6 +825,47 @@ class SiteCrawler:
                     f"caches={len(other['caches'])} "
                     f"sw={len(other['service_workers'])}"
                 )
+
+                # ── Paper §4.1 C2: same-session reload persistence ──
+                if reload_check:
+                    try:
+                        logger.info(
+                            "  UID reload pass (paper condition 2) …")
+                        await page.reload(
+                            wait_until="domcontentloaded",
+                            timeout=config.NAVIGATION_TIMEOUT)
+                        await page.wait_for_timeout(
+                            min(config.IDLE_WAIT, 4000))
+                        after = {"databases": []}
+                        for rframe in page.frames:
+                            try:
+                                fdata = await rframe.evaluate(
+                                    EXTRACT_INDEXEDDB_SCRIPT)
+                                for rdb in (fdata or {}).get(
+                                        "databases") or []:
+                                    rdb["frame_url"] = rframe.url
+                                    after["databases"].append(rdb)
+                            except asyncio.CancelledError:
+                                raise
+                            except Exception:
+                                continue
+                        result["reload_check"] = {
+                            "after_indexeddb": after,
+                            "ts": datetime.utcnow().isoformat() + "Z",
+                        }
+                        rn = sum(
+                            len(s.get("records", []))
+                            for d in after["databases"]
+                            for s in d.get("stores", []))
+                        logger.info(
+                            f"  Reload check: {rn} records after reload")
+                    except asyncio.CancelledError:
+                        raise
+                    except Exception as e:
+                        result.setdefault("errors", []).append(
+                            f"uid reload check failed: {e}")
+                        logger.warning(
+                            f"  UID reload check failed: {e}")
             except asyncio.CancelledError:
                 raise
             except Exception as e:
@@ -871,7 +916,21 @@ class SiteCrawler:
             result["taint_events"] = taint_events
             logger.info(f"  Foxhound taint flows captured: {len(taint_events)}")
 
-        await context.close()
+        # Context teardown must never destroy an already-collected
+        # crawl: the Foxhound driver occasionally dies during close
+        # ("Connection closed while reading from the driver") after all
+        # data was captured — tolerate it, record it, keep the result.
+        try:
+            await context.close()
+        except Exception as close_err:
+            logger.warning(
+                f"  context.close failed (data kept): {close_err}")
+            result.setdefault("errors", []).append(
+                f"context close: {close_err}")
+            try:
+                _kill_browser_processes()
+            except Exception:
+                pass
         return result
 
     def _on_request(self, request):
@@ -957,7 +1016,8 @@ async def crawl_all_sites(site_limit: int = None,
                           custom_sites: List[dict] = None,
                           on_progress: Optional[Callable[[float, str], None]] = None,
                           check_command: Optional[Callable[[str], bool]] = None,
-                          consent_study: bool = False) -> List[dict]:
+                          consent_study: bool = False,
+                          partial_sink: Optional[dict] = None) -> List[dict]:
     """
     Crawl all sites and save per-site JSON output.
 
@@ -973,6 +1033,10 @@ async def crawl_all_sites(site_limit: int = None,
             site once per consent condition (no-interaction / accept-all /
             reject-all), each in a fresh context, recording banner
             detection + IDB snapshots before/after the click.
+        partial_sink: optional dict the crawler mirrors the current
+            site's completed iterations into after EVERY iteration —
+            lets a cancellation handler persist "the current state"
+            even when the crawl task is torn down mid-run.
 
     Returns:
         List of per-site result dicts (each containing an `iterations` list)
@@ -1237,10 +1301,15 @@ async def crawl_all_sites(site_limit: int = None,
                     except Exception:
                         pass
                     
+                    reload_ok = (consent_action is None
+                                 and iteration == 1
+                                 and bool(getattr(
+                                     config, "UID_RELOAD_CHECK", False)))
                     if check_command:
                         crawl_task = asyncio.create_task(
                             crawler.crawl_site(browser, url,
-                                               consent_action=consent_action))
+                                               consent_action=consent_action,
+                                               reload_check=reload_ok))
                         while not crawl_task.done():
                             if check_command("skip_iteration"):
                                 skip_type = "iteration"
@@ -1261,10 +1330,20 @@ async def crawl_all_sites(site_limit: int = None,
                             logger.info(f"Task cancelled via {skip_type} signal.")
                     else:
                         iter_result = await crawler.crawl_site(
-                            browser, url, consent_action=consent_action)
+                            browser, url, consent_action=consent_action,
+                            reload_check=reload_ok)
                         iter_result["iteration"] = iteration
                         iter_result["browser_version"] = browser_version
                         site_iterations.append(iter_result)
+
+                    # Phase stop-fix: mirror completed iterations so a
+                    # mid-crawl cancellation can still save this state.
+                    if partial_sink is not None:
+                        partial_sink["url"] = url
+                        partial_sink["timestamp"] = (
+                            site_iterations[0].get("timestamp")
+                            if site_iterations else None)
+                        partial_sink["iterations"] = list(site_iterations)
 
                 finally:
                     # Robust cleanup: try to close browser, then stop display

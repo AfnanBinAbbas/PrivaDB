@@ -201,6 +201,37 @@
       "flagged_benign_controls": []
     }
   },
+  "paper_uid": {
+    "summary": {
+      "evaluated": true,
+      "confirmed_count": 1,
+      "candidate_count": 0,
+      "reload_checked": true,
+      "scope": "indexeddb-only",
+      "paper": "Ahmad et al. IJIS 2024 \u00a74.1 (Chen et al. heuristic adapted from cookies to IndexedDB)",
+      "reason": null
+    },
+    "confirmed_keys": [
+      "tf_db/ids/instance_uid"
+    ],
+    "checks": [
+      {
+        "name": "\u00a74.1 evaluated (\u22652 fresh iterations)",
+        "passed": true,
+        "detail": "reason=ok"
+      },
+      {
+        "name": "instance-unique UID confirmed (C4/C5 + reload)",
+        "passed": true,
+        "detail": "confirmed keys=['tf_db/ids/instance_uid']"
+      },
+      {
+        "name": "static value NOT misclassified as UID",
+        "passed": true,
+        "detail": "tid keys=['tf_db/ids/tid']"
+      }
+    ]
+  },
   "noise": {
     "counts": [
       14,

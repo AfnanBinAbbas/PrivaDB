@@ -18,6 +18,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 import app_config as config
 import transforms as tf
 import entities
+import uid as paper_uid
 
 logger = logging.getLogger(__name__)
 
@@ -1686,9 +1687,21 @@ def analyze_site(site_data: dict) -> dict:
     else:
         logger.info(f"  Found {len(flat_ids)} potential identifiers")
 
+    # Paper §4.1 client-identifier classification (IndexedDB only,
+    # Chen-et-al. heuristic per the methodology paper). Needs the
+    # iteration list — hoisted here ahead of Step 1b.
+    iterations = site_data.get("iterations", []) or []
+    uid_report = paper_uid.classify_site(
+        iterations, min_len=config.MIN_ID_LENGTH)
+    paper_uid.attach_to_identifiers(flat_ids, uid_report)
+    logger.info(
+        f"  Paper client identifiers (§4.1, IDB-only): "
+        f"{uid_report['confirmed_count']} confirmed, "
+        f"{uid_report['candidate_count']} candidates "
+        f"(evaluated={uid_report['evaluated']})")
+
     # Step 1b: Aggregate Foxhound taint flows + IDB hook flows across
     # iterations (these live under each iteration's crawl result).
-    iterations = site_data.get("iterations", []) or []
     taint_flows = []
     idb_hook_flows = []
     seen_taint = set()
@@ -1794,8 +1807,15 @@ def analyze_site(site_data: dict) -> dict:
     hook_values = {str(f.get("idb_value")) for f in idb_hook_flows
                    if f.get("idb_value")}
 
+    uid_verdict_by_value = {
+        str(i.get("value")): i.get("client_identifier")
+        for i in flat_ids
+        if i.get("client_identifier") is not None}
+
     for evt in exfiltrations:
         val = str(evt.get("identifier_value", ""))
+        # Paper §4.1: is this value a confirmed client identifier?
+        evt["client_identifier"] = uid_verdict_by_value.get(val)
         # Base mechanism from Phase 3 matching: "transform" when a
         # non-raw variant matched, else "substring".
         base_mech = evt.get("mechanism") or "substring"
@@ -1961,6 +1981,14 @@ def analyze_site(site_data: dict) -> dict:
         "inflow_flows": integrity_flows,
         "consent_analysis": consent_analysis,
         "storage_analysis": storage_analysis,
+        # Paper §4.1 client identifiers (IndexedDB records only)
+        "client_identifiers": [
+            i for i in uid_report.get("identifiers", [])
+            if i.get("confirmed")],
+        "client_identifiers_found": uid_report.get(
+            "confirmed_count", 0),
+        "uid_candidates": uid_report.get("candidate_count", 0),
+        "uid_summary": uid_report,
         "write_attribution": {
             "total_writes": write_analysis["write_count"],
             "responses_captured": write_analysis["response_count"],

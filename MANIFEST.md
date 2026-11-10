@@ -15,7 +15,7 @@ Regenerate measurements: `PAPER_REPORT.md` §9 has the full sequence.
 | `Web/src/engine/testbed/smoke_report.json` | `testbed/run_smoke.py --engine foxhound` | last run 15/15 (foxhound); chrome run 14/14 (G3 taint is foxhound-only) |
 | `Web/src/engine/testbed/scale_report.json` | `testbed/run_scale.py --engine chrome --headed` | store mode `jsonl` — this venv's Python lacks `_sqlite3`; SQLite path unit-verified under system Python |
 | `Web/src/engine/testbed/partition_report_chrome.json` `..._foxhound.json` | `testbed/run_partition.py --engine <e>` | verdict specific to the localhost/127.0.0.1 top-level pair |
-| `Web/backend/tests/*` | `python -m pytest Web/backend/tests -q` | 19 passed (SSRF + disclosure/gap + legacy policy + report/GRC) |
+| `Web/backend/tests/*` | `python -m pytest Web/backend/tests -q` | 26 passed (SSRF + disclosure/gap + legacy policy + report/GRC + paper UID) |
 | `Web/src/engine/testbed/samples/scan_report_sample.html` | rendered from the evaluation crawl (real testbed flows) | standards checklist verified; values hashed |
 | `Web/src/engine/testbed/samples/bulk_report_sample.html` | rendered from two analyses | counts-only executive view |
 | `.github/workflows/ci.yml` | — | runs compileall + pytest + `tsc --noEmit` + `npm run build` |
@@ -46,6 +46,9 @@ Regenerate measurements: `PAPER_REPORT.md` §9 has the full sequence.
 | `Web/backend/security.py` | 10 | SSRF guard |
 | `Web/src/engine/grc.py` | 12 | GRC checks (GDPR/ePrivacy/CCPA/ISO 27001) + header/policy collectors |
 | `Web/src/engine/report_html.py` | 12 | standalone HTML renderers (single + bulk) |
+| `Web/src/engine/uid.py` | UID | paper §4.1 client-identifier heuristic (IDB-only, 5 conditions) |
+| `Web/backend/tests/test_uid.py` | UID | 7 pytest cases for the paper heuristic |
+| `scripts/patch_playwright_ff.py` | UID | guards Playwright FF `pageError.location` driver crash (run after pip/playwright upgrades) |
 | `Web/backend/policy_scanner/disclosure.py` `gap.py` | 9 | disclosure extraction + compliance gap (snapshots: `policy_scanner/snapshots/`) |
 
 ## Data vendored
@@ -91,3 +94,6 @@ sudo docker build -f Docker/Dockerfile.frontend -t privadb-frontend .
 - `results/` outputs are gitignored (privacy); committed reports are the durable record.
 - This venv Python (3.12 custom build) lacks `_sqlite3`; `store.py` auto-falls back to JSONL — both paths tested.
 - Foxhound binary provenance: `Web/foxhound/application.ini` BuildID `20251126175156` (Firefox 137.0 base), recorded per crawl in `run_meta.foxhound_build_id`.
+- **Playwright FF driver must be patched** (`python scripts/patch_playwright_ff.py`) after every playwright install/upgrade — unpatched, live pages with location-less page errors crash the driver and silently empty all JS-based extraction (batches then report `identifiers: 0` despite network capture).
+- Paper §4.1 UID detection needs `iterations ≥ 2` (fresh profiles) + reload pass (`UID_RELOAD_CHECK`); with `iterations=1` the classifier reports `evaluated: false` instead of guessing.
+- Live study artifacts: `data/scale/live15c.jsonl` (14/15 sites done), per-site analyses in `data/scale/results/`, HTML reports in `results/Foxhound/reports/`.
