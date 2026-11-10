@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **859/10000** terminal (858 done, 1 failed) · running/pending: 9141
+Progress: **951/10000** terminal (950 done, 1 failed) · running/pending: 9049
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T16:19:17+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T16:49:24+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 197521 |
-| storage exfils | 189844 |
-| IndexedDB databases | 718 |
-| IndexedDB records | 1555 |
-| exfil events | 4477 |
-| idb-hook flows | 779 |
+| taint flows | 215874 |
+| storage exfils | 218905 |
+| IndexedDB databases | 804 |
+| IndexedDB records | 1645 |
+| exfil events | 4480 |
+| idb-hook flows | 783 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -31,8 +31,8 @@ Top sites by taint flows:
 | theverge.com | 1495 |
 | imgur.com | 1444 |
 | xboxlive.com | 1435 |
+| biblegateway.com | 1393 |
 | salesforce.com | 1386 |
-| dropbox.com | 1384 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -50,9 +50,9 @@ Sites with IndexedDB records (mission scope):
 | washingtonpost.com | 60 |
 | tiktok.com | 59 |
 | aol.com | 38 |
+| biblegateway.com | 35 |
 | atlassian.net | 35 |
 | issuu.com | 34 |
-| imgur.com | 24 |
 
 Failed sites (1): youtube.com
 
