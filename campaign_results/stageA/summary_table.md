@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **951/10000** terminal (950 done, 1 failed) · running/pending: 9049
+Progress: **1083/10000** terminal (1082 done, 1 failed) · running/pending: 8917
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T16:49:24+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T17:19:32+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 215874 |
-| storage exfils | 218905 |
-| IndexedDB databases | 804 |
-| IndexedDB records | 1645 |
-| exfil events | 4480 |
-| idb-hook flows | 783 |
+| taint flows | 243676 |
+| storage exfils | 253697 |
+| IndexedDB databases | 979 |
+| IndexedDB records | 1775 |
+| exfil events | 5240 |
+| idb-hook flows | 820 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -21,6 +21,7 @@ Top sites by taint flows:
 | php.net | 35583 |
 | zillow.com | 14657 |
 | sharethrough.com | 8574 |
+| hostgator.com.br | 7160 |
 | zoho.com | 4466 |
 | capcut.com | 3480 |
 | ups.com | 2605 |
@@ -32,7 +33,6 @@ Top sites by taint flows:
 | imgur.com | 1444 |
 | xboxlive.com | 1435 |
 | biblegateway.com | 1393 |
-| salesforce.com | 1386 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -49,10 +49,10 @@ Sites with IndexedDB records (mission scope):
 | independent.co.uk | 63 |
 | washingtonpost.com | 60 |
 | tiktok.com | 59 |
+| flightradar24.com | 39 |
 | aol.com | 38 |
 | biblegateway.com | 35 |
 | atlassian.net | 35 |
-| issuu.com | 34 |
 
 Failed sites (1): youtube.com
 
