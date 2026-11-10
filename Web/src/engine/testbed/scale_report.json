@@ -1,0 +1,94 @@
+{
+  "engine": "chrome",
+  "passed": true,
+  "n_pass": 7,
+  "n_total": 7,
+  "store_mode": "jsonl",
+  "counts": {
+    "done": 4
+  },
+  "checks": [
+    {
+      "name": "T1 batch completes with all sites done",
+      "passed": true,
+      "detail": "counts={'done': 4}"
+    },
+    {
+      "name": "T2 analysis JSON per site in data/scale/results",
+      "passed": true,
+      "detail": "files=4"
+    },
+    {
+      "name": "T2b analyses carry detector schema",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "T3 resume: pending queue empty, completed preserved",
+      "passed": true,
+      "detail": "pending=0 done=4"
+    },
+    {
+      "name": "T4 retry requeues below attempts, permanent-fails after",
+      "passed": true,
+      "detail": "retry_ok=True permanent=True counts={'permanent_failed': 1}"
+    },
+    {
+      "name": "T5 store backend identified (sqlite or jsonl fallback)",
+      "passed": true,
+      "detail": "mode=jsonl"
+    },
+    {
+      "name": "T6 combined report generated from batch analyses",
+      "passed": true,
+      "detail": "path=/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/results/Chrome/analysis/summary.json"
+    }
+  ],
+  "batch": {
+    "stats": {
+      "done": 4
+    },
+    "results": [
+      {
+        "url": "http://localhost:18765/smoke.html",
+        "domain": "localhost:18765",
+        "identifiers": 6,
+        "exfil": 4,
+        "taint": 0,
+        "idb_hook": 3,
+        "storage_exfil": 1,
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_smoke_html_6ca35844.json"
+      },
+      {
+        "url": "http://localhost:18765/transforms.html",
+        "domain": "localhost:18765",
+        "identifiers": 4,
+        "exfil": 13,
+        "taint": 0,
+        "idb_hook": 8,
+        "storage_exfil": 1,
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_transforms_html_fa9a06fe.json"
+      },
+      {
+        "url": "http://localhost:18765/storage.html",
+        "domain": "localhost:18765",
+        "identifiers": 2,
+        "exfil": 0,
+        "taint": 0,
+        "idb_hook": 0,
+        "storage_exfil": 1,
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_storage_html_8317a5ae.json"
+      },
+      {
+        "url": "http://localhost:18765/consent.html",
+        "domain": "localhost:18765",
+        "identifiers": 2,
+        "exfil": 0,
+        "taint": 0,
+        "idb_hook": 0,
+        "storage_exfil": 0,
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_consent_html_9a6de9fe.json"
+      }
+    ]
+  }
+}

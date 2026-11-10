@@ -35,3 +35,7 @@ node_modules/
 # Virtual environments
 venv/
 **/venv/
+
+# Scale-crawl runtime state (job stores; reports stay tracked)
+Web/src/engine/data/scale/*.sqlite*
+Web/src/engine/data/scale/*.jsonl*
