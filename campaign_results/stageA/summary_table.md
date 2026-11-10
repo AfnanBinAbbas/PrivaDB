@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **1843/10000** terminal (1842 done, 1 failed) · running/pending: 8157
+Progress: **1987/10000** terminal (1986 done, 1 failed) · running/pending: 8013
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T19:50:14+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T20:20:21+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 344132 |
-| storage exfils | 412777 |
-| IndexedDB databases | 1594 |
-| IndexedDB records | 2993 |
-| exfil events | 7577 |
-| idb-hook flows | 1183 |
+| taint flows | 372289 |
+| storage exfils | 441691 |
+| IndexedDB databases | 1708 |
+| IndexedDB records | 3279 |
+| exfil events | 8483 |
+| idb-hook flows | 1508 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -21,7 +21,9 @@ Top sites by taint flows:
 | php.net | 35583 |
 | zillow.com | 14657 |
 | sharethrough.com | 8574 |
+| posthog.com | 8481 |
 | hostgator.com.br | 7160 |
+| norton.com | 6599 |
 | cdiscount.com | 5049 |
 | zoho.com | 4466 |
 | amap.com | 3636 |
@@ -30,9 +32,7 @@ Top sites by taint flows:
 | ups.com | 2605 |
 | akamai.com | 2599 |
 | betika.com | 2510 |
-| siemens.com | 2448 |
-| afternic.com | 2123 |
-| vnexpress.net | 2102 |
+| sapo.pt | 2471 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -44,6 +44,7 @@ Sites with IndexedDB records (mission scope):
 | dropbox.com | 140 |
 | speedtest.net | 136 |
 | cnnbrasil.com.br | 98 |
+| vice.com | 88 |
 | pinterest.com | 88 |
 | index.hr | 78 |
 | businessinsider.com | 75 |
@@ -51,8 +52,7 @@ Sites with IndexedDB records (mission scope):
 | clarin.com | 70 |
 | cnn.com | 66 |
 | accuweather.com | 65 |
-| independent.co.uk | 63 |
-| washingtonpost.com | 60 |
+| sapo.pt | 64 |
 
 Failed sites (1): youtube.com
 
