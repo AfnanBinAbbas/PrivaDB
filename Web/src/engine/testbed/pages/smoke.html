@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>PrivaDB smoke test</title></head>
+<body>
+<h1>smoke test</h1>
+<script>
+// Ground-truth page for PrivaDB verification (Phase 1 / Phase 7 seed).
+// GROUND TRUTH FLOWS:
+//   [1] IDB read  → fetch URL query      (third-party sink, KNOWN_UID)
+//   [2] IDB read  → XHR POST body        (third-party sink, KNOWN_UID)
+//   [3] localStorage read → sendBeacon   (taint source: localStorage.getItem, KNOWN_LS)
+//   [4] IDB read  → img.src pixel        (third-party sink, KNOWN_UID)
+//   [5] FP control: constant string → same-origin sink (never stored in IDB)
+//
+// Sink base is injected by the test runner via __SINK_BASE__.
+const SINK = "__SINK_BASE__";
+const KNOWN_UID = "a3f9c1d7e5b2846f0913a7c5d8e2f6b4"; // 32-hex, high entropy
+const KNOWN_LS  = "ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988";
+
+function writeIDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open("smoke_db", 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+    };
+    req.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction("ids", "readwrite");
+      tx.objectStore("ids").put({ uid: KNOWN_UID, ts: Date.now() }, "user1");
+      tx.oncomplete = () => resolve(db);
+      tx.onerror = () => resolve(null);
+    };
+    req.onerror = () => resolve(null);
+  });
+}
+
+function readIDB(db) {
+  return new Promise((resolve) => {
+    if (!db) return resolve(null);
+    try {
+      const tx = db.transaction("ids", "readonly");
+      const g = tx.objectStore("ids").get("user1");
+      g.onsuccess = () => resolve(g.result ? g.result.uid : null);
+      g.onerror = () => resolve(null);
+    } catch (e) { resolve(null); }
+  });
+}
+
+async function exfiltrate(uid) {
+  // [1] fetch URL query — third party
+  try { fetch(`${SINK}/get?uid=${uid}`).catch(() => {}); } catch (e) {}
+
+  // [2] XHR POST body — third party (triggers CORS preflight; sink answers it)
+  try {
+    const x = new XMLHttpRequest();
+    x.open("POST", `${SINK}/post`);
+    x.setRequestHeader("Content-Type", "application/json");
+    x.send(JSON.stringify({ visitor: uid }));
+  } catch (e) {}
+
+  // [3] localStorage → sendBeacon (taint: localStorage.getItem → sendBeacon)
+  try {
+    localStorage.setItem("sid", KNOWN_LS);
+    const v = localStorage.getItem("sid");
+    navigator.sendBeacon(`${SINK}/beacon?sid=${v}`);
+  } catch (e) {}
+
+  // [4] IDB value in image pixel — third party
+  try {
+    const img = new Image();
+    img.src = `${SINK}/pixel.gif?u=${uid}`;
+  } catch (e) {}
+
+  // [5] FP control: constant never stored in IDB → same-origin sink path
+  try { fetch(`/smoke-sink?c=benign-constant-string`).catch(() => {}); } catch (e) {}
+}
+
+(async () => {
+  const db = await writeIDB();
+  const uid = await readIDB(db);
+  if (uid) await exfiltrate(uid);
+  document.title = "smoke-done";
+})();
+</script>
+</body>
+</html>

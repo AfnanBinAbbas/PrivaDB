@@ -263,7 +263,12 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
             req.addEventListener("success", () => {
               try {
                 const res = req.result;
-                const vals = Array.isArray(res) ? res : (res && typeof res === "object") ? [res] : [];
+                // Cursors (openCursor): record the current value
+                const v0 = (res && typeof res === "object" && "value" in res && "primaryKey" in res && !Array.isArray(res))
+                  ? res.value : res;
+                // Include primitives: IDB get() often returns plain strings,
+                // which the old object-only filter silently dropped.
+                const vals = Array.isArray(v0) ? v0 : (v0 !== undefined && v0 !== null) ? [v0] : [];
                 for (const v of vals) {
                   push(H.reads, { op, store, value: v, fn: c.fn, loc: c.loc, ts: Date.now() });
                 }

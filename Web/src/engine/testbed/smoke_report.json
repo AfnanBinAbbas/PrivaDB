@@ -1,0 +1,86 @@
+{
+  "engine": "chrome",
+  "checks": [
+    {
+      "name": "G0a sink received IDB uid (browser-side ground truth)",
+      "passed": true,
+      "detail": "5 sink requests total"
+    },
+    {
+      "name": "G0b sink received localStorage value (browser-side ground truth)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "G1 substring exfil: IDB uid found in network request",
+      "passed": true,
+      "detail": "1 event(s), mechanisms=['substring']"
+    },
+    {
+      "name": "G1b classified third-party",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "G1c match covers URL and/or POST body",
+      "passed": true,
+      "detail": "url"
+    },
+    {
+      "name": "G5 no false positive on non-IDB constant",
+      "passed": true,
+      "detail": "exfils=0 idents=0"
+    }
+  ],
+  "passed": true,
+  "n_pass": 6,
+  "n_total": 6,
+  "sink_received": [
+    {
+      "method": "GET",
+      "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794296670.3151548
+    },
+    {
+      "method": "POST",
+      "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
+      "body": "",
+      "ts": 1794296670.3273094
+    },
+    {
+      "method": "GET",
+      "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794296670.328271
+    },
+    {
+      "method": "POST",
+      "path": "/post",
+      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
+      "ts": 1794296670.32876
+    },
+    {
+      "method": "GET",
+      "path": "/smoke-sink?c=benign-constant-string",
+      "body": "",
+      "ts": 1794296670.3299441
+    }
+  ],
+  "analysis_snapshot": {
+    "identifiers_found": 2,
+    "exfiltrations": 1,
+    "taint_flows": 0,
+    "idb_hook_flows": 0,
+    "dynamic_flows": {
+      "total": 0,
+      "taint": 0,
+      "idb_hook": 0,
+      "high_confidence": 0,
+      "medium_confidence": 0,
+      "low_confidence": 0,
+      "external": 0,
+      "tracker_targets": 0
+    }
+  }
+}

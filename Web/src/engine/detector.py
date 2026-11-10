@@ -705,6 +705,7 @@ def diff_iterations(site_data: dict) -> dict:
 # rather than by taint flows. Taint covers localStorage/sessionStorage/
 # cookie/location/MessageEvent sources; the IDB hooks cover IDB reads.
 _TAINT_SINK_SOURCE_MAP = {
+    # network egress
     "fetch.url": ("fetch.url", "EXTERNAL"),
     "fetch.body": ("fetch.body", "EXTERNAL"),
     "XMLHttpRequest.open": ("xhr_url", "EXTERNAL"),
@@ -713,12 +714,33 @@ _TAINT_SINK_SOURCE_MAP = {
     "navigator.sendBeacon": ("sendbeacon", "EXTERNAL"),
     "img.src": ("img_src", "EXTERNAL"),
     "script.src": ("script_src", "EXTERNAL"),
+    "iframe.src": ("iframe_src", "EXTERNAL"),
+    "a.href": ("a_href", "EXTERNAL"),
+    "WebSocket.send": ("websocket_send", "EXTERNAL"),
+    "WebSocket": ("websocket", "EXTERNAL"),
+    # storage sinks (stay on-device)
     "localStorage.setItem": ("localStorage", "LOCALSTORAGE"),
     "sessionStorage.setItem": ("sessionStorage", "SESSIONSTORAGE"),
+    # DOM / legacy / execution sinks
     "document.write": ("document.write", "LEGACY"),
+    "innerHTML": ("innerHTML", "DOM"),
+    "element.style": ("element.style", "DOM"),
+    "element.append": ("element.append", "DOM"),
+    "script.text": ("script.text", "DOM"),
+    "document.cookie": ("document.cookie", "COOKIE"),
+    "Range.createContextualFragment": ("createContextualFragment", "DOM"),
     "eval": ("eval", "EXEC"),
     "Function.closure": ("Function.ctor", "EXEC"),
 }
+
+
+def _norm_taint_sink(sink: str) -> str:
+    """Normalize Foxhound sink labels: 'XMLHttpRequest.open(url)' →
+    'XMLHttpRequest.open', 'localStorage.setItem(key)' → 'localStorage.setItem'."""
+    s = (sink or "").strip()
+    if "(" in s:
+        s = s.split("(", 1)[0]
+    return s
 
 
 def _safe_urljoin(base: str, part: str) -> str:
@@ -734,9 +756,10 @@ def _sink_target(sink: str, loc: str, part: str) -> str:
     if not part:
         return ""
     if sink in ("fetch.url", "XMLHttpRequest.open", "navigator.sendBeacon",
-                 "img.src", "script.src"):
+                 "img.src", "script.src", "iframe.src", "a.href",
+                 "WebSocket"):
         return _safe_urljoin(loc, part)
-    if sink == "fetch.body":
+    if sink in ("fetch.body", "XMLHttpRequest.send", "WebSocket.send"):
         return part
     return part
 
@@ -768,7 +791,7 @@ def parse_taint_flows(events: list, site_domain: str,
 
     for ev in events or []:
         detail = ev.get("detail", {}) or {}
-        sink = detail.get("sink", "")
+        sink = _norm_taint_sink(detail.get("sink", ""))
         sink_str = detail.get("str", "") or ""
         loc = detail.get("loc", "") or ""
         subframe = detail.get("subframe", False)
@@ -1105,10 +1128,39 @@ def analyze_site(site_data: dict) -> dict:
             evt["sink_class"] = "xhr_body" if method != "GET" else "fetch_body"
         else:
             evt["sink_class"] = "fetch_url"  # URL parameter match
-        # Source is always IDB read for outflow flows
-        evt["source_class"] = "IDBObjectStore.get"
+        # Source provenance: the IDB record this identifier was extracted
+        # from (db/store/key are attached by the extractor pass). The exact
+        # JS read op is unknown for substring matches — that is what the
+        # taint/hook mechanisms provide.
+        db = evt.get("database", "")
+        st = evt.get("store", "")
+        evt["source_class"] = (
+            f"IDBObjectStore.get:{db}/{st}" if db or st else "IDBObjectStore.get"
+        )
 
-    logger.info(f"  Found {len(exfiltrations)} exfiltration events")
+    # ── Merge mechanism tags: substring ↔ taint/hook corroboration ──
+    # An identifier observed by more than one mechanism is tagged "both";
+    # this disagreement/agreement is a research result, not noise.
+    taint_values = {str(f.get("tainted_value")) for f in taint_flows
+                    if f.get("tainted_value")}
+    hook_values = {str(f.get("idb_value")) for f in idb_hook_flows
+                   if f.get("idb_value")}
+
+    for evt in exfiltrations:
+        val = str(evt.get("identifier_value", ""))
+        mech = ["substring"]
+        if val in taint_values:
+            mech.append("taint")
+        if val in hook_values:
+            mech.append("idb_hook")
+        evt["mechanism"] = "both" if len(mech) > 1 else "substring"
+        evt["taint_confirmed"] = len(mech) > 1
+        evt["corroborating_mechanisms"] = mech
+
+    logger.info(
+        f"  Found {len(exfiltrations)} exfiltration events "
+        f"({sum(1 for e in exfiltrations if e.get('taint_confirmed'))} taint-corroborated)"
+    )
 
     # Step 4: Detect integrity flows (source → IDB)
     integrity_flows = detect_integrity_flows(site_data)
