@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **2583/10000** terminal (2582 done, 1 failed) · running/pending: 7417
+Progress: **2687/10000** terminal (2686 done, 1 failed) · running/pending: 7313
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T23:22:09+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T23:52:32+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 461157 |
-| storage exfils | 549437 |
-| IndexedDB databases | 1940 |
-| IndexedDB records | 3789 |
-| exfil events | 9413 |
-| idb-hook flows | 1945 |
+| taint flows | 469887 |
+| storage exfils | 559834 |
+| IndexedDB databases | 2043 |
+| IndexedDB records | 7895 |
+| exfil events | 9978 |
+| idb-hook flows | 2046 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -38,12 +38,14 @@ Sites with IndexedDB records (mission scope):
 
 | site | IDB records |
 |---|---:|
+| mastodon.social | 3967 |
 | netscape.com | 258 |
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
 | dropbox.com | 140 |
 | speedtest.net | 136 |
+| ria.ru | 100 |
 | cnnbrasil.com.br | 98 |
 | vice.com | 88 |
 | pinterest.com | 88 |
@@ -51,8 +53,6 @@ Sites with IndexedDB records (mission scope):
 | businessinsider.com | 75 |
 | pinimg.com | 74 |
 | clarin.com | 70 |
-| cnn.com | 66 |
-| accuweather.com | 65 |
 
 Failed sites (1): youtube.com
 
