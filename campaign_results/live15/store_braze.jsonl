@@ -1,0 +1,1 @@
+{"url": "https://www.braze.com/", "status": "done", "attempts": 1, "error": null, "summary": {"domain": "www.braze.com", "identifiers": 8, "exfil": 266, "taint": 550, "idb_hook": 151, "storage_exfil": 3610, "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/https___www_braze_com__ed6f7239.json"}, "updated_at": 1794310061.508939}
