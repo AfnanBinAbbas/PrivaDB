@@ -222,7 +222,7 @@ class _TaintHandler(BaseHTTPRequestHandler):
 FLOW_HOOKS_INIT_SCRIPT = r"""
 (() => {
   if (window.__prividb_hooks) return;
-  const H = (window.__prividb_hooks = { reads: [], sends: [] });
+  const H = (window.__prividb_hooks = { reads: [], sends: [], writes: [], responses: [] });
   function push(arr, rec) {
     try {
       let v = typeof rec.value === "string" ? rec.value : JSON.stringify(rec.value);
@@ -236,14 +236,44 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
     } catch (e) {}
   }
   function caller() {
+    // Works for both stack formats:
+    //   Chrome/Firefox-new: "at fn (https://host/a.js:1:2)" / "at https://..."
+    //   Firefox-classic:    "fn@https://host/a.js:1:2"
     try {
-      const lines = (new Error().stack || "").split("\n").slice(2);
-      for (const l of lines) {
+      const raw = (new Error().stack || "").split("\n");
+      // Drop the header line(s) pointing at caller() itself
+      const lines = raw.filter((l) => {
         const t = l.trim();
-        if (!t.startsWith("at ")) continue;
-        const f = t.slice(3).replace(/\s*\(.*$/, "").trim();
-        const m = t.match(/\(([^)]*)\)\s*$/);
-        return { fn: f, loc: (m && m[1]) || "" };
+        return t.startsWith("at ") || t.includes("@");
+      });
+      for (let i = 0; i < lines.length; i++) {
+        const t = lines[i].trim();
+        // Skip frames belonging to this injected instrument script —
+        // Playwright evaluates init scripts in a "debugger eval code"
+        // context, so the wrapper frames (caller, proto[op], fetch, …)
+        // all live there and must be skipped to reach the real caller.
+        if (t.includes("__prividb_hooks") || t.includes("FLOW_HOOKS")) continue;
+        let fn = "", loc = "";
+        if (t.startsWith("at ")) {
+          const body = t.slice(3);
+          const m = body.match(/^(.*?)\s*\((.*)\)$/);
+          if (m) { fn = m[1].trim(); loc = m[2].trim(); }
+          else { loc = body.trim(); fn = ""; }
+        } else if (t.includes("@")) {
+          const at = t.lastIndexOf("@");
+          fn = t.slice(0, at).trim();
+          loc = t.slice(at + 1).trim();
+          // Firefox may append :line:col — keep as-is (script origin
+          // extraction strips it); drop "native" pseudo-frames
+          if (loc === "native" || loc === "") continue;
+        }
+        if (loc && (loc.indexOf("debugger eval code") !== -1
+                    || loc.indexOf("<anonymous>") !== -1)) continue;
+        if (fn === "caller" || fn === "proto[op]"
+            || fn.indexOf("proto[") === 0
+            || fn.indexOf("proto.<") === 0
+            || fn.indexOf("[as ") !== -1) continue;
+        return { fn, loc };
       }
     } catch (e) {}
     return { fn: "", loc: "" };
@@ -288,7 +318,26 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
       const url = (args[0] && args[0].url) || String(args[0] || "");
       const body = args[1] ? String(args[1].body || "") : "";
       push(H.sends, { op: "fetch", url, body, fn: c.fn, loc: c.loc, ts: Date.now() });
-      return origFetch.apply(this, args);
+      const p = origFetch.apply(this, args);
+      // Capture the response body (truncated) for inflow detection:
+      // network value → later written to IDB.
+      try {
+        p.then((resp) => {
+          try {
+            const rurl = resp.url || url;
+            const status = resp.status;
+            resp.clone().text().then((t) => {
+              try {
+                if (t && t.length > 8000) t = t.slice(0, 8000);
+                if (H.responses.length >= 300) H.responses.shift();
+                H.responses.push({ url: rurl, status, body: t || "", ts: Date.now(),
+                                   t_rel: Math.round(performance.now()) });
+              } catch (e) {}
+            }).catch(() => {});
+          } catch (e) {}
+        }).catch(() => {});
+      } catch (e) {}
+      return p;
     };
   } catch (e) {}
   try {
@@ -303,6 +352,21 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
     XMLHttpRequest.prototype.send = function (body) {
       const c = caller();
       push(H.sends, { op: "XMLHttpRequest.send", url: this.__prividb_xurl || "", body: String(body || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+      // Response capture for inflow detection
+      try {
+        this.addEventListener("loadend", () => {
+          try {
+            let t = "";
+            try { t = this.responseText || ""; } catch (e) { t = ""; }
+            if (!t) return;
+            if (t.length > 8000) t = t.slice(0, 8000);
+            if (H.responses.length >= 300) H.responses.shift();
+            H.responses.push({ url: this.__prividb_xurl || "", status: this.status,
+                               body: t, ts: Date.now(),
+                               t_rel: Math.round(performance.now()) });
+          } catch (e) {}
+        });
+      } catch (e) {}
       return send.apply(this, [body]);
     };
   } catch (e) {}
@@ -324,6 +388,48 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
         push(H.sends, { op: "img.src", url: String(v || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
       }
     });
+  } catch (e) {}
+  // --- IDB writes (put/add/cursor.update): WHO creates identifiers ---
+  // Records value, store, database (via transaction), the calling script,
+  // and time-relative-to-load so writes can be ordered against consent.
+  try {
+    function dbOf(store) {
+      try { return (store.transaction && store.transaction.db && store.transaction.db.name) || ""; }
+      catch (e) { return ""; }
+    }
+    for (const [proto, ops] of [
+      [IDBObjectStore.prototype, ["put", "add"]],
+      [IDBCursor.prototype, ["update"]],
+    ]) {
+      for (const op of ops) {
+        const orig = proto[op];
+        if (typeof orig !== "function") continue;
+        proto[op] = function (value, ...rest) {
+          const c = caller();
+          const store = (proto === IDBObjectStore.prototype)
+            ? ((this && this.name) || "")
+            : ((this && this.source && this.source.name) || "");
+          try {
+            let v = typeof value === "string" ? value : JSON.stringify(value);
+            if (v !== undefined && v !== null) {
+              if (v.length > 2000) v = v.slice(0, 2000);
+            }
+            if (H.writes.length >= 1000) H.writes.shift();
+            H.writes.push({
+              op: (proto === IDBObjectStore.prototype) ? op : "cursor.update",
+              db: (proto === IDBObjectStore.prototype) ? dbOf(this) : "",
+              store, value: v,
+              key: (rest[0] !== undefined && rest[0] !== null)
+                    ? String(rest[0]).slice(0, 200) : "",
+              fn: c.fn, loc: c.loc,
+              ts: Date.now(),
+              t_rel: Math.round(performance.now()),
+            });
+          } catch (e) {}
+          return orig.apply(this, [value, ...rest]);
+        };
+      }
+    }
   } catch (e) {}
 })();
 """
@@ -408,7 +514,7 @@ class SiteCrawler:
             "indexeddb": {"databases": []},
             "network_requests": [],
             "taint_events": [],
-            "flow_hooks": {"reads": [], "sends": []},
+            "flow_hooks": {"reads": [], "sends": [], "writes": [], "responses": []},
             "errors": [],
         }
 
@@ -488,22 +594,25 @@ class SiteCrawler:
         result["network_requests"] = self.network_requests
         logger.info(f"  Network: {len(self.network_requests)} requests captured")
 
-        # Collect per-frame flow hooks (IDB reads + network sends)
+        # Collect per-frame flow hooks (IDB reads, network sends, writes,
+        # responses) — the same JS runs on both engines for comparability
         if self.hooks:
             try:
-                hooks = {"reads": [], "sends": []}
+                hooks = {"reads": [], "sends": [], "writes": [], "responses": []}
                 for frame in page.frames:
                     try:
                         frame_hooks = await frame.evaluate("window.__prividb_hooks")
                         if frame_hooks:
-                            hooks["reads"].extend(frame_hooks.get("reads", []))
-                            hooks["sends"].extend(frame_hooks.get("sends", []))
+                            for k in ("reads", "sends", "writes", "responses"):
+                                hooks[k].extend(frame_hooks.get(k, []))
                     except Exception:
                         continue
                 result["flow_hooks"] = hooks
                 logger.info(
                     f"  Flow hooks: {len(hooks['reads'])} IDB reads, "
-                    f"{len(hooks['sends'])} network sends"
+                    f"{len(hooks['sends'])} network sends, "
+                    f"{len(hooks['writes'])} IDB writes, "
+                    f"{len(hooks['responses'])} responses captured"
                 )
             except Exception as e:
                 logger.warning(f"  Flow hook collection failed: {e}")
@@ -810,7 +919,7 @@ async def crawl_all_sites(site_limit: int = None,
                         
                     crawler = SiteCrawler(
                         taint_capture=taint_capture,
-                        hooks=(config.ENGINE == "foxhound" and config.TAINT_TRACKING_ENABLED),
+                        hooks=bool(config.TAINT_TRACKING_ENABLED),
                     )
                     skip_type = None
                     browser_version = ""

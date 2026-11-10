@@ -1014,6 +1014,198 @@ def analyze_idb_hook_flows(hooks: dict, network_requests: list[dict],
     return flows
 
 
+# ─── Write-Side Instrumentation (Phase 2) ───────────────────────────
+# WHO creates identifiers, and is it really "inflow" (network → IDB)?
+# The flow-hook init script records every IDBObjectStore.put/add/cursor
+# update with the calling script's stack location, plus captured network
+# response bodies. A write is classified as inflow only when a leaf string
+# of the written value is observed in a prior response — replacing the
+# old URL-param/navigator heuristic guess.
+
+def _leaf_strings(value, min_len: int = 1, max_leaves: int = 64) -> list[str]:
+    """Flatten a (possibly nested) JSON-parsed value into leaf strings."""
+    out = []
+
+    def walk(v, depth=0):
+        if len(out) >= max_leaves or depth > 6:
+            return
+        if isinstance(v, str):
+            if len(v) >= min_len:
+                out.append(v)
+        elif isinstance(v, dict):
+            for item in v.values():
+                walk(item, depth + 1)
+        elif isinstance(v, (list, tuple)):
+            for item in v:
+                walk(item, depth + 1)
+        elif isinstance(v, (int, float)) and v is not None:
+            s = str(v)
+            if len(s) >= min_len:
+                out.append(s)
+
+    walk(value)
+    return out
+
+
+def _parse_write_value(raw: str):
+    """Parse a recorded write value (string or JSON string) → leaf strings."""
+    if not raw:
+        return []
+    txt = raw
+    if txt.startswith(("{", "[")):
+        try:
+            return _leaf_strings(json.loads(txt), min_len=config.MIN_ID_LENGTH)
+        except Exception:
+            pass
+    return _leaf_strings(txt, min_len=config.MIN_ID_LENGTH)
+
+
+def _script_origin(stack_loc: str) -> str:
+    """Extract the script origin from a JS stack location string.
+
+    Formats seen: 'https://host/path.js:1:2', 'https://host/x.js:1:2',
+    'inline script', 'https://host/' (page itself), or ''.
+    """
+    loc = (stack_loc or "").strip()
+    if not loc or loc in ("inline script", "eval code", "native"):
+        return ""
+    # Strip trailing ":line:col" (greedy → preserves ports in the URL)
+    m = re.match(r"^(.*):\d+:\d+$", loc)
+    candidate = m.group(1) if m else loc
+    if candidate.startswith(("http://", "https://", "ws://", "wss://", "//")):
+        try:
+            return urlparse(candidate).netloc
+        except Exception:
+            return ""
+    return ""
+
+
+def analyze_idb_writes(hooks: dict, site_domain: str,
+                       network_requests: list[dict] = None) -> dict:
+    """
+    Analyze recorded IDB writes.
+
+    Returns:
+      {
+        "writes": [...attribution records...],
+        "inflow_flows": [...network → IDB proven by response match...],
+        "writer_stats": {"first_party": n, "third_party": n, "unknown": n},
+        "pre_consent_candidates": n,   # writes within 3s of page load
+      }
+    """
+    writes = (hooks or {}).get("writes", []) or []
+    responses = (hooks or {}).get("responses", []) or []
+
+    # Precompute response leaf index: leaf → response url
+    resp_leaves: list[tuple[str, str]] = []
+    for r in responses:
+        body = r.get("body", "") or ""
+        rurl = r.get("url", "") or ""
+        for leaf in _leaf_strings(body, min_len=config.MIN_ID_LENGTH, max_leaves=128):
+            resp_leaves.append((leaf, rurl))
+        # Also raw-URL search fallback below via decoded body
+
+    writer_stats = {"first_party": 0, "third_party": 0, "unknown": 0}
+    attribution = []
+    inflow = []
+    pre_consent = 0
+
+    site_base = site_domain.lower().replace("www.", "")
+    POST_LOAD_WINDOW_MS = 3000  # writes within 3s of load → pre-consent candidates
+
+    for w in writes:
+        w_db = w.get("db", "") or ""
+        w_store = w.get("store", "") or ""
+        w_key = w.get("key", "") or ""
+        w_op = w.get("op", "put")
+        w_fn = w.get("fn") or None
+        w_loc = w.get("loc") or ""
+        w_trel = w.get("t_rel")
+
+        writer_dom = _script_origin(w_loc)
+        if not writer_dom:
+            writer_role = "unknown"
+            writer_stats["unknown"] += 1
+            is_3p_writer = False
+        else:
+            is_3p_writer = not _is_same_party(site_domain, writer_dom)
+            writer_role = "third_party" if is_3p_writer else "first_party"
+            writer_stats[writer_role] += 1
+
+        if isinstance(w_trel, (int, float)) and w_trel <= POST_LOAD_WINDOW_MS:
+            pre_consent += 1
+
+        leaves = _parse_write_value(w.get("value", "") or "")
+
+        # Proven inflow: a leaf of the written value appeared in a response
+        matched_url = ""
+        matched_leaf = ""
+        for leaf in leaves:
+            for rleaf, rurl in resp_leaves:
+                if leaf == rleaf or (len(leaf) >= config.MIN_ID_LENGTH
+                                     and leaf in rleaf):
+                    matched_url, matched_leaf = rurl, leaf
+                    break
+            if matched_url:
+                break
+
+        attribution.append({
+            "op": w_op,
+            "database": w_db,
+            "store": w_store,
+            "key": w_key,
+            "writer_origin": writer_dom or None,
+            "writer_role": writer_role,
+            "writer_function": w_fn,
+            "writer_stack": w_loc or None,
+            "t_rel_ms": w_trel,
+            "leaf_count": len(leaves),
+            "value_preview": (leaves[0][:64] if leaves else ""),
+        })
+
+        if matched_url:
+            req_dom = urlparse(matched_url).netloc if matched_url else ""
+            # Response may be same-origin (API call) — still inflow if data
+            # physically arrived from the network.
+            is_3p_resp = bool(req_dom) and not _is_same_party(site_domain, req_dom)
+            inflow.append({
+                "flow_direction": config.FLOW_INFLOW,
+                "source_class": "network_response",
+                "sink_class": f"IDBObjectStore.{w_op}",
+                "value": matched_leaf,
+                "value_hash": __import__("hashlib").sha256(
+                    matched_leaf.encode("utf-8", "ignore")).hexdigest()[:16],
+                "path": f"{w_db}/{w_store}/{w_key}".strip("/"),
+                "database": w_db,
+                "store": w_store,
+                "record_key": w_key,
+                "response_url": matched_url,
+                "request_domain": req_dom or None,
+                "writer_origin": writer_dom or None,
+                "writer_role": writer_role,
+                "writer_function": w_fn,
+                "mechanism": "response_match",
+                "confidence": (config.CONFIDENCE_HIGH if is_3p_resp
+                               else config.CONFIDENCE_MEDIUM),
+                "is_third_party": is_3p_resp,
+                "is_known_tracker": _is_known_tracker(req_dom) if req_dom else False,
+                "confinement": classify_confinement(site_domain, req_dom)
+                               if req_dom else config.CONFINEMENT_INTERNAL,
+                "cross_origin": classify_cross_origin(site_domain, req_dom)
+                                if req_dom else None,
+                "t_rel_ms": w_trel,
+            })
+
+    return {
+        "writes": attribution,
+        "inflow_flows": inflow,
+        "writer_stats": writer_stats,
+        "pre_consent_candidates": pre_consent,
+        "write_count": len(writes),
+        "response_count": len(responses),
+    }
+
+
 def analyze_site(site_data: dict) -> dict:
     """
     Run the full detection pipeline on a single site's crawled data.
@@ -1083,6 +1275,13 @@ def analyze_site(site_data: dict) -> dict:
     seen_taint = set()
     seen_hook = set()
     site_loc = site_data.get("url", "") or ""
+    # Phase 2: write-side aggregation (attribution + proven inflow)
+    write_analysis = {"writes": [], "inflow_flows": [],
+                      "writer_stats": {"first_party": 0, "third_party": 0,
+                                       "unknown": 0},
+                      "pre_consent_candidates": 0, "write_count": 0,
+                      "response_count": 0}
+    seen_inflow = set()
     for it in iterations:
         it_network = it.get("network_requests", []) or []
         for tf in parse_taint_flows(it.get("taint_events", []), domain,
@@ -1093,7 +1292,8 @@ def analyze_site(site_data: dict) -> dict:
                 continue
             seen_taint.add(k)
             taint_flows.append(tf)
-        for hf in analyze_idb_hook_flows(it.get("flow_hooks", {}), it_network,
+        it_hooks = it.get("flow_hooks", {})
+        for hf in analyze_idb_hook_flows(it_hooks, it_network,
                                          domain, site_loc):
             k = (hf.get("source_function"), hf.get("source_store"),
                  hf.get("target"))
@@ -1101,6 +1301,22 @@ def analyze_site(site_data: dict) -> dict:
                 continue
             seen_hook.add(k)
             idb_hook_flows.append(hf)
+
+        # Write-side: attribution for every write + response-proven inflow
+        wa = analyze_idb_writes(it_hooks, domain, it_network)
+        write_analysis["writes"].extend(wa["writes"])
+        for role, n in wa["writer_stats"].items():
+            write_analysis["writer_stats"][role] += n
+        write_analysis["pre_consent_candidates"] += wa["pre_consent_candidates"]
+        write_analysis["write_count"] += wa["write_count"]
+        write_analysis["response_count"] += wa["response_count"]
+        for inf in wa["inflow_flows"]:
+            k = (inf.get("database"), inf.get("store"),
+                 inf.get("record_key"), inf.get("value_hash"))
+            if k in seen_inflow:
+                continue
+            seen_inflow.add(k)
+            write_analysis["inflow_flows"].append(inf)
 
     logger.info(
         f"  Taint flows: {len(taint_flows)} | IDB hook flows: {len(idb_hook_flows)}"
@@ -1162,9 +1378,26 @@ def analyze_site(site_data: dict) -> dict:
         f"({sum(1 for e in exfiltrations if e.get('taint_confirmed'))} taint-corroborated)"
     )
 
-    # Step 4: Detect integrity flows (source → IDB)
-    integrity_flows = detect_integrity_flows(site_data)
-    logger.info(f"  Found {len(integrity_flows)} integrity flows")
+    # Step 4: Inflow (source → IDB).
+    # Response-proven inflow (Phase 2 hooks) takes precedence; the legacy
+    # URL-param/navigator heuristic still runs as a fallback for crawls
+    # collected without hooks — tagged so the two are distinguishable.
+    integrity_flows = list(write_analysis["inflow_flows"])
+    seen_iv = {(f.get("database"), f.get("store"), f.get("record_key"),
+                f.get("value", "")[:64]) for f in integrity_flows}
+    for f in detect_integrity_flows(site_data):
+        k = (f.get("database"), f.get("store"), f.get("record_key"),
+             f.get("value", "")[:64])
+        if k in seen_iv:
+            continue
+        f["mechanism"] = "heuristic"
+        integrity_flows.append(f)
+    logger.info(
+        f"  Found {len(integrity_flows)} inflow flows "
+        f"({len(write_analysis['inflow_flows'])} response-proven, "
+        f"{write_analysis['write_count']} writes observed, "
+        f"writer split: {write_analysis['writer_stats']})"
+    )
 
     # Classify confidence
     high = sum(1 for e in exfiltrations if e["confidence"] == config.CONFIDENCE_HIGH)
@@ -1267,6 +1500,13 @@ def analyze_site(site_data: dict) -> dict:
             ),
         },
         "inflow_flows": integrity_flows,
+        "write_attribution": {
+            "total_writes": write_analysis["write_count"],
+            "responses_captured": write_analysis["response_count"],
+            "writer_stats": write_analysis["writer_stats"],
+            "pre_consent_candidates": write_analysis["pre_consent_candidates"],
+            "writes": write_analysis["writes"][:200],
+        },
         "flow_classification": {
             "outflow_flows": len(exfiltrations) + len(taint_flows) + len(idb_hook_flows),
             "inflow_flows": len(integrity_flows),

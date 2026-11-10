@@ -76,10 +76,42 @@ async function exfiltrate(uid) {
   try { fetch(`/smoke-sink?c=benign-constant-string`).catch(() => {}); } catch (e) {}
 }
 
+// [6] INFLOW ground truth: fetch a known value from the network, then
+//     write it to IDB → must be detected as response-proven inflow.
+async function inflowTest() {
+  try {
+    const resp = await fetch(`${SINK}/payload?tag=inflow`);
+    const data = await resp.json().catch(() => ({}));
+    const inbound = data && data.inbound_value
+      ? data.inbound_value
+      : "net-inflow-fedcba98765432101122334455667788";
+    const req = indexedDB.open("smoke_db", 1);
+    req.onsuccess = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) return;
+      const tx = db.transaction("ids", "readwrite");
+      tx.objectStore("ids").put({ inbound }, "inflow1");
+    };
+  } catch (e) {}
+}
+
+// [7] THIRD-PARTY WRITER ground truth: load a script served by the sink
+//     origin; that script writes to the page's IDB. Attribution must
+//     classify the writer as third-party (loc → sink origin).
+function thirdPartyWriterTest() {
+  try {
+    const s = document.createElement("script");
+    s.src = `${SINK}/tracker.js`;
+    document.head.appendChild(s);
+  } catch (e) {}
+}
+
 (async () => {
   const db = await writeIDB();
   const uid = await readIDB(db);
   if (uid) await exfiltrate(uid);
+  await inflowTest();
+  thirdPartyWriterTest();
   document.title = "smoke-done";
 })();
 </script>

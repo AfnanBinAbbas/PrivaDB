@@ -12,10 +12,11 @@ import re
 ENGINE = "chrome"  # or "foxhound"
 
 # ─── Dynamic Taint Tracking ─────────────────────────────────────────
-# Master switch for the Foxhound taint-capture + IDB hook instrumentation.
-# When disabled the crawler runs plain (no capture server, no exporter
-# prefs, no init script) — taint_events/flow_hooks just stay empty.
-# Independent of ENGINE: has no effect with chrome engine.
+# Master switch for instrumentation:
+#  - Foxhound taint-capture server + exporter prefs (foxhound engine only)
+#  - In-page flow hooks (IDB reads/writes, network sends, responses) —
+#    these run on BOTH engines so Chrome/Foxhound results are comparable.
+# When disabled the crawler runs plain — taint_events/flow_hooks stay empty.
 TAINT_TRACKING_ENABLED = True
 
 

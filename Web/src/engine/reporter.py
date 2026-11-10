@@ -213,7 +213,7 @@ def _write_tracking_csv(results: list[dict]):
                 writer.writerow({
                     "site_domain": domain,
                     "site_url": url,
-                    "mechanism": "stealth",
+                    "mechanism": evt.get("mechanism", "stealth"),
                     "flow_direction": evt.get("flow_direction", "outflow"),
                     "confinement": evt.get("confinement", ""),
                     "cross_origin": evt.get("cross_origin", ""),
@@ -251,7 +251,7 @@ def _write_tracking_csv(results: list[dict]):
                 writer.writerow({
                     "site_domain": domain,
                     "site_url": url,
-                    "mechanism": "stealth",
+                    "mechanism": iflow.get("mechanism", "heuristic"),
                     "flow_direction": "inflow",
                     "confinement": iflow.get("confinement", "internal"),
                     "cross_origin": iflow.get("cross_origin", ""),
@@ -454,7 +454,7 @@ def _write_per_site_json(results: list[dict]):
                 "statusCode": status_code if status_code is not None else 200,
                 "domain": domain,
                 "requestUrl": evt.get("request_url", ""),
-                "mechanism": "stealth",
+                "mechanism": evt.get("mechanism", "stealth"),
             })
 
         # Taint flows

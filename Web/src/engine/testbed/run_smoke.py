@@ -39,6 +39,11 @@ SINK_PORT = 18766
 KNOWN_UID = "a3f9c1d7e5b2846f0913a7c5d8e2f6b4"
 KNOWN_LS = "ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988"
 BENIGN = "benign-constant-string"
+# [6] inflow: value served by the network that the page writes to IDB
+KNOWN_INFLOW = "net-inflow-fedcba98765432101122334455667788"
+# [7] third-party writer script: writes KNOWN_TPWRITER to IDB from
+#     the sink origin (different port → different party)
+KNOWN_TPWRITER = "tp-writer-887766554433221100ffeeddccbbaa99"
 
 _page_dir = os.path.join(os.path.dirname(__file__), "pages")
 sink_received = []
@@ -62,6 +67,45 @@ class SinkHandler(BaseHTTPRequestHandler, _CorsMixin):
         self.end_headers()
 
     def do_GET(self):
+        # Inflow payload: known value the page must write to IDB
+        if self.path.startswith("/payload"):
+            payload = json.dumps(
+                {"ok": True, "inbound_value": KNOWN_INFLOW}).encode()
+            self.send_response(200)
+            self._cors()
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+            self._record("GET")
+            return
+        # Third-party writer script: writes KNOWN_TPWRITER into page IDB
+        if self.path.startswith("/tracker.js"):
+            js = f"""
+(function () {{
+  try {{
+    var req = indexedDB.open("smoke_db", 1);
+    req.onupgradeneeded = function (e) {{
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+    }};
+    req.onsuccess = function (e) {{
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) return;
+      var tx = db.transaction("ids", "readwrite");
+      tx.objectStore("ids").put({{ fp: "{KNOWN_TPWRITER}" }}, "tp1");
+    }};
+  }} catch (e) {{}}
+}})();
+""".encode()
+            self.send_response(200)
+            self._cors()
+            self.send_header("Content-Type", "application/javascript")
+            self.send_header("Content-Length", str(len(js)))
+            self.end_headers()
+            self.wfile.write(js)
+            self._record("GET")
+            return
         self._record("GET")
         self._reply()
 
@@ -102,8 +146,11 @@ class PageHandler(BaseHTTPRequestHandler):
             self.send_response(200)
         elif self.path.startswith("/smoke"):
             with open(os.path.join(_page_dir, "smoke.html"), "rb") as f:
+                # Sink on 127.0.0.1 while the page is on localhost: the two
+                # names are distinct parties under both the naive heuristic
+                # and PSL-based checks (Phase 5).
                 html = f.read().replace(b"__SINK_BASE__",
-                                        f"http://localhost:{SINK_PORT}".encode())
+                                        f"http://127.0.0.1:{SINK_PORT}".encode())
             body = html
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
@@ -210,15 +257,14 @@ def main():
                                  for e in uid_exfils}))))
 
         # G1d: idb_hook flow ties the IDB read to the network send
-        # (flow hooks are only installed for the foxhound engine)
-        if args.engine == "foxhound":
-            uid_hook = [f for f in hooks
-                        if KNOWN_UID in str(f.get("idb_value", ""))]
-            results.append(_check(
-                "G1d idb_hook flow: IDB read → network send",
-                bool(uid_hook),
-                f"{len(uid_hook)} flow(s), targets="
-                f"{sorted({(f.get('target') or '')[:60] for f in uid_hook})}"))
+        # (flow hooks now run on both engines)
+        uid_hook = [f for f in hooks
+                    if KNOWN_UID in str(f.get("idb_value", ""))]
+        results.append(_check(
+            "G1d idb_hook flow: IDB read → network send",
+            bool(uid_hook),
+            f"{len(uid_hook)} flow(s), targets="
+            f"{sorted({(f.get('target') or '')[:60] for f in uid_hook})}"))
 
         # G3: taint flow with localStorage source (foxhound only)
         if args.engine == "foxhound":
@@ -241,6 +287,57 @@ def main():
             "G5 no false positive on non-IDB constant",
             not fp and not fp_id,
             f"exfils={len(fp)} idents={len(fp_id)}"))
+
+        # Phase 2 ground truth (requires flow hooks — both engines now)
+        wa = analysis.get("write_attribution", {}) or {}
+        inflows = analysis.get("inflow_flows", []) or []
+
+        # G6: response-proven inflow — network value written to IDB
+        inflow_hits = [f for f in inflows
+                       if KNOWN_INFLOW in str(f.get("value", ""))]
+        heuristic_only = [f for f in inflows
+                          if f.get("mechanism") == "heuristic"]
+        results.append(_check(
+            "G6 inflow: network response value written to IDB (response-proven)",
+            bool(inflow_hits),
+            f"proven={len(inflow_hits)} heuristic_fallback={len(heuristic_only)}"))
+        if inflow_hits:
+            results.append(_check(
+                "G6b inflow tagged mechanism=response_match + direction=inflow",
+                all(f.get("mechanism") == "response_match"
+                    and f.get("flow_direction") == "inflow"
+                    for f in inflow_hits)))
+
+        # G7: third-party script writer attribution
+        tp_writes = [w for w in wa.get("writes", [])
+                     if KNOWN_TPWRITER in str(w.get("value_preview", ""))]
+        # value_preview is a leaf of the {fp: ...} object → may be the value
+        tp_writes += [w for w in wa.get("writes", [])
+                      if w.get("store") == "tp1"]
+        # dedupe
+        tp_writes = list({id(w): w for w in tp_writes}.values())
+        results.append(_check(
+            "G7 attribution: third-party script write recorded",
+            bool(tp_writes),
+            f"{len(tp_writes)} matching write(s)"))
+        if tp_writes:
+            roles = {w.get("writer_role") for w in tp_writes}
+            results.append(_check(
+                "G7b writer_role == third_party",
+                "third_party" in roles,
+                f"roles={sorted(roles)} origins="
+                f"{sorted({str(w.get('writer_origin')) for w in tp_writes})}"))
+
+        # G8: first-party writes from the inline smoke script are attributed
+        fp_writes = [w for w in wa.get("writes", [])
+                     if w.get("store") == "ids" and w.get("key") in
+                     ("user1", "inflow1")]
+        if fp_writes:
+            fp_roles = {w.get("writer_role") for w in fp_writes}
+            results.append(_check(
+                "G8 attribution: first-party (inline) writes classified",
+                "first_party" in fp_roles or "unknown" in fp_roles,
+                f"roles={sorted(fp_roles)}"))
 
         # Coverage summary
         print("\n=== Pipeline coverage ===")
