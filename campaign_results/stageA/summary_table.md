@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **1987/10000** terminal (1986 done, 1 failed) · running/pending: 8013
+Progress: **2046/10000** terminal (2045 done, 1 failed) · running/pending: 7954
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T20:20:21+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T20:50:28+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 372289 |
-| storage exfils | 441691 |
-| IndexedDB databases | 1708 |
-| IndexedDB records | 3279 |
-| exfil events | 8483 |
-| idb-hook flows | 1508 |
+| taint flows | 383145 |
+| storage exfils | 454469 |
+| IndexedDB databases | 1730 |
+| IndexedDB records | 3340 |
+| exfil events | 8490 |
+| idb-hook flows | 1600 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -26,13 +26,13 @@ Top sites by taint flows:
 | norton.com | 6599 |
 | cdiscount.com | 5049 |
 | zoho.com | 4466 |
+| iqiyi.com | 4309 |
 | amap.com | 3636 |
 | capcut.com | 3480 |
 | blizzard.com | 3005 |
 | ups.com | 2605 |
 | akamai.com | 2599 |
 | betika.com | 2510 |
-| sapo.pt | 2471 |
 
 Sites with IndexedDB records (mission scope):
 
