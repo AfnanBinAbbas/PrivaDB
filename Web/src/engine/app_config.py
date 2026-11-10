@@ -139,6 +139,9 @@ ENTROPY_THRESHOLD = 3.0
 # 0.0 = disabled (legacy length/diff gates only) — Phase 7 ablation
 # evaluates where this should sit.
 ID_SCORE_THRESHOLD = 0.0
+# Phase 5: resolve CNAMEs of subdomains to detect cloaking (one DNS
+# lookup per unique host, cached). Set False to disable DNS traffic.
+DNS_CNAME_CHECKS = True
 
 # ─── Known Tracker Domains ──────────────────────────────────────────
 # Derived from BQ_trackersdomains_Q2.txt — third-party script domains

@@ -17,6 +17,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 
 import app_config as config
 import transforms as tf
+import entities
 
 logger = logging.getLogger(__name__)
 
@@ -219,6 +220,27 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
             is_third_party = not _is_same_party(site_domain, req_domain)
             is_known_tracker = _is_known_tracker(req_domain)
 
+            # Phase 5: entity attribution (Disconnect) + CNAME cloaking.
+            # Cloaking check only for apparent first-party hosts (bounded
+            # DNS: one dig per unique host, cached in entities module).
+            entity = _entity_for(req_domain)
+            cloaking = {"cname": None, "cloaked": False}
+            if not is_third_party:
+                try:
+                    cloaking = entities.classify_cloaking(site_domain,
+                                                          req_domain)
+                except Exception:
+                    cloaking = {"cname": None, "cloaked": False}
+                if cloaking.get("cloaked"):
+                    # Apparent 1P subdomain actually points at 3P infra
+                    is_third_party = True
+                    if cloaking.get("cname_entity"):
+                        is_known_tracker = True
+                        entity = dict(cloaking["cname_entity"])
+            if is_known_tracker and entity is None:
+                # elevating without a Disconnect record: mark categoryless
+                entity = entity or {"company": None, "category": "known_list"}
+
             confidence = _calculate_confidence(
                 identifier, is_third_party, is_known_tracker
             )
@@ -243,6 +265,9 @@ def find_exfiltrations(identifiers: list[dict], network_requests: list[dict],
                 "mechanism": ("transform" if is_transformed else "substring"),
                 "is_third_party": is_third_party,
                 "is_known_tracker": is_known_tracker,
+                "tracker_entity": entity,
+                "cname_target": cloaking.get("cname"),
+                "cname_cloaked": bool(cloaking.get("cloaked")),
                 "confidence": confidence,
             })
 
@@ -308,24 +333,40 @@ def _find_value_in_request(value: str, request: dict) -> str | None:
 
 
 def _is_same_party(site_domain: str, request_domain: str) -> bool:
-    """Check if two domains are the same party (same registrable domain)."""
-    # Simple heuristic: compare last two domain parts
-    def get_base(domain):
-        parts = domain.lower().split(".")
-        if len(parts) >= 2:
-            return ".".join(parts[-2:])
-        return domain.lower()
-
-    return get_base(site_domain) == get_base(request_domain)
+    """Same party? PSL-based (entities.is_same_party) — fixes the
+    last-two-labels bug on .co.uk/.com.pk and handles ports, IPs and
+    localhost correctly. Falls back to the naive heuristic if the PSL
+    layer is unavailable."""
+    try:
+        return entities.is_same_party(site_domain, request_domain)
+    except Exception:
+        def get_base(domain):
+            parts = domain.lower().split(".")
+            if len(parts) >= 2:
+                return ".".join(parts[-2:])
+            return domain.lower()
+        return get_base(site_domain) == get_base(request_domain)
 
 
 def _is_known_tracker(domain: str) -> bool:
-    """Check if a domain is in any tracker list (hardcoded + blacklists)."""
-    domain_lower = domain.lower()
+    """Tracker membership: legacy hardcoded/blacklist lists PLUS the
+    Disconnect entity list (category-aware)."""
+    domain_lower = (domain or "").lower()
     for tracker in config.ALL_TRACKER_DOMAINS:
         if domain_lower == tracker or domain_lower.endswith("." + tracker):
             return True
-    return False
+    try:
+        return entities.is_tracker_domain(domain_lower)
+    except Exception:
+        return False
+
+
+def _entity_for(domain: str) -> dict | None:
+    """Disconnect {company, category} attribution for a host (or None)."""
+    try:
+        return entities.entity_for(domain)
+    except Exception:
+        return None
 
 
 def _calculate_confidence(identifier: dict, is_third_party: bool,
