@@ -7,6 +7,8 @@ from urllib.parse import urlparse
 
 from .fetcher import PolicyFetcher
 from .analyzer import PolicyAnalyzer
+from .disclosure import extract_disclosures, save_snapshot
+from .gap import full_gap
 from .exceptions import PolicyFetchError, AnalysisError
 
 logger = logging.getLogger(__name__)
@@ -34,6 +36,24 @@ class PolicyScanResponse(BaseModel):
     error: Optional[str] = None
     fallback: Optional[str] = None
     policy_url: Optional[str] = None
+    # Phase 9: structured disclosures (storage/vendors/purposes)
+    disclosures: Optional[Dict[str, Any]] = None
+    snapshot_path: Optional[str] = None
+
+
+class GapRequest(BaseModel):
+    base_url: str
+    engine: Optional[str] = None   # "chrome" | "foxhound" | None=both
+
+
+class GapResponse(BaseModel):
+    domain: Optional[str] = None
+    policy_url: Optional[str] = None
+    snapshot_path: Optional[str] = None
+    disclosures: Optional[Dict[str, Any]] = None
+    behavior: Optional[Dict[str, Any]] = None
+    gap: Optional[Dict[str, Any]] = None
+    error: Optional[str] = None
 
 def is_safe_url(url: str) -> bool:
     try:
@@ -72,11 +92,16 @@ async def scan_policy(request: PolicyScanRequest):
             )
             
         analysis_result = analyzer.analyze(text, request.frameworks)
-        
+        disclosures = extract_disclosures(text)
+        snapshot_path = save_snapshot(urlparse(base_url).netloc or base_url,
+                                      policy_url, text, disclosures)
+
         return PolicyScanResponse(
             findings=analysis_result["findings"],
             scores=analysis_result["scores"],
-            policy_url=policy_url
+            policy_url=policy_url,
+            disclosures=disclosures,
+            snapshot_path=snapshot_path,
         )
         
     except PolicyFetchError as e:
@@ -90,3 +115,29 @@ async def scan_policy(request: PolicyScanRequest):
     except Exception as e:
         logger.error(f"Unexpected error during policy scan: {e}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+
+@router.post("/policy/gap", response_model=GapResponse)
+async def policy_gap(request: GapRequest):
+    """Phase 9: policy disclosures vs observed identifier flows."""
+    base_url = request.base_url
+    if not is_safe_url(base_url):
+        raise HTTPException(status_code=400,
+                            detail="Invalid or unsafe URL provided.")
+    try:
+        policy_url = fetcher.find_policy_url(base_url)
+        if not policy_url:
+            return GapResponse(error="Policy page unreachable or not found.")
+        text = fetcher.fetch_policy_text(policy_url)
+        if not text:
+            return GapResponse(error="Failed to extract policy text.")
+        domain = urlparse(base_url).netloc or base_url
+        report = full_gap(domain, text, policy_url,
+                          engine=request.engine)
+        return GapResponse(domain=domain, **report)
+    except PolicyFetchError as e:
+        logger.error(f"PolicyFetchError in gap: {e}")
+        return GapResponse(error="Policy page unreachable")
+    except Exception as e:
+        logger.error(f"Unexpected error in gap analysis: {e}")
+        raise HTTPException(status_code=500, detail=str(e))

@@ -10,3 +10,7 @@ httpx
 pydantic>=2.5.0,<3.0.0
 # Phase 5: Public Suffix List parsing for same-party classification
 tldextract>=5.0.0
+requests
+beautifulsoup4
+pyyaml
+pytest
