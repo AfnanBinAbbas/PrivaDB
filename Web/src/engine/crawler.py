@@ -514,11 +514,94 @@ class SiteCrawler:
         self.taint_capture = taint_capture
         self.hooks = hooks
 
-    async def crawl_site(self, browser, url: str) -> dict:
+    async def _consent_phase(self, page, result: dict, action: str):
+        """Phase 4: detect banner → snapshot IDB → act → snapshot again.
+
+        Records result["consent"] = {action, banner, outcome, snapshots}.
+        Snapshots are cheap IDB record listings at fixed milestones:
+        post_load (before any interaction) and post_consent (after act).
+        """
+        import consent as consent_mod
+        from schema import CONSENT_UNKNOWN
+
+        rec = {"action": action, "banner": None, "outcome": None,
+               "snapshots": {}, "click_ts": None, "t_rel_click": None}
+        try:
+            # let CMP scripts render
+            await page.wait_for_timeout(1500)
+            banner = await consent_mod.detect_banner(page)
+            rec["banner"] = banner
+            logger.info(
+                f"  CMP: detected={banner['detected']} cmp={banner['cmp']} "
+                f"action={action}"
+            )
+
+            # Snapshot A: post-load, before any consent interaction
+            rec["snapshots"]["post_load"] = await self._idb_snapshot(page)
+
+            # Act (or deliberately don't for action=none)
+            t_click = None
+            try:
+                t_click = await page.evaluate(
+                    "() => Math.round(performance.now())")
+            except Exception:
+                pass
+            outcome = await consent_mod.act(page, banner, action)
+            rec["outcome"] = outcome
+            rec["click_ts"] = datetime.utcnow().isoformat() + "Z" if outcome.get("clicked") else None
+            rec["t_rel_click"] = t_click
+            if outcome.get("clicked"):
+                logger.info(f"  Consent {action} clicked (state={outcome['state']})")
+            elif outcome.get("error"):
+                logger.warning(f"  Consent outcome: {outcome['error']}")
+
+            # settle: consented scripts fire after the click
+            await page.wait_for_timeout(3000)
+
+            # Snapshot B: post-consent interaction
+            rec["snapshots"]["post_consent"] = await self._idb_snapshot(page)
+        except asyncio.CancelledError:
+            raise
+        except Exception as e:
+            rec["outcome"] = {"state": CONSENT_UNKNOWN, "clicked": False,
+                              "method": None, "error": f"consent phase failed: {e}"}
+            logger.warning(f"  Consent phase failed: {e}")
+        result["consent"] = rec
+
+    async def _idb_snapshot(self, page) -> dict:
+        """Cheap IDB listing (db/store/key inventory, values clipped)."""
+        try:
+            data = await page.evaluate(EXTRACT_INDEXEDDB_SCRIPT)
+            dbs = []
+            total = 0
+            for db in (data or {}).get("databases") or []:
+                stores = []
+                for st in db.get("stores") or []:
+                    keys = [str(r.get("key", "")) for r in st.get("records") or []]
+                    stores.append({"name": st.get("name", ""),
+                                   "recordCount": st.get("recordCount", 0),
+                                   "keys": keys[:50]})
+                    total += st.get("recordCount", 0)
+                dbs.append({"name": db.get("name", ""), "stores": stores})
+            return {"db_count": len(dbs), "record_count": total,
+                    "databases": dbs,
+                    "ts": datetime.utcnow().isoformat() + "Z"}
+        except Exception as e:
+            return {"error": str(e), "db_count": 0, "record_count": 0}
+
+    async def crawl_site(self, browser, url: str,
+                         consent_action: str = None) -> dict:
         """
         Visit a URL, extract IndexedDB data and captured network requests.
 
-        Returns a dict with keys: url, domain, timestamp, indexeddb, network_requests
+        consent_action: None (normal scan) or one of
+        "none"/"accept"/"reject" — Phase 4 consent study. When set, the
+        banner is detected after load, IDB is snapshotted pre- and
+        post-act, and the outcome (state/click/error) is recorded in
+        result["consent"].
+
+        Returns a dict with keys: url, domain, timestamp, indexeddb,
+        network_requests, consent.
         """
         domain = urlparse(url).netloc
         logger.info(f"▶ Crawling: {url}")
@@ -564,6 +647,11 @@ class SiteCrawler:
                 wait_until="domcontentloaded",
                 timeout=config.NAVIGATION_TIMEOUT,
             )
+
+            # ── Phase 4: consent handling + IDB snapshots ────────────
+            if consent_action is not None:
+                await self._consent_phase(page, result, consent_action)
+
             logger.info(f"  Page loaded, scrolling and waiting {config.IDLE_WAIT}ms...")
             
             # Simple scroll-to-bottom to trigger lazy-loaded scripts/trackers
@@ -748,7 +836,8 @@ from typing import List, Dict, Optional, Callable
 async def crawl_all_sites(site_limit: int = None,
                           custom_sites: List[dict] = None,
                           on_progress: Optional[Callable[[float, str], None]] = None,
-                          check_command: Optional[Callable[[str], bool]] = None) -> List[dict]:
+                          check_command: Optional[Callable[[str], bool]] = None,
+                          consent_study: bool = False) -> List[dict]:
     """
     Crawl all sites and save per-site JSON output.
 
@@ -760,6 +849,10 @@ async def crawl_all_sites(site_limit: int = None,
         site_limit: Max number of sites to crawl (None = all)
         custom_sites: Optional list of site dicts [{"url": ..., "reason": ...}].
                       If provided, overrides sites.json.
+        consent_study: Phase 4 — instead of plain iterations, run each
+            site once per consent condition (no-interaction / accept-all /
+            reject-all), each in a fresh context, recording banner
+            detection + IDB snapshots before/after the click.
 
     Returns:
         List of per-site result dicts (each containing an `iterations` list)
@@ -777,12 +870,21 @@ async def crawl_all_sites(site_limit: int = None,
         sites = sites[:site_limit]
 
     iterations = config.CRAWL_ITERATIONS
-    logger.info(f"Starting crawl of {len(sites)} sites × {iterations} iterations each")
+    # Phase 4: consent study plan — one run per condition, fresh context
+    consent_plan = ["none", "accept", "reject"]
+    run_plan: List[tuple] = ([(idx, action)
+                              for idx, action in enumerate(consent_plan, 1)]
+                             if consent_study else
+                             [(idx, None) for idx in range(1, iterations + 1)])
+    logger.info(
+        f"Starting crawl of {len(sites)} sites × {len(run_plan)} runs each"
+        + (" (consent study)" if consent_study else "")
+    )
 
     # Ensure output dirs
     os.makedirs(config.RAW_DATA_DIR, exist_ok=True)
 
-    total_steps = len(sites) * iterations
+    total_steps = len(sites) * len(run_plan)
     current_step = 0
     results = []
 
@@ -802,7 +904,7 @@ async def crawl_all_sites(site_limit: int = None,
 
         site_iterations = []
 
-        for iteration in range(1, iterations + 1):
+        for iteration, consent_action in run_plan:
             if asyncio.current_task().cancelled():
                 logger.info("Crawl task cancelled by user (iteration loop)")
                 raise asyncio.CancelledError()
@@ -818,12 +920,18 @@ async def crawl_all_sites(site_limit: int = None,
             current_step += 1
             if on_progress:
                 progress_pct = (current_step / total_steps) * 100
-                msg = f"Crawling {url} (Iteration {iteration}/{iterations})"
+                run_label = (f"consent={consent_action}" if consent_action
+                             else f"Iteration {iteration}/{len(run_plan)}")
+                msg = f"Crawling {url} ({run_label})"
                 if len(sites) > 1:
                     msg = f"[{i}/{len(sites)}] " + msg
                 on_progress(progress_pct, msg)
 
-            logger.info(f"  ── Iteration {iteration}/{iterations} (fresh browser) ──")
+            logger.info(
+                f"  ── Run {iteration}/{len(run_plan)} (fresh browser)"
+                + (f", consent={consent_action}" if consent_action else "")
+                + " ──"
+            )
 
             # Fresh browser for each iteration
             async with async_playwright() as pw:
@@ -1010,7 +1118,9 @@ async def crawl_all_sites(site_limit: int = None,
                         pass
                     
                     if check_command:
-                        crawl_task = asyncio.create_task(crawler.crawl_site(browser, url))
+                        crawl_task = asyncio.create_task(
+                            crawler.crawl_site(browser, url,
+                                               consent_action=consent_action))
                         while not crawl_task.done():
                             if check_command("skip_iteration"):
                                 skip_type = "iteration"
@@ -1030,7 +1140,8 @@ async def crawl_all_sites(site_limit: int = None,
                         except asyncio.CancelledError:
                             logger.info(f"Task cancelled via {skip_type} signal.")
                     else:
-                        iter_result = await crawler.crawl_site(browser, url)
+                        iter_result = await crawler.crawl_site(
+                            browser, url, consent_action=consent_action)
                         iter_result["iteration"] = iteration
                         iter_result["browser_version"] = browser_version
                         site_iterations.append(iter_result)
@@ -1074,8 +1185,8 @@ async def crawl_all_sites(site_limit: int = None,
                 logger.info("Domain skipped during active crawl.")
                 break
 
-            # Small delay between iterations
-            if iteration < iterations:
+            # Small delay between runs
+            if (iteration, consent_action) != run_plan[-1]:
                 await asyncio.sleep(2)
 
         if not site_iterations:
@@ -1092,7 +1203,8 @@ async def crawl_all_sites(site_limit: int = None,
         run_meta = {
             "engine": config.ENGINE,
             "headless": bool(config.HEADLESS),
-            "iterations": iterations,
+            "iterations": len(run_plan),
+            "consent_study": bool(consent_study),
             "user_agent": config.USER_AGENT,
             "browser_version": site_iterations[-1].get("browser_version", ""),
             "playwright_version": _pw_version,
@@ -1126,14 +1238,14 @@ async def crawl_all_sites(site_limit: int = None,
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(combined, f, indent=2, ensure_ascii=False, default=str)
 
-        logger.info(f"  Saved {iterations} iterations → {out_path}")
+        logger.info(f"  Saved {len(run_plan)} runs → {out_path}")
 
         # Delay between sites
         if i < len(sites):
             await asyncio.sleep(2)
 
     logger.info(f"\n{'='*60}")
-    logger.info(f"Crawl complete: {len(results)} sites × {iterations} iterations")
+    logger.info(f"Crawl complete: {len(results)} sites × {len(run_plan)} runs")
     return results
 
 

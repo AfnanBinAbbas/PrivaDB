@@ -67,6 +67,41 @@ class SinkHandler(BaseHTTPRequestHandler, _CorsMixin):
         self.end_headers()
 
     def do_GET(self):
+        # Consent-study tracker: writes uid to IDB + exfiltrates to sink
+        if self.path.startswith("/consent-tracker.js"):
+            uid = "consent-uid-00112233445566778899aabbccddeeff"
+            for part in self.path.split("?")[-1].split("&"):
+                if part.startswith("uid="):
+                    uid = part[4:]
+            js = f"""
+(function () {{
+  try {{
+    var req = indexedDB.open("consent_db", 1);
+    req.onupgradeneeded = function (e) {{
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+    }};
+    req.onsuccess = function (e) {{
+      var db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) return;
+      var tx = db.transaction("ids", "readwrite");
+      tx.objectStore("ids").put({{ uid: "{uid}" }}, "tracked");
+      tx.oncomplete = function () {{
+        fetch("http://127.0.0.1:{SINK_PORT}/exfil?uid=" + encodeURIComponent("{uid}"))
+          .catch(function () {{}});
+      }};
+    }};
+  }} catch (e) {{}}
+}})();
+""".encode()
+            self.send_response(200)
+            self._cors()
+            self.send_header("Content-Type", "application/javascript")
+            self.send_header("Content-Length", str(len(js)))
+            self.end_headers()
+            self.wfile.write(js)
+            self._record("GET")
+            return
         # Inflow payload: known value the page must write to IDB
         if self.path.startswith("/payload"):
             payload = json.dumps(
@@ -149,6 +184,13 @@ class PageHandler(BaseHTTPRequestHandler):
                 # Sink on 127.0.0.1 while the page is on localhost: the two
                 # names are distinct parties under both the naive heuristic
                 # and PSL-based checks (Phase 5).
+                html = f.read().replace(b"__SINK_BASE__",
+                                        f"http://127.0.0.1:{SINK_PORT}".encode())
+            body = html
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+        elif self.path.startswith("/consent"):
+            with open(os.path.join(_page_dir, "consent.html"), "rb") as f:
                 html = f.read().replace(b"__SINK_BASE__",
                                         f"http://127.0.0.1:{SINK_PORT}".encode())
             body = html

@@ -1254,6 +1254,139 @@ def analyze_idb_writes(hooks: dict, site_domain: str,
     }
 
 
+def _analyze_consent(iterations: list[dict], site_domain: str) -> dict | None:
+    """
+    Phase 4: compare consent conditions for one site.
+
+    Returns None when no consent-study iterations are present (normal
+    scans). Otherwise a dict:
+
+      {
+        "conditions": {
+          "none":   {banner_detected, state, writes, pre_click_writes,
+                     idb_records_post_load, idb_records_post_consent, ...},
+          "accept": {...},
+          "reject": {...},
+        },
+        "headline": {
+          "writes_after_reject": int,       # tracking persisted post-reject
+          "writes_before_consent": int,     # activity before any click
+          "banner_detected": bool,
+          "banner_failures": [str],         # never silently "no banner"
+          "tracking_without_consent": bool,
+        }
+      }
+    """
+    consent_iters = [it for it in iterations if it.get("consent")]
+    if not consent_iters:
+        return None
+
+    conditions = {}
+    banner_failures = []
+    total_pre_click = 0
+    total_post_reject_writes = 0
+
+    for it in consent_iters:
+        rec = it["consent"]
+        action = rec.get("action", "none")
+        banner = rec.get("banner") or {}
+        outcome = rec.get("outcome") or {}
+        state = outcome.get("state", "unknown")
+        hooks = it.get("flow_hooks", {}) or {}
+        writes = hooks.get("writes", []) or []
+        t_click = rec.get("t_rel_click")
+        snaps = rec.get("snapshots") or {}
+
+        pre_click = [w for w in writes
+                     if isinstance(w.get("t_rel"), (int, float))
+                     and t_click is not None
+                     and w["t_rel"] <= t_click]
+        # When no click happened (action=none), every write is "pre-consent"
+        if not outcome.get("clicked") and action == "none":
+            pre_click = list(writes)
+
+        if outcome.get("error"):
+            banner_failures.append(f"{action}: {outcome['error']}")
+
+        snap_load = snaps.get("post_load") or {}
+        snap_after = snaps.get("post_consent") or {}
+
+        cond = conditions.setdefault(action, {
+            "runs": 0, "banner_detected": False, "states": [],
+            "writes": 0, "pre_click_writes": 0,
+            "post_click_writes": 0,
+            "idb_records_post_load": 0, "idb_records_post_consent": 0,
+            "idb_growth": 0, "errors": [],
+        })
+        cond["runs"] += 1
+        cond["banner_detected"] = cond["banner_detected"] or bool(
+            banner.get("detected"))
+        cond["states"].append(state)
+        cond["writes"] += len(writes)
+        cond["pre_click_writes"] += len(pre_click)
+        cond["post_click_writes"] += len(writes) - len(pre_click)
+        cond["idb_records_post_load"] = max(
+            cond["idb_records_post_load"],
+            snap_load.get("record_count", 0))
+        cond["idb_records_post_consent"] = max(
+            cond["idb_records_post_consent"],
+            snap_after.get("record_count", 0))
+        cond["idb_growth"] = max(
+            0, snap_after.get("record_count", 0)
+            - snap_load.get("record_count", 0))
+        if outcome.get("error"):
+            cond["errors"].append(str(outcome["error"]))
+
+        # Per-condition exfiltration: identifiers from THIS run's IDB
+        # matched against THIS run's network (fresh context per condition,
+        # so the comparison is apples-to-apples).
+        it_idb = it.get("indexeddb") or {}
+        it_ids = []
+        for db in it_idb.get("databases") or []:
+            for store in db.get("stores") or []:
+                for record in store.get("records") or []:
+                    for ident in extract_potential_ids(
+                            record.get("value"),
+                            f"{db.get('name','')}/{store.get('name','')}/"
+                            f"{record.get('key','')}"):
+                        ident["database"] = db.get("name", "")
+                        ident["store"] = store.get("name", "")
+                        ident["record_key"] = str(record.get("key", ""))
+                        it_ids.append(ident)
+        it_exfils = find_exfiltrations(
+            it_ids, it.get("network_requests") or [], site_domain)
+        third_party_exfils = [e for e in it_exfils if e.get("is_third_party")]
+        cond["exfil_events"] = cond.get("exfil_events", 0) + len(it_exfils)
+        cond["third_party_exfils"] = (cond.get("third_party_exfils", 0)
+                                      + len(third_party_exfils))
+        cond["identifiers"] = cond.get("identifiers", 0) + len(it_ids)
+
+        total_pre_click += len(pre_click)
+        if action == "reject" and outcome.get("clicked"):
+            total_post_reject_writes += len(writes) - len(pre_click)
+
+    banner_detected = any(c["banner_detected"] for c in conditions.values())
+    headline = {
+        "writes_after_reject": total_post_reject_writes,
+        "writes_before_consent": total_pre_click,
+        "banner_detected": banner_detected,
+        "banner_failures": banner_failures,
+        "third_party_exfils": {
+            action: c.get("third_party_exfils", 0)
+            for action, c in sorted(conditions.items())
+        },
+        "tracking_without_consent": bool(
+            total_post_reject_writes > 0 or total_pre_click > 0),
+    }
+    logger.info(
+        f"  Consent study: conditions={sorted(conditions)} "
+        f"pre-consent writes={total_pre_click} "
+        f"post-reject writes={total_post_reject_writes} "
+        f"banner={banner_detected} failures={len(banner_failures)}"
+    )
+    return {"conditions": conditions, "headline": headline}
+
+
 def analyze_site(site_data: dict) -> dict:
     """
     Run the full detection pipeline on a single site's crawled data.
@@ -1355,6 +1488,9 @@ def analyze_site(site_data: dict) -> dict:
     seen_inflow = set()
     for it in iterations:
         it_network = it.get("network_requests", []) or []
+        # Consent state of this run (Phase 4) — tag every flow it yields
+        it_consent = ((it.get("consent") or {}).get("outcome") or {}
+                      ).get("state") or None
         for tf_ev in parse_taint_flows(it.get("taint_events", []), domain,
                                        it_network, it.get("indexeddb")):
             k = (tf_ev.get("sink"), tf_ev.get("source_operation"),
@@ -1362,6 +1498,8 @@ def analyze_site(site_data: dict) -> dict:
             if k in seen_taint:
                 continue
             seen_taint.add(k)
+            if it_consent:
+                tf_ev["consent_state"] = it_consent
             taint_flows.append(tf_ev)
         it_hooks = it.get("flow_hooks", {})
         for hf in analyze_idb_hook_flows(it_hooks, it_network,
@@ -1371,6 +1509,8 @@ def analyze_site(site_data: dict) -> dict:
             if k in seen_hook:
                 continue
             seen_hook.add(k)
+            if it_consent:
+                hf["consent_state"] = it_consent
             idb_hook_flows.append(hf)
 
         # Write-side: attribution for every write + response-proven inflow
@@ -1392,6 +1532,12 @@ def analyze_site(site_data: dict) -> dict:
     logger.info(
         f"  Taint flows: {len(taint_flows)} | IDB hook flows: {len(idb_hook_flows)}"
     )
+
+    # Step 1c: Phase 4 — consent-condition comparison. Each consent-study
+    # iteration carries result["consent"] (action, banner, outcome,
+    # snapshots). Headline: writes/flows under reject and pre-click
+    # activity = tracking without consent.
+    consent_analysis = _analyze_consent(iterations, domain)
 
     # Step 2: Find exfiltrations (outflow flows)
     network = site_data.get("network_requests") or []
@@ -1588,6 +1734,7 @@ def analyze_site(site_data: dict) -> dict:
             ),
         },
         "inflow_flows": integrity_flows,
+        "consent_analysis": consent_analysis,
         "write_attribution": {
             "total_writes": write_analysis["write_count"],
             "responses_captured": write_analysis["response_count"],

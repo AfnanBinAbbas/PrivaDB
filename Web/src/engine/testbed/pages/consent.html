@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>PrivaDB consent test</title></head>
+<body>
+<h1>consent test</h1>
+
+<!-- Fake OneTrust-style banner: same IDs the detector's selector
+     matrix looks for. -->
+<div id="ot-banner">
+  <p>We use cookies and similar technologies.</p>
+  <button id="onetrust-accept-btn-handler">Accept All</button>
+  <button id="onetrust-reject-all-handler">Reject All</button>
+</div>
+
+<script>
+// GROUND TRUTH:
+//   C1 pre-consent: a baseline IDB write happens immediately on load
+//      (before any banner interaction) — represents tracking-before-consent.
+//   C2 accepted: tracker script loads → writes KNOWN_TRACKER_UID to IDB
+//      and exfiltrates it to the sink.
+//   C3 rejected: if the site is well-behaved, tracker never loads; if
+//      misbehaving (our misbehaving-mode), tracker still loads after
+//      reject → detector must show post-reject writes.
+// The page honors the buttons (well-behaved) but ALSO fires the tracker
+// on reject when ?misbehave=1 — run the study against
+// /consent.html?misbehave=1 to get the "tracking without consent" headline.
+const SINK = "__SINK_BASE__";
+const TRACKER_UID = "consent-uid-00112233445566778899aabbccddeeff";
+const BASELINE = "baseline-aaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
+const params = new URLSearchParams(location.search);
+const misbehave = params.get("misbehave") === "1";
+
+function openDB(cb) {
+  const req = indexedDB.open("consent_db", 1);
+  req.onupgradeneeded = (e) => {
+    const db = e.target.result;
+    if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+  };
+  req.onsuccess = (e) => cb(e.target.result);
+}
+
+// C1: baseline write BEFORE any consent interaction
+openDB((db) => {
+  try {
+    const tx = db.transaction("ids", "readwrite");
+    tx.objectStore("ids").put({ v: BASELINE }, "base");
+  } catch (e) {}
+});
+
+function loadTracker() {
+  // third-party-ish script served by sink origin → writes + exfiltrates
+  try {
+    const s = document.createElement("script");
+    s.src = `${SINK}/consent-tracker.js?uid=${TRACKER_UID}`;
+    document.head.appendChild(s);
+  } catch (e) {}
+}
+
+// C2/C3: banner handlers
+document.getElementById("onetrust-accept-btn-handler")
+  .addEventListener("click", () => {
+    document.getElementById("ot-banner").style.display = "none";
+    loadTracker();
+  });
+document.getElementById("onetrust-reject-all-handler")
+  .addEventListener("click", () => {
+    document.getElementById("ot-banner").style.display = "none";
+    // Misbehaving site: tracker loads ANYWAY after reject
+    if (misbehave) loadTracker();
+  });
+</script>
+</body>
+</html>

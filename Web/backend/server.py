@@ -106,6 +106,9 @@ class ScanRequest(BaseModel):
     crawl_only: Optional[bool] = False
     detect_only: Optional[bool] = False
     engine: Optional[str] = "chrome"
+    # Phase 4: run no-interaction/accept/reject conditions instead of
+    # plain iterations; results include consent_analysis.
+    consent_study: Optional[bool] = False
     
     model_config = ConfigDict(
         json_schema_extra={
@@ -113,7 +116,8 @@ class ScanRequest(BaseModel):
                 "url": "https://example.com",
                 "engine": "chrome",
                 "headless": True,
-                "max_pages": 3
+                "max_pages": 3,
+                "consent_study": False
             }
         }
     )
@@ -161,7 +165,8 @@ async def processing_error_handler(request, exc):
 
 async def run_scan(scan_id: str, url: str, headless: bool = False,
                    crawl_only: bool = False, detect_only: bool = False,
-                   engine: str = "chrome", iterations: Optional[int] = None):
+                   engine: str = "chrome", iterations: Optional[int] = None,
+                   consent_study: bool = False):
     try:
         if config is None:
             raise ProcessingError("Engine modules not properly imported. Check that src/engine is accessible.")
@@ -215,7 +220,8 @@ async def run_scan(scan_id: str, url: str, headless: bool = False,
             crawled_results = await crawl_all_sites(
                 custom_sites=custom_sites, 
                 on_progress=on_crawl_progress,
-                check_command=check_command
+                check_command=check_command,
+                consent_study=consent_study
             )
             scans[scan_id]["progress"] = 55
             if not crawled_results:
@@ -303,7 +309,7 @@ async def start_scan(request: ScanRequest):
         
         task = asyncio.create_task(run_scan(
             scan_id, request.url, request.headless, request.crawl_only, request.detect_only, request.engine,
-            iterations=request.max_pages
+            iterations=request.max_pages, consent_study=bool(request.consent_study)
         ))
         active_tasks[scan_id] = task
         
