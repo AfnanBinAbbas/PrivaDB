@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **359/10000** terminal (358 done, 1 failed) · running/pending: 9641
+Progress: **486/10000** terminal (485 done, 1 failed) · running/pending: 9514
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T13:47:47+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T14:18:48+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 86359 |
-| storage exfils | 76179 |
-| IndexedDB databases | 165 |
-| IndexedDB records | 508 |
-| exfil events | 1430 |
-| idb-hook flows | 251 |
+| taint flows | 107705 |
+| storage exfils | 100667 |
+| IndexedDB databases | 366 |
+| IndexedDB records | 941 |
+| exfil events | 3018 |
+| idb-hook flows | 402 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -21,38 +21,38 @@ Top sites by taint flows:
 | php.net | 35583 |
 | afternic.com | 2123 |
 | gamepass.com | 1871 |
+| adobe.net | 1840 |
 | adobe.com | 1621 |
+| xboxlive.com | 1435 |
 | salesforce.com | 1386 |
 | dropbox.com | 1384 |
 | avast.com | 1358 |
 | arubanetworks.com | 1333 |
+| aliyun.com | 1327 |
 | alidns.com | 1250 |
 | amplitude.com | 1079 |
-| cisco.com | 1011 |
-| meraki.com | 1001 |
-| xiaomi.com | 920 |
-| branch.io | 908 |
-| cnn.com | 901 |
+| trendmicro.com | 1060 |
+| dynatrace.com | 1032 |
 
 Sites with IndexedDB records (mission scope):
 
 | site | IDB records |
 |---|---:|
 | dropbox.com | 140 |
+| speedtest.net | 136 |
 | pinterest.com | 88 |
+| businessinsider.com | 75 |
 | cnn.com | 66 |
+| washingtonpost.com | 60 |
 | tiktok.com | 59 |
+| aol.com | 38 |
+| atlassian.net | 35 |
+| issuu.com | 34 |
+| globo.com | 24 |
 | bbc.com | 24 |
+| netangels.ru | 14 |
 | mts.ru | 14 |
 | medium.com | 14 |
-| launchdarkly.com | 12 |
-| xiaomi.com | 11 |
-| qq.com | 11 |
-| linktr.ee | 9 |
-| canva.com | 9 |
-| datadoghq.com | 8 |
-| sciencedirect.com | 6 |
-| ok.ru | 6 |
 
 Failed sites (1): youtube.com
 
