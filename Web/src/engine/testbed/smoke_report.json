@@ -1,10 +1,10 @@
 {
-  "engine": "chrome",
+  "engine": "foxhound",
   "checks": [
     {
       "name": "G0a sink received IDB uid (browser-side ground truth)",
       "passed": true,
-      "detail": "7 sink requests total"
+      "detail": "8 sink requests total"
     },
     {
       "name": "G0b sink received localStorage value (browser-side ground truth)",
@@ -14,7 +14,7 @@
     {
       "name": "G1 substring exfil: IDB uid found in network request",
       "passed": true,
-      "detail": "3 event(s), mechanisms=['transform']"
+      "detail": "4 event(s), mechanisms=['transform']"
     },
     {
       "name": "G1b classified third-party",
@@ -29,7 +29,12 @@
     {
       "name": "G1d idb_hook flow: IDB read \u2192 network send",
       "passed": true,
-      "detail": "3 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
+      "detail": "6 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
+    },
+    {
+      "name": "G3 taint flow: localStorage.getItem \u2192 sink",
+      "passed": true,
+      "detail": "known-value=1 any-localStorage-src=1 (total taint flows: 1)"
     },
     {
       "name": "G5 no false positive on non-IDB constant",
@@ -69,69 +74,75 @@
     {
       "name": "G10 dedup keeps distinct (id,destination) flows",
       "passed": true,
-      "detail": "3 events across 3 URLs"
+      "detail": "4 events across 4 URLs"
     }
   ],
   "passed": true,
-  "n_pass": 14,
-  "n_total": 14,
+  "n_pass": 15,
+  "n_total": 15,
   "sink_received": [
     {
       "method": "GET",
       "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794301779.1949022
-    },
-    {
-      "method": "POST",
-      "path": "/post",
-      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
-      "ts": 1794301779.2001073
+      "ts": 1794303686.4222322
     },
     {
       "method": "POST",
       "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
       "body": "",
-      "ts": 1794301779.2005816
-    },
-    {
-      "method": "GET",
-      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
-      "body": "",
-      "ts": 1794301779.2083018
+      "ts": 1794303686.4314654
     },
     {
       "method": "GET",
       "path": "/smoke-sink?c=benign-constant-string",
       "body": "",
-      "ts": 1794301779.2085907
+      "ts": 1794303686.4330716
+    },
+    {
+      "method": "GET",
+      "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794303686.4343936
+    },
+    {
+      "method": "GET",
+      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
+      "body": "",
+      "ts": 1794303686.436993
     },
     {
       "method": "GET",
       "path": "/payload?tag=inflow",
       "body": "",
-      "ts": 1794301779.2087564
+      "ts": 1794303686.4384012
+    },
+    {
+      "method": "POST",
+      "path": "/post",
+      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
+      "ts": 1794303686.4687052
     },
     {
       "method": "GET",
       "path": "/tracker.js",
       "body": "",
-      "ts": 1794301779.2204463
+      "ts": 1794303686.668541
     }
   ],
   "analysis_snapshot": {
     "identifiers_found": 6,
-    "exfiltrations": 3,
-    "taint_flows": 0,
-    "idb_hook_flows": 3,
+    "exfiltrations": 4,
+    "taint_flows": 1,
+    "idb_hook_flows": 6,
     "dynamic_flows": {
-      "total": 3,
-      "taint": 0,
-      "idb_hook": 3,
+      "total": 7,
+      "taint": 1,
+      "idb_hook": 6,
       "high_confidence": 0,
-      "medium_confidence": 3,
+      "medium_confidence": 7,
       "low_confidence": 0,
-      "external": 3,
+      "external": 6,
       "tracker_targets": 0
     }
   }

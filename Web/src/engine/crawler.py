@@ -414,15 +414,27 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
     };
   } catch (e) {}
   try {
-    Object.defineProperty(Image.prototype, "src", {
-      configurable: true,
-      get() { return this.__prividb_src; },
-      set(v) {
-        const c = caller();
-        this.__prividb_src = v;
-        push(H.sends, { op: "img.src", url: String(v || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
-      }
-    });
+    // Capture img.src sends WITHOUT breaking the actual image load:
+    // chain to the native accessor instead of shadowing it with a
+    // recorder-only setter (the old version never assigned the real
+    // src, so pixel requests were never sent).
+    const proto = Image.prototype;
+    const desc = Object.getOwnPropertyDescriptor(proto, "src")
+              || (typeof HTMLImageElement !== "undefined"
+                  ? Object.getOwnPropertyDescriptor(
+                        HTMLImageElement.prototype, "src")
+                  : null);
+    if (desc && desc.set) {
+      Object.defineProperty(proto, "src", {
+        configurable: true,
+        get() { return desc.get.call(this); },
+        set(v) {
+          const c = caller();
+          push(H.sends, { op: "img.src", url: String(v || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
+          desc.set.call(this, v);
+        }
+      });
+    }
   } catch (e) {}
   // --- IDB writes (put/add/cursor.update): WHO creates identifiers ---
   // Records value, store, database (via transaction), the calling script,

@@ -1,5 +1,5 @@
 {
-  "engine": "foxhound",
+  "engine": "chrome",
   "page": "http://localhost:18765/storage.html",
   "passed": true,
   "n_pass": 7,

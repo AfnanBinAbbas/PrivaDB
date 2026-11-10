@@ -142,6 +142,10 @@ ID_SCORE_THRESHOLD = 0.0
 # Phase 5: resolve CNAMEs of subdomains to detect cloaking (one DNS
 # lookup per unique host, cached). Set False to disable DNS traffic.
 DNS_CNAME_CHECKS = True
+# Phase 7: keep the legacy changed-records filter measurable (it drops
+# static identifiers whenever any record changes — recall 1.0 → 0.17 on
+# the testbed). False = fixed filter (score >= 0.4 survives diff).
+LEGACY_DIFF_FILTER = False
 
 # ─── Known Tracker Domains ──────────────────────────────────────────
 # Derived from BQ_trackersdomains_Q2.txt — third-party script domains

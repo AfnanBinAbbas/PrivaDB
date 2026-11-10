@@ -1656,15 +1656,31 @@ def analyze_site(site_data: dict) -> dict:
     # Filter: if we have diff data, keep identifiers from CHANGED records,
     # OR static records that have very high entropy (likely persistent IDs)
     if changed_paths:
-        # Keep if it changed OR if it's very high entropy (> 4.5)
-        changed_ids = [
-            i for i in flat_ids 
-            if i.get("changed_across_iterations") or i.get("entropy", 0) > 4.5
-        ]
+        if getattr(config, "LEGACY_DIFF_FILTER", False):
+            # Legacy behavior (kept measurable for ablation): changed OR
+            # very-high-entropy static records only — drops most real IDs
+            # whenever ANY record in the store changes (e.g. timestamps).
+            changed_ids = [
+                i for i in flat_ids
+                if i.get("changed_across_iterations")
+                or i.get("entropy", 0) > 4.5
+            ]
+        else:
+            # Fixed filter: a static identifier survives when it scores
+            # as a strong identifier (score ≥ 0.4 — Phase 3 model), so a
+            # single volatile record no longer wipes the ID pool.
+            changed_ids = [
+                i for i in flat_ids
+                if i.get("changed_across_iterations")
+                or i.get("entropy", 0) > 4.5
+                or float(i.get("score", 0)) >= 0.4
+            ]
         static_ids = [i for i in flat_ids if i not in changed_ids]
         logger.info(
             f"  Identifiers: {len(flat_ids)} total → "
             f"{len(changed_ids)} kept ({len(static_ids)} filtered out)"
+            + (" [legacy diff filter]"
+               if getattr(config, "LEGACY_DIFF_FILTER", False) else "")
         )
         flat_ids = changed_ids
     else:

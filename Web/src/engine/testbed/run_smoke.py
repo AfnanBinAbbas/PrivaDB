@@ -189,15 +189,11 @@ class PageHandler(BaseHTTPRequestHandler):
             body = html
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
-        elif self.path.startswith("/consent"):
-            with open(os.path.join(_page_dir, "consent.html"), "rb") as f:
-                html = f.read().replace(b"__SINK_BASE__",
-                                        f"http://127.0.0.1:{SINK_PORT}".encode())
-            body = html
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-        elif self.path.startswith("/storage"):
-            with open(os.path.join(_page_dir, "storage.html"), "rb") as f:
+        elif self.path.startswith(("/consent", "/storage", "/transforms")):
+            name = ("consent.html" if self.path.startswith("/consent")
+                    else "storage.html" if self.path.startswith("/storage")
+                    else "transforms.html")
+            with open(os.path.join(_page_dir, name), "rb") as f:
                 html = f.read().replace(b"__SINK_BASE__",
                                         f"http://127.0.0.1:{SINK_PORT}".encode())
             body = html
