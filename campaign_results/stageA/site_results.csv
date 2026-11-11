@@ -2579,7 +2579,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7819,drogariasaopaulo.com.br,pending,0,,,,,,,,
 470,drom.ru,done,1,0,0,0,0,0,10,0,130
 2039,dropbox-dns.com,done,1,0,0,0,0,0,0,0,0
-132,dropbox.com,done,1,6,140,699,0,139,1384,18,208
+132,dropbox.com,done,1,6,187,699,0,139,1384,18,208
 2639,dropboxapi.com,done,1,2,17,61,0,68,294,6,51
 7501,dropboxstatic.com,pending,0,,,,,,,,
 2329,dropboxusercontent.com,done,1,0,0,0,0,0,0,0,0

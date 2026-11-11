@@ -2,14 +2,14 @@
 
 Progress: **4132/10000** terminal (4131 done, 1 failed) · running/pending: 5868
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T16:59:43+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T17:29:29+00:00
 
 | metric | total |
 |---|---:|
 | taint flows | 690602 |
 | storage exfils | 806142 |
 | IndexedDB databases | 2815 |
-| IndexedDB records | 9128 |
+| IndexedDB records | 9175 |
 | exfil events | 13754 |
 | idb-hook flows | 2775 |
 | §4.1 confirmed identities (Stage B only) | 0 |
@@ -40,10 +40,10 @@ Sites with IndexedDB records (mission scope):
 |---|---:|
 | mastodon.social | 3967 |
 | netscape.com | 258 |
+| dropbox.com | 187 |
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
-| dropbox.com | 140 |
 | speedtest.net | 136 |
 | globalnews.ca | 126 |
 | newscientist.com | 120 |
