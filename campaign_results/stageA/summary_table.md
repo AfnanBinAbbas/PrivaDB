@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4448/10000** terminal (4412 done, 36 failed) · running/pending: 5552
+Progress: **4570/10000** terminal (4534 done, 36 failed) · running/pending: 5430
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T22:01:19+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T22:31:25+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 742632 |
-| storage exfils | 884301 |
-| IndexedDB databases | 3297 |
-| IndexedDB records | 10409 |
-| exfil events | 16603 |
-| idb-hook flows | 3597 |
+| taint flows | 788124 |
+| storage exfils | 914621 |
+| IndexedDB databases | 3358 |
+| IndexedDB records | 10488 |
+| exfil events | 17046 |
+| idb-hook flows | 3826 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -22,6 +22,9 @@ Top sites by taint flows:
 | dola.com | 15112 |
 | doubao.com | 14694 |
 | zillow.com | 14657 |
+| vivo.com.br | 11497 |
+| tomsguide.com | 10755 |
+| searchenginejournal.com | 9999 |
 | sharethrough.com | 8574 |
 | posthog.com | 8481 |
 | zoho.eu | 8434 |
@@ -30,9 +33,6 @@ Top sites by taint flows:
 | cdiscount.com | 5049 |
 | clickup.com | 4910 |
 | idealo.de | 4720 |
-| zoho.com | 4466 |
-| kahoot.it | 4316 |
-| iqiyi.com | 4309 |
 
 Sites with IndexedDB records (mission scope):
 
