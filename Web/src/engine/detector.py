@@ -1092,6 +1092,7 @@ def analyze_idb_hook_flows(hooks: dict, network_requests: list[dict],
                 "subframe": False,
                 "timestamp": snd.get("ts") or read.get("ts"),
                 "storage_source": "idb",
+                "context": read.get("ctx") or "window",
                 "flow_direction": config.FLOW_OUTFLOW,
                 "confinement": classify_confinement(
                     site_domain, req_domain) if req_domain else config.CONFINEMENT_INTERNAL,
@@ -1297,6 +1298,76 @@ def analyze_idb_writes(hooks: dict, site_domain: str,
     }
 
 
+def synthesize_network_from_hooks(site_data: dict) -> list[dict]:
+    """Augment captured network with hook-observed sends Playwright missed.
+
+    SharedWorker- and ServiceWorker-initiated fetches never surface in
+    Playwright's request events on Firefox (probe3 Q17 negative, probe1
+    svfetch negative), but the flow hooks still observe them (Broadcast
+    Channel relay from the injected worker contexts). Without this, the
+    substring/transforms methods are structurally blind to worker-class
+    traffic even when the hook layer sees it.
+
+    Dedup: a send whose absolute URL already exists in the captured
+    network is skipped. Entries are tagged synthetic=true (audit trail;
+    see MANIFEST) and merge xhr open/send pairs per URL so POST bodies
+    survive.
+    """
+    from urllib.parse import urljoin
+    base = list(site_data.get("network_requests") or [])
+    have = {r.get("url") for r in base}
+    hook_sets = []
+    iters = site_data.get("iterations") or []
+    if iters:
+        hook_sets = [it.get("flow_hooks") or {} for it in iters]
+    elif site_data.get("flow_hooks"):
+        hook_sets = [site_data.get("flow_hooks") or {}]
+    grouped: dict = {}
+    order: list = []
+    for hooks in hook_sets:
+        for snd in hooks.get("sends") or []:
+            url = str(snd.get("url") or "")
+            if not url.startswith(("http://", "https://")):
+                url = urljoin(site_data.get("url") or "", url)
+            if not url.startswith(("http://", "https://")):
+                continue
+            if url not in grouped:
+                grouped[url] = {"url": url, "body": "", "ops": [],
+                                "ctxs": set()}
+                order.append(url)
+            g = grouped[url]
+            b = str(snd.get("body") or "")
+            if b and len(b) > len(g["body"]):
+                g["body"] = b
+            g["ops"].append(str(snd.get("op") or ""))
+            g["ctxs"].add(str(snd.get("ctx") or "window"))
+    out = base
+    n_synth = 0
+    for url in order:
+        if url in have:
+            continue
+        g = grouped[url]
+        body = g["body"]
+        out.append({
+            "url": url,
+            "method": "POST" if body else "GET",
+            "resource_type": "fetch",
+            "headers": {},
+            "post_data": body or None,
+            "response": None,
+            "synthetic": True,
+            "via": "flow_hooks",
+            "hook_ops": sorted(set(g["ops"])),
+            "source_contexts": sorted(g["ctxs"]),
+        })
+        n_synth += 1
+    if n_synth:
+        logger.info(
+            f"  Network synthesis: {n_synth} hook-only send(s) added "
+            f"(worker-class traffic invisible to Playwright)")
+    return out
+
+
 def analyze_other_storage(site_data: dict, site_domain: str) -> dict:
     """
     Phase 6: run the SAME identifier extraction + transform-aware
@@ -1315,7 +1386,7 @@ def analyze_other_storage(site_data: dict, site_domain: str) -> dict:
       }
     """
     other = site_data.get("other_storage") or {}
-    network = site_data.get("network_requests") or []
+    network = synthesize_network_from_hooks(site_data)
 
     # ── build identifier pools per storage type ──
     pools: dict[str, list[dict]] = {
@@ -1554,7 +1625,7 @@ def _analyze_consent(iterations: list[dict], site_domain: str) -> dict | None:
                         ident["record_key"] = str(record.get("key", ""))
                         it_ids.append(ident)
         it_exfils = find_exfiltrations(
-            it_ids, it.get("network_requests") or [], site_domain)
+            it_ids, synthesize_network_from_hooks(it), site_domain)
         third_party_exfils = [e for e in it_exfils if e.get("is_third_party")]
         cond["exfil_events"] = cond.get("exfil_events", 0) + len(it_exfils)
         cond["third_party_exfils"] = (cond.get("third_party_exfils", 0)
@@ -1768,7 +1839,7 @@ def analyze_site(site_data: dict) -> dict:
     consent_analysis = _analyze_consent(iterations, domain)
 
     # Step 2: Find exfiltrations (outflow flows)
-    network = site_data.get("network_requests") or []
+    network = synthesize_network_from_hooks(site_data)
     exfiltrations = find_exfiltrations(flat_ids, network, domain)
 
     # Step 3: Classify each exfiltration with paper-aligned labels

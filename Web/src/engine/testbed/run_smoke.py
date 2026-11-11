@@ -199,6 +199,23 @@ class PageHandler(BaseHTTPRequestHandler):
             body = html
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
+        elif self.path.startswith(("/idb_workers", "/wk.js",
+                                   "/wk-shared.js", "/wk-sw.js")):
+            # Worker ground-truth cluster: the page AND the worker
+            # scripts all carry __SINK_BASE__ (workers fetch the sink
+            # cross-origin, so they need the substituted absolute base).
+            name = ("idb_workers.html" if self.path.startswith("/idb_workers")
+                    else "wk.js" if self.path.startswith("/wk.js")
+                    else "wk-shared.js" if self.path.startswith("/wk-shared.js")
+                    else "wk-sw.js")
+            with open(os.path.join(_page_dir, name), "rb") as f:
+                body = f.read().replace(
+                    b"__SINK_BASE__",
+                    f"http://127.0.0.1:{SINK_PORT}".encode())
+            self.send_response(200)
+            ctype = ("text/html; charset=utf-8" if name.endswith(".html")
+                     else "application/javascript")
+            self.send_header("Content-Type", ctype)
         else:
             body = b"not found"
             self.send_response(404)

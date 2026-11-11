@@ -1,0 +1,81 @@
+{
+  "probe": {
+    "errors": [
+      "blobworker error: SyntaxError: WorkerGlobalScope.importScripts: Failed to load worker script at \"/w2.js?x=1794384481238\""
+    ],
+    "events": [
+      "bc_listener=ok",
+      "worker_spawned=ok",
+      "blob_worker_spawned=ok",
+      "sw_registered=ok",
+      "sw_active=activated",
+      "sw_reply:sw-msg-received",
+      "worker_msg:w-prelude=ROUTE_OK",
+      "worker_msg:w-bc=yes",
+      "worker_msg:w-subtle=ba7816bf",
+      "worker_msg:w-fetch=ok"
+    ],
+    "bc_page": [
+      "sw-activated prelude=none",
+      "sw-msg-received",
+      "sw-fetch=ok",
+      "worker-bc-hello"
+    ],
+    "sw_state": "activated",
+    "worker_msg": "w-prelude=ROUTE_OK",
+    "blob_msg": null,
+    "subtle": "ba7816bf",
+    "tok": "PROBE1"
+  },
+  "route_log": [
+    {
+      "url": "http://localhost:18791/w.js?__privadb_tok=PROBE1",
+      "method": "GET",
+      "resource": "script",
+      "status": 200,
+      "orig_len": 791,
+      "injected": true
+    }
+  ],
+  "server_hits": [
+    "/index.html",
+    "/svfetch?x=1",
+    "/sw.js?__privadb_tok=PROBE1",
+    "/swact?prelude=none",
+    "/w.js?__privadb_tok=PROBE1",
+    "/wfetch?x=1"
+  ],
+  "requests": [
+    {
+      "url": "http://localhost:18791/index.html",
+      "type": "document",
+      "frame": "about:blank"
+    },
+    {
+      "url": "http://localhost:18791/w.js?__privadb_tok=PROBE1",
+      "type": "script",
+      "frame": "http://localhost:18791/index.html"
+    },
+    {
+      "url": "http://localhost:18791/wfetch?x=1",
+      "type": "fetch",
+      "frame": "http://localhost:18791/index.html"
+    }
+  ],
+  "consoles": [],
+  "verdicts": {
+    "Q1_route_saw_worker_script": true,
+    "Q2_route_saw_sw_script": false,
+    "Q3a_prelude_ran_in_worker": true,
+    "Q3b_prelude_ran_in_sw": false,
+    "Q4_worker_request_seen_by_context": true,
+    "Q4b_worker_request_reached_server": true,
+    "Q5_bc_worker_to_page": true,
+    "Q5b_bc_sw_to_page": true,
+    "Q6_blob_importscripts_worker": false,
+    "Q7_sw_activated": false,
+    "Q7b_sw_message_roundtrip": true,
+    "Q7c_sw_fetch_reached_server": true,
+    "Q8_subtle_in_window": true
+  }
+}

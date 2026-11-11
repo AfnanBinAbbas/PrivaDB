@@ -19,6 +19,19 @@ ENGINE = "chrome"  # or "foxhound"
 # When disabled the crawler runs plain — taint_events/flow_hooks stay empty.
 TAINT_TRACKING_ENABLED = True
 
+# In-page flow hooks only (window + Worker/SharedWorker injection,
+# BroadcastChannel relay, network synthesis). Independent of the Foxhound
+# taint-capture switch so evaluations can measure the hook layer's
+# before/after contribution with taint held constant (evaluate --no-hooks).
+FLOW_HOOKS_ENABLED = True
+
+# Worker-context injection switch (Worker/SharedWorker constructor wraps,
+# route prelude, SW tagging). When False the window hook layer stays on —
+# this is the true BEFORE condition for the Phase-13 worker coverage
+# delta (evaluate --no-worker-injection): taint + window hooks constant,
+# only the worker extension absent.
+FLOW_WORKER_INJECTION_ENABLED = True
+
 
 def set_taint_tracking(enabled: bool):
     """

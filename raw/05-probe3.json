@@ -1,0 +1,41 @@
+{
+  "verdicts": {
+    "Q14_blob_dedicated_import_abs": true,
+    "Q15_blob_shared_allowed": true,
+    "Q17_shared_fetch_seen_by_context": false,
+    "Q17b_shared_fetch_reached_server": true,
+    "Q18_dedicated_worker_route_still_works": true,
+    "Q19_marker_in_worker_location": true
+  },
+  "probe": {
+    "errors": [],
+    "events": [
+      "blobw:w2-ran pre=blobok",
+      "blobsh:shared3-ran pre=shblobok",
+      "sh4:shfetch=ok"
+    ],
+    "blobw": "w2-ran pre=blobok",
+    "blobsh": "shared3-ran pre=shblobok",
+    "shfetch": null,
+    "loc": "loc=http://localhost:18793/loc.js?__privadb_tok=P3"
+  },
+  "route_log": [
+    {
+      "url": "http://localhost:18793/loc.js?__privadb_tok=P3",
+      "injected": true
+    }
+  ],
+  "requests": [
+    "http://localhost:18793/index.html",
+    "http://localhost:18793/loc.js?__privadb_tok=P3",
+    "http://localhost:18793/w2.js"
+  ],
+  "hits": [
+    "/index.html",
+    "/loc.js?__privadb_tok=P3",
+    "/shared3.js",
+    "/shared4.js?__privadb_tok=P3",
+    "/shfetch4?x=1",
+    "/w2.js"
+  ]
+}

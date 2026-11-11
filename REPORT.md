@@ -63,13 +63,159 @@ Method comparison on 12 ground-truth flows + 2 benign controls:
 - Partition probe: both engines expose iframe localStorage across top-level sites for the measured host pair.
 - Variance: [14,14,14], σ=0.
 
+## Phase 13 — worker-context hook closure (the IndexedDB caveat)
+
+Scope (approved plan): close the hook-layer blind spots for Web Workers /
+SharedWorkers while holding taint + window hooks constant, ground-truth
+the new coverage, and report before/after per mechanism — all runs
+headless (`--headless`), branch `buildout/full-plan`.
+
+### Verified first (3 probes, headless Foxhound; `logs/03`–`05`, `raw/03–05`)
+
+| question | verdict |
+|---|---|
+| route sees dedicated-worker script fetch + prelude runs (Q1/Q3a/Q18) | **yes** |
+| route sees SharedWorker script (Q9) / ServiceWorker registration (Q2) | **no / no** |
+| blob-URL worker + importScripts(abs) works: dedicated + shared (Q14/Q15/Q16) | **yes** |
+| BroadcastChannel worker/shared/SW → page (Q5/Q5b/Q13) | **yes** |
+| blob:-URL service-worker registration | **rejected** (scheme must be http/https, probe2 Q11) |
+| network visibility: dedicated-worker fetch (Q4) / shared fetch (Q17) / SW fetch | **yes / no / no** |
+| `navigator.sendBeacon` in worker scope (step 16) | **undefined** in Firefox workers |
+
+### Built
+
+- `HOOK_CORE_EXPR` (crawler.py): one wrap core for window/dedicated/
+  shared/service contexts — IDB read+write wraps, fetch/XHR/beacon/img,
+  token-filtered BroadcastChannel relay, per-frame token, non-enumerable
+  `__prividb_hooks` (defineProperty), `__tamper_check()` refs.
+- Injection: route prelude on `__privadb_tok=` marked URLs (dedicated),
+  blob bootstrap `core + importScripts(abs)` (SharedWorker; constructor
+  identity preserved via per-URL blob cache), SW `register()` tagging +
+  per-crawl gap accounting.
+- `detector.synthesize_network_from_hooks()`: hook-only sends (invisible
+  to Playwright for shared/SW/dedicated-XHR) become network entries
+  tagged `synthetic=true`; `idb_hook` flows carry a `context` field.
+- Ground truth: `pages/idb_workers.html` + `wk.js` / `wk-shared.js` /
+  `wk-sw.js`; `ground_truth.WORKER_FLOWS` = 16 scored flows (11
+  transforms + sink diversity from the dedicated worker, raw+b64 from
+  shared, one window flow) + 2 SW flows kept **unscored** (sink-proven).
+- `evaluate.py`: dual-page crawl, per-page + union method tables,
+  `--no-worker-injection` (true BEFORE: window hooks+taint on), per-
+  mechanism breakdown, 7 worker-coverage checks, sink-log persistence
+  for `--skip-crawl`. Config switches: `FLOW_HOOKS_ENABLED`,
+  `FLOW_WORKER_INJECTION_ENABLED` (both default on).
+
+### Before → AFTER (headless; `logs/11`, `logs/17`, `logs/18`, `raw/11`, `raw/17`)
+
+| page · method | BEFORE p/r | AFTER p/r | Δrecall |
+|---|---|---|---|
+| transforms · substring | 0.714/0.417 | 0.714/0.417 | +0.000 |
+| transforms · transforms | 0.857/1.000 | 0.857/1.000 | +0.000 |
+| transforms · dynamic | 0.706/0.500 | 0.706/0.500 | +0.000 |
+| **workers · transforms** | 0.857/0.750 | **0.889/1.000** | **+0.250** |
+| **workers · dynamic** | 1.000/0.062 | **0.875/0.438** | **+0.375** |
+| union · transforms | 0.857/0.857 | **0.875/1.000** | +0.143 |
+| union · dynamic | 0.722/0.250 | **0.788/0.464** | +0.214 |
+
+- Worker-page `idb_hook` events: **1 → 16**; flows corroborated by >1
+  mechanism: **7 → 13** (union); transforms-page numbers reproduce the
+  Phase-7 baseline exactly (zero regression) and variance stays σ=0.
+- Coverage: **7/7 PASS** (route_injections=2, dedicated+shared hellos,
+  only gap = SW, no tampering, synth=3 contexts [dedicated, shared], SW
+  sink proof); UID **3/3**; `exit=0` (`logs/17`).
+- Remaining dynamic FNs are transformed-only URLs (raw-needle matching
+  by design) — the transforms method covers them (union FN = 0).
+
+### Regressions after the refactor (all headless; `logs/07`–`09`, `19`–`20`)
+
+smoke **15/15** · storage **7/7** · consent **12/12** · scale **7/7** ·
+backend pytest **26/26** · compileall OK.
+
+### Measured limitations (never reported as coverage)
+
+1. **Service workers are environment-dark** on Playwright+Firefox:
+   registration fetch bypasses `context.route`, blob: registration is
+   rejected, SW fetches emit no request events. Every crawl records the
+   gap (`no_hello:…/wk-sw.js`); the GT page proves the SW exfil
+   browser-side via the sink (`sw_sink_seen=true`) and the flows stay
+   out of WORKER_FLOWS so no method is credited or penalised for them.
+2. **Worker `sendBeacon` is undefined** in Firefox workers (probe16) —
+   the GT beacon-equivalent uses `fetch(..., {keepalive:true})`.
+3. **Injection side-effects**: dedicated workers see `?__privadb_tok=`
+   in `self.location`; SharedWorkers run from a `blob:` URL (per-frame
+   instances, `location` contaminated) — module-typed workers are not
+   injectable (recorded as gaps).
+4. Hook detection is in-page JS: a determined page can tamper (now
+   *detected* via `__tamper_check`, reported per frame — 0 observed).
+
+### Phase 13.1 — injection-path rework: Chromium phantom-request fix
+
+**Discovery (post-Phase-13 testing):** the route.fulfill worker-injection
+path produced **phantom requests on Chromium** — the worker script's
+request event fires (so matchers score TP) yet the request dies with
+`net::ERR_FAILED` before reaching the network. Evidence chain:
+Chrome evaluate claimed worker-page transforms recall 1.000 but its
+sink log contained **zero `/v/w*` arrivals** (`logs/28`, `raw/28` sink
+subset) while shared-worker blob-path flows (`/v/sh*`) *did* arrive;
+minimal reproducers isolated the variable to **route-fulfilled worker
+script + subsequent cross-origin fetch** (same-origin still works —
+`logs/32` fail, `logs/33`/`34` controls pass, `logs/35` shows
+REQ→FAIL on cors *and* no-cors while same-origin returns 200).
+Foxhound's juggler route did not exhibit the quirk, but a single
+engine-dependent injection path was unacceptable.
+
+**Rework (`crawler.py`, `logs/36`–`39`):**
+- Dedicated workers now use the **same blob bootstrap** as
+  SharedWorkers (core → `importScripts` with absolute-URL rebasing of
+  direct children → original script); route machinery, marker URLs and
+  `WORKER_PRELUDE_FMT` removed entirely.
+- Blob constructor failures (CSP `worker-src` without `blob:`) fall
+  back to the untouched original constructor — site keeps working,
+  `blob_blocked` gap recorded. Non-http(s) worker URLs (site-authored
+  `blob:`/`data:` workers) pass through untouched (`non_http` gap).
+- Service workers are **left unmarked on both engines** (FF: route
+  bypass; Chromium: injection breaks their cross-origin fetches) — the
+  SW runs clean so its exfil reaches the sink for browser-side proof;
+  `no_hello` gap recorded every crawl.
+
+**Sink-side re-verification (the test that catches phantoms):**
+- Foxhound: **99 sink hits, all worker-context paths present**
+  (`/v/w*` ×13, `/v/wwin`, `/v/sh*`, `/v/sv*`, benign controls) —
+  `raw/38-sinklog-foxhound.json`.
+- Chromium: **99 hits, all 18 expected worker-context paths present** —
+  `raw/39-sinklog-chrome.json`.
+- Both engines: evaluate exit 0, **WC 7/7** (checks reworked to
+  kind-based blob hello matching + "worker sends observable" invariant
+  + SW sink proof), UID 3/3, transforms page reproduces the Phase-7
+  baseline exactly, worker-page transforms **1.000** / dynamic
+  **0.438**, variance σ=0 (`logs/38`/`39`/`42`).
+- Regressions after rework: foxhound smoke 15/15, chrome smoke 14/14
+  (`logs/36`), backend pytest 26/26, compileall (`logs/42`).
+
+**Live-site spot check (`logs/41`, 2 sites, foxhound headless):**
+- `www.braze.com`: 0 crawl errors; site **actively unwrapped** the
+  hooks (`tampered=['fetch','xhr_open','xhr_send']` — detection
+  surfaced it, as designed); site-authored `blob:` worker passed
+  through via the `non_http` guard; 9 window sends synthesized.
+- `www.reddit.com`: 0 errors; `service` spawn accounted (`sw.js`,
+  expected no-hello); one **third-party (google-frame) blob worker**
+  logged `no_hello:blob:https://www.google.com/…` — an honest gap in a
+  cross-origin ad frame (frame/worker teardown timing), not a crash.
+- 286 information flows analyzed end-to-end, HTML reports generated.
+
 ## Deliberately NOT done (needs a human)
 
 1. **License**: still proprietary. Open-s relicensing is the copyright holder's decision — not changed.
 2. **Real-site human labels**: tooling ready (`export_labeling.py`/`score_labels.py`); two annotators must produce the files.
 3. **Docker build verification**: authoring host lacks docker-group/sudo; run the command in MANIFEST.md.
 4. **Tranco top-N production run**: infrastructure ready (`scale.py`); the large crawl is an operator decision (runtime/ethics).
+5. **Engine-grade IDB taint (Foxhound rebuild) — APPROVAL-GATED, not started.** The hook layer is still self-instrumentation; SAP's `taint/` has no IndexedDB source/sink and taint cannot survive structured-clone persistence as designed. Costed plan (for approval before any work):
+   - **Source/build**: checkout SAP/project-foxhound + Mozilla `mach build` toolchain (clang/rust/ccache; ~40 GB tree; first build 1–4 h, incremental 15–30 min).
+   - **Patch**: `MarkTaintSource` on `IDBRequest` completion (`dom/indexedDB/*`), sinks on `put/add/update`, worker-scope parity, plus a **persistence design** for taint labels across structured clone (sidecar labels per record vs re-taint-on-read heuristic — needs a design decision).
+   - **Validate**: extend the Phase-13 GT so IDB→network flows are confirmed by `mechanism=taint` (engine-grade provenance) and re-run `evaluate.py`; target: dynamic-method recall ≥ transforms on raw flows without hook corroboration.
+   - **Effort/risk**: ≈2–4 engineer-weeks including pipeline setup; main risks = Gecko drift vs SAP's base, label-persistence correctness, and keeping the exporter channel compatible. Requires build-machine resources + explicit operator approval.
 
 ## Reproduce
 
-See `PAPER_REPORT.md` §9 and `MANIFEST.md`.
+See `PAPER_REPORT.md` §9 and `MANIFEST.md`. Phase 13 sequence:
+`logs/01`–`20` (probes → baseline → evaluate before/after → regressions).

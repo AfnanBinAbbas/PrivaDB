@@ -1,6 +1,6 @@
 # PrivaDB — Measurement Report (generated)
 
-Generated: `2026-11-10T11:31:16+00:00` · generator: `Web/src/engine/paper_report.py`
+Generated: `2026-11-11T11:25:04+00:00` · generator: `Web/src/engine/paper_report.py`
 
 Every figure below is read from the JSON artifacts produced by the testbed suites and detector runs; the source file is named in each section.
 
@@ -8,39 +8,41 @@ Every figure below is read from the JSON artifacts produced by the testbed suite
 
 *Source: newest crawl's `run_meta`*
 
-- **source**: `results/Foxhound/crawled/localhost:18765.json`
-- **engine**: `foxhound`
-- **browser_version**: `137.0`
+- **source**: `results/Chrome/crawled/localhost:18765.json`
+- **engine**: `chrome`
+- **browser_version**: `151.0.7922.34`
 - **foxhound_build_id**: `20251126175156`
 - **playwright_version**: `1.62.0`
 - **python_version**: `3.12.7`
 - **platform**: `Linux-7.1.5+kali-amd64-x86_64-with-glibc2.43`
 - **user_agent**: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36`
-- **captured_at**: `2026-11-10T11:31:02.231793Z`
+- **captured_at**: `2026-11-11T11:24:22.438049Z`
 
 ## 1. Headline metrics (site-level)
 
 *Source: `results/<engine>/analysis/summary.json`*
 
 - **chrome**: 4 site analyses — 4 (100.0%) with IndexedDB data; 2 with exfiltration flows; 2 sending identifiers to third parties; 11 dynamic (taint/hook) flows total; **0 paper-confirmed IndexedDB client identifiers (§4.1)**
-- **foxhound**: 19 site analyses — 9 (47.4%) with IndexedDB data; 16 with exfiltration flows; 3 sending identifiers to third parties; 5056 dynamic (taint/hook) flows total; **0 paper-confirmed IndexedDB client identifiers (§4.1)**
+- **foxhound**: 4 site analyses — 4 (100.0%) with IndexedDB data; 3 with exfiltration flows; 2 sending identifiers to third parties; 25 dynamic (taint/hook) flows total; **0 paper-confirmed IndexedDB client identifiers (§4.1)**
 
 ## 2. Method comparison — the core contribution
 
 *Source: `testbed/evaluate_report.json`*
 
-Ground truth: **12 must-detect flows**, **2 benign controls** (testbed/pages/transforms.html).
+Ground truth: **28 must-detect flows** (12 window-context + 16 worker-context; transforms.html + idb_workers.html), **2 benign controls**.
 
 | method | predicted | TP | FP | FN | precision | recall |
 |---|---:|---:|---:|---:|---:|---:|
-| substring (baseline) | 7 | 5 | 2 | 7 | 0.714 | 0.417 |
-| transforms (full) | 14 | 12 | 2 | 0 | 0.857 | 1.000 |
-| dynamic (taint+hooks) | 17 | 12 | 5 | 6 | 0.706 | 0.500 |
+| substring (baseline) | 15 | 11 | 4 | 17 | 0.733 | 0.393 |
+| transforms (full) | 32 | 28 | 4 | 0 | 0.875 | 1.000 |
+| dynamic (taint+hooks) | 24 | 20 | 4 | 15 | 0.833 | 0.464 |
+
+Worker-context coverage (Phase 13): injection=True · checks 7/7 · blob bootstrap path · synthetic network entries=2 · service-worker sink proof=True · gaps=1 (environment-dark SW).
 
 Ablations:
 
 | variant | predicted | FP | FN | precision | recall |
-|---|---:|---:|---:|---:|---:|
+|---|---:|---:|---:|---:|---:|---:|
 | ID_SCORE_THRESHOLD=0.0 | 14 | 2 | 0 | 0.857 | 1.000 |
 | ID_SCORE_THRESHOLD=0.5 | 13 | 1 | 0 | 0.923 | 1.000 |
 | ID_SCORE_THRESHOLD=0.7 | 1 | 0 | 11 | 1.000 | 0.083 |
@@ -74,11 +76,11 @@ Banner failures surfaced (never silently downgraded): []
 | store | identifiers | exfil events | third-party |
 |---|---:|---:|---:|
 | caches | 0 | 0 | 0 |
-| cookies | 1 | 0 | 0 |
-| indexeddb | 2 | 0 | 0 |
+| cookies | 1 | 1 | 0 |
+| indexeddb | 2 | 1 | 0 |
 | localStorage | 1 | 1 | 1 |
 | service_workers | 0 | 0 | 0 |
-| sessionStorage | 2 | 0 | 0 |
+| sessionStorage | 2 | 1 | 0 |
 
 Respawn candidates (value present in cookie ∩ IDB): **1** — [['respawn_restored']]
 
@@ -99,7 +101,7 @@ Batch verification: **7/7** checks · store backend: `jsonl` · final counts: {'
 
 *Source: `testbed/smoke_report.json`*
 
-Ground-truth smoke suite: **15/15** checks passed (engine=foxhound)
+Ground-truth smoke suite: **14/14** checks passed (engine=chrome)
 
 ## 8. Limitations
 

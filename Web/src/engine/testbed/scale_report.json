@@ -1,5 +1,5 @@
 {
-  "engine": "chrome",
+  "engine": "foxhound",
   "passed": true,
   "n_pass": 7,
   "n_total": 7,
@@ -41,7 +41,7 @@
     {
       "name": "T6 combined report generated from batch analyses",
       "passed": true,
-      "detail": "path=/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/results/Chrome/analysis/summary.json"
+      "detail": "path=/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/results/Foxhound/analysis/summary.json"
     }
   ],
   "batch": {
@@ -52,22 +52,41 @@
       {
         "url": "http://localhost:18765/transforms.html",
         "domain": "localhost:18765",
-        "identifiers": 4,
+        "identifiers": 5,
         "exfil": 13,
-        "taint": 0,
-        "idb_hook": 8,
+        "taint": 1,
+        "idb_hook": 16,
         "storage_exfil": 1,
-        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_transforms_html_fa9a06fe.json"
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_transforms_html_fa9a06fe.json",
+        "idb_dbs": 1,
+        "idb_records": 6,
+        "client_ids": 0
       },
       {
         "url": "http://localhost:18765/smoke.html",
         "domain": "localhost:18765",
         "identifiers": 6,
         "exfil": 4,
-        "taint": 0,
-        "idb_hook": 3,
+        "taint": 1,
+        "idb_hook": 6,
         "storage_exfil": 1,
-        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_smoke_html_6ca35844.json"
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_smoke_html_6ca35844.json",
+        "idb_dbs": 1,
+        "idb_records": 3,
+        "client_ids": 0
+      },
+      {
+        "url": "http://localhost:18765/storage.html",
+        "domain": "localhost:18765",
+        "identifiers": 2,
+        "exfil": 1,
+        "taint": 1,
+        "idb_hook": 0,
+        "storage_exfil": 3,
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_storage_html_8317a5ae.json",
+        "idb_dbs": 1,
+        "idb_records": 1,
+        "client_ids": 0
       },
       {
         "url": "http://localhost:18765/consent.html",
@@ -77,17 +96,10 @@
         "taint": 0,
         "idb_hook": 0,
         "storage_exfil": 0,
-        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_consent_html_9a6de9fe.json"
-      },
-      {
-        "url": "http://localhost:18765/storage.html",
-        "domain": "localhost:18765",
-        "identifiers": 2,
-        "exfil": 0,
-        "taint": 0,
-        "idb_hook": 0,
-        "storage_exfil": 1,
-        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_storage_html_8317a5ae.json"
+        "result_path": "/home/doofenshmirtz/Downloads/PrivaDB/Web/src/engine/data/scale/results/http___localhost_18765_consent_html_9a6de9fe.json",
+        "idb_dbs": 1,
+        "idb_records": 1,
+        "client_ids": 0
       }
     ]
   }

@@ -1,5 +1,5 @@
 {
-  "engine": "foxhound",
+  "engine": "chrome",
   "checks": [
     {
       "name": "G0a sink received IDB uid (browser-side ground truth)",
@@ -29,12 +29,7 @@
     {
       "name": "G1d idb_hook flow: IDB read \u2192 network send",
       "passed": true,
-      "detail": "6 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
-    },
-    {
-      "name": "G3 taint flow: localStorage.getItem \u2192 sink",
-      "passed": true,
-      "detail": "known-value=1 any-localStorage-src=1 (total taint flows: 1)"
+      "detail": "3 flow(s), targets=['http://127.0.0.1:18766/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f', 'http://127.0.0.1:18766/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d', 'http://127.0.0.1:18766/post']"
     },
     {
       "name": "G5 no false positive on non-IDB constant",
@@ -78,119 +73,119 @@
     }
   ],
   "passed": true,
-  "n_pass": 15,
-  "n_total": 15,
+  "n_pass": 14,
+  "n_total": 14,
   "sink_received": [
     {
       "method": "GET",
       "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794308933.0046558
+      "ts": 1794396024.8420594
     },
     {
       "method": "POST",
       "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
       "body": "",
-      "ts": 1794308933.0064821
+      "ts": 1794396024.8486335
     },
     {
       "method": "GET",
       "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794308933.0078423
-    },
-    {
-      "method": "GET",
-      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
-      "body": "",
-      "ts": 1794308933.0085247
+      "ts": 1794396024.849222
     },
     {
       "method": "GET",
       "path": "/smoke-sink?c=benign-constant-string",
       "body": "",
-      "ts": 1794308933.0090346
+      "ts": 1794396024.8499544
     },
     {
       "method": "GET",
-      "path": "/payload?tag=inflow",
+      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
       "body": "",
-      "ts": 1794308933.010246
+      "ts": 1794396024.8507113
     },
     {
       "method": "POST",
       "path": "/post",
       "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
-      "ts": 1794308933.0216472
+      "ts": 1794396024.8522074
+    },
+    {
+      "method": "GET",
+      "path": "/payload?tag=inflow",
+      "body": "",
+      "ts": 1794396024.853063
     },
     {
       "method": "GET",
       "path": "/tracker.js",
       "body": "",
-      "ts": 1794308933.0948918
+      "ts": 1794396024.8670378
     },
     {
       "method": "GET",
       "path": "/get?uid=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
       "body": "",
-      "ts": 1794308942.3464422
-    },
-    {
-      "method": "GET",
-      "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
-      "body": "",
-      "ts": 1794308942.3597856
-    },
-    {
-      "method": "GET",
-      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
-      "body": "",
-      "ts": 1794308942.3612726
-    },
-    {
-      "method": "GET",
-      "path": "/smoke-sink?c=benign-constant-string",
-      "body": "",
-      "ts": 1794308942.3637774
-    },
-    {
-      "method": "GET",
-      "path": "/payload?tag=inflow",
-      "body": "",
-      "ts": 1794308942.3656418
-    },
-    {
-      "method": "POST",
-      "path": "/post",
-      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
-      "ts": 1794308942.3672936
+      "ts": 1794396033.8754287
     },
     {
       "method": "POST",
       "path": "/beacon?sid=ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988",
       "body": "",
-      "ts": 1794308942.3677795
+      "ts": 1794396033.8793175
+    },
+    {
+      "method": "GET",
+      "path": "/pixel.gif?u=a3f9c1d7e5b2846f0913a7c5d8e2f6b4",
+      "body": "",
+      "ts": 1794396033.8797722
+    },
+    {
+      "method": "GET",
+      "path": "/smoke-sink?c=benign-constant-string",
+      "body": "",
+      "ts": 1794396033.8804522
+    },
+    {
+      "method": "GET",
+      "path": "/track?h=356c3aaa28cd4181af5a80ea29120e0d072ab188018053b272e0c8379be7d789&b=YTNmOWMxZDdlNWIyODQ2ZjA5MTNhN2M1ZDhlMmY2YjQ=",
+      "body": "",
+      "ts": 1794396033.8810298
+    },
+    {
+      "method": "GET",
+      "path": "/payload?tag=inflow",
+      "body": "",
+      "ts": 1794396033.8820057
+    },
+    {
+      "method": "POST",
+      "path": "/post",
+      "body": "{\"visitor\":\"a3f9c1d7e5b2846f0913a7c5d8e2f6b4\"}",
+      "ts": 1794396033.8874412
     },
     {
       "method": "GET",
       "path": "/tracker.js",
       "body": "",
-      "ts": 1794308942.3983707
+      "ts": 1794396033.890251
     }
   ],
   "analysis_snapshot": {
     "identifiers_found": 6,
     "exfiltrations": 4,
-    "taint_flows": 1,
-    "idb_hook_flows": 6,
+    "taint_flows": 0,
+    "idb_hook_flows": 3,
     "dynamic_flows": {
-      "total": 7,
-      "taint": 1,
-      "idb_hook": 6,
+      "total": 3,
+      "taint": 0,
+      "idb_hook": 3,
       "high_confidence": 0,
-      "medium_confidence": 7,
+      "medium_confidence": 3,
       "low_confidence": 0,
-      "external": 6,
+      "external": 3,
       "tracker_targets": 0
     }
   }

@@ -108,18 +108,36 @@ def method_comparison(data: dict) -> list[str]:
         return ["_evaluate_report.json missing — rerun "
                 "`testbed/evaluate.py`._"]
     gt = ev.get("ground_truth", {})
-    lines = [f"Ground truth: **{gt.get('flows')} must-detect flows**, "
-             f"**{gt.get('non_identifiers')} benign controls** "
-             f"(testbed/pages/transforms.html).", "",
+    pages = ("transforms.html + idb_workers.html"
+             if gt.get("worker_flows") else "testbed/pages/transforms.html")
+    lines = [f"Ground truth: **{gt.get('flows')} must-detect flows** "
+             f"({gt.get('classic_flows', gt.get('flows'))} window-context"
+             + (f" + {gt.get('worker_flows')} worker-context"
+                if gt.get("worker_flows") else "")
+             + f"; {pages}), "
+             f"**{gt.get('non_identifiers')} benign controls**.", "",
              "| method | predicted | TP | FP | FN | precision | recall |",
              "|---|---:|---:|---:|---:|---:|---:|"]
     for name, s in (ev.get("methods") or {}).items():
         lines.append(
             f"| {name} | {s['predicted']} | {s['tp']} | {s['fp']} | "
             f"{s['fn']} | {_fmt(s['precision'])} | {_fmt(s['recall'])} |")
+    cov = ev.get("worker_coverage") or {}
+    if cov:
+        n_ok = sum(1 for c in (cov.get("checks") or []) if c.get("passed"))
+        n_all = len(cov.get("checks") or [])
+        lines += ["",
+                  f"Worker-context coverage (Phase 13): injection="
+                  f"{cov.get('worker_injection_enabled')} · "
+                  f"checks {n_ok}/{n_all} · blob bootstrap path · "
+                  f"synthetic network entries="
+                  f"{cov.get('synthetic_network_entries')} "
+                  f"· service-worker sink proof="
+                  f"{cov.get('sw_sink_seen')} · gaps="
+                  f"{len(cov.get('gaps') or [])} (environment-dark SW)."]
     lines += ["", "Ablations:", "",
               "| variant | predicted | FP | FN | precision | recall |",
-              "|---|---:|---:|---:|---:|---:|"]
+              "|---|---:|---:|---:|---:|---:|---:|"]
     for label, s in (ev.get("ablations") or {}).items():
         lines.append(
             f"| {label} | {s['predicted']} | {s['fp']} | {s['fn']} | "

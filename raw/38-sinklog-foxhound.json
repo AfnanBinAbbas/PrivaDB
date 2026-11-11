@@ -1,0 +1,398 @@
+[
+ {
+  "path": "/v/raw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/b64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/hex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/md5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha1x?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/enc?x=id%20with%20spaces%2Bplus%2Fslash%3Fchars%3Dand%26more%201234567890",
+  "method": "GET"
+ },
+ {
+  "path": "/v/beacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/form",
+  "method": "POST"
+ },
+ {
+  "path": "/v/cdn?v=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/lsbeacon?d=lsbeacon-99887766554433221100ffeeddccbbaa",
+  "method": "POST"
+ },
+ {
+  "path": "/v/pixel?u=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/xhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/raw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/b64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/hex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/md5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha1x?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/enc?x=id%20with%20spaces%2Bplus%2Fslash%3Fchars%3Dand%26more%201234567890",
+  "method": "GET"
+ },
+ {
+  "path": "/v/cdn?v=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/beacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/form",
+  "method": "POST"
+ },
+ {
+  "path": "/v/pixel?u=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/xhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/lsbeacon?d=lsbeacon-99887766554433221100ffeeddccbbaa",
+  "method": "POST"
+ },
+ {
+  "path": "/v/raw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/b64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/hex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/md5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha1x?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/sha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/enc?x=id%20with%20spaces%2Bplus%2Fslash%3Fchars%3Dand%26more%201234567890",
+  "method": "GET"
+ },
+ {
+  "path": "/v/beacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/form",
+  "method": "POST"
+ },
+ {
+  "path": "/v/cdn?v=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/lsbeacon?d=lsbeacon-99887766554433221100ffeeddccbbaa",
+  "method": "POST"
+ },
+ {
+  "path": "/v/pixel?u=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/xhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/wwin?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc2?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64u?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/whex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wmd5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha1?x=a944d16a569572e9b00467220d8ad2a3f29441f2",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wencsha?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wtrunc?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wbeacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/wcsrf?x=csrf-11223344556677889900aabbccddeeff",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wcdn?x=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wxhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/svraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/svb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/shraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/shb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wwin?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/svraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/svb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc2?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64u?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/whex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wmd5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha1?x=a944d16a569572e9b00467220d8ad2a3f29441f2",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wencsha?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wtrunc?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wcsrf?x=csrf-11223344556677889900aabbccddeeff",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wcdn?x=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wbeacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/wxhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/shraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/shb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wwin?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wenc2?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wb64u?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/whex?x=7469642d3066336532643163346235613639373838373936613562346333643265316630",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wmd5?x=17b78e3af44710857045fa899d57d7c5",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha1?x=a944d16a569572e9b00467220d8ad2a3f29441f2",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wsha256?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wencsha?x=c2333071046036334f2dfe1be3fee3ce2cd41c02e07dad08db992a5e7db9c74e",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wtrunc?x=tid-0f3e2d1c4b5a",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wbeacon",
+  "method": "POST"
+ },
+ {
+  "path": "/v/wcsrf?x=csrf-11223344556677889900aabbccddeeff",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wcdn?x=v1.2.3-build.987654321",
+  "method": "GET"
+ },
+ {
+  "path": "/v/wxhr",
+  "method": "POST"
+ },
+ {
+  "path": "/v/svraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/svb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ },
+ {
+  "path": "/v/shraw?x=tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0",
+  "method": "GET"
+ },
+ {
+  "path": "/v/shb64?x=dGlkLTBmM2UyZDFjNGI1YTY5Nzg4Nzk2YTViNGMzZDJlMWYw",
+  "method": "GET"
+ }
+]

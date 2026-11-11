@@ -250,44 +250,125 @@ class _TaintHandler(BaseHTTPRequestHandler):
 
 
 # ─── Flow Hooks (IDB read + network send instrumentation) ───────────
-# IndexedDB is a taint blackout for Foxhound (reads are not sources and
-# taint is lost on put/get). To keep the DB->network path visible we wrap
-# IDB reads and network senders in-page and record the value + the JS
-# function that performed the read/send (source/sink function attribution).
-FLOW_HOOKS_INIT_SCRIPT = r"""
-(() => {
-  if (window.__prividb_hooks) return;
-  const H = (window.__prividb_hooks = { reads: [], sends: [], writes: [], responses: [] });
-  function push(arr, rec) {
+# Window + Web-Worker + SharedWorker coverage for the DB->network path
+# (IndexedDB is a taint blackout for Foxhound: reads are not sources and
+# taint does not survive an IDB put/get round-trip — PAPER_REPORT.md §
+# "IDB is a taint blackout"; SAP's taint/ has zero MarkTaintSource in
+# any IndexedDB path). The wrap core below runs in these contexts:
+#
+#   window            — installed by add_init_script; records into local
+#                       arrays drained by the crawler.
+#   dedicated Worker  — blob-URL bootstrap (core + importScripts with
+#                       absolute-URL rebasing of direct children), same
+#                       mechanism as SharedWorker. Probe-validated on
+#                       Foxhound (probe3 Q14) and proven end-to-end on
+#                       Chromium (shared-worker blob path delivered
+#                       /v/shraw,/v/shb64 to the sink — logs/28).
+#                       If the blob is CSP-blocked the wrap falls back
+#                       to the untouched original constructor (site
+#                       keeps working; injection gap recorded).
+#   SharedWorker      — blob bootstrap (probe3 Q15/Q16 validated).
+#   ServiceWorker     — NOT injectable on either engine: Playwright-
+#                       Firefox never routes the registration fetch
+#                       (probe1 Q2) and blob:-URL registration is
+#                       rejected by spec (probe2 Q11), while on
+#                       Chromium route-fulfilling the SW script poisons
+#                       that SW's subsequent CROSS-ORIGIN fetches
+#                       (net::ERR_FAILED — logs/32..35; same-origin
+#                       still works, so the breakage is silent for
+#                       same-origin sinks). register() is therefore
+#                       left UNMARKED: the SW runs clean, its exfil
+#                       reaches the sink (browser-side proof), and the
+#                       no-hello gap is recorded per crawl. Never
+#                       reported as hook coverage.
+#
+# WHY NOT route-injection for dedicated workers (removed): the earlier
+# __privadb_tok route.fulfill path worked on Foxhound but produced
+# PHANTOM requests on Chromium — the worker script's REQ event fires
+# (so matchers TP) yet the request dies with net::ERR_FAILED before
+# reaching the network (Chrome evaluate sink log had zero /v/w*
+# arrivals while scoring claimed 1.000 recall — logs/28 + 35).
+# Blob injection sidesteps interception entirely.
+#
+# Worker events reach the window over BroadcastChannel
+# "__privadb_hook_bus__" filtered by per-frame token, so they land in
+# the SAME reads/sends/writes/responses arrays the detector consumes.
+# Worker-initiated fetches are invisible to Playwright's request events
+# for SharedWorker (probe3 Q17; Chromium too — synth=2 [shared] in
+# logs/28) — detector.py synthesizes network entries from these hook
+# sends (tagged synthetic=true).
+
+# Single source of truth for the wrap core. Runs identically in window
+# and worker globals (only `self`, guarded typeof checks). env.kind
+# selects the transport: "window" pushes locally, anything else emits
+# over the BroadcastChannel + posts a hello for coverage accounting.
+HOOK_CORE_EXPR = r"""function (env) {
+  env = env || { kind: "window" };
+  if (self.__privadb_hooks_live) return self.__privadb_hooks_live;
+  self.__privadb_hooks_installed = true;
+  const kind = String(env.kind || "window");
+  const token = String(env.token || "");
+  const isWin = kind === "window";
+  const H = {
+    reads: [], sends: [], writes: [], responses: [],
+    meta: { kind: kind, token: token, spawned: {}, seen: {},
+            gaps: [], tampered: null }
+  };
+  let bus = null;
+  if (!isWin) {
+    try { bus = new BroadcastChannel("__privadb_hook_bus__"); } catch (e) {}
+  }
+  const CAP = { reads: 1000, sends: 1000, writes: 1000, responses: 300 };
+  function emit(arr, rec) {
     try {
-      let v = typeof rec.value === "string" ? rec.value : JSON.stringify(rec.value);
-      if (v !== undefined && v !== null && arr === H.reads && (!v || v === "null")) return;
-      if (v !== undefined) {
-        if (v.length > 2000) v = v.slice(0, 2000);
-        rec.value = v;
+      if (rec) {
+        if (rec.ctx === undefined) rec.ctx = kind;
+        if (rec.ts === undefined) rec.ts = Date.now();
+        // old push() semantics: stringify + clip `value` (detector
+        // json.loads string leaves); `body` passes through untouched.
+        if (rec.value !== undefined && rec.value !== null) {
+          if (typeof rec.value !== "string") {
+            try { rec.value = JSON.stringify(rec.value); }
+            catch (e) { rec.value = String(rec.value); }
+          }
+          if (rec.value.length > 2000) rec.value = rec.value.slice(0, 2000);
+        }
       }
-      if (arr.length >= 1000) arr.shift();
-      arr.push(rec);
+      if (isWin) {
+        const a = H[arr];
+        if (!a) return;
+        if (arr === "reads") {
+          const v = String((rec && rec.value !== undefined) ? rec.value : "");
+          if (!v || v === "null") return;
+        }
+        if (a.length >= (CAP[arr] || 1000)) a.shift();
+        a.push(rec);
+      } else if (bus) {
+        bus.postMessage({ __privadb: 1, token: token, arr: arr, rec: rec });
+      }
     } catch (e) {}
   }
+  if (!isWin) {
+    try {
+      bus.postMessage({ __privadb: 1, token: token, hello: kind,
+                        loc: (self.location && self.location.href) || "" });
+    } catch (e) {}
+  }
+  // Stack parser: works for Chrome/Firefox-new ("at fn (url:line)")
+  // and Firefox-classic ("fn@url") formats; skips this instrument's
+  // own frames (Playwright evaluates init scripts in a "debugger eval
+  // code" context, so wrapper frames live there).
   function caller() {
-    // Works for both stack formats:
-    //   Chrome/Firefox-new: "at fn (https://host/a.js:1:2)" / "at https://..."
-    //   Firefox-classic:    "fn@https://host/a.js:1:2"
     try {
       const raw = (new Error().stack || "").split("\n");
-      // Drop the header line(s) pointing at caller() itself
       const lines = raw.filter((l) => {
         const t = l.trim();
         return t.startsWith("at ") || t.includes("@");
       });
       for (let i = 0; i < lines.length; i++) {
         const t = lines[i].trim();
-        // Skip frames belonging to this injected instrument script —
-        // Playwright evaluates init scripts in a "debugger eval code"
-        // context, so the wrapper frames (caller, proto[op], fetch, …)
-        // all live there and must be skipped to reach the real caller.
-        if (t.includes("__prividb_hooks") || t.includes("FLOW_HOOKS")) continue;
+        if (t.includes("__prividb_hooks") || t.includes("FLOW_HOOKS")
+            || t.includes("__privadb")) continue;
         let fn = "", loc = "";
         if (t.startsWith("at ")) {
           const body = t.slice(3);
@@ -298,8 +379,6 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
           const at = t.lastIndexOf("@");
           fn = t.slice(0, at).trim();
           loc = t.slice(at + 1).trim();
-          // Firefox may append :line:col — keep as-is (script origin
-          // extraction strips it); drop "native" pseudo-frames
           if (loc === "native" || loc === "") continue;
         }
         if (loc && (loc.indexOf("debugger eval code") !== -1
@@ -313,173 +392,421 @@ FLOW_HOOKS_INIT_SCRIPT = r"""
     } catch (e) {}
     return { fn: "", loc: "" };
   }
-  // --- IndexedDB reads ---
+  const refs = {};
+  // ── IndexedDB reads (same classes in window and all worker kinds) ──
   try {
-    for (const proto of [IDBObjectStore.prototype, IDBIndex.prototype]) {
-      const ops = ["get", "getAll", "getAllKeys", "getKey", "openCursor", "openKeyCursor"];
-      for (const op of ops) {
-        const orig = proto[op];
-        if (typeof orig !== "function") continue;
-        proto[op] = function (...args) {
-          const c = caller();
-          const store = (this && this.name) || "";
-          const req = orig.apply(this, args);
-          try {
-            req.addEventListener("success", () => {
-              try {
-                const res = req.result;
-                // Cursors (openCursor): record the current value
-                const v0 = (res && typeof res === "object" && "value" in res && "primaryKey" in res && !Array.isArray(res))
-                  ? res.value : res;
-                // Include primitives: IDB get() often returns plain strings,
-                // which the old object-only filter silently dropped.
-                const vals = Array.isArray(v0) ? v0 : (v0 !== undefined && v0 !== null) ? [v0] : [];
-                for (const v of vals) {
-                  push(H.reads, { op, store, value: v, fn: c.fn, loc: c.loc, ts: Date.now() });
-                }
-              } catch (e) {}
-            });
-          } catch (e) {}
-          return req;
-        };
-      }
-    }
-  } catch (e) {}
-  // --- Network senders ---
-  try {
-    const origFetch = window.fetch;
-    window.fetch = function (...args) {
-      const c = caller();
-      const url = (args[0] && args[0].url) || String(args[0] || "");
-      const body = args[1] ? String(args[1].body || "") : "";
-      push(H.sends, { op: "fetch", url, body, fn: c.fn, loc: c.loc, ts: Date.now() });
-      const p = origFetch.apply(this, args);
-      // Capture the response body (truncated) for inflow detection:
-      // network value → later written to IDB.
-      try {
-        p.then((resp) => {
-          try {
-            const rurl = resp.url || url;
-            const status = resp.status;
-            resp.clone().text().then((t) => {
-              try {
-                if (t && t.length > 8000) t = t.slice(0, 8000);
-                if (H.responses.length >= 300) H.responses.shift();
-                H.responses.push({ url: rurl, status, body: t || "", ts: Date.now(),
-                                   t_rel: Math.round(performance.now()) });
-              } catch (e) {}
-            }).catch(() => {});
-          } catch (e) {}
-        }).catch(() => {});
-      } catch (e) {}
-      return p;
-    };
-  } catch (e) {}
-  try {
-    const open = XMLHttpRequest.prototype.open;
-    const send = XMLHttpRequest.prototype.send;
-    XMLHttpRequest.prototype.open = function (method, url, ...rest) {
-      const c = caller();
-      this.__prividb_xurl = url;
-      push(H.sends, { op: "XMLHttpRequest.open", url: String(url || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
-      return open.apply(this, [method, url, ...rest]);
-    };
-    XMLHttpRequest.prototype.send = function (body) {
-      const c = caller();
-      push(H.sends, { op: "XMLHttpRequest.send", url: this.__prividb_xurl || "", body: String(body || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
-      // Response capture for inflow detection
-      try {
-        this.addEventListener("loadend", () => {
-          try {
-            let t = "";
-            try { t = this.responseText || ""; } catch (e) { t = ""; }
-            if (!t) return;
-            if (t.length > 8000) t = t.slice(0, 8000);
-            if (H.responses.length >= 300) H.responses.shift();
-            H.responses.push({ url: this.__prividb_xurl || "", status: this.status,
-                               body: t, ts: Date.now(),
-                               t_rel: Math.round(performance.now()) });
-          } catch (e) {}
-        });
-      } catch (e) {}
-      return send.apply(this, [body]);
-    };
-  } catch (e) {}
-  try {
-    const sb = navigator.sendBeacon;
-    navigator.sendBeacon = function (url, data) {
-      const c = caller();
-      push(H.sends, { op: "sendBeacon", url: String(url || ""), body: String(data || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
-      return sb.apply(this, arguments);
-    };
-  } catch (e) {}
-  try {
-    // Capture img.src sends WITHOUT breaking the actual image load:
-    // chain to the native accessor instead of shadowing it with a
-    // recorder-only setter (the old version never assigned the real
-    // src, so pixel requests were never sent).
-    const proto = Image.prototype;
-    const desc = Object.getOwnPropertyDescriptor(proto, "src")
-              || (typeof HTMLImageElement !== "undefined"
-                  ? Object.getOwnPropertyDescriptor(
-                        HTMLImageElement.prototype, "src")
-                  : null);
-    if (desc && desc.set) {
-      Object.defineProperty(proto, "src", {
-        configurable: true,
-        get() { return desc.get.call(this); },
-        set(v) {
-          const c = caller();
-          push(H.sends, { op: "img.src", url: String(v || ""), fn: c.fn, loc: c.loc, ts: Date.now() });
-          desc.set.call(this, v);
+    if (typeof IDBObjectStore !== "undefined") {
+      for (const proto of [IDBObjectStore.prototype, IDBIndex.prototype]) {
+        const ops = ["get", "getAll", "getAllKeys", "getKey",
+                     "openCursor", "openKeyCursor"];
+        for (const op of ops) {
+          const orig = proto[op];
+          if (typeof orig !== "function") continue;
+          const wrapped = function (...args) {
+            const c = caller();
+            const store = (this && this.name) || "";
+            const req = orig.apply(this, args);
+            try {
+              req.addEventListener("success", () => {
+                try {
+                  const res = req.result;
+                  const v0 = (res && typeof res === "object"
+                              && "value" in res && "primaryKey" in res
+                              && !Array.isArray(res))
+                    ? res.value : res;
+                  const vals = Array.isArray(v0) ? v0
+                    : (v0 !== undefined && v0 !== null) ? [v0] : [];
+                  for (const v of vals) {
+                    emit("reads", { op, store, value: v,
+                                    fn: c.fn, loc: c.loc });
+                  }
+                } catch (e) {}
+              });
+            } catch (e) {}
+            return req;
+          };
+          proto[op] = wrapped;
+          if (proto === IDBObjectStore.prototype) refs["idb_" + op] = wrapped;
         }
-      });
-    }
-  } catch (e) {}
-  // --- IDB writes (put/add/cursor.update): WHO creates identifiers ---
-  // Records value, store, database (via transaction), the calling script,
-  // and time-relative-to-load so writes can be ordered against consent.
-  try {
-    function dbOf(store) {
-      try { return (store.transaction && store.transaction.db && store.transaction.db.name) || ""; }
-      catch (e) { return ""; }
-    }
-    for (const [proto, ops] of [
-      [IDBObjectStore.prototype, ["put", "add"]],
-      [IDBCursor.prototype, ["update"]],
-    ]) {
-      for (const op of ops) {
-        const orig = proto[op];
-        if (typeof orig !== "function") continue;
-        proto[op] = function (value, ...rest) {
-          const c = caller();
-          const store = (proto === IDBObjectStore.prototype)
-            ? ((this && this.name) || "")
-            : ((this && this.source && this.source.name) || "");
-          try {
-            let v = typeof value === "string" ? value : JSON.stringify(value);
-            if (v !== undefined && v !== null) {
-              if (v.length > 2000) v = v.slice(0, 2000);
-            }
-            if (H.writes.length >= 1000) H.writes.shift();
-            H.writes.push({
-              op: (proto === IDBObjectStore.prototype) ? op : "cursor.update",
-              db: (proto === IDBObjectStore.prototype) ? dbOf(this) : "",
-              store, value: v,
-              key: (rest[0] !== undefined && rest[0] !== null)
-                    ? String(rest[0]).slice(0, 200) : "",
-              fn: c.fn, loc: c.loc,
-              ts: Date.now(),
-              t_rel: Math.round(performance.now()),
-            });
-          } catch (e) {}
-          return orig.apply(this, [value, ...rest]);
-        };
       }
     }
   } catch (e) {}
+  // ── fetch ──
+  try {
+    if (typeof self.fetch === "function") {
+      const origFetch = self.fetch;
+      const wrapped = function (...args) {
+        const c = caller();
+        const url = (args[0] && args[0].url) || String(args[0] || "");
+        const body = args[1] ? String(args[1].body || "") : "";
+        emit("sends", { op: "fetch", url, body, fn: c.fn, loc: c.loc });
+        const p = origFetch.apply(this, args);
+        try {
+          p.then((resp) => {
+            try {
+              const rurl = resp.url || url;
+              const status = resp.status;
+              resp.clone().text().then((t) => {
+                try {
+                  if (t && t.length > 8000) t = t.slice(0, 8000);
+                  emit("responses", { url: rurl, status, body: t || "",
+                                      t_rel: Math.round(
+                                        (self.performance
+                                         && self.performance.now()) || 0) });
+                } catch (e) {}
+              }).catch(() => {});
+            } catch (e) {}
+          }).catch(() => {});
+        } catch (e) {}
+        return p;
+      };
+      self.fetch = wrapped;
+      refs.fetch = wrapped;
+    }
+  } catch (e) {}
+  // ── XMLHttpRequest ──
+  try {
+    if (typeof XMLHttpRequest !== "undefined") {
+      const open = XMLHttpRequest.prototype.open;
+      const send = XMLHttpRequest.prototype.send;
+      const openW = function (method, url, ...rest) {
+        const c = caller();
+        this.__prividb_xurl = url;
+        emit("sends", { op: "XMLHttpRequest.open", url: String(url || ""),
+                        fn: c.fn, loc: c.loc });
+        return open.apply(this, [method, url, ...rest]);
+      };
+      const sendW = function (body) {
+        const c = caller();
+        emit("sends", { op: "XMLHttpRequest.send",
+                        url: this.__prividb_xurl || "",
+                        body: String(body || ""), fn: c.fn, loc: c.loc });
+        try {
+          this.addEventListener("loadend", () => {
+            try {
+              let t = "";
+              try { t = this.responseText || ""; } catch (e) { t = ""; }
+              if (!t) return;
+              if (t.length > 8000) t = t.slice(0, 8000);
+              emit("responses", { url: this.__prividb_xurl || "",
+                                  status: this.status, body: t,
+                                  t_rel: Math.round(
+                                    (self.performance
+                                     && self.performance.now()) || 0) });
+            } catch (e) {}
+          });
+        } catch (e) {}
+        return send.apply(this, [body]);
+      };
+      XMLHttpRequest.prototype.open = openW;
+      XMLHttpRequest.prototype.send = sendW;
+      refs.xhr_open = openW;
+      refs.xhr_send = sendW;
+    }
+  } catch (e) {}
+  // ── sendBeacon (window + dedicated/shared workers; absent in SW) ──
+  try {
+    if (typeof navigator !== "undefined"
+        && typeof navigator.sendBeacon === "function") {
+      const sb = navigator.sendBeacon;
+      const wrapped = function (url, data) {
+        const c = caller();
+        emit("sends", { op: "sendBeacon", url: String(url || ""),
+                        body: String(data || ""), fn: c.fn, loc: c.loc });
+        return sb.apply(this, arguments);
+      };
+      navigator.sendBeacon = wrapped;
+      refs.sendBeacon = wrapped;
+    }
+  } catch (e) {}
+  // ── img.src (window only; Image is undefined in workers) ──
+  try {
+    if (typeof Image !== "undefined") {
+      const proto = Image.prototype;
+      const desc = Object.getOwnPropertyDescriptor(proto, "src")
+                || (typeof HTMLImageElement !== "undefined"
+                    ? Object.getOwnPropertyDescriptor(
+                          HTMLImageElement.prototype, "src")
+                    : null);
+      if (desc && desc.set) {
+        const d2 = Object.defineProperty(proto, "src", {
+          configurable: true,
+          get() { return desc.get.call(this); },
+          set(v) {
+            const c = caller();
+            emit("sends", { op: "img.src", url: String(v || ""),
+                            fn: c.fn, loc: c.loc });
+            desc.set.call(this, v);
+          }
+        });
+        refs.img_src = d2;
+      }
+    }
+  } catch (e) {}
+  // ── IDB writes (put/add/cursor.update): WHO creates identifiers ──
+  try {
+    if (typeof IDBObjectStore !== "undefined") {
+      function dbOf(store) {
+        try {
+          return (store.transaction && store.transaction.db
+                  && store.transaction.db.name) || "";
+        } catch (e) { return ""; }
+      }
+      for (const [proto, ops] of [
+        [IDBObjectStore.prototype, ["put", "add"]],
+        [typeof IDBCursor !== "undefined" ? IDBCursor.prototype : null,
+         ["update"]],
+      ]) {
+        if (!proto) continue;
+        for (const op of ops) {
+          const orig = proto[op];
+          if (typeof orig !== "function") continue;
+          const wrapped = function (value, ...rest) {
+            const c = caller();
+            const store = (proto === IDBObjectStore.prototype)
+              ? ((this && this.name) || "")
+              : ((this && this.source && this.source.name) || "");
+            try {
+              let v = typeof value === "string" ? value
+                : JSON.stringify(value);
+              if (v !== undefined && v !== null && v.length > 2000) {
+                v = v.slice(0, 2000);
+              }
+              emit("writes", {
+                op: (proto === IDBObjectStore.prototype) ? op
+                    : "cursor.update",
+                db: (proto === IDBObjectStore.prototype) ? dbOf(this) : "",
+                store, value: v,
+                key: (rest[0] !== undefined && rest[0] !== null)
+                      ? String(rest[0]).slice(0, 200) : "",
+                fn: c.fn, loc: c.loc,
+                t_rel: Math.round((self.performance
+                                   && self.performance.now()) || 0),
+              });
+            } catch (e) {}
+            return orig.apply(this, [value, ...rest]);
+          };
+          proto[op] = wrapped;
+          refs["w_" + op + "_" + (proto === IDBObjectStore.prototype
+                                  ? "store" : "cursor")] = wrapped;
+        }
+      }
+    }
+  } catch (e) {}
+  // ── tamper detection: did page code unwrap our closures? ──
+  H.__tamper_check = function () {
+    const bad = [];
+    try { if (refs.fetch && self.fetch !== refs.fetch) bad.push("fetch"); }
+    catch (e) {}
+    try {
+      if (refs.xhr_open
+          && XMLHttpRequest.prototype.open !== refs.xhr_open) {
+        bad.push("xhr_open");
+      }
+    } catch (e) {}
+    try {
+      if (refs.xhr_send
+          && XMLHttpRequest.prototype.send !== refs.xhr_send) {
+        bad.push("xhr_send");
+      }
+    } catch (e) {}
+    try {
+      if (refs.sendBeacon && navigator.sendBeacon !== refs.sendBeacon) {
+        bad.push("sendBeacon");
+      }
+    } catch (e) {}
+    try {
+      if (refs.idb_get
+          && IDBObjectStore.prototype.get !== refs.idb_get) {
+        bad.push("idb_get");
+      }
+    } catch (e) {}
+    try {
+      if (refs.w_put_store
+          && IDBObjectStore.prototype.put !== refs.w_put_store) {
+        bad.push("idb_put");
+      }
+    } catch (e) {}
+    return bad;
+  };
+  self.__privadb_hooks_live = H;
+  return H;
+}"""
+
+# Page glue: runs in every frame before any site script. The frame
+# token is generated IN the page (per-frame unique, so BroadcastChannel
+# events from another frame's workers can never land in this frame's
+# arrays) — crypto.randomUUID on modern Firefox, entropy fallback.
+_PAGE_GLUE = r"""(function () {
+  const TOKEN = (self.crypto && crypto.randomUUID)
+    ? crypto.randomUUID().replace(/-/g, "")
+    : String(Math.random()).slice(2) + Date.now().toString(36);
+  const INJECT = __PRIVADB_INJECT__;
+  let core = null;
+  try { core = (HOOK_CORE_PLACEHOLDER); } catch (e) { return; }
+  // Blob bootstrap shared by the dedicated + shared worker wraps:
+  // runs the core first, rebase-wraps importScripts so direct-child
+  // relative imports resolve against the REAL script URL (probe16's
+  // blob failure mode), then loads the original script.
+  function makeBlob(abs, kind) {
+    const src = "var __privadb_core = (" + core.toString() + ");\n"
+      + "__privadb_core({kind:" + JSON.stringify(kind)
+      + ", token:" + JSON.stringify(TOKEN) + "});\n"
+      + "(function(){var __real=" + JSON.stringify(abs)
+      + ";var __is=self.importScripts;if(__is){"
+      + "self.importScripts=function(){"
+      + "var a=Array.prototype.map.call(arguments,function(x){"
+      + "try{return new URL(x,__real).href;}catch(e){return x;}});"
+      + "return __is.apply(self,a);};}})();\n"
+      + "importScripts(" + JSON.stringify(abs) + ");\n";
+    return URL.createObjectURL(new Blob([src], {type: "text/javascript"}));
+  }
+  let H = null;
+  try { H = core({ kind: "window", token: TOKEN }); } catch (e) { return; }
+  // Only handlebar the drain depends on: non-enumerable, frozen —
+  // readable by our evaluate (property access), invisible to
+  // Object.keys/enumeration by site code.
+  try {
+    Object.defineProperty(self, "__prividb_hooks",
+      { value: H, enumerable: false, writable: false,
+        configurable: false });
+  } catch (e) {
+    try { self.__prividb_hooks = H; } catch (e2) {}
+  }
+  // ── relay: worker -> window events (token-filtered) ──
+  try {
+    const bus = new BroadcastChannel("__privadb_hook_bus__");
+    bus.onmessage = function (e) {
+      const d = e.data;
+      if (!d || d.__privadb !== 1 || d.token !== TOKEN) return;
+      if (d.hello) {
+        const seen = H.meta.seen;
+        const key = d.hello + "\u0000" + (d.loc || "");
+        seen[key] = (seen[key] || 0) + 1;
+        return;
+      }
+      if (d.arr && d.rec) {
+        const a = H[d.arr];
+        if (a) {
+          const cap = d.arr === "responses" ? 300 : 1000;
+          if (a.length >= cap) a.shift();
+          a.push(d.rec);
+        }
+      }
+    };
+  } catch (e) {}
+  // ── Worker: blob bootstrap (route-based injection removed — see
+  // header: route.fulfill poisons worker cross-origin fetches on
+  // Chromium). CSP-blocked blobs fall back to the original URL. ──
+  if (INJECT) {
+  try {
+    const OW = self.Worker;
+    if (typeof OW === "function") {
+      const blobCache = Object.create(null);
+      const W = function (u, o) {
+        let abs;
+        try { abs = new URL(u, self.location.href).href; }
+        catch (e) { abs = String(u); }
+        if (!/^https?:/i.test(abs)) {
+          H.meta.gaps.push("non_http:" + abs.slice(0, 120));
+          return new OW(u, o);
+        }
+        if (o && o.type === "module") {
+          H.meta.gaps.push("dedicated_module:" + abs);
+          return new OW(u, o);
+        }
+        try {
+          if (!blobCache[abs]) blobCache[abs] = makeBlob(abs, "dedicated");
+          const w = new OW(blobCache[abs], o);
+          H.meta.spawned[blobCache[abs]] = "dedicated";
+          return w;
+        } catch (e) {
+          H.meta.gaps.push("blob_blocked:" + abs.slice(0, 120));
+          return new OW(u, o);
+        }
+      };
+      self.Worker = W;
+    }
+  } catch (e) {}
+  }
+  // ── SharedWorker: blob bootstrap (route never sees these) ──
+  if (INJECT) {
+  try {
+    const OS = self.SharedWorker;
+    if (typeof OS === "function") {
+      const blobCache = Object.create(null);
+      const S = function (u, o) {
+        let abs;
+        try { abs = new URL(u, self.location.href).href; }
+        catch (e) { abs = String(u); }
+        if (!/^https?:/i.test(abs)) {
+          H.meta.gaps.push("non_http:" + abs.slice(0, 120));
+          return new OS(u, o);
+        }
+        if (o && o.type === "module") {
+          H.meta.gaps.push("shared_module:" + abs);
+          return new OS(u, o);
+        }
+        try {
+          if (!blobCache[abs]) blobCache[abs] = makeBlob(abs, "shared");
+          const w = new OS(blobCache[abs], o);
+          H.meta.spawned[blobCache[abs]] = "shared";
+          return w;
+        } catch (e) {
+          H.meta.gaps.push("blob_blocked:" + abs.slice(0, 120));
+          return new OS(u, o);
+        }
+      };
+      self.SharedWorker = S;
+    }
+  } catch (e) {}
+  }
+  // ── ServiceWorker: spawn accounting ONLY — never mark the URL.
+  // Injection is unsafe/impossible on both engines (see header: FF
+  // route bypass; Chromium route-fulfillment breaks the SW's own
+  // cross-origin fetches). The SW runs clean so its exfil reaches the
+  // sink for browser-side proof; the no-hello gap is recorded at drain.
+  if (INJECT) {
+  try {
+    const swc = self.navigator && self.navigator.serviceWorker;
+    if (swc && typeof swc.register === "function") {
+      const OR = swc.register.bind(swc);
+      swc.register = function (u, o) {
+        let abs;
+        try { abs = new URL(u, self.location.href).href; }
+        catch (e) { abs = String(u); }
+        if (!/^https?:/i.test(abs)) {
+          H.meta.gaps.push("non_http:" + abs.slice(0, 120));
+          return OR(u, o);
+        }
+        H.meta.spawned[abs] = "service";
+        return OR(u, o);
+      };
+    }
+  } catch (e) {}
+  }
 })();
 """
+
+# Init script = glue with the core function expression spliced in and
+# the worker-injection switch stamped in (evaluate --no-worker-injection
+# produces the true BEFORE condition: window hooks on, no worker
+# injection). One source of truth: HOOK_CORE_EXPR is embedded here AND
+# (as source text via core.toString()) inside the worker blob
+# bootstraps built by the glue below.
+def hooks_init_script(worker_injection: bool = None) -> str:
+    if worker_injection is None:
+        worker_injection = getattr(
+            config, "FLOW_WORKER_INJECTION_ENABLED", True)
+    return (_PAGE_GLUE
+            .replace("__PRIVADB_INJECT__",
+                     "true" if worker_injection else "false")
+            .replace("HOOK_CORE_PLACEHOLDER",
+                     "(" + HOOK_CORE_EXPR + ")"))
+
+
+# Back-compat alias (worker injection on).
+FLOW_HOOKS_INIT_SCRIPT = hooks_init_script(True)
 
 # ─── Other persistence mechanisms (Phase 6) ─────────────────────────
 # localStorage / sessionStorage / cookies / Cache Storage / service
@@ -692,9 +1019,12 @@ class SiteCrawler:
         )
         # Install IDB-read/sender instrumentation before any page exists so
         # every frame (main + iframes) records source/sink JS functions.
+        # Worker injection happens INSIDE the init script via blob
+        # bootstraps (no network interception — see HOOK_CORE_EXPR header).
         if self.hooks:
             try:
-                await context.add_init_script(script=FLOW_HOOKS_INIT_SCRIPT)
+                await context.add_init_script(
+                    script=hooks_init_script())
             except Exception as e:
                 logger.warning(f"  Flow hooks init failed: {e}")
         page = await context.new_page()
@@ -718,7 +1048,8 @@ class SiteCrawler:
                               "errors": []},
             "network_requests": [],
             "taint_events": [],
-            "flow_hooks": {"reads": [], "sends": [], "writes": [], "responses": []},
+            "flow_hooks": {"reads": [], "sends": [], "writes": [],
+                           "responses": [], "meta": []},
             "errors": [],
         }
 
@@ -886,24 +1217,75 @@ class SiteCrawler:
         logger.info(f"  Network: {len(self.network_requests)} requests captured")
 
         # Collect per-frame flow hooks (IDB reads, network sends, writes,
-        # responses) — the same JS runs on both engines for comparability
+        # responses) — the same JS runs on both engines for comparability.
+        # Worker/SharedWorker records were relayed into these arrays over
+        # the token-filtered BroadcastChannel at emit time; meta carries
+        # per-frame coverage accounting (spawned vs hello'd locations,
+        # injection gaps, tamper check).
         if self.hooks:
             try:
-                hooks = {"reads": [], "sends": [], "writes": [], "responses": []}
+                # Give in-flight BroadcastChannel relays a beat to land.
+                await asyncio.sleep(0.4)
+                hooks = {"reads": [], "sends": [], "writes": [],
+                         "responses": [], "meta": []}
+                drain_expr = (
+                    "(() => { const H = window.__prividb_hooks;"
+                    " if (!H) return null;"
+                    " let tamper = null;"
+                    " try { tamper = H.__tamper_check"
+                    "          ? H.__tamper_check() : null; } catch (e) {}"
+                    " return { reads: H.reads, sends: H.sends,"
+                    "          writes: H.writes, responses: H.responses,"
+                    "          meta: Object.assign({}, H.meta || {},"
+                    "                             { tampered: tamper }) };"
+                    " })()"
+                )
                 for frame in page.frames:
                     try:
-                        frame_hooks = await frame.evaluate("window.__prividb_hooks")
+                        frame_hooks = await frame.evaluate(drain_expr)
                         if frame_hooks:
-                            for k in ("reads", "sends", "writes", "responses"):
+                            for k in ("reads", "sends", "writes",
+                                      "responses"):
                                 hooks[k].extend(frame_hooks.get(k, []))
+                            fmeta = frame_hooks.get("meta") or {}
+                            # Coverage gap: spawned script locations with
+                            # no corresponding worker hello (injection
+                            # never ran in that context).
+                            try:
+                                spawned = set((fmeta.get("spawned") or {}).keys())
+                                seen_locs = set()
+                                for key in (fmeta.get("seen") or {}):
+                                    seen_locs.add(
+                                        key.split("\u0000", 1)[1])
+                                missed = sorted(
+                                    u for u in spawned
+                                    if u not in seen_locs)
+                                if missed:
+                                    fmeta.setdefault("gaps", []).extend(
+                                        ["no_hello:" + u
+                                         for u in missed[:5]])
+                            except Exception:
+                                pass
+                            fmeta["frame_url"] = frame.url
+                            hooks["meta"].append(fmeta)
                     except Exception:
                         continue
                 result["flow_hooks"] = hooks
+                n_spawn = sum(
+                    len(m.get("spawned") or {})
+                    for m in hooks["meta"])
+                n_gap = sum(
+                    len(m.get("gaps") or []) for m in hooks["meta"])
+                n_tamp = sum(
+                    1 for m in hooks["meta"]
+                    if m.get("tampered"))
                 logger.info(
                     f"  Flow hooks: {len(hooks['reads'])} IDB reads, "
                     f"{len(hooks['sends'])} network sends, "
                     f"{len(hooks['writes'])} IDB writes, "
-                    f"{len(hooks['responses'])} responses captured"
+                    f"{len(hooks['responses'])} responses captured "
+                    f"(worker spawns={n_spawn}, gaps={n_gap}, "
+                    f"tampered_frames={n_tamp})"
                 )
             except Exception as e:
                 logger.warning(f"  Flow hook collection failed: {e}")
@@ -1301,7 +1683,9 @@ async def crawl_all_sites(site_limit: int = None,
                         
                     crawler = SiteCrawler(
                         taint_capture=taint_capture,
-                        hooks=bool(config.TAINT_TRACKING_ENABLED),
+                        hooks=bool(
+                            config.TAINT_TRACKING_ENABLED
+                            and getattr(config, "FLOW_HOOKS_ENABLED", True)),
                     )
                     skip_type = None
                     browser_version = ""

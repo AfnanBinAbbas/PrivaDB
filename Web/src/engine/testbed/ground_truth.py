@@ -57,6 +57,53 @@ FLOWS = [
 # any event on these values = false positive of the identifier model
 NON_IDENTIFIERS = [CSRF, VERSION]
 
+# ── worker-context ground truth (pages/idb_workers.html + wk*.js) ──
+# IDB → network flows executed from window / dedicated worker / shared
+# worker. The service-worker flows (/v/svraw, /v/svb64) are deliberately
+# NOT listed: on Playwright+Firefox the SW registration fetch bypasses
+# context.route and SW fetches are invisible to request events (probes
+# Q2/Q17), so no detector can see them — they are asserted browser-side
+# via the sink in evaluate.py and reported as an environment gap.
+_B64 = __import__("base64").b64encode
+_B64URL = __import__("base64").urlsafe_b64encode
+
+def _wsha(alg: str, data: bytes) -> str:
+    return __import__("hashlib").new(alg, data).hexdigest()
+
+_TID_B = TID.encode()
+
+WORKER_FLOWS = [
+    # window context (this page's own window idb_hook baseline)
+    (TID, "/v/wwin?x=", ["raw"]),
+    # dedicated worker — all 11 Phase-3 transform variants
+    (TID, "/v/wraw?x=", ["raw"]),
+    (TID, "/v/wenc?x=" + quote(TID, safe=""), ["urlencode"]),
+    (TID, "/v/wenc2?x=" + quote(quote(TID, safe=""), safe=""),
+     ["urlencode", "urlencode"]),
+    (TID, "/v/wb64?x=" + _B64(_TID_B).decode(), ["base64"]),
+    (TID, "/v/wb64u?x=" + _B64URL(_TID_B).decode().rstrip("="),
+     ["base64url", "strip_padding"]),
+    (TID, "/v/whex?x=" + _TID_B.hex(), ["hex"]),
+    (TID, "/v/wmd5?x=" + _wsha("md5", _TID_B), ["md5"]),
+    (TID, "/v/wsha1?x=" + _wsha("sha1", _TID_B), ["sha1"]),
+    (TID, "/v/wsha256?x=" + _wsha("sha256", _TID_B), ["sha256"]),
+    (TID, "/v/wencsha?x=" + _wsha("sha256", quote(TID, safe="").encode()),
+     ["urlencode", "sha256"]),
+    (TID, "/v/wtrunc?x=" + TID[:16], ["truncate16"]),
+    # dedicated worker — sink diversity on raw TID
+    (TID, "/v/wxhr", ["raw"]),
+    (TID, "/v/wbeacon", ["raw"]),
+    # shared worker (blob-bootstrap injection)
+    (TID, "/v/shraw?x=", ["raw"]),
+    (TID, "/v/shb64?x=" + _B64(_TID_B).decode(), ["base64"]),
+]
+
+# service-worker flows: browser-side sink proof only (see header above)
+WORKER_SW_UNSCORED = [
+    (TID, "/v/svraw?x="),
+    (TID, "/v/svb64?x=" + _B64(_TID_B).decode()),
+]
+
 # smoke page ground truth (used when the smoke crawl is evaluated)
 SMOKE_UID = "a3f9c1d7e5b2846f0913a7c5d8e2f6b4"
 SMOKE_LS = "ls-taint-9f8e7d6c5b4a3210ffeeddccbbaa9988"

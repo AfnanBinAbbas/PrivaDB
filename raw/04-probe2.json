@@ -1,0 +1,27 @@
+{
+  "verdicts": {
+    "Q9_route_saw_shared_script": false,
+    "Q10_prelude_ran_in_shared": false,
+    "Q11_blob_sw_registered": false,
+    "Q13_bc_shared_to_page": true
+  },
+  "probe": {
+    "errors": [],
+    "events": [
+      "shared_spawned",
+      "shared:sh-prelude=none"
+    ],
+    "shared_msg": "sh-prelude=none",
+    "blob_sw": "rejected: TypeError: ServiceWorkerContainer.register: Script URL's scheme is not 'http' or 'https'",
+    "bc": [
+      "shared-bc-hello"
+    ]
+  },
+  "route_log": [],
+  "hits": [
+    "/index.html",
+    "/shared.js?__privadb_tok=P2",
+    "/sw2.js"
+  ],
+  "consoles": []
+}

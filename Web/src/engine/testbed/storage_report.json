@@ -1,5 +1,5 @@
 {
-  "engine": "chrome",
+  "engine": "foxhound",
   "page": "http://localhost:18765/storage.html",
   "passed": true,
   "n_pass": 7,
@@ -33,7 +33,7 @@
     {
       "name": "S4b IDB row populated by main pass",
       "passed": true,
-      "detail": "idb={'identifiers': 2, 'exfil_events': 0, 'third_party_exfils': 0}"
+      "detail": "idb={'identifiers': 2, 'exfil_events': 1, 'third_party_exfils': 0}"
     },
     {
       "name": "S5 sessionStorage control value captured",
@@ -50,12 +50,12 @@
       },
       "sessionStorage": {
         "identifiers": 2,
-        "exfil_events": 0,
+        "exfil_events": 1,
         "third_party_exfils": 0
       },
       "cookies": {
         "identifiers": 1,
-        "exfil_events": 0,
+        "exfil_events": 1,
         "third_party_exfils": 0
       },
       "caches": {
@@ -70,7 +70,7 @@
       },
       "indexeddb": {
         "identifiers": 2,
-        "exfil_events": 0,
+        "exfil_events": 1,
         "third_party_exfils": 0
       }
     },
@@ -94,6 +94,6 @@
         ]
       }
     ],
-    "storage_exfil_count": 1
+    "storage_exfil_count": 3
   }
 }

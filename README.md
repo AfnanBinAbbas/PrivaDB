@@ -157,6 +157,8 @@ Samples: `Web/src/engine/testbed/samples/`.
 | `PRIVADB_PORT` | `8000` | Backend port |
 | `PRIVADB_CORS_ORIGINS` | localhost dashboard origins | Comma-separated allowed origins |
 | `PRIVADB_ALLOW_PRIVATE_TARGETS` | unset (guarded) | Set `true` to allow scanning localhost/RFC1918 lab targets (SSRF guard off) |
+| `FLOW_HOOKS_ENABLED` | `True` | In-page flow hooks (IDB reads/writes, network sends); `evaluate --no-hooks` turns off |
+| `FLOW_WORKER_INJECTION_ENABLED` | `True` | Worker/SharedWorker/SW hook injection (route prelude + blob bootstrap); `evaluate --no-worker-injection` = before-condition |
 | `FOXHOUND_BIN` | `foxhound/foxhound` | Custom Firefox build path |
 | `DNS_CNAME_CHECKS` | `True` (app_config) | CNAME-cloaking lookups (one `dig` per host, cached) |
 | `UID_RELOAD_CHECK` | `True` | Paper §4.1 condition 2: same-session reload pass (iteration 1) for client-identifier confirmation — needs `iterations ≥ 2` for conditions 4/5 |
