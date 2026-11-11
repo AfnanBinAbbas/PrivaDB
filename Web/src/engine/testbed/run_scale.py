@@ -14,7 +14,6 @@ Usage:
 import argparse
 import json
 import os
-import shutil
 import sys
 import threading
 from collections import deque
@@ -42,9 +41,28 @@ def main():
     ap.add_argument("--headed", action="store_true")
     args = ap.parse_args()
 
-    # clean slate
-    shutil.rmtree(SCALE_DIR, ignore_errors=True)
+    # Clean ONLY this suite's artifacts. Never rmtree the whole scale
+    # dir: data/scale/ also holds LIVE campaign stores + analyses
+    # (a previous full-rmtree here destroyed 4,121 Stage-A analyses —
+    # REPORT Phase 13.2 incident; counts survived only because
+    # campaign_results/stageA/ had a store snapshot).
     os.makedirs(RESULTS, exist_ok=True)
+    for f in os.listdir(RESULTS):
+        # testbed pages are served on localhost — only their outputs
+        if f.startswith("http___localhost_") and f.endswith(".json"):
+            try:
+                os.remove(os.path.join(RESULTS, f))
+            except OSError:
+                pass
+    for f in ("scale_test.sqlite", "scale_test.jsonl",
+              "scale_test.sqlite-journal", "scale_test.sqlite-wal",
+              "scale_test.sqlite-shm"):
+        p = os.path.join(SCALE_DIR, f)
+        if os.path.exists(p):
+            try:
+                os.remove(p)
+            except OSError:
+                pass
 
     sink = ThreadingHTTPServer(("127.0.0.1", SINK_PORT), SinkHandler)
     page = ThreadingHTTPServer(("127.0.0.1", PAGE_PORT), PageHandler)

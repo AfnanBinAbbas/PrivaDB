@@ -115,6 +115,21 @@ sudo docker build -f Docker/Dockerfile.frontend -t privadb-frontend .
 | `raw/11-evaluate-BEFORE-noinjection.json` `raw/17-evaluate-AFTER-final.json` | evaluate_report snapshots | before/after numbers behind REPORT tables |
 | `scripts/probe_worker_injection{,2,3}.py` | hand-written probes | reusable feasibility harness for other browser stacks |
 
+## Campaign / paper-comparison workspace (`campaign_results/{logs,raw}/`)
+
+Separate from the Phase-13 workspace above — the Stage-A campaign +
+*What Storage?* comparison phase keeps its own directories.
+
+| Artifact | Produced by | Notes |
+|---|---|---|
+| `campaign_results/logs/44-stageA-campaign-resume.log` | nohup `scale.py --list tranco_10000.csv --db stageA_10k.jsonl --engine foxhound --workers 2 --max-cpu 50 --prune-raw` | campaign stdout (resume skipped 4121 done); stays open across relogs (same inode) |
+| `campaign_results/logs/45-stageA-sync-loop.log` | `run_results_sync_loop.sh 1800 <this path>` | 30-min sync loop: regenerates stageA/, commits, pushes (askpass) |
+| `campaign_results/logs/46-paper-comparison.log` `47-sync-recovery-comparison.log` `48-sync-fixed.log` | `paper_comparison.py` / `sync_campaign_results.py` iterations | `47` caught the str/int crash, `48` green (commit `5c60a70b`) |
+| `campaign_results/raw/47-site_results-prewipe.csv` | frozen copy of the pre-incident backfilled CSV | audit trail; canonical copy = `stageA/site_results_preWipe.csv` (sync recovery source) |
+| `scripts/paper_comparison.py` | `venv/bin/python scripts/paper_comparison.py` | renders `stageA/paper_comparison.md` (store/CSV count-level + compute_paper_metrics event-level) — re-run any time |
+| `campaign_results/stageA/paper_comparison.md` | paper_comparison.py | PrivaDB vs *What Storage?* side-by-side + IndexedDB extension + gaps recipe |
+| `campaign_results/stageA/site_results_preWipe.csv` | frozen snapshot, committed with stageA | recovery source for sync backfill (run_scale rmtree incident — REPORT Phase 13.2) |
+
 ## Caveats
 
 - Measurement suites bind fixed ports **18765/18766** — one suite at a time.

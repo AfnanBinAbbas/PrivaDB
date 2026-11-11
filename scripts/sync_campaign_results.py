@@ -72,6 +72,32 @@ def load_ranks(path: str) -> dict[str, str]:
     return ranks
 
 
+_RECOVERY_CACHE = None
+
+
+def _recovery_rows() -> dict:
+    """Frozen pre-wipe site_results.csv (domain → row).
+
+    The run_scale clean-slate incident (REPORT Phase 13.2) destroyed
+    the per-site analyses; their backfilled IDB counts survive only in
+    this committed snapshot. Used by backfill() so regenerated CSVs
+    keep complete IDB columns for the affected sites.
+    """
+    global _RECOVERY_CACHE
+    if _RECOVERY_CACHE is None:
+        _RECOVERY_CACHE = {}
+        path = os.path.join(REPO, "campaign_results", "stageA",
+                            "site_results_preWipe.csv")
+        if os.path.exists(path):
+            import csv as _csv
+            with open(path, encoding="utf-8") as f:
+                for r in _csv.DictReader(f):
+                    dom = (r.get("domain") or "").lower().strip()
+                    if dom:
+                        _RECOVERY_CACHE[dom] = r
+    return _RECOVERY_CACHE
+
+
 def backfill(row: dict) -> dict:
     """Older store rows lack IDB fields — read them from the analysis."""
     summ = row.get("summary") or {}
@@ -89,9 +115,26 @@ def backfill(row: dict) -> dict:
             summ["client_ids"] = a.get("client_identifiers_found", 0)
         except Exception:
             pass
+    if not str(summ.get("idb_dbs", "") or "").strip():
+        # analyses destroyed by the run_scale rmtree incident — recover
+        # the backfilled counts from the frozen pre-wipe snapshot
+        rec = _recovery_rows().get(domain_of(row.get("url", "")))
+        if rec:
+            summ["idb_dbs"] = rec.get("idb_dbs", "")
+            summ["idb_records"] = rec.get("idb_records", "")
+            if not str(summ.get("client_ids", "") or "").strip():
+                summ["client_ids"] = rec.get("client_ids_4_1", "")
     summ.setdefault("idb_dbs", "")
     summ.setdefault("idb_records", "")
     summ.setdefault("client_ids", "")
+    # Normalize numeric fields to int (recovery-CSV values arrive as
+    # strings; write_summary sums/sorts them and would crash or
+    # silently skip str rows).
+    for k in ("idb_dbs", "idb_records", "client_ids"):
+        v = summ.get(k)
+        if isinstance(v, str):
+            v = v.strip()
+            summ[k] = int(v) if v.lstrip("-").isdigit() else ""
     return summ
 
 

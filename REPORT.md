@@ -203,6 +203,53 @@ engine-dependent injection path was unacceptable.
   cross-origin ad frame (frame/worker teardown timing), not a crash.
 - 286 information flows analyzed end-to-end, HTML reports generated.
 
+### Phase 13.2 — paper comparison + the run_scale clean-slate incident
+
+**Incident (self-inflicted, detected during paper-comparison work):**
+`testbed/run_scale.py` began its run with `shutil.rmtree(data/scale/)`
+("clean slate") — a regression run in this phase **destroyed all 4,121
+Stage-A per-site analyses** (and the live job store). Counts survived
+only because the 30-minute sync had committed
+`campaign_results/stageA/store_stageA.jsonl` + a backfilled
+`site_results.csv` (02:26 snapshot). Raw crawls were already pruned
+(`--prune-raw`), so the analyses are unrecoverable without re-crawling.
+
+**Fixes (all landed):**
+1. `run_scale.py` now deletes **only its own artifacts** (localhost
+   result files + `scale_test.*` store) — never the scale directory.
+2. `sync_campaign_results.py` backfill falls back to the frozen
+   pre-wipe snapshot (`site_results_preWipe.csv`) when an analysis is
+   missing, and normalizes recovered string counts to int (a crash
+   caught in `campaign_results/logs/47`, fixed in `campaign_results/logs/48`).
+3. `detector.compute_paper_metrics` reads `inflow_flows` as the
+   paper's "integrity" column (schema drift: analyses never carried
+   `integrity_flows` — the column was silently always 0).
+
+**Paper comparison (`campaign_results/stageA/paper_comparison.md`,
+regenerate: `scripts/paper_comparison.py`, `campaign_results/logs/46`–`48`; artifacts live under `campaign_results/{logs,raw,stageA}/` — separate from the Phase-13 `logs/`+`raw/` workspace):**
+vs *What Storage?* (Ahmad et al., Tranco Top 5k, Jalangi taint):
+
+| | paper | PrivaDB (4,121/10k done) |
+|---|---:|---:|
+| sites with usable data | 3,324 (Top 5k) | 4,121 (Top 10k, running) |
+| storage/IDB activity | 837 (25%) LS/SS | 1,965 (47.7%) other-store · **439 (10.7%) IndexedDB** |
+| flows (paper unit ≈ our exfil events) | 3,207 filtered | 13,754 exfil + 800,862 storage exfils |
+| §4.1 confirmed IDB client IDs | not in paper | 0 (Stage B pending) |
+
+Honest scope notes (in the artifact): instrument differs (Jalangi vs
+Foxhound+hooks), render budget 60 s vs 8 s, flow unit differs, and the
+paper **has no IndexedDB results at all** — the 439-site/9,128-record
+IDB numbers are PrivaDB's extension, anchored by the 28-flow ground
+truth (P/R 0.875/1.000).
+
+**Campaign state:** Stage A resumed in background (`campaign_results/logs/44`,
+queue=5878 → running, `--max-cpu 50 --prune-raw`, workers=2, headless)
+with the results-sync loop (`campaign_results/logs/45`, 30-min, commit+push per repo
+convention). Paper Tables II–IV (event-level) fill in as new analyses
+land; full Top-10k tables additionally need the **re-crawl phase** for
+the 4,121 lost analyses (recipe in `paper_comparison.md` §D), then
+**Stage B** (§4.1) and human labels.
+
 ## Deliberately NOT done (needs a human)
 
 1. **License**: still proprietary. Open-s relicensing is the copyright holder's decision — not changed.

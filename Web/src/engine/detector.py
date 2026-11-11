@@ -566,7 +566,10 @@ def compute_paper_metrics(all_results: list[dict]) -> dict:
     for r in all_results:
         for evt in r.get("exfiltration_events", []):
             all_confid.append(evt)
-        for iflow in r.get("integrity_flows", []):
+        # schema note: current analyses store the write-side flows under
+        # inflow_flows; older artifacts used integrity_flows (paper term)
+        for iflow in (r.get("integrity_flows")
+                      or r.get("inflow_flows") or []):
             all_integrity.append(iflow)
 
     total_confid = len(all_confid)
