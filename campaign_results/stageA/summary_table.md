@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4030/10000** terminal (4029 done, 1 failed) · running/pending: 5970
+Progress: **4122/10000** terminal (4121 done, 1 failed) · running/pending: 5878
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T06:56:53+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T07:26:59+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 659300 |
-| storage exfils | 775656 |
-| IndexedDB databases | 2699 |
-| IndexedDB records | 8844 |
-| exfil events | 12944 |
-| idb-hook flows | 2694 |
+| taint flows | 686320 |
+| storage exfils | 800862 |
+| IndexedDB databases | 2807 |
+| IndexedDB records | 9128 |
+| exfil events | 13754 |
+| idb-hook flows | 2774 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -19,6 +19,7 @@ Top sites by taint flows:
 | site | taint flows |
 |---|---:|
 | php.net | 35583 |
+| dola.com | 15112 |
 | doubao.com | 14694 |
 | zillow.com | 14657 |
 | sharethrough.com | 8574 |
@@ -32,7 +33,6 @@ Top sites by taint flows:
 | zoho.com | 4466 |
 | kahoot.it | 4316 |
 | iqiyi.com | 4309 |
-| asos.com | 4175 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -45,6 +45,7 @@ Sites with IndexedDB records (mission scope):
 | hola.com | 170 |
 | dropbox.com | 140 |
 | speedtest.net | 136 |
+| globalnews.ca | 126 |
 | newscientist.com | 120 |
 | ria.ru | 100 |
 | cnnbrasil.com.br | 98 |
@@ -52,7 +53,6 @@ Sites with IndexedDB records (mission scope):
 | vice.com | 88 |
 | pinterest.com | 88 |
 | tomshardware.com | 84 |
-| index.hr | 78 |
 
 Failed sites (1): youtube.com
 
