@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4131/10000** terminal (4121 done, 10 failed) · running/pending: 5869
+Progress: **4127/10000** terminal (4126 done, 1 failed) · running/pending: 5873
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T14:58:58+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T15:25:54+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 686320 |
-| storage exfils | 800862 |
-| IndexedDB databases | 2807 |
+| taint flows | 688012 |
+| storage exfils | 805180 |
+| IndexedDB databases | 2812 |
 | IndexedDB records | 9128 |
 | exfil events | 13754 |
-| idb-hook flows | 2774 |
+| idb-hook flows | 2775 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -54,7 +54,7 @@ Sites with IndexedDB records (mission scope):
 | pinterest.com | 88 |
 | tomshardware.com | 84 |
 
-Failed sites (10): youtube.com, microsoft.com, bing.com, youtu.be, gandi.net, yahoo.com, mozilla.org, chatgpt.com, chatgpt.site, taobao.com
+Failed sites (1): youtube.com
 
 Full per-site counts: `site_results.csv` · job store: `store_stageA.jsonl` (resumable) · per-site reports (IDB-active sites): `reports/` · aggregate: `bulk_stageA.html` (every 1000 completions).
 
