@@ -1,6 +1,6 @@
 # Paper comparison — PrivaDB vs *What Storage?* (IndexedDB context)
 
-Generated: `2026-11-11T14:50:45+00:00` · regenerate: `venv/bin/python scripts/paper_comparison.py`
+Generated: `2026-11-11T14:52:14+00:00` · regenerate: `venv/bin/python scripts/paper_comparison.py`
 
 Paper: Zubair Ahmad, Samuele Casarin, Stefano Calzavara — *What Storage? An Empirical Analysis of Web Storage in the Wild* (Tranco Top 5k, Jalangi dynamic taint). Source: `References/What Storage An Empirical Analysis of.pdf` §IV.B + Tables II–IV.
 

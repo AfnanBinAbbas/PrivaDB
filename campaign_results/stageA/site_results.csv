@@ -1751,8 +1751,8 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 265,charter.net,done,1,0,0,0,0,0,0,0,0
 9403,chartink.com,pending,0,,,,,,,,
 3223,chase.com,done,1,0,0,0,0,0,228,0,560
-115,chatgpt.com,pending,1,,,,,,,,
-367,chatgpt.site,pending,1,,,,,,,,
+115,chatgpt.com,permanent_failed,3,,,,,,,,
+367,chatgpt.site,permanent_failed,3,,,,,,,,
 961,chaturbate.com,done,1,0,0,0,0,0,0,0,0
 7175,chavesnamao.com.br,pending,0,,,,,,,,
 2182,check24.de,done,1,0,0,0,0,0,18,0,60
@@ -5670,7 +5670,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2385,mozgcp.net,done,1,0,0,0,0,0,0,0,0
 548,mozilla.com,done,1,0,0,0,0,0,66,0,48
 1211,mozilla.net,done,1,0,0,0,0,0,0,0,0
-93,mozilla.org,running,2,,,,,,,,
+93,mozilla.org,permanent_failed,3,,,,,,,,
 1818,mp.gov.in,done,1,0,0,0,0,0,0,0,0
 9914,mp3party.net,pending,0,,,,,,,,
 1599,mparticle.com,done,1,0,0,0,0,0,413,0,22
@@ -7653,7 +7653,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2848,shazam.com,done,1,0,0,0,0,0,0,0,0
 4680,shb-sync.com,pending,0,,,,,,,,
 9784,shcilestamp.com,pending,0,,,,,,,,
-483,shein.com,pending,1,,,,,,,,
+483,shein.com,running,2,,,,,,,,
 6143,shell.com,pending,0,,,,,,,,
 30,shiabank.com,done,1,0,0,0,0,0,0,0,0
 246,shifen.com,done,1,0,0,0,0,0,0,0,0
@@ -8258,7 +8258,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8768,tanishq.co.in,pending,0,,,,,,,,
 3810,tanium.com,done,1,0,0,0,0,0,372,0,1455
 4656,taoa.com,pending,0,,,,,,,,
-454,taobao.com,pending,1,,,,,,,,
+454,taobao.com,permanent_failed,3,,,,,,,,
 1575,tapad.com,done,1,0,0,0,0,0,78,0,40
 7139,tapology.com,pending,0,,,,,,,,
 1844,tappx.com,done,1,0,0,0,0,0,2,0,3
@@ -9781,7 +9781,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8928,yaeby.dad,pending,0,,,,,,,,
 1895,yahoo.cloud,done,1,0,0,0,0,0,0,0,0
 464,yahoo.co.jp,done,1,0,0,0,0,0,0,0,0
-69,yahoo.com,running,2,,,,,,,,
+69,yahoo.com,permanent_failed,3,,,,,,,,
 3080,yahoo.net,done,1,0,0,0,0,0,464,0,150
 703,yahoodns.net,done,1,0,0,0,0,0,0,0,0
 9306,yakkun.com,pending,0,,,,,,,,
