@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **2979/10000** terminal (2978 done, 1 failed) · running/pending: 7021
+Progress: **3081/10000** terminal (3080 done, 1 failed) · running/pending: 6919
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T01:23:35+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T01:53:56+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 510118 |
-| storage exfils | 599039 |
-| IndexedDB databases | 2143 |
-| IndexedDB records | 8128 |
-| exfil events | 10356 |
-| idb-hook flows | 2173 |
+| taint flows | 521939 |
+| storage exfils | 609239 |
+| IndexedDB databases | 2199 |
+| IndexedDB records | 8177 |
+| exfil events | 11054 |
+| idb-hook flows | 2215 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -32,7 +32,7 @@ Top sites by taint flows:
 | iqiyi.com | 4309 |
 | amap.com | 3636 |
 | capcut.com | 3480 |
-| blizzard.com | 3005 |
+| nfl.com | 3134 |
 
 Sites with IndexedDB records (mission scope):
 
