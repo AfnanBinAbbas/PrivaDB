@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **3081/10000** terminal (3080 done, 1 failed) · running/pending: 6919
+Progress: **3190/10000** terminal (3189 done, 1 failed) · running/pending: 6810
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T01:53:56+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T02:24:18+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 521939 |
-| storage exfils | 609239 |
-| IndexedDB databases | 2199 |
-| IndexedDB records | 8177 |
-| exfil events | 11054 |
-| idb-hook flows | 2215 |
+| taint flows | 538176 |
+| storage exfils | 623323 |
+| IndexedDB databases | 2232 |
+| IndexedDB records | 8265 |
+| exfil events | 11059 |
+| idb-hook flows | 2366 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -29,10 +29,10 @@ Top sites by taint flows:
 | clickup.com | 4910 |
 | idealo.de | 4720 |
 | zoho.com | 4466 |
+| kahoot.it | 4316 |
 | iqiyi.com | 4309 |
 | amap.com | 3636 |
 | capcut.com | 3480 |
-| nfl.com | 3134 |
 
 Sites with IndexedDB records (mission scope):
 
@@ -50,9 +50,9 @@ Sites with IndexedDB records (mission scope):
 | cnnbrasil.com.br | 98 |
 | vice.com | 88 |
 | pinterest.com | 88 |
+| tomshardware.com | 84 |
 | index.hr | 78 |
 | businessinsider.com | 75 |
-| pinimg.com | 74 |
 
 Failed sites (1): youtube.com
 
