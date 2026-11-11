@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4181/10000** terminal (4154 done, 27 failed) · running/pending: 5819
+Progress: **4197/10000** terminal (4162 done, 35 failed) · running/pending: 5803
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T20:30:52+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T21:00:58+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 700068 |
-| storage exfils | 827445 |
-| IndexedDB databases | 2946 |
-| IndexedDB records | 9591 |
-| exfil events | 14546 |
-| idb-hook flows | 3301 |
+| taint flows | 705388 |
+| storage exfils | 829434 |
+| IndexedDB databases | 3044 |
+| IndexedDB records | 9846 |
+| exfil events | 15216 |
+| idb-hook flows | 3315 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -41,6 +41,7 @@ Sites with IndexedDB records (mission scope):
 | mastodon.social | 3967 |
 | netscape.com | 258 |
 | kooora.com | 230 |
+| bell-labs.com | 193 |
 | dropbox.com | 187 |
 | theverge.com | 178 |
 | cronista.com | 177 |
@@ -52,9 +53,8 @@ Sites with IndexedDB records (mission scope):
 | cnnbrasil.com.br | 98 |
 | rian.ru | 96 |
 | chicagotribune.com | 92 |
-| vice.com | 88 |
 
-Failed sites (27): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
+Failed sites (35): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
 
 Full per-site counts: `site_results.csv` · job store: `store_stageA.jsonl` (resumable) · per-site reports (IDB-active sites): `reports/` · aggregate: `bulk_stageA.html` (every 1000 completions).
 
