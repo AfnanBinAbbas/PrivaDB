@@ -3373,7 +3373,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6816,gamoshi.io,pending,0,,,,,,,,
 9732,ganamosonline.com,pending,0,,,,,,,,
 477,gandi-ns.fr,done,1,0,0,0,0,0,0,0,0
-64,gandi.net,pending,0,,,,,,,,
+64,gandi.net,running,1,,,,,,,,
 2427,gannett-dns.com,done,1,0,0,0,0,0,0,0,0
 5657,gao.gov,pending,0,,,,,,,,
 4932,gaohuaassetmanagement.cn,pending,0,,,,,,,,
@@ -9781,7 +9781,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8928,yaeby.dad,pending,0,,,,,,,,
 1895,yahoo.cloud,done,1,0,0,0,0,0,0,0,0
 464,yahoo.co.jp,done,1,0,0,0,0,0,0,0,0
-69,yahoo.com,pending,0,,,,,,,,
+69,yahoo.com,running,1,,,,,,,,
 3080,yahoo.net,done,1,0,0,0,0,0,464,0,150
 703,yahoodns.net,done,1,0,0,0,0,0,0,0,0
 9306,yakkun.com,pending,0,,,,,,,,
@@ -9864,7 +9864,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5254,youradchoices.com,pending,0,,,,,,,,
 1085,youronlinechoices.com,done,1,0,0,0,0,0,0,0,0
 3301,youronlinechoices.eu,done,1,0,0,0,0,0,0,0,0
-52,youtu.be,running,1,,,,,,,,
+52,youtu.be,done,1,0,0,0,0,0,1,0,0
 205,youtube-nocookie.com,done,1,0,0,0,0,0,0,0,0
 10,youtube.com,permanent_failed,3,,,,,,,,
 4883,youversionapi.com,pending,0,,,,,,,,
