@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **3945/10000** terminal (3944 done, 1 failed) · running/pending: 6055
+Progress: **4030/10000** terminal (4029 done, 1 failed) · running/pending: 5970
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T06:26:46+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T06:56:53+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 644485 |
-| storage exfils | 753540 |
-| IndexedDB databases | 2640 |
-| IndexedDB records | 8806 |
-| exfil events | 12669 |
-| idb-hook flows | 2658 |
+| taint flows | 659300 |
+| storage exfils | 775656 |
+| IndexedDB databases | 2699 |
+| IndexedDB records | 8844 |
+| exfil events | 12944 |
+| idb-hook flows | 2694 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
