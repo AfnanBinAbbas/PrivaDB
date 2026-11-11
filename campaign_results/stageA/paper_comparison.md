@@ -1,6 +1,6 @@
 # Paper comparison — PrivaDB vs *What Storage?* (IndexedDB context)
 
-Generated: `2026-11-11T16:13:47+00:00` · regenerate: `venv/bin/python scripts/paper_comparison.py`
+Generated: `2026-11-11T16:23:10+00:00` · regenerate: `venv/bin/python scripts/paper_comparison.py`
 
 Paper: Zubair Ahmad, Samuele Casarin, Stefano Calzavara — *What Storage? An Empirical Analysis of Web Storage in the Wild* (Tranco Top 5k, Jalangi dynamic taint). Source: `References/What Storage An Empirical Analysis of.pdf` §IV.B + Tables II–IV.
 
@@ -31,16 +31,16 @@ Counts are therefore *framework-aligned* (same confinement/tracking/cross-site t
 
 ## B. Classification tables (paper Tables II–IV equivalents)
 
-*Source: `compute_paper_metrics` over 35 per-site analyses (grows as the campaign (re)produces them)*
+*Source: `compute_paper_metrics` over 46 per-site analyses (grows as the campaign (re)produces them)*
 
 | metric | paper | PrivaDB |
 |---|---:|---:|
-| total flows analysed | 3207 | 98 |
-| confidentiality (outflow) | 531 | 96 |
-| integrity (inflow) | 2676 | 2 |
-| external | 1053 (33%) | 36 (36.7%) |
+| total flows analysed | 3207 | 1447 |
+| confidentiality (outflow) | 531 | 1347 |
+| integrity (inflow) | 2676 | 100 |
+| external | 1053 (33%) | 1230 (85.0%) |
 | external = tracking | 78% | n/a% |
-| cross-site (of external) | 84–98% of external (per class) | 38.9% |
+| cross-site (of external) | 84–98% of external (per class) | 81.7% |
 
 ## C. IndexedDB context — what the paper does NOT cover
 
