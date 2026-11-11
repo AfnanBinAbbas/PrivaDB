@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4197/10000** terminal (4162 done, 35 failed) · running/pending: 5803
+Progress: **4304/10000** terminal (4268 done, 36 failed) · running/pending: 5696
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T21:00:58+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T21:31:03+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 705388 |
-| storage exfils | 829434 |
-| IndexedDB databases | 3044 |
-| IndexedDB records | 9846 |
-| exfil events | 15216 |
-| idb-hook flows | 3315 |
+| taint flows | 725909 |
+| storage exfils | 854600 |
+| IndexedDB databases | 3197 |
+| IndexedDB records | 10027 |
+| exfil events | 16021 |
+| idb-hook flows | 3454 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -54,7 +54,7 @@ Sites with IndexedDB records (mission scope):
 | rian.ru | 96 |
 | chicagotribune.com | 92 |
 
-Failed sites (35): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
+Failed sites (36): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
 
 Full per-site counts: `site_results.csv` · job store: `store_stageA.jsonl` (resumable) · per-site reports (IDB-active sites): `reports/` · aggregate: `bulk_stageA.html` (every 1000 completions).
 
