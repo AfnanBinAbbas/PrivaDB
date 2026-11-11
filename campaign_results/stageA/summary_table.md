@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **2797/10000** terminal (2796 done, 1 failed) · running/pending: 7203
+Progress: **2889/10000** terminal (2888 done, 1 failed) · running/pending: 7111
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T00:22:54+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T00:53:15+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 480799 |
-| storage exfils | 569650 |
-| IndexedDB databases | 2058 |
-| IndexedDB records | 8027 |
+| taint flows | 493641 |
+| storage exfils | 582319 |
+| IndexedDB databases | 2103 |
+| IndexedDB records | 8054 |
 | exfil events | 10004 |
-| idb-hook flows | 2136 |
+| idb-hook flows | 2141 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -26,13 +26,13 @@ Top sites by taint flows:
 | hostgator.com.br | 7160 |
 | norton.com | 6599 |
 | cdiscount.com | 5049 |
+| clickup.com | 4910 |
 | zoho.com | 4466 |
 | iqiyi.com | 4309 |
 | amap.com | 3636 |
 | capcut.com | 3480 |
 | blizzard.com | 3005 |
 | ups.com | 2605 |
-| akamai.com | 2599 |
 
 Sites with IndexedDB records (mission scope):
 
