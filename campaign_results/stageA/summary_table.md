@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **2687/10000** terminal (2686 done, 1 failed) · running/pending: 7313
+Progress: **2797/10000** terminal (2796 done, 1 failed) · running/pending: 7203
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-10T23:52:32+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T00:22:54+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 469887 |
-| storage exfils | 559834 |
-| IndexedDB databases | 2043 |
-| IndexedDB records | 7895 |
-| exfil events | 9978 |
-| idb-hook flows | 2046 |
+| taint flows | 480799 |
+| storage exfils | 569650 |
+| IndexedDB databases | 2058 |
+| IndexedDB records | 8027 |
+| exfil events | 10004 |
+| idb-hook flows | 2136 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -45,6 +45,7 @@ Sites with IndexedDB records (mission scope):
 | hola.com | 170 |
 | dropbox.com | 140 |
 | speedtest.net | 136 |
+| newscientist.com | 120 |
 | ria.ru | 100 |
 | cnnbrasil.com.br | 98 |
 | vice.com | 88 |
@@ -52,7 +53,6 @@ Sites with IndexedDB records (mission scope):
 | index.hr | 78 |
 | businessinsider.com | 75 |
 | pinimg.com | 74 |
-| clarin.com | 70 |
 
 Failed sites (1): youtube.com
 
