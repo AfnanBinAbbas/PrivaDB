@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PrivaDB report_html.py 1.0">
+<meta name="description" content="IndexedDB tracking measurement + GRC screening for https://ucsb.edu">
+<title>PrivaDB scan report — ucsb.edu</title>
+<style>
+:root{--bg:#ffffff;--fg:#1a1d21;--muted:#5b6470;--line:#d7dce2;
+--accent:#0b5fff;--pass:#0a6b34;--fail:#a4171b;--warn:#8a5a00;
+--info:#37506b;--na:#5b6470;--chip:#f2f4f7}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,
+Arial,sans-serif;color:var(--fg);background:var(--bg)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:#fff;padding:8px 12px;
+z-index:9;border:2px solid var(--accent)}
+header.masthead{border-bottom:3px solid var(--fg);padding:24px 4vw 16px}
+header.masthead h1{margin:0 0 4px;font-size:1.6rem}
+header.masthead .sub{color:var(--muted);font-size:.92rem}
+.classification{display:inline-block;margin-top:8px;padding:2px 10px;
+border:1px solid var(--fg);font-size:.8rem;letter-spacing:.04em;
+text-transform:uppercase}
+nav.toc{padding:12px 4vw;border-bottom:1px solid var(--line);
+background:var(--chip)}
+nav.toc a{margin-right:16px;color:var(--accent);font-size:.9rem}
+main{padding:8px 4vw 40px;max-width:1100px}
+section{margin-top:28px}
+h2{font-size:1.25rem;border-bottom:1px solid var(--line);
+padding-bottom:6px;margin-top:8px}
+h3{font-size:1.02rem;margin-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,
+minmax(150px,1fr));gap:10px;padding:0;list-style:none}
+.cards li{border:1px solid var(--line);border-radius:8px;padding:10px;
+background:var(--chip)}
+.cards .num{font-size:1.4rem;font-weight:700}
+.cards .lbl{font-size:.78rem;color:var(--muted);text-transform:
+uppercase;letter-spacing:.04em}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.9rem}
+caption{text-align:left;font-weight:600;padding:6px 0;
+caption-side:top}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;
+vertical-align:top}
+thead th{background:var(--chip)}
+th[scope=row]{font-weight:600;background:#fafbfc}
+.status{font-weight:700;white-space:nowrap}
+.status.PASS{color:var(--pass)}
+.status.FAIL{color:var(--fail)}
+.status.WARN{color:var(--warn)}
+.status.INFO{color:var(--info)}
+.status.NA{color:var(--na)}
+.sev{font-size:.8rem;color:var(--muted)}
+.hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em}
+.leak{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em;background:#fff7e6;padding:1px 4px;border-radius:3px;
+word-break:break-all}
+details{margin:8px 0;border:1px solid var(--line);border-radius:6px;
+padding:8px 10px}
+summary{cursor:pointer;font-weight:600}
+pre{white-space:pre-wrap;word-break:break-word;font-size:.78rem;
+background:var(--chip);padding:8px;border-radius:6px;overflow:auto}
+.gauge{font-size:2rem;font-weight:800}
+.gauge.high{color:var(--fail)}.gauge.mid{color:var(--warn)}
+.gauge.low{color:var(--pass)}
+footer{border-top:3px solid var(--fg);padding:16px 4vw;
+color:var(--muted);font-size:.85rem}
+footer .disc{border:1px solid var(--line);padding:10px;background:
+var(--chip);margin-top:8px;color:var(--fg)}
+a{color:var(--accent)}
+ul.tight{margin:6px 0;padding-left:20px}
+@media print{
+ nav.toc,.skip{display:none}
+ body{font-size:11pt}
+ section{page-break-inside:auto}
+ h2{page-break-after:avoid}
+ table{page-break-inside:auto}
+ tr{page-break-inside:avoid}
+ details{border:none}
+ details>summary{display:none}
+ details[open]{display:block}
+ a[href]:after{content:""}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="masthead">
+  <h1>PrivaDB scan report — ucsb.edu</h1>
+  <div class="sub">IndexedDB tracking measurement + GRC screening for https://ucsb.edu</div>
+  <div class="sub">Generated 2026-11-11T01:23:35+00:00 · PrivaDB report_html.py v1.0</div>
+  <span class="classification">Confidential — contains raw leaked values (sensitive)</span>
+</header>
+<nav class="toc" aria-label="Report contents"><a href="#summary">1. Executive summary</a><a href="#grc">2. GRC compliance</a><a href="#findings">3. Measurement findings</a><a href="#consent">4. Consent study</a><a href="#storage">5. Storage comparison</a><a href="#writes">6. Write attribution</a><a href="#method">7. Methodology &amp; provenance</a><a href="#limits">8. Limitations</a></nav>
+<main id="main">
+<section id="summary" aria-labelledby="sum-h"><h2 id="sum-h">1. Executive summary</h2><p><strong>Target:</strong> https://ucsb.edu<br><strong>Engine:</strong> foxhound 137.0<br><strong>Scan started:</strong> 2026-11-11T01:17:25.872669Z · <strong>Status:</strong> completed</p><ul class="cards" aria-label="Summary metrics"><li><div class="num">2</div><div class="lbl">GRC risk /100 (low)</div></li><li><div class="num">2</div><div class="lbl">IndexedDB databases</div></li><li><div class="num">1</div><div class="lbl">IDB records</div></li><li><div class="num">0</div><div class="lbl">3rd-party identifier flows</div></li><li><div class="num">36</div><div class="lbl">Dynamic taint/hook flows</div></li><li><div class="num">0</div><div class="lbl">Inflow (network→IDB) flows</div></li><li><div class="num">0</div><div class="lbl">Respawn candidates</div></li><li><div class="num">0F/1W/3P</div><div class="lbl">GRC checks</div></li></ul></section>
+<section id="grc" aria-labelledby="grc-h">
+<h2 id="grc-h">GRC compliance screening</h2>
+<p><span class="gauge low">2/100</span> &nbsp; risk score (higher = worse) — 3 pass · 0 fail · 1 warn · 9 n/a · 1 info</p>
+<table><caption>Framework rollup (indicative pass rate over evaluated checks)</caption><thead><tr><th scope="col">Framework</th><th scope="col">Pass</th><th scope="col">Fail</th><th scope="col">Warn</th><th scope="col">N/A</th><th scope="col">Pass rate</th></tr></thead><tbody>
+<tr><th scope="row">GDPR</th><td>5</td><td>0</td><td>1</td><td>9</td><td>91.7%</td></tr>
+<tr><th scope="row">ePrivacy</th><td>0</td><td>0</td><td>0</td><td>4</td><td>n/a</td></tr>
+<tr><th scope="row">CCPA</th><td>1</td><td>0</td><td>1</td><td>1</td><td>75.0%</td></tr>
+<tr><th scope="row">ISO27001</th><td>1</td><td>0</td><td>0</td><td>4</td><td>100.0%</td></tr>
+</tbody></table>
+<table><caption>Control checks with measured evidence</caption><thead><tr><th scope="col">ID</th><th scope="col">Control</th><th scope="col">Status</th><th scope="col">Severity</th><th scope="col">Evidence (measured)</th><th scope="col">Frameworks</th></tr></thead><tbody>
+<tr><th scope="row">GRC-01</th><td>Transport security (HTTPS/HSTS)</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>response headers unavailable (offline fetch skipped)</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-02</th><td>Response header hardening</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>response headers unavailable</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.9 — configuration management</td></tr>
+<tr><th scope="row">GRC-03</th><td>Cookie flag hygiene</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no response headers</td><td>ePrivacy: Art. 5(3) — storage/access equipment; GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-04</th><td>Consent banner present</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan (run with consent_study=true)</td><td>ePrivacy: Art. 5(3) — consent for storage/access; GDPR: Art. 7 — conditions for consent</td></tr>
+<tr><th scope="row">GRC-05</th><td>No processing before consent</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan</td><td>ePrivacy: Art. 5(3) — prior consent; GDPR: Art. 6(1)(a) — lawfulness of processing</td></tr>
+<tr><th scope="row">GRC-06</th><td>Refusal is respected</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan</td><td>ePrivacy: Art. 5(3) — respect of refusal; GDPR: Art. 7(1) — demonstrable consent</td></tr>
+<tr><th scope="row">GRC-07</th><td>Third-party identifier flows</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no identifier observed leaving to a third party in this scan</td><td>GDPR: Art. 5(1)(f) — integrity and confidentiality; GDPR: Art. 28 — processors / contracts; CCPA: §1798.120 — sale/share of personal info</td></tr>
+<tr><th scope="row">GRC-08</th><td>Recipients disclosed in policy</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>policy not fetched for this report</td><td>GDPR: Art. 13 — information provided; CCPA: §1798.100 — notice at collection</td></tr>
+<tr><th scope="row">GRC-09</th><td>Storage technologies disclosed</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>policy not analysed</td><td>GDPR: Art. 13 — information provided</td></tr>
+<tr><th scope="row">GRC-10</th><td>Storage limitation (no respawn)</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no identifier found in both cookies and IndexedDB</td><td>GDPR: Art. 5(1)(e) — storage limitation; ISO27001: A.8.10 — information deletion</td></tr>
+<tr><th scope="row">GRC-11</th><td>No first-party cloaking</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no CNAME cloaking observed on measured flows</td><td>GDPR: Art. 5(1)(a) — fairness and transparency; GDPR: Art. 13 — information provided</td></tr>
+<tr><th scope="row">GRC-12</th><td>Identifiers sent over TLS</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no identifier flows measured</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-13</th><td>Privacy policy available</td><td><span class="status WARN">WARN</span></td><td><span class="sev">low</span></td><td>policy not fetched (or not found) for this report</td><td>GDPR: Art. 13 — information provided; CCPA: §1798.100 — notice at collection</td></tr>
+<tr><th scope="row">GRC-14</th><td>Cross-context sharing review</td><td><span class="status INFO">INFO</span></td><td><span class="sev">—</span></td><td>no cross-site identifier flows observed on this scan</td><td>CCPA: §1798.120 — sharing for cross-context ads; GDPR: Art. 5(1)(b) — purpose limitation</td></tr>
+</tbody></table>
+<h3>Recommendations</h3><ul class="tight">
+<li><strong>GRC-13 Privacy policy available:</strong> Publish a reachable privacy policy at /privacy and re-run the report.</li>
+</ul>
+<p class="sev">Evidence inputs: analysis=yes, consent_study=no, policy=no, response_headers=no.</p>
+</section>
+<section id="findings" aria-labelledby="find-h"><h2 id="find-h">3. Measurement findings</h2><p>Exfiltration events: 0 · third-party flows: 0 · taint flows: 36 · IDB-hook flows: 0 · inflow flows: 0.</p><table><caption>Leaked values with source → sink provenance (raw values clipped to 140 chars + SHA-256:16; showing 36 of 36)</caption><thead><tr><th scope="col">Direction</th><th scope="col">Source</th><th scope="col">Leaked value (+ hash)</th><th scope="col">Sink</th><th scope="col">Mechanism</th><th scope="col">Entity</th><th scope="col">Third party</th><th scope="col">Confidence</th></tr></thead><tbody><tr><td>outflow</td><td>location.href</td><td><span class="leak">https://www.ucsb.edu/</span> <span class="hash">sha256:1b4f2dc879a202a4</span></td><td>a_href → https://www.ucsb.edu/</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">/s/_/ytembeds/_/js/</span> <span class="hash">sha256:1332c52cf5d1cc7c</span></td><td>script_src → https://www.youtube.com/s/_/ytembeds/_/js/</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">ytembeds.base.en_US.T7v-nZD1bH4.2021.O</span> <span class="hash">sha256:dd1eea6cb1f6ea8e</span></td><td>script_src → https://www.youtube.com/embed/ytembeds.base.en_US.T7v-nZD1bH4.2021.O</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">AAAAAAIAYw</span> <span class="hash">sha256:bbc56b1e5de9b3a3</span></td><td>script_src → https://www.youtube.com/embed/AAAAAAIAYw</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">base</span> <span class="hash">sha256:cae662172fd450bb</span></td><td>script_src → https://www.youtube.com/embed/base</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">root</span> <span class="hash">sha256:4813494d137e1631</span></td><td>script_src → https://www.youtube.com/embed/root</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Pf:144</span></td><td><span class="leak">1</span> <span class="hash">sha256:6b86b273ff34fce1</span></td><td>script_src → https://www.youtube.com/embed/1</td><td>taint</td><td>—</td><td>yes</td><td>HIGH</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Xl:383</span></td><td><span class="leak">https</span> <span class="hash">sha256:3e1943522517e813</span></td><td>a_href → https://www.ucsb.edu/https</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Xl:383</span></td><td><span class="leak">www.googletagmanager.com/gtm</span> <span class="hash">sha256:be61a91ab1a0ba0d</span></td><td>a_href → https://www.ucsb.edu/www.googletagmanager.com/gtm</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Xl:383</span></td><td><span class="leak">js</span> <span class="hash">sha256:16cedf80ade01c62</span></td><td>a_href → https://www.ucsb.edu/js</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute <span class="hash">Xl:383</span></td><td><span class="leak">id=GTM-MTKJ2J</span> <span class="hash">sha256:94baa07685676cb2</span></td><td>a_href → https://www.ucsb.edu/id=GTM-MTKJ2J</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">uR:823</span></td><td><span class="leak">https://www.ucsb.edu/</span> <span class="hash">sha256:1b4f2dc879a202a4</span></td><td>a_href → https://www.ucsb.edu/</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">VL:913</span></td><td><span class="leak">https://www.ucsb.edu/</span> <span class="hash">sha256:1b4f2dc879a202a4</span></td><td>a_href → https://www.ucsb.edu/</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">Jq:544</span></td><td><span class="leak">ucsb</span> <span class="hash">sha256:785d72123fc693cb</span></td><td>document.cookie → ucsb</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">Jq:544</span></td><td><span class="leak">edu</span> <span class="hash">sha256:e613bb442bf089c0</span></td><td>document.cookie → edu</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">https</span> <span class="hash">sha256:3e1943522517e813</span></td><td>a_href → https://www.ucsb.edu/https</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">www.googletagmanager.com/gtag/js</span> <span class="hash">sha256:1b3394f476c2c287</span></td><td>a_href → https://www.ucsb.edu/www.googletagmanager.com/gtag/js</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">id=G-E0YR1WN7C7&amp;cx=c&amp;gtm=4e6b91</span> <span class="hash">sha256:404a9dace35511c2</span></td><td>a_href → https://www.ucsb.edu/id=G-E0YR1WN7C7&amp;cx=c&amp;gtm=4e6b91</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.protocol <span class="hash">vT:1051</span></td><td><span class="leak">https%3A</span> <span class="hash">sha256:7768fbd1c1ae6503</span></td><td>fetch.url → https://www.ucsb.edu/https%3A</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">vT:1051</span></td><td><span class="leak">www.ucsb.edu</span> <span class="hash">sha256:c13b27e1715dd624</span></td><td>fetch.url → https://www.ucsb.edu/www.ucsb.edu</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>fetch.text()</td><td><span class="leak">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 67 60&quot; fill=&quot;&quot;&gt;&lt;path d=&quot;M63 14.87a7.885 7.885 0 00-5.56-5.56C52.54 8 32.88 8 32.88 8S13…</span> <span class="hash">sha256:6fa88a20839537ae</span></td><td>innerHTML → &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 67 60&quot; fill=&quot;&quot;&gt;&lt;path d=&quot;M63 14.87a7.885 7.885 0 00-5.56-5.56C52.54 8 32.88 8 32.88 8S13.23 8 8.32 9.31c-2.7.72-4.83 2.85-5.56 5.56C1.45 19.77 1.45 30 1.45 30s0 10.23 1.31 15.13c.72 2.7 2.85 4.83 5.56 5.56C13.23 52 32.88 52 32.88 52s19.66 0 24.56-1.31c2.7-.72 4.83-2.85 5.56-5.56C64.31 40.23 64.31 30 64.31 30s0-10.23-1.31-15.13z&quot;&gt;&lt;/path&gt;&lt;path fill=&quot;#FFF&quot; class=&quot;logo-arrow&quot; d=&quot;M26.6 39.43L42.93 30 26.6 20.57z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">Wn/&lt;:3</span></td><td><span class="leak">https%3A%2F%2Fwww.ucsb.edu%2F</span> <span class="hash">sha256:83b80810f2cba78b</span></td><td>img_src → https://www.ucsb.edu/https%3A%2F%2Fwww.ucsb.edu%2F</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">getRootDomain:1</span></td><td><span class="leak">ucsb.edu</span> <span class="hash">sha256:0f992052c56188a4</span></td><td>document.cookie → ucsb.edu</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">ReportTaintSink:22</span></td><td><span class="leak">https%3A%2F%2Fwww.ucsb.edu%2F</span> <span class="hash">sha256:83b80810f2cba78b</span></td><td>img_src → https://www.ucsb.edu/https%3A%2F%2Fwww.ucsb.edu%2F</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">ae:100</span></td><td><span class="leak">https://www.ucsb.edu/</span> <span class="hash">sha256:1b4f2dc879a202a4</span></td><td>a_href → https://www.ucsb.edu/</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.href <span class="hash">ReportTaintSink:22</span></td><td><span class="leak">https://www.ucsb.edu/</span> <span class="hash">sha256:1b4f2dc879a202a4</span></td><td>a_href → https://www.ucsb.edu/</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">https</span> <span class="hash">sha256:3e1943522517e813</span></td><td>a_href → https://www.ucsb.edu/https</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">www.google-analytics.com/analytics</span> <span class="hash">sha256:a99bd0d6467840e3</span></td><td>a_href → https://www.ucsb.edu/www.google-analytics.com/analytics</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>element.attribute</td><td><span class="leak">js</span> <span class="hash">sha256:16cedf80ade01c62</span></td><td>a_href → https://www.ucsb.edu/js</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>document.cookie <span class="hash">Ca:37</span></td><td><span class="leak">1706010745</span> <span class="hash">sha256:7f137cfb6c71053f</span></td><td>document.cookie → 1706010745</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>document.cookie <span class="hash">Ca:37</span></td><td><span class="leak">1794359883</span> <span class="hash">sha256:9a6cd6410b686f41</span></td><td>document.cookie → 1794359883</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">xa:34</span></td><td><span class="leak">ucsb.edu</span> <span class="hash">sha256:0f992052c56188a4</span></td><td>document.cookie → ucsb.edu</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.protocol <span class="hash">pd:93</span></td><td><span class="leak">https%3A</span> <span class="hash">sha256:7768fbd1c1ae6503</span></td><td>xhr_url → https://www.ucsb.edu/https%3A</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>location.hostname <span class="hash">pd:93</span></td><td><span class="leak">www.ucsb.edu</span> <span class="hash">sha256:c13b27e1715dd624</span></td><td>xhr_url → https://www.ucsb.edu/www.ucsb.edu</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>document.cookie <span class="hash">Ca:37</span></td><td><span class="leak">1706010745</span> <span class="hash">sha256:7f137cfb6c71053f</span></td><td>xhr_url → https://www.ucsb.edu/1706010745</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr><tr><td>outflow</td><td>document.cookie <span class="hash">Ca:37</span></td><td><span class="leak">1794359883</span> <span class="hash">sha256:9a6cd6410b686f41</span></td><td>xhr_url → https://www.ucsb.edu/1794359883</td><td>taint</td><td>—</td><td>no</td><td>MEDIUM</td></tr></tbody></table></section>
+<section id="consent"><h2>4. Consent study</h2><p>No consent study in this scan — run with <code>consent_study=true</code> to measure pre-consent/post-reject behaviour.</p></section>
+<section id="storage" aria-labelledby="storage-h"><h2 id="storage-h">Storage comparison (IDB vs other stores)</h2><table><caption>Identifiers and exfiltration per store</caption><thead><tr><th scope="col">Store</th><th scope="col">Identifiers</th><th scope="col">Exfil events</th><th scope="col">Third-party</th></tr></thead><tbody><tr><th scope="row">caches</th><td>0</td><td>0</td><td>0</td></tr><tr><th scope="row">cookies</th><td>0</td><td>0</td><td>0</td></tr><tr><th scope="row">indexeddb</th><td>4</td><td>0</td><td>0</td></tr><tr><th scope="row">localStorage</th><td>1</td><td>0</td><td>0</td></tr><tr><th scope="row">service_workers</th><td>0</td><td>0</td><td>0</td></tr><tr><th scope="row">sessionStorage</th><td>0</td><td>0</td><td>0</td></tr></tbody></table><p><strong>Respawn candidates:</strong> 0</p></section>
+<section id="writes"><h2>6. Write attribution</h2><p>No write-side instrumentation data in this scan.</p></section>
+<section id="method" aria-labelledby="mth-h"><h2 id="mth-h">7. Methodology &amp; provenance</h2><p>Dynamic measurement: fresh browser context per iteration; IndexedDB/other-store extraction; in-page flow hooks (reads, writes, network sends, responses); Foxhound taint-export capture; transform-aware matching (raw/encode/hash variants) against URL, bodies, all headers and WebSocket frames; PSL + Disconnect entity attribution; best-effort policy and response header collection for GRC checks. Confidence labels and confinement follow the What-Storage paper taxonomy.</p><table><caption>Run metadata (run_meta)</caption><tbody><tr><th scope="row">engine</th><td>foxhound</td></tr><tr><th scope="row">headless</th><td>True</td></tr><tr><th scope="row">iterations</th><td>1</td></tr><tr><th scope="row">consent_study</th><td>False</td></tr><tr><th scope="row">user_agent</th><td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</td></tr><tr><th scope="row">browser_version</th><td>137.0</td></tr><tr><th scope="row">playwright_version</th><td>1.62.0</td></tr><tr><th scope="row">python_version</th><td>3.12.7</td></tr><tr><th scope="row">platform</th><td>Linux-7.1.5+kali-amd64-x86_64-with-glibc2.43</td></tr><tr><th scope="row">taint_tracking_enabled</th><td>True</td></tr><tr><th scope="row">captured_at</th><td>2026-11-11T01:18:06.213644Z</td></tr><tr><th scope="row">foxhound_build_id</th><td>20251126175156</td></tr><tr><th scope="row">foxhound_bin_size</th><td>659240</td></tr></tbody></table><details><summary>Source artifacts</summary><ul class="tight"><li><span class="hash">Web/src/engine/data/scale/results/https___ucsb_edu_634f7b97.json</span></li></ul></details><details><summary>Analysis snapshot (JSON, raw values may appear)</summary><pre>{
+ &quot;domain&quot;: &quot;ucsb.edu&quot;,
+ &quot;url&quot;: &quot;https://ucsb.edu&quot;,
+ &quot;timestamp&quot;: &quot;2026-11-11T01:17:25.872669Z&quot;,
+ &quot;indexeddb_summary&quot;: {
+  &quot;database_count&quot;: 2,
+  &quot;total_records&quot;: 1,
+  &quot;truncated_stores&quot;: 0,
+  &quot;truncated_records&quot;: 0
+ },
+ &quot;dynamic_flows&quot;: {
+  &quot;total&quot;: 36,
+  &quot;taint&quot;: 36,
+  &quot;idb_hook&quot;: 0,
+  &quot;high_confidence&quot;: 6,
+  &quot;medium_confidence&quot;: 30,
+  &quot;low_confidence&quot;: 0,
+  &quot;external&quot;: 6,
+  &quot;tracker_targets&quot;: 6
+ },
+ &quot;flow_classification&quot;: {
+  &quot;outflow_flows&quot;: 36,
+  &quot;inflow_flows&quot;: 0,
+  &quot;internal_flows&quot;: 0,
+  &quot;external_flows&quot;: 0
+ },
+ &quot;exfiltration_summary&quot;: {
+  &quot;total&quot;: 0,
+  &quot;high_confidence&quot;: 0,
+  &quot;medium_confidence&quot;: 0,
+  &quot;low_confidence&quot;: 0
+ }
+}</pre></details></section>
+<section id="limits" aria-labelledby="lim-h"><h2 id="lim-h">8. Limitations</h2><ul class="tight"><li>Automation fingerprint: sites may behave differently under Playwright-driven browsers.</li><li>Single vantage point (one host/region) — regional comparisons require tagged repeat runs.</li><li>HttpOnly cookies are invisible to in-page capture; cookie figures are lower bounds.</li><li>Foxhound does not taint IndexedDB reads; IDB→network provenance comes from the in-page hook layer.</li><li>Policy- and header-based checks are best-effort and may be N/A when the target blocks collection.</li><li>Per-site reports display raw leaked values (clipped) with source/sink provenance — treat them as sensitive personal data; the bulk report contains aggregates only.</li></ul></section>
+</main>
+<footer>
+<div>Report version 1.0 · generator PrivaDB report_html.py ·
+ <strong>sensitive:</strong> this per-site report contains raw leaked
+ values (clipped to 140 chars) with their SHA-256:16 hashes and
+ source/sink provenance — store and share it accordingly.</div>
+<div class="sev">Target: https://ucsb.edu · checks: {&quot;pass&quot;: 3, &quot;fail&quot;: 0, &quot;warn&quot;: 1, &quot;na&quot;: 9, &quot;info&quot;: 1, &quot;risk_score&quot;: 2}</div>
+<div class="disc"><strong>Disclaimer.</strong> This document is an
+indicative technical screening produced by an automated measurement
+tool. It is not a legal certification, audit opinion, or advice from a
+Data Protection Officer. Compliance conclusions must be validated by a
+qualified reviewer.</div>
+</footer>
+</body>
+</html>
