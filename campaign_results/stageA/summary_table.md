@@ -2,14 +2,14 @@
 
 Progress: **4132/10000** terminal (4131 done, 1 failed) · running/pending: 5868
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T17:59:34+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T18:29:39+00:00
 
 | metric | total |
 |---|---:|
 | taint flows | 690602 |
 | storage exfils | 806142 |
-| IndexedDB databases | 2813 |
-| IndexedDB records | 9161 |
+| IndexedDB databases | 2815 |
+| IndexedDB records | 9236 |
 | exfil events | 13754 |
 | idb-hook flows | 2775 |
 | §4.1 confirmed identities (Stage B only) | 0 |
@@ -51,8 +51,8 @@ Sites with IndexedDB records (mission scope):
 | cnnbrasil.com.br | 98 |
 | rian.ru | 96 |
 | vice.com | 88 |
+| qq.com | 86 |
 | tomshardware.com | 84 |
-| index.hr | 78 |
 
 Failed sites (1): youtube.com
 
