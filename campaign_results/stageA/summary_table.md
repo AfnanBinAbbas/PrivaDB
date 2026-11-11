@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4304/10000** terminal (4268 done, 36 failed) · running/pending: 5696
+Progress: **4448/10000** terminal (4412 done, 36 failed) · running/pending: 5552
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T21:31:03+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T22:01:19+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 725909 |
-| storage exfils | 854600 |
-| IndexedDB databases | 3197 |
-| IndexedDB records | 10027 |
-| exfil events | 16021 |
-| idb-hook flows | 3454 |
+| taint flows | 742632 |
+| storage exfils | 884301 |
+| IndexedDB databases | 3297 |
+| IndexedDB records | 10409 |
+| exfil events | 16603 |
+| idb-hook flows | 3597 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -46,13 +46,13 @@ Sites with IndexedDB records (mission scope):
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
+| index.hu | 158 |
 | speedtest.net | 136 |
 | globalnews.ca | 126 |
 | newscientist.com | 120 |
+| pin.it | 104 |
 | ria.ru | 100 |
 | cnnbrasil.com.br | 98 |
-| rian.ru | 96 |
-| chicagotribune.com | 92 |
 
 Failed sites (36): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
 
