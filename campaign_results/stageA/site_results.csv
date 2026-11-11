@@ -1751,8 +1751,8 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 265,charter.net,done,1,0,0,0,0,0,0,0,0
 9403,chartink.com,pending,0,,,,,,,,
 3223,chase.com,done,1,0,0,0,0,0,228,0,560
-115,chatgpt.com,pending,1,,,,,,,,
-367,chatgpt.site,pending,1,,,,,,,,
+115,chatgpt.com,done,2,0,0,0,0,0,21,0,0
+367,chatgpt.site,running,2,,,,,,,,
 961,chaturbate.com,done,1,0,0,0,0,0,0,0,0
 7175,chavesnamao.com.br,pending,0,,,,,,,,
 2182,check24.de,done,1,0,0,0,0,0,18,0,60
@@ -3373,7 +3373,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6816,gamoshi.io,pending,0,,,,,,,,
 9732,ganamosonline.com,pending,0,,,,,,,,
 477,gandi-ns.fr,done,1,0,0,0,0,0,0,0,0
-64,gandi.net,pending,1,,,,,,,,
+64,gandi.net,done,2,0,0,0,0,0,29,0,30
 2427,gannett-dns.com,done,1,0,0,0,0,0,0,0,0
 5657,gao.gov,pending,0,,,,,,,,
 4932,gaohuaassetmanagement.cn,pending,0,,,,,,,,
@@ -8258,7 +8258,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8768,tanishq.co.in,pending,0,,,,,,,,
 3810,tanium.com,done,1,0,0,0,0,0,372,0,1455
 4656,taoa.com,pending,0,,,,,,,,
-454,taobao.com,pending,1,,,,,,,,
+454,taobao.com,running,2,,,,,,,,
 1575,tapad.com,done,1,0,0,0,0,0,78,0,40
 7139,tapology.com,pending,0,,,,,,,,
 1844,tappx.com,done,1,0,0,0,0,0,2,0,3
