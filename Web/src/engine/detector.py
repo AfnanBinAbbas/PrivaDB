@@ -920,8 +920,14 @@ def parse_taint_flows(events: list, site_domain: str,
                 sink, (sink, "EXTERNAL")
             )
 
-            # 1P/3P classification of the sink target
-            req_domain = urlparse(target).netloc if target else ""
+            # 1P/3P classification of the sink target.
+            # Live taint targets include malformed hosts (bracketed
+            # garbage like http://[2018-06-01]/…) — urlparse raises on
+            # those; one bad flow must not fail the whole site attempt.
+            try:
+                req_domain = urlparse(target).netloc if target else ""
+            except Exception:
+                continue
             is_3p = bool(req_domain) and not _is_same_party(site_domain, req_domain)
             is_tracker = _is_known_tracker(req_domain) if req_domain else False
 
@@ -1068,7 +1074,12 @@ def analyze_idb_hook_flows(hooks: dict, network_requests: list[dict],
 
         for snd in matched_sends:
             s_url = snd.get("url", "") or ""
-            req_domain = urlparse(s_url).netloc
+            # Hook-supplied URLs can be malformed (page-controlled) —
+            # never let urlparse kill the site analysis.
+            try:
+                req_domain = urlparse(s_url).netloc
+            except Exception:
+                continue
             is_3p = bool(req_domain) and not _is_same_party(site_domain, req_domain)
             is_tracker = _is_known_tracker(req_domain) if req_domain else False
 
@@ -1259,7 +1270,10 @@ def analyze_idb_writes(hooks: dict, site_domain: str,
         })
 
         if matched_url:
-            req_dom = urlparse(matched_url).netloc if matched_url else ""
+            try:
+                req_dom = urlparse(matched_url).netloc
+            except Exception:
+                req_dom = ""
             # Response may be same-origin (API call) — still inflow if data
             # physically arrived from the network.
             is_3p_resp = bool(req_dom) and not _is_same_party(site_domain, req_dom)
@@ -1331,7 +1345,10 @@ def synthesize_network_from_hooks(site_data: dict) -> list[dict]:
         for snd in hooks.get("sends") or []:
             url = str(snd.get("url") or "")
             if not url.startswith(("http://", "https://")):
-                url = urljoin(site_data.get("url") or "", url)
+                try:
+                    url = urljoin(site_data.get("url") or "", url)
+                except Exception:
+                    continue
             if not url.startswith(("http://", "https://")):
                 continue
             if url not in grouped:
