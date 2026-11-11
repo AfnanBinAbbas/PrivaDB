@@ -9232,7 +9232,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5032,viglink.com,pending,0,,,,,,,,
 3602,vigo.tech,done,1,0,0,0,0,0,39,0,3
 8887,viki.com,pending,0,,,,,,,,
-87,vimeo.com,done,1,4,5,54,0,47,44,0,78
+87,vimeo.com,done,1,2,2,54,0,47,44,0,78
 2597,vimeocdn.com,done,1,0,0,0,0,0,0,0,0
 4484,vinted.co.uk,pending,0,,,,,,,,
 2029,vinted.com,done,1,4,24,24,0,0,194,0,199
