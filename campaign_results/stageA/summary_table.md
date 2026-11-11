@@ -1,15 +1,15 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4122/10000** terminal (4121 done, 1 failed) · running/pending: 5878
+Progress: **4126/10000** terminal (4121 done, 5 failed) · running/pending: 5874
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T14:43:33+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 50 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T14:52:08+00:00
 
 | metric | total |
 |---|---:|
 | taint flows | 686320 |
 | storage exfils | 800862 |
-| IndexedDB databases | 2768 |
-| IndexedDB records | 8810 |
+| IndexedDB databases | 2807 |
+| IndexedDB records | 9128 |
 | exfil events | 13754 |
 | idb-hook flows | 2774 |
 | §4.1 confirmed identities (Stage B only) | 0 |
@@ -43,6 +43,7 @@ Sites with IndexedDB records (mission scope):
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
+| dropbox.com | 140 |
 | speedtest.net | 136 |
 | globalnews.ca | 126 |
 | newscientist.com | 120 |
@@ -50,11 +51,10 @@ Sites with IndexedDB records (mission scope):
 | cnnbrasil.com.br | 98 |
 | rian.ru | 96 |
 | vice.com | 88 |
+| pinterest.com | 88 |
 | tomshardware.com | 84 |
-| index.hr | 78 |
-| businessinsider.com | 75 |
 
-Failed sites (1): youtube.com
+Failed sites (5): youtube.com, microsoft.com, bing.com, youtu.be, gandi.net
 
 Full per-site counts: `site_results.csv` · job store: `store_stageA.jsonl` (resumable) · per-site reports (IDB-active sites): `reports/` · aggregate: `bulk_stageA.html` (every 1000 completions).
 
