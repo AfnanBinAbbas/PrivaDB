@@ -5033,7 +5033,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3253,linenshorts.ru,done,1,0,0,0,0,0,0,0,0
 5366,linewize.net,pending,0,,,,,,,,
 6437,link.me,pending,0,,,,,,,,
-17,linkedin.com,done,1,4,2,0,0,0,27,0,88
+17,linkedin.com,done,1,2,2,0,0,0,27,0,88
 9839,linklist.bio,pending,0,,,,,,,,
 1742,linkmake.in,done,1,0,0,0,0,0,23,0,10
 6531,linkplay.com,pending,0,,,,,,,,
@@ -6630,7 +6630,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8621,pink.rs,pending,0,,,,,,,,
 6899,pinklion.io,pending,0,,,,,,,,
 6104,pinterest.co.uk,pending,0,,,,,,,,
-54,pinterest.com,done,1,4,88,484,0,52,15,0,50
+54,pinterest.com,done,1,4,74,484,0,52,15,0,50
 9517,pinterest.de,pending,0,,,,,,,,
 4520,pinterest.net,pending,0,,,,,,,,
 8397,piojm.tech,pending,0,,,,,,,,
