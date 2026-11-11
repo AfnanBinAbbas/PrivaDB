@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **4570/10000** terminal (4534 done, 36 failed) · running/pending: 5430
+Progress: **4703/10000** terminal (4667 done, 36 failed) · running/pending: 5297
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T22:31:25+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-11T23:01:31+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 788124 |
-| storage exfils | 914621 |
-| IndexedDB databases | 3358 |
-| IndexedDB records | 10488 |
-| exfil events | 17046 |
-| idb-hook flows | 3826 |
+| taint flows | 811140 |
+| storage exfils | 951094 |
+| IndexedDB databases | 3570 |
+| IndexedDB records | 10946 |
+| exfil events | 17287 |
+| idb-hook flows | 4009 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -43,16 +43,16 @@ Sites with IndexedDB records (mission scope):
 | kooora.com | 230 |
 | bell-labs.com | 193 |
 | dropbox.com | 187 |
+| popsci.com | 180 |
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
 | index.hu | 158 |
 | speedtest.net | 136 |
+| barrons.com | 132 |
 | globalnews.ca | 126 |
 | newscientist.com | 120 |
 | pin.it | 104 |
-| ria.ru | 100 |
-| cnnbrasil.com.br | 98 |
 
 Failed sites (36): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
 
