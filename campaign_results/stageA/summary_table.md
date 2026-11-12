@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **5927/10000** terminal (5891 done, 36 failed) · running/pending: 4073
+Progress: **6063/10000** terminal (6027 done, 36 failed) · running/pending: 3937
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T03:32:44+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T04:02:52+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 1051579 |
-| storage exfils | 1251116 |
-| IndexedDB databases | 4513 |
-| IndexedDB records | 13127 |
-| exfil events | 20305 |
-| idb-hook flows | 6427 |
+| taint flows | 1078146 |
+| storage exfils | 1278683 |
+| IndexedDB databases | 4601 |
+| IndexedDB records | 13259 |
+| exfil events | 20574 |
+| idb-hook flows | 6863 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -30,9 +30,9 @@ Top sites by taint flows:
 | posthog.com | 8481 |
 | zoho.eu | 8434 |
 | hostgator.com.br | 7160 |
+| iqiyipic.com | 6871 |
 | norton.com | 6599 |
 | royalcaribbean.com | 5433 |
-| tradeinn.com | 5321 |
 
 Sites with IndexedDB records (mission scope):
 
