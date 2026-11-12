@@ -1,6 +1,6 @@
 rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil,taint,idb_hook,storage_exfil
 4860,0123tt.ru,done,1,0,0,0,0,0,1,0,0
-6840,029whhg.com,pending,0,,,,,,,,
+6840,029whhg.com,done,1,0,0,0,0,0,0,0,0
 9602,0lin.com,pending,0,,,,,,,,
 710,0xrpc.io,done,1,0,0,0,0,0,0,0,0
 5003,100.app,done,1,0,0,0,0,0,0,0,0
@@ -44,7 +44,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1883,1password.com,done,1,0,0,0,0,0,72,0,293
 5654,1password.eu,done,1,0,0,0,0,0,84,0,313
 8831,1porn.tv,pending,0,,,,,,,,
-6739,1rpc.io,pending,0,,,,,,,,
+6739,1rpc.io,done,1,2,1,0,0,0,31,0,145
 778,1rx.io,done,1,0,0,0,0,0,0,0,0
 6074,1tv.ru,done,1,0,0,0,0,0,867,0,313
 3988,1und1.de,permanent_failed,3,,,,,,,,
@@ -214,7 +214,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6447,academy.com,done,1,0,0,0,0,0,1778,0,2889
 4648,acast.com,done,1,6,0,0,0,0,166,0,29
 2595,accenture.com,done,1,0,0,0,0,0,121,0,0
-6751,accompany.com,pending,0,,,,,,,,
+6751,accompany.com,done,1,0,0,0,0,0,60,0,15
 2721,accor.com,done,1,0,0,0,0,0,54,0,138
 8933,account.gov.uk,pending,0,,,,,,,,
 646,accuweather.com,done,1,5,65,330,0,5,189,46,64
@@ -299,7 +299,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7071,adminml.com,pending,0,,,,,,,,
 5112,admixer.net,done,1,0,0,0,0,0,153,0,832
 2827,admob.com,done,1,0,0,0,0,0,226,0,15
-6737,adnxs-simple.com,pending,0,,,,,,,,
+6737,adnxs-simple.com,done,1,0,0,0,0,0,0,0,0
 403,adnxs.com,done,1,0,0,0,0,0,0,0,0
 2832,adnxs.net,done,1,0,0,0,0,0,0,0,0
 63,adobe.com,done,1,0,0,0,0,0,1621,0,479
@@ -440,7 +440,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7069,albumoftheyear.org,pending,0,,,,,,,,
 2891,alchemer.com,done,1,0,0,0,0,0,369,0,828
 7331,alchemy.com,pending,0,,,,,,,,
-6738,alcmpn.com,pending,0,,,,,,,,
+6738,alcmpn.com,done,1,0,0,0,0,0,0,0,0
 9416,alerts.in.ua,pending,0,,,,,,,,
 5202,alexa.com,done,1,0,0,0,0,0,53,0,116
 2983,alfabank.ru,done,1,1,1,1,0,0,24,0,22
@@ -632,7 +632,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1653,anybunny.org,done,1,0,0,0,0,0,0,0,0
 706,anydesk.com,done,1,0,0,0,0,0,27,0,0
 6192,anyrtb.com,done,1,0,0,0,0,0,0,0,0
-6803,anysex.com,pending,0,,,,,,,,
+6803,anysex.com,done,1,0,0,0,0,0,0,0,0
 7699,anzu-us.com,pending,0,,,,,,,,
 9731,aoglonass.ru,pending,0,,,,,,,,
 7324,aok.de,pending,0,,,,,,,,
@@ -676,7 +676,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 915,appcenter.ms,done,1,0,0,0,0,0,7,0,20
 5357,appcpi.net,done,1,0,0,0,0,0,0,0,0
 8307,appcues.net,pending,0,,,,,,,,
-6790,appdomain.cloud,pending,0,,,,,,,,
+6790,appdomain.cloud,done,1,0,0,0,0,0,0,0,0
 4736,appdome.com,done,1,2,0,0,0,0,100,0,389
 6065,appdynamics.com,done,1,0,0,0,0,0,61,0,0
 4140,appfolio.com,done,1,0,0,0,0,0,320,0,518
@@ -702,7 +702,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6573,appsheet.com,done,1,0,0,0,0,0,55,0,2
 839,appspot.com,done,1,0,0,0,0,0,13,0,0
 4562,apptentive.com,done,1,0,0,0,0,0,368,0,1268
-6836,apptimize.com,pending,0,,,,,,,,
+6836,apptimize.com,done,1,15,5,0,0,0,213,0,261
 2818,apptracer.ru,done,1,0,0,0,0,0,13,1,72
 4770,aps.org,done,1,0,0,0,0,0,174,0,0
 6425,aptoide.com,done,1,0,0,0,0,0,184,0,668
@@ -824,7 +824,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1161,att.net,done,1,0,0,0,0,0,0,0,0
 8824,attacheatableoverlabor.com,pending,0,,,,,,,,
 6060,attdns.com,done,1,0,0,0,0,0,0,0,0
-6742,attentivemobile.com,pending,0,,,,,,,,
+6742,attentivemobile.com,done,1,5,0,0,0,0,151,0,5
 6898,attheraces.com,pending,0,,,,,,,,
 908,attn.tv,done,1,0,0,0,0,0,0,0,0
 9193,atv.com.tr,pending,0,,,,,,,,
@@ -977,7 +977,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3428,awsdns-54.com,done,1,0,0,0,0,0,0,0,0
 3757,awsdns-55.com,done,1,0,0,0,0,0,0,0,0
 3731,awsdns-56.com,done,1,0,0,0,0,0,0,0,0
-6779,awsdns-56.net,pending,0,,,,,,,,
+6779,awsdns-56.net,done,1,0,0,0,0,0,0,0,0
 3529,awsdns-57.com,done,1,0,0,0,0,0,0,0,0
 8676,awsdns-57.net,pending,0,,,,,,,,
 3643,awsdns-58.com,done,1,0,0,0,0,0,0,0,0
@@ -1056,7 +1056,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7265,baltimoresun.com,pending,0,,,,,,,,
 9103,bama.ir,pending,0,,,,,,,,
 6637,bamboohr.com,done,1,0,0,0,0,0,678,0,278
-6819,bambulab.com,pending,0,,,,,,,,
+6819,bambulab.com,done,1,0,0,0,0,0,232,0,357
 5150,bambuser.com,done,1,0,0,0,0,0,255,0,262
 651,bamgrid.com,done,1,0,0,0,0,0,0,0,0
 4031,banahosting.com,done,1,0,0,0,0,0,15,0,0
@@ -1072,7 +1072,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4843,bangcdn.net,done,1,0,0,0,0,0,0,0,0
 9590,banglachotikahinii.com,pending,0,,,,,,,,
 9070,bangumi.org,pending,0,,,,,,,,
-6767,bank.in,pending,0,,,,,,,,
+6767,bank.in,done,1,0,0,0,0,0,0,0,0
 4118,banki.ru,done,1,0,0,0,0,0,213,2,1037
 6663,bankier.pl,pending,1,,,,,,,,
 906,bankofamerica.com,done,2,4,0,0,0,0,637,0,512
@@ -1110,7 +1110,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1496,bblaa.com,done,1,0,0,0,0,0,0,0,0
 8615,bbox.fr,pending,0,,,,,,,,
 8275,bbtec.net,pending,0,,,,,,,,
-6805,bbva.mx,pending,0,,,,,,,,
+6805,bbva.mx,done,1,0,0,0,0,0,356,0,4482
 7890,bc.edu,pending,0,,,,,,,,
 9317,bcdnx.com,pending,0,,,,,,,,
 4034,bcebos.com,done,1,0,0,0,0,0,0,0,0
@@ -1135,7 +1135,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1428,beeg.porn,done,1,0,0,0,0,0,0,0,0
 5614,beehiiv.com,done,1,0,0,0,0,0,3,0,0
 1853,beeline.ru,done,2,1,1,2,0,27,1205,4,1224
-6817,beforward.jp,pending,0,,,,,,,,
+6817,beforward.jp,done,1,0,0,0,0,0,59,0,770
 2397,beget.com,done,1,1,0,0,0,0,7,0,74
 698,beget.ru,done,1,1,0,0,0,0,7,0,74
 6629,beget.tech,done,1,0,0,0,0,0,0,0,0
@@ -1250,7 +1250,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4820,bingapis.com,done,1,0,0,0,0,0,0,0,0
 1639,bingoplus.com,done,1,0,0,0,0,0,2,0,0
 8841,bingx.com,pending,0,,,,,,,,
-6829,biobiochile.cl,pending,0,,,,,,,,
+6829,biobiochile.cl,done,1,0,0,0,0,0,166,0,1824
 7942,biography.com,pending,0,,,,,,,,
 9438,biomaze.ir,pending,0,,,,,,,,
 1424,biomedcentral.com,done,1,0,0,0,0,0,11,0,17
@@ -1303,7 +1303,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5338,bleacherreport.com,done,1,0,0,0,0,0,643,0,1724
 4533,bleepingcomputer.com,done,1,0,0,0,0,0,4,0,0
 4106,blender.org,done,1,0,0,0,0,0,18,0,0
-6796,blesk.cz,pending,0,,,,,,,,
+6796,blesk.cz,done,1,0,0,0,0,0,165,0,90
 1425,blic.rs,done,1,0,0,0,0,0,293,0,188
 5082,blick.ch,done,1,0,0,0,0,0,50,0,0
 7872,blikk.hu,pending,0,,,,,,,,
@@ -1376,7 +1376,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5319,bookshop.org,done,1,0,0,0,0,0,1458,0,0
 8949,booksy.com,pending,0,,,,,,,,
 4659,boomplaymusic.com,done,1,0,0,0,0,0,62,0,146
-6842,boomtrain.com,pending,0,,,,,,,,
+6842,boomtrain.com,done,1,0,0,0,0,0,0,0,0
 7672,boosty.to,pending,0,,,,,,,,
 5213,booth.pm,done,1,3,45,36,0,8,146,2,66
 2116,bootstrapcdn.com,done,1,0,0,0,0,0,20,0,0
@@ -1473,7 +1473,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7276,btinternet.com,pending,0,,,,,,,,
 994,btloader.com,done,1,0,0,0,0,0,0,0,0
 3287,bttrack.com,done,1,0,0,0,0,0,0,0,0
-6815,btttag.com,pending,0,,,,,,,,
+6815,btttag.com,done,1,0,0,0,0,0,30,0,37
 3040,bu.edu,done,1,0,0,0,0,0,98,0,157
 9567,bucetaflix.com,pending,0,,,,,,,,
 9428,buchstaben.com,pending,0,,,,,,,,
@@ -1567,7 +1567,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8685,cairn.info,pending,0,,,,,,,,
 6200,caissedesdepots.fr,done,1,0,0,0,0,0,0,0,13
 986,caixa.gov.br,done,1,0,0,0,0,0,67,0,865
-6741,cal.com,pending,0,,,,,,,,
+6741,cal.com,done,1,0,0,0,0,0,11,0,0
 3022,calameo.com,done,1,0,0,0,0,0,131,0,22
 7765,calciomercato.com,pending,0,,,,,,,,
 1351,calculator.net,done,1,0,0,0,0,0,0,0,3
@@ -1823,7 +1823,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1494,cityheaven.net,done,1,0,0,0,0,0,0,0,0
 9362,civitai.com,pending,0,,,,,,,,
 4822,ck-ie.com,done,1,0,0,0,0,0,0,0,0
-6838,clamav.net,pending,0,,,,,,,,
+6838,clamav.net,done,1,0,0,0,0,0,42,0,42
 4916,clara.net,done,1,0,0,0,0,0,0,0,0
 1156,clarin.com,done,1,40,70,60,0,0,1968,0,7809
 346,clarity.ms,done,1,0,0,0,0,0,0,0,0
@@ -1834,7 +1834,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9585,clashofclans-layouts.com,pending,0,,,,,,,,
 9932,clashofclans.com,pending,0,,,,,,,,
 8131,clasohlson.com,pending,0,,,,,,,,
-6794,claspws.tv,pending,0,,,,,,,,
+6794,claspws.tv,done,1,0,0,0,0,0,0,0,0
 4704,classdojo.com,done,1,0,0,0,0,0,163,0,83
 9531,classificadosx.net,pending,0,,,,,,,,
 939,classlink.com,done,1,0,0,0,0,0,114,0,17
@@ -1843,7 +1843,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1805,claudeusercontent.com,done,1,0,0,0,0,0,35,0,97
 9021,clave.gob.es,pending,0,,,,,,,,
 9244,claveunica.gob.cl,pending,0,,,,,,,,
-6809,clck.ru,pending,0,,,,,,,,
+6809,clck.ru,done,1,0,0,0,0,0,8,0,9
 3626,cldin.eu,done,1,2,2,0,0,0,435,0,111
 3881,clean.gg,done,1,0,0,0,0,0,0,0,0
 9154,cleantalk.org,pending,0,,,,,,,,
@@ -1876,7 +1876,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 41,cloud.microsoft,done,1,0,0,0,0,0,52,0,12
 4138,cloud.sap,done,1,0,0,0,0,0,1183,0,2935
 6195,cloud86.nl,done,1,0,0,0,0,0,73,0,1
-6747,cloudamqp.com,pending,0,,,,,,,,
+6747,cloudamqp.com,done,1,0,0,0,0,0,38,0,148
 3093,cloudapp.net,done,1,0,0,0,0,0,0,0,0
 3722,cloudappsecurity.com,done,1,0,0,0,0,0,602,0,1730
 5233,cloudbackup.management,done,1,0,0,0,0,0,0,0,0
@@ -1922,7 +1922,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7148,cnbcindonesia.com,pending,0,,,,,,,,
 4574,cnblogs.com,done,1,0,0,0,0,0,49,0,134
 755,cnet.com,done,1,17,17,34,0,0,501,0,1821
-6778,cnews.fr,pending,0,,,,,,,,
+6778,cnews.fr,done,1,0,0,0,0,0,4,0,0
 2561,cnil.fr,done,1,0,0,0,0,0,10,0,113
 4650,cnki.net,done,1,0,0,0,0,0,14,0,140
 7357,cnmsn.net,pending,0,,,,,,,,
@@ -2186,11 +2186,11 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6042,d-53.jp,done,1,0,0,0,0,0,0,0,0
 9311,d-deltanet.com,pending,0,,,,,,,,
 4986,d-net.pro,done,1,0,0,0,0,0,0,0,0
-6776,d-zone.ca,pending,0,,,,,,,,
+6776,d-zone.ca,done,1,0,0,0,0,0,375,0,633
 8867,d21.team,pending,0,,,,,,,,
 9243,d2jsp.org,pending,0,,,,,,,,
 9278,d4swing.com,pending,0,,,,,,,,
-6760,dafiti.com.br,pending,0,,,,,,,,
+6760,dafiti.com.br,done,1,0,0,0,0,0,0,0,0
 1174,dafont.com,done,1,0,0,0,0,0,48,0,235
 1368,dagbladet.no,done,1,0,0,0,0,0,161,0,571
 7928,dagospia.com,pending,0,,,,,,,,
@@ -2217,7 +2217,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9829,darknaija.com,pending,0,,,,,,,,
 8299,darknessporn.com,pending,0,,,,,,,,
 4780,dartmouth.edu,done,1,6,1,2,0,0,165,1,447
-6726,darty.com,running,1,,,,,,,,
+6726,darty.com,done,1,0,0,0,0,0,175,0,232
 9335,dashapi.com,pending,0,,,,,,,,
 5175,dashlane.com,done,1,0,0,0,0,0,294,0,894
 667,dashnxdomain.net,done,1,0,0,0,0,0,0,0,0
@@ -2351,7 +2351,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9399,dhlottery.co.kr,pending,0,,,,,,,,
 6330,dhnet.be,done,1,4,44,12,0,8,281,6,250
 2565,dhs.gov,done,1,0,0,0,0,0,0,0,0
-6724,di.se,running,1,,,,,,,,
+6724,di.se,done,1,0,0,0,0,0,14,0,28
 9407,diabetes.org,pending,0,,,,,,,,
 6867,dialmyapp.com,pending,0,,,,,,,,
 6605,diamond.jp,done,1,2,1,2,0,0,194,1,220
@@ -2552,7 +2552,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2796,douyinpic.com,done,1,0,0,0,0,0,0,0,0
 1291,douyinvod.com,done,1,0,0,0,0,0,0,0,0
 8508,doviz.com,pending,0,,,,,,,,
-6780,dowjones.io,pending,0,,,,,,,,
+6780,dowjones.io,done,1,0,0,0,0,0,0,0,0
 1758,downloadpage.xyz,done,1,0,0,0,0,0,0,0,0
 9624,downloadwella.com,pending,0,,,,,,,,
 4322,doxygen.org,done,1,0,0,0,0,0,110,0,130
@@ -2667,7 +2667,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1646,easytrader.ir,done,1,0,0,0,0,0,23,0,252
 6887,eater.com,pending,0,,,,,,,,
 4817,eatingwell.com,done,1,0,0,0,0,0,3,0,0
-6828,eaton.com,pending,0,,,,,,,,
+6828,eaton.com,done,1,0,0,0,0,0,261,0,433
 9903,eb.mil.br,pending,0,,,,,,,,
 9781,ebalovo.click,pending,0,,,,,,,,
 4394,ebay.ca,done,1,0,0,0,0,0,55,0,12
@@ -2738,7 +2738,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9479,egysex6.com,pending,0,,,,,,,,
 7875,ehow.com,pending,0,,,,,,,,
 4005,eia.gov,done,1,0,0,0,0,0,13,0,50
-6812,eiga.com,pending,0,,,,,,,,
+6812,eiga.com,done,1,0,0,0,0,0,136,0,474
 4757,eitaa.com,done,1,0,0,0,0,0,8,0,0
 5694,eitaa.ir,done,1,0,0,0,0,0,8,0,0
 3912,ekatox.com,done,1,0,0,0,0,0,20,0,0
@@ -3108,7 +3108,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4889,finam.ru,done,1,3,4,4,0,7,35,3,36
 6642,financialcontent.com,done,1,0,0,0,0,0,112,0,130
 8315,financialexpress.com,pending,0,,,,,,,,
-6793,finanzen.net,pending,0,,,,,,,,
+6793,finanzen.net,done,1,0,0,0,0,0,0,0,1
 3959,findagrave.com,done,1,0,0,0,0,0,274,0,0
 4257,findlaw.com,done,1,0,0,0,0,0,204,0,298
 4677,findmykids.org,done,1,0,0,0,0,0,50,0,268
@@ -3125,7 +3125,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9105,fireoscaptiveportal.com,pending,0,,,,,,,,
 412,firetvcaptiveportal.com,done,1,0,0,0,0,0,0,0,0
 5763,firstbytedns.net,done,1,0,0,0,0,0,0,0,0
-6800,firstbytedns.ru,pending,0,,,,,,,,
+6800,firstbytedns.ru,done,1,0,0,0,0,0,0,0,0
 9120,firstpost.com,pending,0,,,,,,,,
 4072,firstvds.ru,permanent_failed,3,,,,,,,,
 2713,firwinds.site,done,1,0,0,0,0,0,0,0,0
@@ -3185,7 +3185,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3000,foggymorningmist.com,done,1,0,0,0,0,0,0,0,0
 9938,fojik.com,pending,0,,,,,,,,
 9878,fojik.site,pending,0,,,,,,,,
-6732,fon.bet,pending,0,,,,,,,,
+6732,fon.bet,done,1,1,1,1,0,0,0,0,8
 717,fontawesome.com,done,1,2,2,0,0,0,79,0,389
 8219,foodandwine.com,pending,0,,,,,,,,
 3129,foodnetwork.com,done,1,0,0,0,0,0,268,0,18
@@ -3275,9 +3275,9 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4897,freetype.org,done,1,0,0,0,0,0,4,0,0
 9550,freevideo.cz,pending,0,,,,,,,,
 1607,freewebnovel.com,done,1,0,0,0,0,0,21,0,8
-6830,freewebs.com,pending,0,,,,,,,,
+6830,freewebs.com,done,1,0,0,0,0,0,386,0,2796
 2199,freilassing.ru,done,1,0,0,0,0,0,0,0,0
-6774,fresha.com,pending,0,,,,,,,,
+6774,fresha.com,done,1,2,2,0,0,0,363,0,1555
 4464,freshchat.com,done,1,0,0,0,0,0,0,0,0
 3028,freshdesk.com,done,1,0,0,0,0,0,707,0,789
 7078,freshservice.com,pending,0,,,,,,,,
@@ -3287,7 +3287,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8355,frhiys.com,pending,0,,,,,,,,
 8258,friv.com,pending,0,,,,,,,,
 8040,fronius.com,pending,0,,,,,,,,
-6736,frontapp.com,pending,0,,,,,,,,
+6736,frontapp.com,done,1,0,0,0,0,0,370,0,1450
 7111,frontiernet.net,pending,0,,,,,,,,
 873,frontiersin.org,done,1,0,0,0,0,0,274,0,307
 7446,fsapi.com,pending,0,,,,,,,,
@@ -3310,7 +3310,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9867,fulldesisex.com,pending,0,,,,,,,,
 8875,fullhdfilmizlesene.now,pending,0,,,,,,,,
 2934,fullstory.com,done,1,0,0,0,0,0,382,0,1
-6754,fullxh.com,pending,0,,,,,,,,
+6754,fullxh.com,done,1,0,0,0,0,0,0,0,0
 6354,funda.nl,done,1,0,0,0,0,0,65,0,49
 1896,funinexch.com,done,1,0,0,0,0,0,37,0,8
 6302,funnyjunk.com,done,1,0,0,0,0,0,312,0,796
@@ -3318,7 +3318,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6184,funplus.com,done,1,0,0,0,0,0,106,0,179
 1569,fuq.com,done,1,0,0,0,0,0,0,0,0
 1244,furaffinity.net,done,1,0,0,0,0,0,0,0,0
-6839,furusato-tax.jp,pending,0,,,,,,,,
+6839,furusato-tax.jp,done,1,8,4,16,0,414,1060,2,6604
 5267,furycloud.io,done,1,0,0,0,0,0,0,0,0
 9188,fuse.net,pending,0,,,,,,,,
 8708,fusion-platform.com,pending,0,,,,,,,,
@@ -3370,7 +3370,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8561,gaming-sdk.com,pending,0,,,,,,,,
 3848,gamma.app,done,1,0,0,0,0,0,532,0,0
 9156,gammaplatform.com,pending,0,,,,,,,,
-6816,gamoshi.io,pending,0,,,,,,,,
+6816,gamoshi.io,done,1,0,0,0,0,0,0,0,0
 9732,ganamosonline.com,pending,0,,,,,,,,
 477,gandi-ns.fr,done,1,0,0,0,0,0,0,0,0
 64,gandi.net,done,2,0,0,0,0,0,29,0,30
@@ -3458,7 +3458,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2788,getpocket.com,done,1,0,0,0,0,0,0,0,0
 6010,getpostman.com,done,1,0,0,0,0,0,494,0,1235
 6194,getpublica.com,done,1,0,0,0,0,0,114,0,8
-6823,getredo.com,pending,0,,,,,,,,
+6823,getredo.com,done,1,2,0,0,0,0,98,0,181
 7637,getresponse.com,pending,0,,,,,,,,
 9734,getscreen.me,pending,0,,,,,,,,
 7063,getty.edu,pending,0,,,,,,,,
@@ -3709,7 +3709,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8117,googlecode.com,pending,0,,,,,,,,
 70,googledomains.com,done,1,0,0,0,0,0,0,0,0
 3883,googlehosted.com,done,1,0,0,0,0,0,0,0,0
-6786,googlemail.com,pending,0,,,,,,,,
+6786,googlemail.com,done,1,0,0,0,0,0,16,0,0
 7505,googlepages.com,pending,0,,,,,,,,
 2912,googlesource.com,done,1,1,1,0,0,0,46,5,20
 53,googlesyndication.com,done,1,0,0,0,0,0,73,0,57
@@ -3751,7 +3751,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8976,gradescope.com,pending,0,,,,,,,,
 2339,grafana.com,done,1,0,0,0,0,0,25,0,89
 3149,grafana.net,done,1,0,0,0,0,0,177,0,164
-6743,grainger.com,pending,0,,,,,,,,
+6743,grainger.com,done,1,0,0,0,0,0,6,0,5
 309,grammarly.com,done,1,0,0,0,0,0,265,0,1925
 366,grammarly.io,done,1,0,0,0,0,0,0,0,0
 4578,grammarly.net,done,1,0,0,0,0,0,255,0,2073
@@ -3788,7 +3788,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5431,gs.com,done,1,0,0,0,0,0,61,0,561
 5800,gsa.gov,done,1,0,0,0,0,0,78,0,258
 8402,gscdn.com,pending,0,,,,,,,,
-6730,gscdn.net,pending,0,,,,,,,,
+6730,gscdn.net,done,1,0,0,0,0,0,0,0,0
 1361,gshifen.com,done,1,0,0,0,0,0,0,0,0
 3903,gslbjpmchase.com,done,1,0,0,0,0,0,0,0,0
 8072,gslbnspk.ru,pending,0,,,,,,,,
@@ -3849,10 +3849,10 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7491,hanime.tv,pending,0,,,,,,,,
 1538,hanime1.me,done,1,0,0,0,0,0,0,0,0
 5422,hankyung.com,done,1,0,0,0,0,0,3,0,0
-6756,haplat.net,pending,0,,,,,,,,
+6756,haplat.net,done,1,0,0,0,0,0,0,0,0
 1634,happy-porn.com,done,1,0,0,0,0,0,0,0,0
 8541,happymail.co.jp,pending,0,,,,,,,,
-6818,haproxy.com,pending,0,,,,,,,,
+6818,haproxy.com,done,1,1,0,0,0,0,491,0,477
 6049,haproxy.org,done,1,0,0,0,0,0,2,0,8
 5679,harborfreight.com,done,1,0,0,0,0,0,63,0,35
 4840,hardened-php.net,done,1,0,0,0,0,0,0,0,0
@@ -3895,7 +3895,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7348,heapanalytics.com,pending,0,,,,,,,,
 8538,hearstnetworks.com,pending,0,,,,,,,,
 3024,heart.org,done,1,0,0,0,0,0,200,0,67
-6777,heatmapcore.com,pending,0,,,,,,,,
+6777,heatmapcore.com,done,1,0,0,0,0,0,0,0,0
 9529,heavy.com,pending,0,,,,,,,,
 2609,heise.de,done,1,0,0,0,0,0,677,0,37
 8790,hello.porn,pending,0,,,,,,,,
@@ -4038,7 +4038,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7288,hottopic.com,pending,0,,,,,,,,
 1700,hotxv.com,done,1,0,0,0,0,0,0,0,0
 2180,house.gov,done,1,0,0,0,0,0,177,0,166
-6740,housing.com,pending,0,,,,,,,,
+6740,housing.com,done,1,1,1,16,0,12,903,0,331
 3408,houzz.com,done,1,0,0,0,0,0,166,0,339
 1823,hover.com,done,1,0,0,0,0,0,69,0,208
 2954,howstuffworks.com,done,1,0,0,0,0,0,4,0,2
@@ -4058,7 +4058,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3671,hs-analytics.net,done,1,0,0,0,0,0,0,0,0
 3640,hs-banner.com,done,1,0,0,0,0,0,0,0,0
 3563,hs-scripts.com,done,1,0,0,0,0,0,0,0,0
-6744,hsadspixel.net,pending,0,,,,,,,,
+6744,hsadspixel.net,done,1,0,0,0,0,0,0,0,0
 4080,hscollectedforms.net,done,1,0,0,0,0,0,0,0,0
 8461,hse.gov.uk,pending,0,,,,,,,,
 3976,hse.ru,done,1,0,0,0,0,0,14,0,106
@@ -4109,7 +4109,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4692,hurriyet.com.tr,done,1,6,24,6,0,0,461,0,192
 4395,huya.com,done,1,0,0,0,0,0,501,0,0
 9371,huyamba.name,pending,0,,,,,,,,
-6770,hvg.hu,pending,0,,,,,,,,
+6770,hvg.hu,done,1,0,0,0,0,0,222,0,2
 2759,hwcdn.ru,done,1,0,0,0,0,0,0,0,0
 5277,hwg.org,done,1,0,0,0,0,0,0,0,0
 9798,hxhani.com,pending,0,,,,,,,,
@@ -4320,7 +4320,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1606,indoav.com,done,1,0,0,0,0,0,0,0,0
 1703,indown.io,done,1,0,0,0,0,0,112,0,82
 4327,indriverapp.com,done,1,0,0,0,0,0,0,0,0
-6808,inet.fi,pending,0,,,,,,,,
+6808,inet.fi,done,1,0,0,0,0,0,5,0,0
 7715,inf0.net,pending,0,,,,,,,,
 7454,infineon.com,pending,0,,,,,,,,
 1032,infobae.com,done,1,0,0,0,0,0,357,0,952
@@ -4443,7 +4443,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7510,irancell.ir,pending,0,,,,,,,,
 9512,iranjib.ir,pending,0,,,,,,,,
 5253,iranlms.ir,done,1,0,0,0,0,0,0,0,0
-6729,irctc.co.in,pending,0,,,,,,,,
+6729,irctc.co.in,done,1,2,2,0,0,0,26500,0,307
 5967,irdeto.com,done,1,2,0,0,0,0,36,0,0
 6717,irecommend.ru,done,1,0,0,0,0,0,173,0,279
 2951,irishtimes.com,permanent_failed,3,,,,,,,,
@@ -4460,7 +4460,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8438,iskur.gov.tr,pending,0,,,,,,,,
 2359,island.io,done,1,3,0,0,0,0,246,0,10
 3610,islonline.net,done,1,0,0,0,0,0,2,0,0
-6807,isna.ir,pending,0,,,,,,,,
+6807,isna.ir,done,1,0,0,0,0,0,138,0,323
 2691,isnssdk.com,done,1,0,0,0,0,0,0,0,0
 4631,iso.ch,done,1,0,0,0,0,0,0,0,0
 661,iso.org,done,1,0,0,0,0,0,130,0,0
@@ -4548,7 +4548,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8859,jenkins.io,pending,0,,,,,,,,
 7191,jennymovies.com,pending,0,,,,,,,,
 7745,jet2holidays.com,pending,0,,,,,,,,
-6804,jetbrains.ai,pending,0,,,,,,,,
+6804,jetbrains.ai,done,1,1,1,0,0,0,656,0,2062
 971,jetbrains.com,done,1,0,0,0,0,0,592,0,1790
 7718,jetpunk.com,pending,0,,,,,,,,
 6239,jeuxvideo.com,done,1,0,0,0,0,0,55,0,0
@@ -4588,9 +4588,9 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6079,jooble.org,done,1,0,0,0,0,0,3,0,0
 5205,joom.com,done,1,0,0,0,0,0,4,0,4
 3147,joomla.org,done,1,0,0,0,0,0,31,0,0
-6727,joongang.co.kr,pending,0,,,,,,,,
+6727,joongang.co.kr,done,1,6,12,228,0,0,336,0,918
 9556,joporn.name,pending,0,,,,,,,,
-6822,jorudan.co.jp,pending,0,,,,,,,,
+6822,jorudan.co.jp,done,1,0,0,0,0,0,281,0,837
 658,jotform.com,done,1,0,0,0,0,0,80,0,11
 9424,journeymv.com,pending,0,,,,,,,,
 9337,jovencitas.gratis,pending,0,,,,,,,,
@@ -4609,7 +4609,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1672,jra.jp,done,1,0,0,0,0,0,79,0,1172
 8658,jreast.co.jp,pending,0,,,,,,,,
 3978,js.org,done,1,0,0,0,0,0,40,0,0
-6795,js7k.com,pending,0,,,,,,,,
+6795,js7k.com,done,1,0,0,0,0,0,2,0,0
 313,jsdelivr.net,done,1,0,0,0,0,0,0,0,0
 4221,jst.go.jp,done,1,0,0,0,0,0,0,0,0
 1256,jstor.org,done,1,0,0,0,0,0,13,0,0
@@ -4646,7 +4646,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8519,jwpsrv.com,pending,0,,,,,,,,
 8696,k-manga.jp,pending,0,,,,,,,,
 7272,kabum.com.br,pending,0,,,,,,,,
-6825,kabutan.jp,pending,0,,,,,,,,
+6825,kabutan.jp,done,1,0,0,0,0,0,281,0,1225
 4987,kadencewp.com,done,1,0,0,0,0,0,2,0,0
 4493,kaggle.com,done,1,0,0,0,0,0,17,0,0
 5796,kahoot.com,done,1,0,0,0,0,0,296,0,8
@@ -4740,7 +4740,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3669,kingsgroupgames.com,done,1,0,0,0,0,0,0,0,0
 1726,kinnser.net,done,1,0,0,0,0,0,0,0,0
 6909,kino-teatr.ru,pending,0,,,,,,,,
-6772,kino.de,pending,0,,,,,,,,
+6772,kino.de,done,1,0,0,0,0,0,84,0,43
 5297,kinoafisha.info,done,1,42,27,36,0,36,223,2,404
 8175,kinogo.ec,pending,0,,,,,,,,
 8130,kinogo.online,pending,0,,,,,,,,
@@ -4802,7 +4802,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1735,koselarab.com,done,1,0,0,0,0,0,0,0,0
 5294,kotaku.com,done,1,0,0,0,0,0,242,0,496
 9135,kozow.com,pending,0,,,,,,,,
-6833,kp.org,pending,0,,,,,,,,
+6833,kp.org,done,1,0,0,0,0,0,513,0,764
 4120,kp.ru,done,1,6,9,9,0,6,245,2,85
 2828,kpmg.com,done,1,0,0,0,0,0,128,0,0
 1732,kqbd.mobi,done,1,0,0,0,0,0,38,0,107
@@ -4865,7 +4865,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4475,kxcdn.com,done,1,0,0,0,0,0,0,0,0
 7339,ky.gov,pending,0,,,,,,,,
 9019,kyivstar.ua,pending,0,,,,,,,,
-6835,kyoto-u.ac.jp,pending,0,,,,,,,,
+6835,kyoto-u.ac.jp,done,1,0,0,0,0,0,86,0,84
 5015,kzhi.tech,done,1,0,0,0,0,0,0,0,0
 6190,l-tike.com,done,1,0,0,0,0,0,847,0,359
 5008,l.ink,done,1,0,0,0,0,0,214,0,521
@@ -4910,7 +4910,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6023,lavozdegalicia.es,done,1,0,0,0,0,0,164,0,32
 3540,lazada.co.id,done,1,0,0,0,0,0,91,0,180
 5716,lazada.co.th,done,1,0,0,0,0,0,115,0,347
-6765,lazada.com,pending,0,,,,,,,,
+6765,lazada.com,done,1,0,0,0,0,0,37,0,14
 4013,lazada.com.ph,done,1,0,0,0,0,0,185,0,331
 4158,lazada.sg,done,1,0,0,0,0,0,112,0,346
 7182,lazcdn.com,pending,0,,,,,,,,
@@ -4932,7 +4932,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9904,lectio.dk,pending,0,,,,,,,,
 6047,lecturas.com,done,1,0,0,0,0,0,313,0,66
 5936,ledauphine.com,done,1,0,0,0,0,0,136,0,218
-6847,ledger.com,pending,0,,,,,,,,
+6847,ledger.com,running,1,,,,,,,,
 5952,leeds.ac.uk,done,1,0,0,0,0,0,4,0,0
 4274,leetcode.com,done,1,0,0,0,0,0,3,0,0
 2238,lefigaro.fr,done,1,0,0,0,0,0,273,0,369
@@ -4990,7 +4990,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2658,libbyshelf.com,done,1,0,0,0,0,0,7,0,0
 3753,liberation.fr,done,1,0,0,0,0,0,6,0,4
 2456,libero.it,done,1,0,0,0,0,0,45,0,0
-6826,libertaddigital.com,pending,0,,,,,,,,
+6826,libertaddigital.com,done,1,2,22,8,0,5,240,1,168
 7311,libertatea.ro,pending,0,,,,,,,,
 4492,liberty-nodes.online,done,1,0,0,0,0,0,0,0,0
 9205,libguides.com,pending,0,,,,,,,,
@@ -5063,7 +5063,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8515,litmarket.ru,pending,0,,,,,,,,
 1278,litnet.com,done,1,6,40,10,0,11,157,33,838
 4850,litres.ru,done,1,3,6,5,0,8,411,76,1094
-6775,liu.se,pending,0,,,,,,,,
+6775,liu.se,done,1,0,0,0,0,0,0,0,0
 399,live-video.net,done,1,0,0,0,0,0,0,0,0
 34,live.com,done,1,0,0,0,0,0,0,0,0
 597,live.net,done,1,0,0,0,0,0,0,0,0
@@ -5087,7 +5087,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2770,livescience.com,done,1,0,0,0,0,0,1788,78,483
 1268,livescore.com,done,1,0,0,0,0,0,1038,0,1
 1696,livescore.cz,done,1,0,0,0,0,0,94,0,87
-6831,livescore.in,pending,0,,,,,,,,
+6831,livescore.in,done,1,0,0,0,0,0,1402,0,283
 9031,livescore.mobi,pending,0,,,,,,,,
 8151,livesport.cz,pending,0,,,,,,,,
 7761,livesportmedia.eu,pending,0,,,,,,,,
@@ -5169,7 +5169,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5117,lululemon.com,done,1,0,0,0,0,0,0,0,6
 4959,luma.com,done,1,0,0,0,0,0,40,0,4
 5351,lunalabs.io,done,1,0,0,0,0,0,0,0,0
-6757,lura.live,pending,0,,,,,,,,
+6757,lura.live,done,1,0,0,0,0,0,0,0,0
 1557,luticlip.com,done,1,0,0,0,0,0,0,0,0
 1210,luugy.com,done,1,0,0,0,0,0,0,0,0
 9378,luvyaa.co,pending,0,,,,,,,,
@@ -5186,7 +5186,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4379,mac.com,done,1,0,0,0,0,0,244,0,326
 7217,machotube.tv,pending,0,,,,,,,,
 7305,mackolik.com,pending,0,,,,,,,,
-6753,macomnet.ru,pending,0,,,,,,,,
+6753,macomnet.ru,done,1,0,0,0,0,0,36,0,0
 199,macromedia.com,done,1,0,0,0,0,0,0,0,0
 7564,macromill.com,pending,0,,,,,,,,
 3845,macrumors.com,done,2,4,60,52,0,225,1529,14,439
@@ -5264,7 +5264,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1964,marketingcloudapis.com,done,1,0,0,0,0,0,0,0,0
 7673,marketiq.com,pending,0,,,,,,,,
 5235,marketo.com,done,1,0,0,0,0,0,126,0,482
-6834,marketscreener.com,pending,0,,,,,,,,
+6834,marketscreener.com,done,1,0,0,0,0,0,285,0,94
 1982,marketwatch.com,done,1,32,32,0,0,0,1196,1,2421
 509,markmonitor.com,done,1,0,0,0,0,0,4,0,0
 4808,marksandspencer.com,done,1,0,0,0,0,0,427,0,645
@@ -5300,7 +5300,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9370,mattermost.com,pending,0,,,,,,,,
 2035,matterport.com,done,1,0,0,0,0,0,142,0,883
 8132,maturetube.com,pending,0,,,,,,,,
-6764,maven.org,pending,0,,,,,,,,
+6764,maven.org,done,1,0,0,0,0,0,97,0,92
 910,max.com,done,1,0,0,0,0,0,641,0,235
 1124,max.ru,done,1,2,3,3,0,69,27,2,343
 4347,maxesads.com,done,1,0,0,0,0,0,0,0,0
@@ -5367,7 +5367,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3059,medscape.com,done,1,0,0,0,0,0,210,0,83
 5486,medtronic.com,done,1,0,0,0,0,0,356,0,41
 1633,medu.ir,done,1,0,0,0,0,0,0,0,0
-6845,meduza.io,pending,0,,,,,,,,
+6845,meduza.io,done,1,0,0,0,0,0,141,0,124
 1238,meesho.com,done,1,0,0,0,0,0,0,0,0
 4922,meetcircle-netgear.co,done,1,0,0,0,0,0,0,0,0
 1121,meethue.com,done,1,0,0,0,0,0,110,0,0
@@ -5519,7 +5519,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4756,minecraft-services.net,done,1,0,0,0,0,0,0,0,0
 2894,minecraft.net,done,1,0,0,0,0,0,1019,0,433
 5379,minecraftservices.com,done,1,0,0,0,0,0,0,0,0
-6846,minecraftskins.com,pending,0,,,,,,,,
+6846,minecraftskins.com,running,1,,,,,,,,
 6411,mingky08.tv,done,1,0,0,0,0,0,0,0,0
 9738,minhchinh.com,pending,0,,,,,,,,
 1724,minhngoc.net.vn,done,1,0,0,0,0,0,24,0,116
@@ -5621,7 +5621,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3170,monday.com,done,1,0,0,0,0,0,180,0,166
 9710,mondosanita.it,pending,0,,,,,,,,
 9081,monetixads.com,pending,0,,,,,,,,
-6832,money.pl,pending,0,,,,,,,,
+6832,money.pl,pending,1,,,,,,,,
 1065,moneycontrol.com,done,1,0,0,0,0,0,0,0,0
 7183,moneyforward.com,pending,0,,,,,,,,
 9113,mongabay.com,pending,0,,,,,,,,
@@ -5629,7 +5629,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2234,mongodb.net,done,1,0,0,0,0,0,0,0,0
 7641,monkeytype.com,pending,0,,,,,,,,
 6595,monopolygo.com,done,1,0,0,0,0,0,161,0,16
-6789,monotaro.com,pending,0,,,,,,,,
+6789,monotaro.com,done,1,0,0,0,0,0,525,0,1666
 9267,monsnode.com,pending,0,,,,,,,,
 5410,monster.com,done,1,0,0,0,0,0,138,0,150
 2517,moodle.com,done,1,0,0,0,0,0,183,0,0
@@ -5717,7 +5717,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6092,mullvad.net,done,1,0,0,0,0,0,0,0,0
 9190,multiscreensite.com,pending,0,,,,,,,,
 8140,multporn.net,pending,0,,,,,,,,
-6733,mumsnet.com,pending,0,,,,,,,,
+6733,mumsnet.com,done,1,0,0,0,0,0,3,0,0
 1293,mundodeportivo.com,done,1,0,0,0,0,0,115,0,305
 4827,muni.cz,done,1,0,0,0,0,0,23,0,0
 9873,muscache.com,pending,0,,,,,,,,
@@ -5792,7 +5792,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4644,myqnapcloud.com,done,1,0,0,0,0,0,195,0,0
 1568,myreadingmanga.info,done,1,0,0,0,0,0,0,0,0
 2552,mysecurecloudhost.com,done,1,0,0,0,0,0,0,0,0
-6728,myshn.net,pending,0,,,,,,,,
+6728,myshn.net,done,1,0,0,0,0,0,0,0,0
 294,myshopify.com,done,1,0,0,0,0,0,0,0,0
 7387,myshopline.com,pending,0,,,,,,,,
 875,myspace.com,done,1,0,0,0,0,0,0,0,0
@@ -6138,7 +6138,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3442,nrw.de,done,1,0,0,0,0,0,0,0,0
 2862,ns.ph,done,1,0,0,0,0,0,0,0,0
 8257,ns.se,pending,0,,,,,,,,
-6792,ns.tr,pending,0,,,,,,,,
+6792,ns.tr,done,1,0,0,0,0,0,0,0,0
 8272,ns.ua,pending,0,,,,,,,,
 8019,ns14.net,pending,0,,,,,,,,
 1357,ns1p.net,done,1,0,0,0,0,0,0,0,0
@@ -6225,7 +6225,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7973,odatv.com,pending,0,,,,,,,,
 1628,oddspark.com,done,1,0,0,0,0,0,0,0,0
 9061,odibets.com,pending,0,,,,,,,,
-6798,odnoklassniki.ru,pending,0,,,,,,,,
+6798,odnoklassniki.ru,done,1,2,3,3,0,14,95,2,119
 965,odoo.com,done,2,3,3,8,0,0,570,1,0
 9303,odysee.com,pending,0,,,,,,,,
 7604,oecd-ilibrary.org,pending,0,,,,,,,,
@@ -6267,7 +6267,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4468,ollama.com,done,1,0,0,0,0,0,0,0,0
 7933,olm.vn,pending,0,,,,,,,,
 1215,olx.com.br,done,1,0,0,0,0,0,6,0,8
-6768,olx.com.pk,pending,0,,,,,,,,
+6768,olx.com.pk,done,1,1,2,16,0,20,550,0,247
 6070,olx.in,done,1,0,0,0,0,0,0,0,0
 1074,olx.pl,done,1,3,0,0,0,0,347,0,409
 5057,olx.ro,done,1,3,0,0,0,0,286,0,398
@@ -6295,7 +6295,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9189,ondisk.co.kr,pending,0,,,,,,,,
 1249,one.com,done,1,0,0,0,0,0,67,0,67
 1184,one.one,done,1,0,0,0,0,0,67,0,67
-6814,onedio.com,pending,0,,,,,,,,
+6814,onedio.com,done,1,0,0,0,0,0,0,0,0
 2550,onedrive.com,done,1,0,0,0,0,0,1,0,0
 6488,onefootball.com,done,1,0,0,0,0,0,303,0,589
 2272,oneidrive.org,done,1,0,0,0,0,0,0,0,0
@@ -6462,7 +6462,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2835,p-msedge.net,done,1,0,0,0,0,0,0,0,0
 5680,p-n.io,done,1,0,0,0,0,0,0,0,0
 8494,p-world.co.jp,pending,0,,,,,,,,
-6843,p6sai.com,pending,0,,,,,,,,
+6843,p6sai.com,done,1,0,0,0,0,0,0,0,0
 8813,p7cloud.net,pending,0,,,,,,,,
 7024,pa-cd.com,pending,0,,,,,,,,
 4769,pa.gov,done,1,0,0,0,0,0,79,0,335
@@ -6481,7 +6481,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5851,pagina12.com.ar,done,1,0,0,0,0,0,526,0,741
 6941,paheal.net,pending,0,,,,,,,,
 6109,paho.org,done,1,0,0,0,0,0,0,0,0
-6771,pair.com,pending,0,,,,,,,,
+6771,pair.com,done,1,0,0,0,0,0,105,0,270
 7567,pajak.go.id,pending,0,,,,,,,,
 4943,palm.tech,done,1,0,0,0,0,0,0,0,0
 7412,palmettostatearmory.com,pending,0,,,,,,,,
@@ -6527,9 +6527,9 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1677,patria.org.ve,done,1,0,0,0,0,0,0,0,0
 6502,pawchive.pw,done,1,0,0,0,0,0,0,0,0
 7179,pawwalls.com,pending,0,,,,,,,,
-6841,paychex.com,pending,0,,,,,,,,
+6841,paychex.com,done,1,0,0,0,0,0,0,0,0
 4026,paycomonline.net,done,1,0,0,0,0,0,82,0,0
-6787,payhip.com,pending,0,,,,,,,,
+6787,payhip.com,done,1,0,0,0,0,0,27,0,0
 4288,paylocity.com,done,1,0,0,0,0,0,1077,0,691
 6535,paymaya.com,done,1,0,0,0,0,0,0,0,0
 9981,paymetrust.net,pending,0,,,,,,,,
@@ -6694,7 +6694,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1141,plos.org,done,1,3,0,0,0,0,31,0,208
 9409,plotek.pl,pending,0,,,,,,,,
 5808,plrm.zone,done,1,0,0,0,0,0,0,0,0
-6810,plumenet.io,pending,0,,,,,,,,
+6810,plumenet.io,done,1,0,0,0,0,0,0,0,0
 7250,plusoneads.com,pending,0,,,,,,,,
 1245,pluto.tv,done,1,0,0,0,0,0,177,0,467
 8333,pluxee.app,pending,0,,,,,,,,
@@ -6706,11 +6706,11 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3275,pndsn.com,done,1,0,0,0,0,0,0,0,0
 5550,pochta.ru,done,1,0,0,0,0,0,0,0,0
 8027,pocketcasts.com,pending,0,,,,,,,,
-6797,pocketfm.com,pending,0,,,,,,,,
+6797,pocketfm.com,done,1,0,0,0,0,0,355,0,648
 7839,pocketoption.com,pending,0,,,,,,,,
 9054,poco.de,pending,0,,,,,,,,
 2903,podbean.com,done,1,0,0,0,0,0,38,0,70
-6731,poder360.com.br,pending,0,,,,,,,,
+6731,poder360.com.br,done,1,0,0,0,0,0,243,0,1207
 6723,podscribe.com,done,1,0,0,0,0,0,115,0,64
 8347,poe.ninja,pending,0,,,,,,,,
 6458,poetryfoundation.org,done,1,0,0,0,0,0,66,0,726
@@ -6800,7 +6800,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2321,pphosted.com,done,1,0,0,0,0,0,0,0,0
 5848,ppomppu.co.kr,done,1,0,0,0,0,0,0,0,0
 6556,practo.com,done,1,0,0,0,0,0,102,0,82
-6782,pracuj.pl,pending,0,,,,,,,,
+6782,pracuj.pl,done,1,0,0,0,0,0,3,0,0
 9465,prajavani.net,pending,0,,,,,,,,
 4718,pravda.com.ua,done,1,0,0,0,0,0,3,0,0
 7579,pravda.ru,pending,0,,,,,,,,
@@ -6840,7 +6840,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8060,privateproperty.co.za,pending,0,,,,,,,,
 6669,prmutv.co,done,1,0,0,0,0,0,0,0,0
 810,prnewswire.com,done,1,0,0,0,0,0,470,0,800
-6788,pro-market.net,pending,0,,,,,,,,
+6788,pro-market.net,done,1,0,0,0,0,0,0,0,0
 7903,procore.com,pending,0,,,,,,,,
 6279,procyclingstats.com,done,1,0,0,0,0,0,21,0,36
 5196,prodigygame.com,done,1,0,0,0,0,0,283,0,2
@@ -6966,7 +6966,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2948,qpic.cn,done,1,0,0,0,0,0,0,0,0
 92,qq.com,done,1,5,86,163,0,297,394,35,902
 4481,qq.com.cn,done,1,0,0,0,0,0,0,0,0
-6750,qrcdn.net,pending,0,,,,,,,,
+6750,qrcdn.net,done,1,0,0,0,0,0,0,0,0
 8964,qt.io,pending,0,,,,,,,,
 3994,quad9.net,done,1,0,0,0,0,0,0,0,0
 4542,quago.io,done,1,0,0,0,0,0,0,0,0
@@ -6979,7 +6979,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2229,quantummetric.com,done,1,3,0,0,0,0,278,0,1590
 3281,quark.cn,done,1,0,0,0,0,0,20,0,41
 9789,quartier-rouge.be,pending,0,,,,,,,,
-6820,quay.io,pending,0,,,,,,,,
+6820,quay.io,done,1,0,0,0,0,0,274,0,409
 7713,queensu.ca,pending,0,,,,,,,,
 1796,queniuaa.com,done,1,0,0,0,0,0,0,0,0
 3566,queniuak.com,done,1,0,0,0,0,0,0,0,0
@@ -7149,7 +7149,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 7240,researchnow.com,pending,0,,,,,,,,
 5992,reserved.com,done,1,0,0,0,0,0,0,0,0
 6335,resetdigital.co,done,1,0,0,0,0,0,0,0,0
-6827,resetera.com,pending,0,,,,,,,,
+6827,resetera.com,done,1,0,0,0,0,0,440,0,361
 9605,reshak.ru,pending,0,,,,,,,,
 689,resolver.arpa,done,1,0,0,0,0,0,0,0,0
 7952,reson8.com,pending,0,,,,,,,,
@@ -7530,7 +7530,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 941,seedtag.com,done,1,0,0,0,0,0,278,0,12
 4191,seek.com,done,1,0,0,0,0,0,4,0,0
 4047,seekingalpha.com,done,1,2,0,0,0,0,234,0,2336
-6735,seesaa.net,pending,0,,,,,,,,
+6735,seesaa.net,done,1,0,0,0,0,0,0,0,0
 9104,sefan.ru,pending,0,,,,,,,,
 8727,sefon.pro,pending,0,,,,,,,,
 8695,seg-social.gob.es,pending,0,,,,,,,,
@@ -7706,7 +7706,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3834,signifyd.com,done,1,4,8,84,0,30,464,19,341
 5450,signupgenius.com,done,1,8,16,96,0,130,1976,66,1556
 6563,sii.cl,done,1,0,0,0,0,0,178,0,37
-6799,silvermob.com,pending,0,,,,,,,,
+6799,silvermob.com,done,1,0,0,0,0,0,41,0,148
 4095,similarweb.com,done,1,3,0,0,0,0,656,6,337
 7911,simonandschuster.com,pending,0,,,,,,,,
 1738,simontokx.asia,done,1,0,0,0,0,0,0,0,0
@@ -7737,7 +7737,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1730,site777.jp,done,1,0,0,0,0,0,0,0,0
 2942,siteforce.com,done,1,0,0,0,0,0,644,0,422
 4414,siteground.biz,done,1,0,0,0,0,0,98,0,0
-6759,siteground.us,pending,0,,,,,,,,
+6759,siteground.us,done,1,0,0,0,0,0,111,0,0
 2833,siteimproveanalytics.io,done,1,0,0,0,0,0,0,0,0
 5599,sitemaps.org,done,1,0,0,0,0,0,57,0,15
 1981,sitescout.com,done,1,0,0,0,0,0,0,0,0
@@ -7783,7 +7783,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2659,slashdot.org,done,1,0,0,0,0,0,38,0,65
 2500,slate.com,done,1,19,19,0,0,0,353,0,1169
 6004,sleepfoundation.org,done,1,0,0,0,0,0,2,0,3
-6811,sleepycat.com,pending,0,,,,,,,,
+6811,sleepycat.com,done,1,0,0,0,0,0,0,0,0
 8179,slickdeals.net,pending,0,,,,,,,,
 562,slideshare.net,done,1,4,0,0,0,0,104,0,159
 3209,sliide.cloud,done,1,0,0,0,0,0,96,0,0
@@ -7893,14 +7893,14 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1447,sozcu.com.tr,done,1,18,18,36,0,0,299,0,802
 3896,space.com,done,1,6,66,306,0,1,2258,118,704
 7408,spacebattles.com,pending,0,,,,,,,,
-6762,spacedaily.com,pending,0,,,,,,,,
+6762,spacedaily.com,done,1,0,0,0,0,0,24,0,49
 4605,spaceship.com,done,1,0,0,0,0,0,734,0,0
 453,spaceweb.pro,done,1,0,0,0,0,0,0,0,0
 3273,spaceweb.ru,done,1,0,0,0,0,0,1,0,0
 3587,spacex.com,done,1,0,0,0,0,0,26,0,0
 8810,spadsync.com,pending,0,,,,,,,,
 1847,spaggiari.eu,done,1,2,0,0,0,0,179,0,630
-6791,spamcop.net,pending,0,,,,,,,,
+6791,spamcop.net,done,1,0,0,0,0,0,0,0,0
 889,spamhaus.org,done,1,0,0,0,0,0,87,0,96
 6459,spanishdict.com,done,1,26,0,0,0,0,302,0,200
 1233,spankbang.com,done,1,0,0,0,0,0,0,0,0
@@ -7928,7 +7928,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 708,spiegel.de,done,1,0,0,0,0,0,220,0,75
 8113,spirithalloween.com,pending,0,,,,,,,,
 2441,splashtop.com,done,1,0,0,0,0,0,224,0,387
-6785,splashtop.eu,pending,0,,,,,,,,
+6785,splashtop.eu,done,1,0,0,0,0,0,171,0,762
 1093,split.io,done,1,0,0,0,0,0,166,0,47
 7047,splunk.com,pending,0,,,,,,,,
 2629,splunkcloud.com,done,1,0,0,0,0,0,0,0,0
@@ -7958,7 +7958,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8596,sports.kz,pending,0,,,,,,,,
 4077,sports.ru,done,1,0,0,0,0,0,39,0,20
 8617,sportsapi.ru,pending,0,,,,,,,,
-6784,sportschau.de,pending,0,,,,,,,,
+6784,sportschau.de,done,1,2,1,2,0,0,136,0,91
 4355,sportskeeda.com,done,1,0,0,0,0,0,267,0,401
 9063,sportybet.co.za,pending,0,,,,,,,,
 1394,sportybet.com,done,1,0,0,0,0,0,269,0,261
@@ -8112,14 +8112,14 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9669,studying.jp,pending,0,,,,,,,,
 4584,stuff.co.nz,done,1,9,11,15,0,0,1232,7,395
 2949,stumbleupon.com,done,1,0,0,0,0,0,28,0,75
-6773,stylevana.com,pending,0,,,,,,,,
+6773,stylevana.com,done,1,0,0,0,0,0,3,0,0
 2698,su89-cdn.net,done,1,0,0,0,0,0,70,0,228
 1319,subito.it,done,1,0,0,0,0,0,139,0,305
 423,substack.com,done,1,0,0,0,0,0,127,0,55
 5483,substackcdn.com,done,1,0,0,0,0,0,0,0,0
 5504,successfactors.eu,done,1,0,0,0,0,0,1239,0,4558
 8957,sucursalelectronica.com,pending,0,,,,,,,,
-6758,sudinfo.be,pending,0,,,,,,,,
+6758,sudinfo.be,done,1,4,6,0,0,0,130,0,227
 7557,sudoku.com,pending,0,,,,,,,,
 5359,sudouest.fr,done,1,0,0,0,0,0,2547,0,482
 6514,sudrf.ru,done,1,0,0,0,0,0,0,0,0
@@ -8229,7 +8229,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6086,taboolanews.com,done,1,0,0,0,0,0,4,0,0
 1294,tabor.ru,done,1,0,0,0,0,0,27,0,66
 6505,tacobell.com,done,1,0,0,0,0,0,30,0,2
-6769,tag24.de,pending,0,,,,,,,,
+6769,tag24.de,done,1,0,0,0,0,0,112,0,122
 1038,tagesschau.de,permanent_failed,3,,,,,,,,
 3248,tagesspiegel.de,done,1,0,0,0,0,0,80,0,31
 6123,tagsrvcs.com,done,1,0,0,0,0,0,0,0,0
@@ -8301,7 +8301,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2785,tealiumiq.com,done,1,0,0,0,0,0,0,0,0
 9568,teamstoday.com,pending,0,,,,,,,,
 506,teamviewer.com,done,1,2,2,0,0,0,97,0,91
-6837,tec.mx,pending,0,,,,,,,,
+6837,tec.mx,done,1,3,0,0,0,0,368,0,4118
 629,techcrunch.com,done,1,0,0,0,0,0,226,0,1346
 5535,techlab-cdn.com,done,1,0,0,0,0,0,0,0,0
 2612,technologyreview.com,done,1,0,0,0,0,0,155,0,63
@@ -8385,13 +8385,13 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1089,tfkc.de,done,1,0,0,0,0,0,2,0,0
 4010,tfl.gov.uk,done,1,0,0,0,0,0,3,0,0
 1385,tgju.org,done,1,0,0,0,0,0,1029,0,255
-6824,thairath.co.th,pending,0,,,,,,,,
+6824,thairath.co.th,done,1,10,90,75,0,30,188,6,1315
 8979,thalesgroup.com,pending,0,,,,,,,,
 5211,thalia.de,done,1,0,0,0,0,0,6,0,0
 6452,thanhnien.vn,done,1,9,9,18,0,0,395,0,289
 3017,thawte.com,done,1,2,1,4,0,0,114,0,280
 3083,the-ozone-project.com,done,1,0,0,0,0,0,123,0,287
-6813,the-sun.com,pending,0,,,,,,,,
+6813,the-sun.com,done,1,0,0,0,0,0,11,0,3
 5164,theage.com.au,done,1,0,0,0,0,0,1795,0,1581
 1050,theatlantic.com,done,1,0,0,0,0,0,506,0,272
 7569,theaustralian.com.au,pending,0,,,,,,,,
@@ -8543,7 +8543,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9253,tinder.com,pending,0,,,,,,,,
 4586,tinkercad.com,done,1,0,0,0,0,0,36,0,55
 1999,tinkoff.ru,done,1,2,2,2,0,9,142,0,874
-6734,tiny.cc,pending,0,,,,,,,,
+6734,tiny.cc,done,1,0,0,0,0,0,45,0,52
 3203,tinypass.com,done,1,0,0,0,0,0,0,0,0
 5538,tinypic.com,done,1,0,0,0,0,0,0,0,0
 301,tinyurl.com,done,1,0,0,0,0,0,74,0,249
@@ -8573,7 +8573,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 3081,tmtreader.com,done,1,0,0,0,0,0,0,0,0
 6294,tmweb.ru,done,1,0,0,0,0,0,172,0,274
 3088,tmz.com,done,1,10,5,30,0,297,606,2,1223
-6755,tn.com.ar,pending,0,,,,,,,,
+6755,tn.com.ar,done,1,24,168,136,0,11,225,4,1549
 5656,tn.gov,done,1,0,0,0,0,0,0,0,0
 6343,tn.gov.in,done,1,0,0,0,0,0,0,0,0
 1071,tnaflix.com,done,1,0,0,0,0,0,0,0,0
@@ -8866,7 +8866,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8722,ucf.edu,pending,0,,,,,,,,
 4372,uchi.ru,done,1,3,4,4,0,18,117,8,873
 1986,uchicago.edu,done,1,0,0,0,0,0,30,0,353
-6801,uchile.cl,pending,0,,,,,,,,
+6801,uchile.cl,done,1,2,1,4,0,0,32,0,264
 1468,uci.edu,done,1,0,0,0,0,0,24,0,123
 2587,ucl.ac.uk,done,1,0,0,0,0,0,3,0,0
 1448,ucla.edu,done,1,0,0,0,0,0,99,0,104
@@ -8918,7 +8918,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2921,uisp.com,done,1,0,0,0,0,0,0,0,0
 7419,uitm.edu.my,pending,0,,,,,,,,
 2346,uiuc.edu,done,1,0,0,0,0,0,29,0,296
-6783,uk-sirius.ru,pending,0,,,,,,,,
+6783,uk-sirius.ru,done,1,0,0,0,0,0,53,0,16
 804,uk.com,done,1,0,0,0,0,0,69,0,92
 3559,uk.net,done,1,0,0,0,0,0,66,0,76
 1452,ukdevilz.com,done,1,0,0,0,0,0,0,0,0
@@ -9123,7 +9123,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8087,uvm.edu,pending,0,,,,,,,,
 4838,uw.edu,done,1,0,0,0,0,0,170,0,207
 3334,uwaterloo.ca,done,1,0,0,0,0,0,129,0,253
-6802,uwo.ca,pending,0,,,,,,,,
+6802,uwo.ca,done,1,0,0,0,0,0,154,0,0
 8332,uwyo.edu,pending,0,,,,,,,,
 4113,uxfeedback.ru,done,1,0,0,0,0,0,52,0,197
 5635,uzh.ch,done,1,0,0,0,0,0,8,0,39
@@ -9137,7 +9137,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 4111,vanderbilt.edu,done,1,0,0,0,0,0,217,0,291
 2484,vanguard.com,done,1,0,0,0,0,0,6,0,42
 3493,vanityfair.com,done,1,20,20,0,0,0,664,0,1197
-6761,vanityfair.it,pending,0,,,,,,,,
+6761,vanityfair.it,done,1,0,0,0,0,0,252,0,44
 2284,variety.com,done,1,0,0,0,0,0,1374,0,1438
 1348,varzesh3.com,done,1,0,0,0,0,0,0,0,0
 5529,vaseline.su,done,1,0,0,0,0,0,0,0,0
@@ -9258,12 +9258,12 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9987,visdeyk-ink.click,pending,0,,,,,,,,
 7336,visitor-analytics.io,pending,0,,,,,,,,
 4892,vistaprint.com,done,1,0,0,0,0,0,434,0,1319
-6844,vistarsagency.com,pending,0,,,,,,,,
+6844,vistarsagency.com,done,1,0,0,0,0,0,99,0,17
 5573,visualcapitalist.com,done,1,0,0,0,0,0,721,0,421
 472,visualstudio.com,done,1,0,0,0,0,0,193,0,444
 3504,visualwebsiteoptimizer.com,done,1,0,0,0,0,0,4054,0,330
 8542,visx.net,pending,0,,,,,,,,
-6806,vivaldi.com,pending,0,,,,,,,,
+6806,vivaldi.com,done,1,0,0,0,0,0,8,0,0
 9216,vivastreet.co.uk,pending,0,,,,,,,,
 8392,vivinavi.com,pending,0,,,,,,,,
 5728,vivint.ai,done,1,0,0,0,0,0,0,0,0
@@ -9462,7 +9462,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6291,wetvinfo.com,done,1,2,17,371,0,17,3500,8,87
 8762,wfp.org,pending,0,,,,,,,,
 8681,wfxs.tw,pending,0,,,,,,,,
-6748,whatismyipaddress.com,pending,0,,,,,,,,
+6748,whatismyipaddress.com,done,1,0,0,0,0,0,1604,2,0
 7169,whatnot.com,pending,0,,,,,,,,
 67,whatsapp.com,done,1,0,0,0,0,0,3,0,0
 45,whatsapp.net,done,1,0,0,0,0,0,3,0,0
@@ -9510,7 +9510,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2129,windy.com,done,1,1,4,0,0,0,22,4,0
 1781,winner.bet,done,1,0,0,0,0,0,5,0,0
 2680,wipo.int,done,1,0,0,0,0,0,50,0,23
-6766,wired.co.uk,pending,0,,,,,,,,
+6766,wired.co.uk,done,1,26,26,0,0,0,634,0,1848
 565,wired.com,done,1,4,4,0,0,0,662,0,2082
 8430,wireguard.com,pending,0,,,,,,,,
 3324,wireshark.org,done,1,0,0,0,0,0,15,0,10
@@ -9555,7 +9555,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 8010,wordstream.com,pending,0,,,,,,,,
 9290,wordunscrambler.me,pending,0,,,,,,,,
 1135,wordwall.net,done,1,0,0,0,0,0,109,0,374
-6745,work.ua,pending,0,,,,,,,,
+6745,work.ua,done,1,0,0,0,0,0,10991,0,0
 9941,work24.go.kr,pending,0,,,,,,,,
 5996,workday.com,done,1,0,0,0,0,0,327,0,976
 1412,workdaysuv.com,done,1,0,0,0,0,0,0,0,0
@@ -9591,7 +9591,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 2765,wpscdn.com,done,1,0,0,0,0,0,0,0,0
 2480,wpsdns.com,done,1,0,0,0,0,0,0,0,0
 5973,wpstr.tv,done,1,0,0,0,0,0,0,0,0
-6749,wpzoom.com,pending,0,,,,,,,,
+6749,wpzoom.com,done,1,0,0,0,0,0,142,0,166
 3225,wscdns.com,done,1,0,0,0,0,0,0,0,0
 2303,wscvip.cn,done,1,0,0,0,0,0,0,0,0
 247,wsdvs.com,done,1,0,0,0,0,0,0,0,0
@@ -9666,11 +9666,11 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 1317,xhamster1.desi,done,1,0,0,0,0,0,0,0,0
 1308,xhamster19.com,done,1,0,0,0,0,0,0,0,0
 1247,xhamster2.com,done,1,0,0,0,0,0,0,0,0
-6763,xhamster3.com,pending,0,,,,,,,,
+6763,xhamster3.com,done,1,0,0,0,0,0,0,0,0
 982,xhamster46.desi,done,1,0,0,0,0,0,0,0,0
 3161,xhamsterlive.com,done,1,0,0,0,0,0,0,0,0
 1030,xhcdn.com,done,1,0,0,0,0,0,0,0,0
-6781,xhfanclub.com,pending,0,,,,,,,,
+6781,xhfanclub.com,done,1,0,0,0,0,0,0,0,0
 8394,xhfuck.com,pending,0,,,,,,,,
 1849,xhlink.blog,done,1,0,0,0,0,0,0,0,0
 9600,xhlink.today,pending,0,,,,,,,,
@@ -9763,7 +9763,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 5818,xxx.com,done,1,0,0,0,0,0,0,0,0
 1648,xxx18hot.com,done,1,0,0,0,0,0,0,0,0
 1458,xxxbp.tv,done,1,0,0,0,0,0,0,0,0
-6746,xxxbule.com,pending,0,,,,,,,,
+6746,xxxbule.com,done,1,0,0,0,0,0,0,0,0
 1750,xxxhindi.to,done,1,0,0,0,0,0,0,0,0
 9682,xxxindianstories.com,pending,0,,,,,,,,
 9184,xxxmovies.life,pending,0,,,,,,,,
@@ -9902,7 +9902,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 9093,zapto.org,pending,0,,,,,,,,
 3264,zara.com,done,1,0,0,0,0,0,3310,0,84
 5096,zazzle.com,done,1,3,0,0,0,0,129,0,172
-6821,zbporn.com,pending,0,,,,,,,,
+6821,zbporn.com,done,1,0,0,0,0,0,0,0,0
 1666,zbporn.tv,done,1,0,0,0,0,0,0,0,0
 3378,zdassets.com,done,1,0,0,0,0,0,0,0,0
 3362,zdf.de,done,1,0,0,0,0,0,118,0,0
@@ -9967,7 +9967,7 @@ rank,domain,status,attempts,idb_dbs,idb_records,identifiers,client_ids_4_1,exfil
 6153,zoho.in,done,1,0,0,0,0,0,4702,0,378
 4741,zohocdn.com,done,1,0,0,0,0,0,0,0,0
 4749,zohopublic.com,done,1,0,0,0,0,0,0,0,0
-6752,zol.com.cn,pending,0,,,,,,,,
+6752,zol.com.cn,done,1,0,0,0,0,0,954,0,601
 4700,zomato.com,done,1,0,0,0,0,0,4,0,90
 8171,zonaprop.com.ar,pending,0,,,,,,,,
 8942,zonatmo.org,pending,0,,,,,,,,
