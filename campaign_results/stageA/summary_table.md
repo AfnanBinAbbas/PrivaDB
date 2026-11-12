@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **5504/10000** terminal (5468 done, 36 failed) · running/pending: 4496
+Progress: **5634/10000** terminal (5598 done, 36 failed) · running/pending: 4366
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T02:02:27+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T02:32:33+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 958014 |
-| storage exfils | 1142881 |
-| IndexedDB databases | 4180 |
-| IndexedDB records | 12237 |
-| exfil events | 18984 |
-| idb-hook flows | 5988 |
+| taint flows | 995959 |
+| storage exfils | 1180502 |
+| IndexedDB databases | 4329 |
+| IndexedDB records | 12563 |
+| exfil events | 19302 |
+| idb-hook flows | 5999 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -21,6 +21,7 @@ Top sites by taint flows:
 | php.net | 35583 |
 | dola.com | 15112 |
 | doubao.com | 14694 |
+| canadiantire.ca | 14681 |
 | zillow.com | 14657 |
 | vivo.com.br | 11497 |
 | tomsguide.com | 10755 |
@@ -32,7 +33,6 @@ Top sites by taint flows:
 | norton.com | 6599 |
 | tradeinn.com | 5321 |
 | cdiscount.com | 5049 |
-| clickup.com | 4910 |
 
 Sites with IndexedDB records (mission scope):
 
