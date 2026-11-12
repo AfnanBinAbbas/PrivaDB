@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PrivaDB report_html.py 1.0">
+<meta name="description" content="IndexedDB tracking measurement + GRC screening for https://lamoda.ru">
+<title>PrivaDB scan report — lamoda.ru</title>
+<style>
+:root{--bg:#ffffff;--fg:#1a1d21;--muted:#5b6470;--line:#d7dce2;
+--accent:#0b5fff;--pass:#0a6b34;--fail:#a4171b;--warn:#8a5a00;
+--info:#37506b;--na:#5b6470;--chip:#f2f4f7}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,
+Arial,sans-serif;color:var(--fg);background:var(--bg)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:#fff;padding:8px 12px;
+z-index:9;border:2px solid var(--accent)}
+header.masthead{border-bottom:3px solid var(--fg);padding:24px 4vw 16px}
+header.masthead h1{margin:0 0 4px;font-size:1.6rem}
+header.masthead .sub{color:var(--muted);font-size:.92rem}
+.classification{display:inline-block;margin-top:8px;padding:2px 10px;
+border:1px solid var(--fg);font-size:.8rem;letter-spacing:.04em;
+text-transform:uppercase}
+nav.toc{padding:12px 4vw;border-bottom:1px solid var(--line);
+background:var(--chip)}
+nav.toc a{margin-right:16px;color:var(--accent);font-size:.9rem}
+main{padding:8px 4vw 40px;max-width:1100px}
+section{margin-top:28px}
+h2{font-size:1.25rem;border-bottom:1px solid var(--line);
+padding-bottom:6px;margin-top:8px}
+h3{font-size:1.02rem;margin-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,
+minmax(150px,1fr));gap:10px;padding:0;list-style:none}
+.cards li{border:1px solid var(--line);border-radius:8px;padding:10px;
+background:var(--chip)}
+.cards .num{font-size:1.4rem;font-weight:700}
+.cards .lbl{font-size:.78rem;color:var(--muted);text-transform:
+uppercase;letter-spacing:.04em}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.9rem}
+caption{text-align:left;font-weight:600;padding:6px 0;
+caption-side:top}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;
+vertical-align:top}
+thead th{background:var(--chip)}
+th[scope=row]{font-weight:600;background:#fafbfc}
+.status{font-weight:700;white-space:nowrap}
+.status.PASS{color:var(--pass)}
+.status.FAIL{color:var(--fail)}
+.status.WARN{color:var(--warn)}
+.status.INFO{color:var(--info)}
+.status.NA{color:var(--na)}
+.sev{font-size:.8rem;color:var(--muted)}
+.hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em}
+.leak{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+font-size:.85em;background:#fff7e6;padding:1px 4px;border-radius:3px;
+word-break:break-all}
+details{margin:8px 0;border:1px solid var(--line);border-radius:6px;
+padding:8px 10px}
+summary{cursor:pointer;font-weight:600}
+pre{white-space:pre-wrap;word-break:break-word;font-size:.78rem;
+background:var(--chip);padding:8px;border-radius:6px;overflow:auto}
+.gauge{font-size:2rem;font-weight:800}
+.gauge.high{color:var(--fail)}.gauge.mid{color:var(--warn)}
+.gauge.low{color:var(--pass)}
+footer{border-top:3px solid var(--fg);padding:16px 4vw;
+color:var(--muted);font-size:.85rem}
+footer .disc{border:1px solid var(--line);padding:10px;background:
+var(--chip);margin-top:8px;color:var(--fg)}
+a{color:var(--accent)}
+ul.tight{margin:6px 0;padding-left:20px}
+@media print{
+ nav.toc,.skip{display:none}
+ body{font-size:11pt}
+ section{page-break-inside:auto}
+ h2{page-break-after:avoid}
+ table{page-break-inside:auto}
+ tr{page-break-inside:avoid}
+ details{border:none}
+ details>summary{display:none}
+ details[open]{display:block}
+ a[href]:after{content:""}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="masthead">
+  <h1>PrivaDB scan report — lamoda.ru</h1>
+  <div class="sub">IndexedDB tracking measurement + GRC screening for https://lamoda.ru</div>
+  <div class="sub">Generated 2026-11-12T08:35:59+00:00 · PrivaDB report_html.py v1.0</div>
+  <span class="classification">Confidential — contains raw leaked values (sensitive)</span>
+</header>
+<nav class="toc" aria-label="Report contents"><a href="#summary">1. Executive summary</a><a href="#grc">2. GRC compliance</a><a href="#findings">3. Measurement findings</a><a href="#consent">4. Consent study</a><a href="#storage">5. Storage comparison</a><a href="#writes">6. Write attribution</a><a href="#method">7. Methodology &amp; provenance</a><a href="#limits">8. Limitations</a></nav>
+<main id="main">
+<section id="summary" aria-labelledby="sum-h"><h2 id="sum-h">1. Executive summary</h2><p><strong>Target:</strong> https://lamoda.ru<br><strong>Engine:</strong> foxhound 137.0<br><strong>Scan started:</strong> 2026-11-12T08:15:42.052467Z · <strong>Status:</strong> completed</p><ul class="cards" aria-label="Summary metrics"><li><div class="num">2</div><div class="lbl">GRC risk /100 (low)</div></li><li><div class="num">1</div><div class="lbl">IndexedDB databases</div></li><li><div class="num">1</div><div class="lbl">IDB records</div></li><li><div class="num">0</div><div class="lbl">3rd-party identifier flows</div></li><li><div class="num">0</div><div class="lbl">Dynamic taint/hook flows</div></li><li><div class="num">0</div><div class="lbl">Inflow (network→IDB) flows</div></li><li><div class="num">0</div><div class="lbl">Respawn candidates</div></li><li><div class="num">0F/1W/4P</div><div class="lbl">GRC checks</div></li></ul></section>
+<section id="grc" aria-labelledby="grc-h">
+<h2 id="grc-h">GRC compliance screening</h2>
+<p><span class="gauge low">2/100</span> &nbsp; risk score (higher = worse) — 4 pass · 0 fail · 1 warn · 8 n/a · 1 info</p>
+<table><caption>Framework rollup (indicative pass rate over evaluated checks)</caption><thead><tr><th scope="col">Framework</th><th scope="col">Pass</th><th scope="col">Fail</th><th scope="col">Warn</th><th scope="col">N/A</th><th scope="col">Pass rate</th></tr></thead><tbody>
+<tr><th scope="row">GDPR</th><td>6</td><td>0</td><td>1</td><td>8</td><td>92.9%</td></tr>
+<tr><th scope="row">ePrivacy</th><td>0</td><td>0</td><td>0</td><td>4</td><td>n/a</td></tr>
+<tr><th scope="row">CCPA</th><td>1</td><td>0</td><td>1</td><td>1</td><td>75.0%</td></tr>
+<tr><th scope="row">ISO27001</th><td>2</td><td>0</td><td>0</td><td>3</td><td>100.0%</td></tr>
+</tbody></table>
+<table><caption>Control checks with measured evidence</caption><thead><tr><th scope="col">ID</th><th scope="col">Control</th><th scope="col">Status</th><th scope="col">Severity</th><th scope="col">Evidence (measured)</th><th scope="col">Frameworks</th></tr></thead><tbody>
+<tr><th scope="row">GRC-01</th><td>Transport security (HTTPS/HSTS)</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>response headers unavailable (offline fetch skipped)</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-02</th><td>Response header hardening</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>response headers unavailable</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.9 — configuration management</td></tr>
+<tr><th scope="row">GRC-03</th><td>Cookie flag hygiene</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no response headers</td><td>ePrivacy: Art. 5(3) — storage/access equipment; GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-04</th><td>Consent banner present</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan (run with consent_study=true)</td><td>ePrivacy: Art. 5(3) — consent for storage/access; GDPR: Art. 7 — conditions for consent</td></tr>
+<tr><th scope="row">GRC-05</th><td>No processing before consent</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan</td><td>ePrivacy: Art. 5(3) — prior consent; GDPR: Art. 6(1)(a) — lawfulness of processing</td></tr>
+<tr><th scope="row">GRC-06</th><td>Refusal is respected</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>no consent study in this scan</td><td>ePrivacy: Art. 5(3) — respect of refusal; GDPR: Art. 7(1) — demonstrable consent</td></tr>
+<tr><th scope="row">GRC-07</th><td>Third-party identifier flows</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no identifier observed leaving to a third party in this scan</td><td>GDPR: Art. 5(1)(f) — integrity and confidentiality; GDPR: Art. 28 — processors / contracts; CCPA: §1798.120 — sale/share of personal info</td></tr>
+<tr><th scope="row">GRC-08</th><td>Recipients disclosed in policy</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>policy not fetched for this report</td><td>GDPR: Art. 13 — information provided; CCPA: §1798.100 — notice at collection</td></tr>
+<tr><th scope="row">GRC-09</th><td>Storage technologies disclosed</td><td><span class="status NA">N/A</span></td><td><span class="sev">—</span></td><td>policy not analysed</td><td>GDPR: Art. 13 — information provided</td></tr>
+<tr><th scope="row">GRC-10</th><td>Storage limitation (no respawn)</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no identifier found in both cookies and IndexedDB</td><td>GDPR: Art. 5(1)(e) — storage limitation; ISO27001: A.8.10 — information deletion</td></tr>
+<tr><th scope="row">GRC-11</th><td>No first-party cloaking</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>no CNAME cloaking observed on measured flows</td><td>GDPR: Art. 5(1)(a) — fairness and transparency; GDPR: Art. 13 — information provided</td></tr>
+<tr><th scope="row">GRC-12</th><td>Identifiers sent over TLS</td><td><span class="status PASS">PASS</span></td><td><span class="sev">—</span></td><td>all 16 measured identifier flow(s) use https://</td><td>GDPR: Art. 32 — security of processing; ISO27001: A.8.24 — use of cryptography</td></tr>
+<tr><th scope="row">GRC-13</th><td>Privacy policy available</td><td><span class="status WARN">WARN</span></td><td><span class="sev">low</span></td><td>policy not fetched (or not found) for this report</td><td>GDPR: Art. 13 — information provided; CCPA: §1798.100 — notice at collection</td></tr>
+<tr><th scope="row">GRC-14</th><td>Cross-context sharing review</td><td><span class="status INFO">INFO</span></td><td><span class="sev">—</span></td><td>no cross-site identifier flows observed on this scan</td><td>CCPA: §1798.120 — sharing for cross-context ads; GDPR: Art. 5(1)(b) — purpose limitation</td></tr>
+</tbody></table>
+<h3>Recommendations</h3><ul class="tight">
+<li><strong>GRC-13 Privacy policy available:</strong> Publish a reachable privacy policy at /privacy and re-run the report.</li>
+</ul>
+<p class="sev">Evidence inputs: analysis=yes, consent_study=no, policy=no, response_headers=no.</p>
+</section>
+<section id="findings" aria-labelledby="find-h"><h2 id="find-h">3. Measurement findings</h2><p>Exfiltration events: 0 · third-party flows: 0 · taint flows: 0 · IDB-hook flows: 0 · inflow flows: 0.</p><table><caption>Leaked values with source → sink provenance (raw values clipped to 140 chars + SHA-256:16; showing 16 of 16)</caption><thead><tr><th scope="col">Direction</th><th scope="col">Source</th><th scope="col">Leaked value (+ hash)</th><th scope="col">Sink</th><th scope="col">Mechanism</th><th scope="col">Entity</th><th scope="col">Third party</th><th scope="col">Confidence</th></tr></thead><tbody><tr><td>outflow</td><td>cookies cookies/spjs</td><td><span class="leak">1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi+rnhgvp60dozMcIC4rH9wv655YHa4an+2v2h4pnl+aru2eWBMv2p9tr9g6L+sf…</span> <span class="hash">sha256:d8f57cea9ec51705</span></td><td>url → https://www.lamoda.ru/xpvnsulc/?back_location=https%3A%2F%2Fwww.lamoda.ru%2F&amp;hcheck=f224f2585272d770db120dd3d008bf3a&amp;request_datetime=2026-11-12+08%3A15%3A49+%2B0000&amp;request_ip=182.191.79.124&amp;request_id=nFU3pX2BnW21&amp;srv=1c1a4c5b3ea3b670136e131dd2a31bac&amp;copts_k=685a4b20eb16d24164d7531697a3e919b377effd350e8610c327584971abd3fa47f0b494f8f0c3e1221af57a42e72f17aff43f5955739b80528e8b85a36bb158&amp;oirutpspid=1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju&amp;oirutpspsc=1794471349572_f800c1cc2076f4333f427b213da35271_9q5MceOb8k.cTVSWbuL7zTJZJLrlUw7hr1ix6bil7HgZ&amp;oirutpspjs=1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi%2Brnhgvp60dozMcIC4rH9wv655YHa4an%2B2v2h4pnl%2Baru2eWBMv2p9tr9g6L%2BsfXC%2FpuZ8rLxweKy7cHmmd35qvLZ4aru2eWA2vWp6tr5qera%2Banq2vmp6tr5qera%2Ban22v2CSuKx9cL%2BmtX2svHB4rLxweKy8cHisvHB4hJZyWIjbGUrdj01I24geSoqKQB7f3UoZ3YdNGouLGUmI2htJrrVgeJy%2BOn6uv2B4nr0yf7ZAf2iXpl4ovqy7eba%2BaliHiUsc2olOGdyKG0uI2xxIi9hKHo%2BKSUCN2E4c2NpKTaY7dlKNtmZot6ZyWFNBh4dBQYeHQb9SWNzdTUiM2k9LjIoZHI%2FdS0uNhkxNhttNHIjfGhna3BlNjLhweK6%2BYHiEnklB29tNTIbfTRyH2kkbiYhPTYrfTUmJiBoaiNseSN%2BGOljdiUhNjI8dHtiPS0qPi04bjYscGYzcHkmL3BtNiI0aQPO%2BeFz%2F7ngiuLZ5aL%2BmeBq0s3h4vr5teL6%2BeGISvHDUr6QXNdHEERTS31dNkI5YUOnXFhzRyQtY8OpYSY6QSEOe6REWiIpDWMaITFGe%2FwgI0tsvHdz1EQyRi0tPkI1OWJb1MCzz8lRY0tcTHZ75HRvV0VFY%2FdYKF9PbV0mMjlZIkI5WSJ7tGR7fzBFXi41PVo2IWnquslJ4jLI0EdDLAFjGhk4niIpCarS7HRaT6ytqu9sWVevtanrb0Dh49L4qc65Bh4dBQYeHQUF5IrW2h4dBQYeHQUGHed6%2BEm%2BPj0lJj49NTYuLSU2Li01Ni4tNTYuLSQi%2FxHj6v77qebq2eGi%2BHHl08tcWDcaeAECI4U5MFL9McJOsfHC%2Fpm9quLZ5aL%2BmUmq4tnlov6Zmary2eGq8tnhqurZ5YJWsfnC%2Frnhgo6ZyWL6WeMi%2FvVrCv7R7eb6%2BaMmxnG55vb96ery%2FeXq%2Fv3l4vL58ery8eEe9lG94vr54e76%2BeHi%2Bvnh4vr15eL6%2BeHi%2Bvkp2trZofaa2WH2OX6XBQrxCdLO%2BeHj%2Bq3h4PoFgefy6GQ3K0Tp0zNkaUI6SWEiSnkhR%2FL46ePS1cHmuvmB4nnhiUL7sRHm%2Fv3l5v795eb%2B%2FeHm%2Fv3l5v795eL%2B%2BeXm%2Fv3h5vr55eL6%2BeHi%2Bvnl4v755eL6%2FeXm%2Bvnh4vr54eL6%2BeFKMtuB3pr5ae7%2B%2FeFKytnhovqZ4WL6WeEi%2FjnhCurZ4aL7%2BeDC%2B7nsgvtx%2BcL6meFi%2B1nhK4LRWcGvNaHimvlh4lr5IeIa%2BOHj2awsovuR6W4%2FeeBBrzQg%2BxkkK%2BL%2B%2B8Hm%2BLnmqv67Cd5yccmj%2F0x0K190ZV%2FDbDyfn0QoTrLsdFpPrK2K50A0V28wRG5YSekq8tnhC%2BbRncGi0aPi4pq5ynj5%2BUq%2FSGRbazRsZzttVCMzXFRnMx2putmhyaBS7ZXh%2BFDxdvj5SPJZockg%2BuGJxtqZoYKO%2BePiBntF2%2FAR5ar2ceUikxnB6rLsxFsrbFGKe9xYM29JQKpeeMDye%2BQoZztYRG82SWBfMngsR09cUGcycWDHQyh0UluxRWPb6WD%2FM3wgQ190LVJ7RCljN1xUR0t8KUrnzFwLX0hQZjj44QK7%2B%2BPi89vhY7KwvHdz5NFj58is0nvsrWI2QSEjmsVpYiogbSIuMTk3ch01IjthLQIiKTUuMjhtJhtpOTNvcHByWfmlCt795eb%2B%2BeHi%2BvzpxjLl4eL6%2BeHi%2B9D9wm6x6WL%2BkcHANKNrhuK55UISMcHC8rnpgv5Z4OHawKIe%2F5HRwvq54YL6eeFC%2BjngatLPaIhL9bXi%2BejoQB0IxCrzdQvq%2FvijxJiTWp43jeMjX%2BxjKttR4Cq4a8JTF67F0izgGgQCrDfo2xHJwbLFieJy9eHi%2BPHl4Nr94</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spjs</td><td><span class="leak">1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi+rnhgvp60dozMcIC4rH9wv655YHa4an+2v2h4pnl+aru2eWBMv2p9tr9g6L+sf…</span> <span class="hash">sha256:d8f57cea9ec51705</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/style.css</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spjs</td><td><span class="leak">1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi+rnhgvp60dozMcIC4rH9wv655YHa4an+2v2h4pnl+aru2eWBMv2p9tr9g6L+sf…</span> <span class="hash">sha256:d8f57cea9ec51705</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/captchaIntGen.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spjs</td><td><span class="leak">1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi+rnhgvp60dozMcIC4rH9wv655YHa4an+2v2h4pnl+aru2eWBMv2p9tr9g6L+sf…</span> <span class="hash">sha256:d8f57cea9ec51705</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/get_image.php</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spjs</td><td><span class="leak">1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi+rnhgvp60dozMcIC4rH9wv655YHa4an+2v2h4pnl+aru2eWBMv2p9tr9g6L+sf…</span> <span class="hash">sha256:d8f57cea9ec51705</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/bundle.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>header:cookie → https://www.lamoda.ru/</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>url → https://www.lamoda.ru/xpvnsulc/?back_location=https%3A%2F%2Fwww.lamoda.ru%2F&amp;hcheck=f224f2585272d770db120dd3d008bf3a&amp;request_datetime=2026-11-12+08%3A15%3A49+%2B0000&amp;request_ip=182.191.79.124&amp;request_id=nFU3pX2BnW21&amp;srv=1c1a4c5b3ea3b670136e131dd2a31bac&amp;copts_k=685a4b20eb16d24164d7531697a3e919b377effd350e8610c327584971abd3fa47f0b494f8f0c3e1221af57a42e72f17aff43f5955739b80528e8b85a36bb158&amp;oirutpspid=1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju&amp;oirutpspsc=1794471349572_f800c1cc2076f4333f427b213da35271_9q5MceOb8k.cTVSWbuL7zTJZJLrlUw7hr1ix6bil7HgZ&amp;oirutpspjs=1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi%2Brnhgvp60dozMcIC4rH9wv655YHa4an%2B2v2h4pnl%2Baru2eWBMv2p9tr9g6L%2BsfXC%2FpuZ8rLxweKy7cHmmd35qvLZ4aru2eWA2vWp6tr5qera%2Banq2vmp6tr5qera%2Ban22v2CSuKx9cL%2BmtX2svHB4rLxweKy8cHisvHB4hJZyWIjbGUrdj01I24geSoqKQB7f3UoZ3YdNGouLGUmI2htJrrVgeJy%2BOn6uv2B4nr0yf7ZAf2iXpl4ovqy7eba%2BaliHiUsc2olOGdyKG0uI2xxIi9hKHo%2BKSUCN2E4c2NpKTaY7dlKNtmZot6ZyWFNBh4dBQYeHQb9SWNzdTUiM2k9LjIoZHI%2FdS0uNhkxNhttNHIjfGhna3BlNjLhweK6%2BYHiEnklB29tNTIbfTRyH2kkbiYhPTYrfTUmJiBoaiNseSN%2BGOljdiUhNjI8dHtiPS0qPi04bjYscGYzcHkmL3BtNiI0aQPO%2BeFz%2F7ngiuLZ5aL%2BmeBq0s3h4vr5teL6%2BeGISvHDUr6QXNdHEERTS31dNkI5YUOnXFhzRyQtY8OpYSY6QSEOe6REWiIpDWMaITFGe%2FwgI0tsvHdz1EQyRi0tPkI1OWJb1MCzz8lRY0tcTHZ75HRvV0VFY%2FdYKF9PbV0mMjlZIkI5WSJ7tGR7fzBFXi41PVo2IWnquslJ4jLI0EdDLAFjGhk4niIpCarS7HRaT6ytqu9sWVevtanrb0Dh49L4qc65Bh4dBQYeHQUF5IrW2h4dBQYeHQUGHed6%2BEm%2BPj0lJj49NTYuLSU2Li01Ni4tNTYuLSQi%2FxHj6v77qebq2eGi%2BHHl08tcWDcaeAECI4U5MFL9McJOsfHC%2Fpm9quLZ5aL%2BmUmq4tnlov6Zmary2eGq8tnhqurZ5YJWsfnC%2Frnhgo6ZyWL6WeMi%2FvVrCv7R7eb6%2BaMmxnG55vb96ery%2FeXq%2Fv3l4vL58ery8eEe9lG94vr54e76%2BeHi%2Bvnh4vr15eL6%2BeHi%2Bvkp2trZofaa2WH2OX6XBQrxCdLO%2BeHj%2Bq3h4PoFgefy6GQ3K0Tp0zNkaUI6SWEiSnkhR%2FL46ePS1cHmuvmB4nnhiUL7sRHm%2Fv3l5v795eb%2B%2FeHm%2Fv3l5v795eL%2B%2BeXm%2Fv3h5vr55eL6%2BeHi%2Bvnl4v755eL6%2FeXm%2Bvnh4vr54eL6%2BeFKMtuB3pr5ae7%2B%2FeFKytnhovqZ4WL6WeEi%2FjnhCurZ4aL7%2BeDC%2B7nsgvtx%2BcL6meFi%2B1nhK4LRWcGvNaHimvlh4lr5IeIa%2BOHj2awsovuR6W4%2FeeBBrzQg%2BxkkK%2BL%2B%2B8Hm%2BLnmqv67Cd5yccmj%2F0x0K190ZV%2FDbDyfn0QoTrLsdFpPrK2K50A0V28wRG5YSekq8tnhC%2BbRncGi0aPi4pq5ynj5%2BUq%2FSGRbazRsZzttVCMzXFRnMx2putmhyaBS7ZXh%2BFDxdvj5SPJZockg%2BuGJxtqZoYKO%2BePiBntF2%2FAR5ar2ceUikxnB6rLsxFsrbFGKe9xYM29JQKpeeMDye%2BQoZztYRG82SWBfMngsR09cUGcycWDHQyh0UluxRWPb6WD%2FM3wgQ190LVJ7RCljN1xUR0t8KUrnzFwLX0hQZjj44QK7%2B%2BPi89vhY7KwvHdz5NFj58is0nvsrWI2QSEjmsVpYiogbSIuMTk3ch01IjthLQIiKTUuMjhtJhtpOTNvcHByWfmlCt795eb%2B%2BeHi%2BvzpxjLl4eL6%2BeHi%2B9D9wm6x6WL%2BkcHANKNrhuK55UISMcHC8rnpgv5Z4OHawKIe%2F5HRwvq54YL6eeFC%2BjngatLPaIhL9bXi%2BejoQB0IxCrzdQvq%2FvijxJiTWp43jeMjX%2BxjKttR4Cq4a8JTF67F0izgGgQCrDfo2xHJwbLFieJy9eHi%2BPHl4Nr94</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/style.css</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/captchaIntGen.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/get_image.php</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/spid</td><td><span class="leak">1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju</span> <span class="hash">sha256:be32b2ed7d0f3e8e</span></td><td>header:referer → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/bundle.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/rndcaptcha</td><td><span class="leak">eyJpdiI6IkNRb2JHdVNBWHBuNVU2Z2lONmlBZnc9PSIsInZhbHVlIjoiejB6RGlTUG41Y001cGhNS2tKODJ4a3oxOE41WlUzeEVpNHlqa0VFUHZuV2FhV0Y5UzlXajFiQ1IwdkZCUHEz…</span> <span class="hash">sha256:18205ba16df9ad84</span></td><td>header:cookie → https://www.lamoda.ru/xpvnsulc/?back_location=https%3A%2F%2Fwww.lamoda.ru%2F&amp;hcheck=f224f2585272d770db120dd3d008bf3a&amp;request_datetime=2026-11-12+08%3A15%3A49+%2B0000&amp;request_ip=182.191.79.124&amp;request_id=nFU3pX2BnW21&amp;srv=1c1a4c5b3ea3b670136e131dd2a31bac&amp;copts_k=685a4b20eb16d24164d7531697a3e919b377effd350e8610c327584971abd3fa47f0b494f8f0c3e1221af57a42e72f17aff43f5955739b80528e8b85a36bb158&amp;oirutpspid=1794471343903_e34d6bbea8a4b4bbc8a416f5409dcda4_ltdjplnahtpw7tju&amp;oirutpspsc=1794471349572_f800c1cc2076f4333f427b213da35271_9q5MceOb8k.cTVSWbuL7zTJZJLrlUw7hr1ix6bil7HgZ&amp;oirutpspjs=1794471349572_19f1c490_0f8ee54c_2d6a0e2565ffe3ca2f77c687974e021d_7cYMw2xsC2eGi%2Brnhgvp60dozMcIC4rH9wv655YHa4an%2B2v2h4pnl%2Baru2eWBMv2p9tr9g6L%2BsfXC%2FpuZ8rLxweKy7cHmmd35qvLZ4aru2eWA2vWp6tr5qera%2Banq2vmp6tr5qera%2Ban22v2CSuKx9cL%2BmtX2svHB4rLxweKy8cHisvHB4hJZyWIjbGUrdj01I24geSoqKQB7f3UoZ3YdNGouLGUmI2htJrrVgeJy%2BOn6uv2B4nr0yf7ZAf2iXpl4ovqy7eba%2BaliHiUsc2olOGdyKG0uI2xxIi9hKHo%2BKSUCN2E4c2NpKTaY7dlKNtmZot6ZyWFNBh4dBQYeHQb9SWNzdTUiM2k9LjIoZHI%2FdS0uNhkxNhttNHIjfGhna3BlNjLhweK6%2BYHiEnklB29tNTIbfTRyH2kkbiYhPTYrfTUmJiBoaiNseSN%2BGOljdiUhNjI8dHtiPS0qPi04bjYscGYzcHkmL3BtNiI0aQPO%2BeFz%2F7ngiuLZ5aL%2BmeBq0s3h4vr5teL6%2BeGISvHDUr6QXNdHEERTS31dNkI5YUOnXFhzRyQtY8OpYSY6QSEOe6REWiIpDWMaITFGe%2FwgI0tsvHdz1EQyRi0tPkI1OWJb1MCzz8lRY0tcTHZ75HRvV0VFY%2FdYKF9PbV0mMjlZIkI5WSJ7tGR7fzBFXi41PVo2IWnquslJ4jLI0EdDLAFjGhk4niIpCarS7HRaT6ytqu9sWVevtanrb0Dh49L4qc65Bh4dBQYeHQUF5IrW2h4dBQYeHQUGHed6%2BEm%2BPj0lJj49NTYuLSU2Li01Ni4tNTYuLSQi%2FxHj6v77qebq2eGi%2BHHl08tcWDcaeAECI4U5MFL9McJOsfHC%2Fpm9quLZ5aL%2BmUmq4tnlov6Zmary2eGq8tnhqurZ5YJWsfnC%2Frnhgo6ZyWL6WeMi%2FvVrCv7R7eb6%2BaMmxnG55vb96ery%2FeXq%2Fv3l4vL58ery8eEe9lG94vr54e76%2BeHi%2Bvnh4vr15eL6%2BeHi%2Bvkp2trZofaa2WH2OX6XBQrxCdLO%2BeHj%2Bq3h4PoFgefy6GQ3K0Tp0zNkaUI6SWEiSnkhR%2FL46ePS1cHmuvmB4nnhiUL7sRHm%2Fv3l5v795eb%2B%2FeHm%2Fv3l5v795eL%2B%2BeXm%2Fv3h5vr55eL6%2BeHi%2Bvnl4v755eL6%2FeXm%2Bvnh4vr54eL6%2BeFKMtuB3pr5ae7%2B%2FeFKytnhovqZ4WL6WeEi%2FjnhCurZ4aL7%2BeDC%2B7nsgvtx%2BcL6meFi%2B1nhK4LRWcGvNaHimvlh4lr5IeIa%2BOHj2awsovuR6W4%2FeeBBrzQg%2BxkkK%2BL%2B%2B8Hm%2BLnmqv67Cd5yccmj%2F0x0K190ZV%2FDbDyfn0QoTrLsdFpPrK2K50A0V28wRG5YSekq8tnhC%2BbRncGi0aPi4pq5ynj5%2BUq%2FSGRbazRsZzttVCMzXFRnMx2putmhyaBS7ZXh%2BFDxdvj5SPJZockg%2BuGJxtqZoYKO%2BePiBntF2%2FAR5ar2ceUikxnB6rLsxFsrbFGKe9xYM29JQKpeeMDye%2BQoZztYRG82SWBfMngsR09cUGcycWDHQyh0UluxRWPb6WD%2FM3wgQ190LVJ7RCljN1xUR0t8KUrnzFwLX0hQZjj44QK7%2B%2BPi89vhY7KwvHdz5NFj58is0nvsrWI2QSEjmsVpYiogbSIuMTk3ch01IjthLQIiKTUuMjhtJhtpOTNvcHByWfmlCt795eb%2B%2BeHi%2BvzpxjLl4eL6%2BeHi%2B9D9wm6x6WL%2BkcHANKNrhuK55UISMcHC8rnpgv5Z4OHawKIe%2F5HRwvq54YL6eeFC%2BjngatLPaIhL9bXi%2BejoQB0IxCrzdQvq%2FvijxJiTWp43jeMjX%2BxjKttR4Cq4a8JTF67F0izgGgQCrDfo2xHJwbLFieJy9eHi%2BPHl4Nr94</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/rndcaptcha</td><td><span class="leak">eyJpdiI6IkNRb2JHdVNBWHBuNVU2Z2lONmlBZnc9PSIsInZhbHVlIjoiejB6RGlTUG41Y001cGhNS2tKODJ4a3oxOE41WlUzeEVpNHlqa0VFUHZuV2FhV0Y5UzlXajFiQ1IwdkZCUHEz…</span> <span class="hash">sha256:18205ba16df9ad84</span></td><td>header:cookie → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/style.css</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/rndcaptcha</td><td><span class="leak">eyJpdiI6IkNRb2JHdVNBWHBuNVU2Z2lONmlBZnc9PSIsInZhbHVlIjoiejB6RGlTUG41Y001cGhNS2tKODJ4a3oxOE41WlUzeEVpNHlqa0VFUHZuV2FhV0Y5UzlXajFiQ1IwdkZCUHEz…</span> <span class="hash">sha256:18205ba16df9ad84</span></td><td>header:cookie → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/captchaIntGen.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/rndcaptcha</td><td><span class="leak">eyJpdiI6IkNRb2JHdVNBWHBuNVU2Z2lONmlBZnc9PSIsInZhbHVlIjoiejB6RGlTUG41Y001cGhNS2tKODJ4a3oxOE41WlUzeEVpNHlqa0VFUHZuV2FhV0Y5UzlXajFiQ1IwdkZCUHEz…</span> <span class="hash">sha256:18205ba16df9ad84</span></td><td>header:cookie → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/get_image.php</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr><tr><td>outflow</td><td>cookies cookies/rndcaptcha</td><td><span class="leak">eyJpdiI6IkNRb2JHdVNBWHBuNVU2Z2lONmlBZnc9PSIsInZhbHVlIjoiejB6RGlTUG41Y001cGhNS2tKODJ4a3oxOE41WlUzeEVpNHlqa0VFUHZuV2FhV0Y5UzlXajFiQ1IwdkZCUHEz…</span> <span class="hash">sha256:18205ba16df9ad84</span></td><td>header:cookie → https://www.lamoda.ru/xpvnsulc/sp_rotated_captcha/js/bundle.js</td><td>cookies</td><td>—</td><td>no</td><td>LOW</td></tr></tbody></table></section>
+<section id="consent"><h2>4. Consent study</h2><p>No consent study in this scan — run with <code>consent_study=true</code> to measure pre-consent/post-reject behaviour.</p></section>
+<section id="storage" aria-labelledby="storage-h"><h2 id="storage-h">Storage comparison (IDB vs other stores)</h2><table><caption>Identifiers and exfiltration per store</caption><thead><tr><th scope="col">Store</th><th scope="col">Identifiers</th><th scope="col">Exfil events</th><th scope="col">Third-party</th></tr></thead><tbody><tr><th scope="row">caches</th><td>0</td><td>0</td><td>0</td></tr><tr><th scope="row">cookies</th><td>3</td><td>16</td><td>0</td></tr><tr><th scope="row">indexeddb</th><td>1</td><td>0</td><td>0</td></tr><tr><th scope="row">localStorage</th><td>1</td><td>0</td><td>0</td></tr><tr><th scope="row">service_workers</th><td>0</td><td>0</td><td>0</td></tr><tr><th scope="row">sessionStorage</th><td>1</td><td>0</td><td>0</td></tr></tbody></table><p><strong>Respawn candidates:</strong> 0</p></section>
+<section id="writes"><h2>6. Write attribution</h2><p>No write-side instrumentation data in this scan.</p></section>
+<section id="method" aria-labelledby="mth-h"><h2 id="mth-h">7. Methodology &amp; provenance</h2><p>Dynamic measurement: fresh browser context per iteration; IndexedDB/other-store extraction; in-page flow hooks (reads, writes, network sends, responses); Foxhound taint-export capture; transform-aware matching (raw/encode/hash variants) against URL, bodies, all headers and WebSocket frames; PSL + Disconnect entity attribution; best-effort policy and response header collection for GRC checks. Confidence labels and confinement follow the What-Storage paper taxonomy.</p><table><caption>Run metadata (run_meta)</caption><tbody><tr><th scope="row">engine</th><td>foxhound</td></tr><tr><th scope="row">headless</th><td>True</td></tr><tr><th scope="row">iterations</th><td>1</td></tr><tr><th scope="row">consent_study</th><td>False</td></tr><tr><th scope="row">user_agent</th><td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</td></tr><tr><th scope="row">browser_version</th><td>137.0</td></tr><tr><th scope="row">playwright_version</th><td>1.62.0</td></tr><tr><th scope="row">python_version</th><td>3.12.7</td></tr><tr><th scope="row">platform</th><td>Linux-7.1.5+kali-amd64-x86_64-with-glibc2.43</td></tr><tr><th scope="row">taint_tracking_enabled</th><td>True</td></tr><tr><th scope="row">captured_at</th><td>2026-11-12T08:16:06.157513Z</td></tr><tr><th scope="row">foxhound_build_id</th><td>20251126175156</td></tr><tr><th scope="row">foxhound_bin_size</th><td>659240</td></tr></tbody></table><details><summary>Source artifacts</summary><ul class="tight"><li><span class="hash">Web/src/engine/data/scale/results/https___lamoda_ru_f31696c9.json</span></li></ul></details><details><summary>Analysis snapshot (JSON, raw values may appear)</summary><pre>{
+ &quot;domain&quot;: &quot;lamoda.ru&quot;,
+ &quot;url&quot;: &quot;https://lamoda.ru&quot;,
+ &quot;timestamp&quot;: &quot;2026-11-12T08:15:42.052467Z&quot;,
+ &quot;indexeddb_summary&quot;: {
+  &quot;database_count&quot;: 1,
+  &quot;total_records&quot;: 1,
+  &quot;truncated_stores&quot;: 0,
+  &quot;truncated_records&quot;: 0
+ },
+ &quot;dynamic_flows&quot;: {
+  &quot;total&quot;: 0,
+  &quot;taint&quot;: 0,
+  &quot;idb_hook&quot;: 0,
+  &quot;high_confidence&quot;: 0,
+  &quot;medium_confidence&quot;: 0,
+  &quot;low_confidence&quot;: 0,
+  &quot;external&quot;: 0,
+  &quot;tracker_targets&quot;: 0
+ },
+ &quot;flow_classification&quot;: {
+  &quot;outflow_flows&quot;: 0,
+  &quot;inflow_flows&quot;: 0,
+  &quot;internal_flows&quot;: 0,
+  &quot;external_flows&quot;: 0
+ },
+ &quot;exfiltration_summary&quot;: {
+  &quot;total&quot;: 0,
+  &quot;high_confidence&quot;: 0,
+  &quot;medium_confidence&quot;: 0,
+  &quot;low_confidence&quot;: 0
+ }
+}</pre></details></section>
+<section id="limits" aria-labelledby="lim-h"><h2 id="lim-h">8. Limitations</h2><ul class="tight"><li>Automation fingerprint: sites may behave differently under Playwright-driven browsers.</li><li>Single vantage point (one host/region) — regional comparisons require tagged repeat runs.</li><li>HttpOnly cookies are invisible to in-page capture; cookie figures are lower bounds.</li><li>Foxhound does not taint IndexedDB reads; IDB→network provenance comes from the in-page hook layer.</li><li>Policy- and header-based checks are best-effort and may be N/A when the target blocks collection.</li><li>Per-site reports display raw leaked values (clipped) with source/sink provenance — treat them as sensitive personal data; the bulk report contains aggregates only.</li></ul></section>
+</main>
+<footer>
+<div>Report version 1.0 · generator PrivaDB report_html.py ·
+ <strong>sensitive:</strong> this per-site report contains raw leaked
+ values (clipped to 140 chars) with their SHA-256:16 hashes and
+ source/sink provenance — store and share it accordingly.</div>
+<div class="sev">Target: https://lamoda.ru · checks: {&quot;pass&quot;: 4, &quot;fail&quot;: 0, &quot;warn&quot;: 1, &quot;na&quot;: 8, &quot;info&quot;: 1, &quot;risk_score&quot;: 2}</div>
+<div class="disc"><strong>Disclaimer.</strong> This document is an
+indicative technical screening produced by an automated measurement
+tool. It is not a legal certification, audit opinion, or advice from a
+Data Protection Officer. Compliance conclusions must be validated by a
+qualified reviewer.</div>
+</footer>
+</body>
+</html>
