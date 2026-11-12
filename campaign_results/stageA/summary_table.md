@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **6063/10000** terminal (6027 done, 36 failed) · running/pending: 3937
+Progress: **6212/10000** terminal (6176 done, 36 failed) · running/pending: 3788
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T04:02:52+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T04:32:58+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 1078146 |
-| storage exfils | 1278683 |
-| IndexedDB databases | 4601 |
-| IndexedDB records | 13259 |
-| exfil events | 20574 |
-| idb-hook flows | 6863 |
+| taint flows | 1107441 |
+| storage exfils | 1311505 |
+| IndexedDB databases | 4780 |
+| IndexedDB records | 14359 |
+| exfil events | 21736 |
+| idb-hook flows | 7241 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -39,7 +39,9 @@ Sites with IndexedDB records (mission scope):
 | site | IDB records |
 |---|---:|
 | mastodon.social | 3967 |
+| newrepublic.com | 432 |
 | netscape.com | 258 |
+| sprig.com | 255 |
 | kooora.com | 230 |
 | washingtontimes.com | 221 |
 | getdropbox.com | 207 |
@@ -49,10 +51,8 @@ Sites with IndexedDB records (mission scope):
 | theverge.com | 178 |
 | cronista.com | 177 |
 | hola.com | 170 |
+| gamesradar.com | 165 |
 | index.hu | 158 |
-| pcgamer.com | 154 |
-| speedtest.net | 136 |
-| barrons.com | 132 |
 
 Failed sites (36): youtube.com, taobao.com, comcast.com, character.ai, tagesschau.de, ovhcloud.com, nu.nl, ovh.com, cam.ac.uk, mechacomic.jp, thscore99.com, xfinity.com, hostinger.com, customer.io, coinmarketcap.com, adguard.com, faz.net, sketchfab.com, cutt.ly, irishtimes.com, simplisafe.com, vtex.com, franceinfo.fr, bybit.com, ardmediathek.de…
 
