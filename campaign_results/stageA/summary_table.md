@@ -1,17 +1,17 @@
 # Stage A — Tranco Top 10k × Foxhound dynamic taint analysis
 
-Progress: **6818/10000** terminal (6782 done, 36 failed) · running/pending: 3182
+Progress: **6925/10000** terminal (6889 done, 36 failed) · running/pending: 3075
 
-Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T07:05:37+00:00
+Run: foxhound · iterations=1 (leak pass — §4.1 identity confirmation deferred to Stage B) · workers=2 · --max-cpu 70 (CPU governor) · --prune-raw · headless · last sync 2026-11-12T07:35:45+00:00
 
 | metric | total |
 |---|---:|
-| taint flows | 1241851 |
-| storage exfils | 1466047 |
-| IndexedDB databases | 5413 |
-| IndexedDB records | 15790 |
-| exfil events | 23089 |
-| idb-hook flows | 7728 |
+| taint flows | 1269590 |
+| storage exfils | 1491433 |
+| IndexedDB databases | 5476 |
+| IndexedDB records | 15879 |
+| exfil events | 23626 |
+| idb-hook flows | 7766 |
 | §4.1 confirmed identities (Stage B only) | 0 |
 
 Top sites by taint flows:
@@ -27,12 +27,12 @@ Top sites by taint flows:
 | vivo.com.br | 11497 |
 | work.ua | 10991 |
 | tomsguide.com | 10755 |
+| fut.gg | 10099 |
 | searchenginejournal.com | 9999 |
 | sharethrough.com | 8574 |
 | posthog.com | 8481 |
 | zoho.eu | 8434 |
 | hostgator.com.br | 7160 |
-| iqiyipic.com | 6871 |
 
 Sites with IndexedDB records (mission scope):
 
